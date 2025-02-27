@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1020</width>
-    <height>638</height>
+    <width>1034</width>
+    <height>779</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_UnirPDF">
        <attribute name="title">
@@ -100,12 +100,18 @@
              <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
             </property>
             <item>
-             <widget class="QLineEdit" name="FileSelector_1">
+             <widget class="ButtonListWidget" name="ListFileSelector">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>100</height>
+               </size>
               </property>
              </widget>
             </item>
@@ -115,7 +121,7 @@
                <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::Policy::Fixed</enum>
+               <enum>QSizePolicy::Policy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -125,12 +131,28 @@
               </property>
              </spacer>
             </item>
-            <item>
+            <item alignment="Qt::AlignmentFlag::AlignTop">
              <widget class="QPushButton" name="ButtonFileSelect">
               <property name="text">
-               <string>Seleccionar</string>
+               <string>Seleccionar archivo</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>270</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
@@ -696,7 +718,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget_2">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -727,59 +749,11 @@
          <string>Selecciona Imagenes:</string>
         </property>
        </widget>
-       <widget class="QWidget" name="layoutWidget_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>40</y>
-          <width>631</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <property name="sizeConstraint">
-          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="FileSelector_5">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="ButtonFileSelect_5">
-           <property name="text">
-            <string>Seleccionar</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QPushButton" name="SaveButton_5">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>140</y>
+          <x>20</x>
+          <y>150</y>
           <width>946</width>
           <height>24</height>
          </rect>
@@ -813,6 +787,28 @@
          <string>FOTO</string>
         </property>
        </widget>
+       <widget class="ButtonListWidget" name="ListFileSelector_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>541</width>
+          <height>100</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
@@ -822,9 +818,9 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>40</y>
+          <y>30</y>
           <width>631</width>
-          <height>26</height>
+          <height>102</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -832,12 +828,18 @@
           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
          </property>
          <item>
-          <widget class="QLineEdit" name="FileSelector_6">
+          <widget class="ButtonListWidget" name="ListFileSelector_3">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>100</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -857,7 +859,7 @@
            </property>
           </spacer>
          </item>
-         <item>
+         <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="ButtonFileSelect_6">
            <property name="text">
             <string>Seleccionar</string>
@@ -870,7 +872,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>80</y>
+          <y>160</y>
           <width>946</width>
           <height>24</height>
          </rect>
@@ -926,7 +928,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1020</width>
+     <width>1034</width>
      <height>21</height>
     </rect>
    </property>
@@ -938,10 +940,16 @@
    <addaction name="menuNada"/>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ButtonListWidget</class>
+   <extends>QListWidget</extends>
+   <header>widgets</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>toolButton</tabstop>
-  <tabstop>FileSelector_1</tabstop>
   <tabstop>ButtonFileSelect</tabstop>
   <tabstop>checkBox</tabstop>
   <tabstop>checkBox_2</tabstop>
@@ -962,13 +970,9 @@
   <tabstop>HojasSeparar_2</tabstop>
   <tabstop>SaveButton_4</tabstop>
   <tabstop>tabWidget_2</tabstop>
-  <tabstop>FileSelector_5</tabstop>
-  <tabstop>ButtonFileSelect_5</tabstop>
   <tabstop>SaveButton_5</tabstop>
-  <tabstop>FileSelector_6</tabstop>
   <tabstop>ButtonFileSelect_6</tabstop>
   <tabstop>SaveButton_6</tabstop>
-  <tabstop>tabWidget_3</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -1033,22 +1037,6 @@
     <hint type="destinationlabel">
      <x>509</x>
      <y>318</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ButtonFileSelect_5</sender>
-   <signal>clicked()</signal>
-   <receiver>MyLovePDF</receiver>
-   <slot>selectFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>604</x>
-     <y>326</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>596</x>
-     <y>428</y>
     </hint>
    </hints>
   </connection>

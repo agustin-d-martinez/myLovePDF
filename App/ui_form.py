@@ -18,15 +18,17 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QButtonGroup, QCheckBox, QGridLayout,
     QHBoxLayout, QLabel, QLayout, QLineEdit,
-    QMainWindow, QMenu, QMenuBar, QPushButton,
-    QSizePolicy, QSpacerItem, QTabWidget, QToolButton,
-    QVBoxLayout, QWidget)
+    QListWidgetItem, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QSpacerItem, QTabWidget,
+    QToolButton, QVBoxLayout, QWidget)
+
+from widgets import ButtonListWidget
 
 class Ui_MyLovePDF(object):
     def setupUi(self, MyLovePDF):
         if not MyLovePDF.objectName():
             MyLovePDF.setObjectName(u"MyLovePDF")
-        MyLovePDF.resize(1020, 638)
+        MyLovePDF.resize(1034, 779)
         self.centralwidget = QWidget(MyLovePDF)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(988, 0))
@@ -73,35 +75,37 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
-        self.FileSelector_1 = QLineEdit(self.tab_UnirPDF)
-        self.FileSelector_1.setObjectName(u"FileSelector_1")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
+        self.ListFileSelector = ButtonListWidget(self.tab_UnirPDF)
+        self.ListFileSelector.setObjectName(u"ListFileSelector")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.FileSelector_1.sizePolicy().hasHeightForWidth())
-        self.FileSelector_1.setSizePolicy(sizePolicy1)
+        sizePolicy1.setHeightForWidth(self.ListFileSelector.sizePolicy().hasHeightForWidth())
+        self.ListFileSelector.setSizePolicy(sizePolicy1)
+        self.ListFileSelector.setMaximumSize(QSize(16777215, 100))
 
-        self.horizontalLayout.addWidget(self.FileSelector_1)
+        self.horizontalLayout.addWidget(self.ListFileSelector)
 
-        self.horizontalSpacer = QSpacerItem(40, 10, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 10, QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
         self.ButtonFileSelect = QPushButton(self.tab_UnirPDF)
         self.ButtonFileSelect.setObjectName(u"ButtonFileSelect")
 
-        self.horizontalLayout.addWidget(self.ButtonFileSelect)
+        self.horizontalLayout.addWidget(self.ButtonFileSelect, 0, Qt.AlignmentFlag.AlignTop)
+
+        self.horizontalSpacer_9 = QSpacerItem(270, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_9)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.label_2 = QLabel(self.tab_UnirPDF)
         self.label_2.setObjectName(u"label_2")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy1)
         self.label_2.setMinimumSize(QSize(20, 20))
 
         self.verticalLayout.addWidget(self.label_2)
@@ -150,8 +154,11 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.FileSelector_2 = QLineEdit(self.layoutWidget)
         self.FileSelector_2.setObjectName(u"FileSelector_2")
-        sizePolicy1.setHeightForWidth(self.FileSelector_2.sizePolicy().hasHeightForWidth())
-        self.FileSelector_2.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.FileSelector_2.sizePolicy().hasHeightForWidth())
+        self.FileSelector_2.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_3.addWidget(self.FileSelector_2)
 
@@ -182,8 +189,8 @@ class Ui_MyLovePDF(object):
         self.HojasSeparar = QLineEdit(self.tab_SepararPDF)
         self.HojasSeparar.setObjectName(u"HojasSeparar")
         self.HojasSeparar.setGeometry(QRect(10, 90, 497, 24))
-        sizePolicy1.setHeightForWidth(self.HojasSeparar.sizePolicy().hasHeightForWidth())
-        self.HojasSeparar.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.HojasSeparar.sizePolicy().hasHeightForWidth())
+        self.HojasSeparar.setSizePolicy(sizePolicy2)
         self.label_5 = QLabel(self.tab_SepararPDF)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setEnabled(True)
@@ -195,8 +202,8 @@ class Ui_MyLovePDF(object):
         self.NombreExtra.setObjectName(u"NombreExtra")
         self.NombreExtra.setEnabled(True)
         self.NombreExtra.setGeometry(QRect(640, 90, 221, 24))
-        sizePolicy1.setHeightForWidth(self.NombreExtra.sizePolicy().hasHeightForWidth())
-        self.NombreExtra.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.NombreExtra.sizePolicy().hasHeightForWidth())
+        self.NombreExtra.setSizePolicy(sizePolicy2)
         self.NombreExtra.setMinimumSize(QSize(7, 0))
         self.NombreExtra.setCursorPosition(0)
         self.SaveButton_2 = QPushButton(self.tab_SepararPDF)
@@ -220,8 +227,8 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.FileSelector_3 = QLineEdit(self.layoutWidget_2)
         self.FileSelector_3.setObjectName(u"FileSelector_3")
-        sizePolicy1.setHeightForWidth(self.FileSelector_3.sizePolicy().hasHeightForWidth())
-        self.FileSelector_3.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.FileSelector_3.sizePolicy().hasHeightForWidth())
+        self.FileSelector_3.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_4.addWidget(self.FileSelector_3)
 
@@ -246,8 +253,8 @@ class Ui_MyLovePDF(object):
         self.HojasSeparar_3 = QLineEdit(self.tab)
         self.HojasSeparar_3.setObjectName(u"HojasSeparar_3")
         self.HojasSeparar_3.setGeometry(QRect(10, 90, 497, 24))
-        sizePolicy1.setHeightForWidth(self.HojasSeparar_3.sizePolicy().hasHeightForWidth())
-        self.HojasSeparar_3.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.HojasSeparar_3.sizePolicy().hasHeightForWidth())
+        self.HojasSeparar_3.setSizePolicy(sizePolicy2)
         self.checkBoxSplitAll = QCheckBox(self.tab)
         self.checkBoxSplitAll.setObjectName(u"checkBoxSplitAll")
         self.checkBoxSplitAll.setGeometry(QRect(520, 90, 111, 22))
@@ -272,8 +279,8 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.FileSelector_4 = QLineEdit(self.layoutWidget_3)
         self.FileSelector_4.setObjectName(u"FileSelector_4")
-        sizePolicy1.setHeightForWidth(self.FileSelector_4.sizePolicy().hasHeightForWidth())
-        self.FileSelector_4.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.FileSelector_4.sizePolicy().hasHeightForWidth())
+        self.FileSelector_4.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_5.addWidget(self.FileSelector_4)
 
@@ -295,8 +302,8 @@ class Ui_MyLovePDF(object):
         self.HojasSeparar_2 = QLineEdit(self.tab_HojaBlanco)
         self.HojasSeparar_2.setObjectName(u"HojasSeparar_2")
         self.HojasSeparar_2.setGeometry(QRect(10, 100, 497, 24))
-        sizePolicy1.setHeightForWidth(self.HojasSeparar_2.sizePolicy().hasHeightForWidth())
-        self.HojasSeparar_2.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.HojasSeparar_2.sizePolicy().hasHeightForWidth())
+        self.HojasSeparar_2.setSizePolicy(sizePolicy2)
         self.tabWidget.addTab(self.tab_HojaBlanco, "")
 
         self.verticalLayout_3.addWidget(self.tabWidget)
@@ -311,38 +318,21 @@ class Ui_MyLovePDF(object):
         sizePolicy.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
         self.label_9.setSizePolicy(sizePolicy)
         self.label_9.setMinimumSize(QSize(20, 20))
-        self.layoutWidget_4 = QWidget(self.tab_2)
-        self.layoutWidget_4.setObjectName(u"layoutWidget_4")
-        self.layoutWidget_4.setGeometry(QRect(10, 40, 631, 26))
-        self.horizontalLayout_6 = QHBoxLayout(self.layoutWidget_4)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.FileSelector_5 = QLineEdit(self.layoutWidget_4)
-        self.FileSelector_5.setObjectName(u"FileSelector_5")
-        sizePolicy1.setHeightForWidth(self.FileSelector_5.sizePolicy().hasHeightForWidth())
-        self.FileSelector_5.setSizePolicy(sizePolicy1)
-
-        self.horizontalLayout_6.addWidget(self.FileSelector_5)
-
-        self.horizontalSpacer_6 = QSpacerItem(40, 10, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_6.addItem(self.horizontalSpacer_6)
-
-        self.ButtonFileSelect_5 = QPushButton(self.layoutWidget_4)
-        self.ButtonFileSelect_5.setObjectName(u"ButtonFileSelect_5")
-
-        self.horizontalLayout_6.addWidget(self.ButtonFileSelect_5)
-
         self.SaveButton_5 = QPushButton(self.tab_2)
         self.SaveButton_5.setObjectName(u"SaveButton_5")
-        self.SaveButton_5.setGeometry(QRect(10, 140, 946, 24))
+        self.SaveButton_5.setGeometry(QRect(20, 150, 946, 24))
         self.label_11 = QLabel(self.tab_2)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setGeometry(QRect(740, 10, 211, 111))
         sizePolicy.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
         self.label_11.setSizePolicy(sizePolicy)
         self.label_11.setMinimumSize(QSize(20, 20))
+        self.ListFileSelector_2 = ButtonListWidget(self.tab_2)
+        self.ListFileSelector_2.setObjectName(u"ListFileSelector_2")
+        self.ListFileSelector_2.setGeometry(QRect(40, 30, 541, 100))
+        sizePolicy1.setHeightForWidth(self.ListFileSelector_2.sizePolicy().hasHeightForWidth())
+        self.ListFileSelector_2.setSizePolicy(sizePolicy1)
+        self.ListFileSelector_2.setMaximumSize(QSize(16777215, 100))
         self.tabWidget_2.addTab(self.tab_2, "")
         self.tab_4 = QWidget()
         self.tab_4.setObjectName(u"tab_4")
@@ -355,8 +345,8 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.FileSelector_6 = QLineEdit(self.layoutWidget_5)
         self.FileSelector_6.setObjectName(u"FileSelector_6")
-        sizePolicy1.setHeightForWidth(self.FileSelector_6.sizePolicy().hasHeightForWidth())
-        self.FileSelector_6.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.FileSelector_6.sizePolicy().hasHeightForWidth())
+        self.FileSelector_6.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_7.addWidget(self.FileSelector_6)
 
@@ -393,13 +383,12 @@ class Ui_MyLovePDF(object):
         MyLovePDF.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MyLovePDF)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1020, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1034, 21))
         self.menuNada = QMenu(self.menubar)
         self.menuNada.setObjectName(u"menuNada")
         MyLovePDF.setMenuBar(self.menubar)
         QWidget.setTabOrder(self.tabWidget, self.toolButton)
-        QWidget.setTabOrder(self.toolButton, self.FileSelector_1)
-        QWidget.setTabOrder(self.FileSelector_1, self.ButtonFileSelect)
+        QWidget.setTabOrder(self.toolButton, self.ButtonFileSelect)
         QWidget.setTabOrder(self.ButtonFileSelect, self.checkBox)
         QWidget.setTabOrder(self.checkBox, self.checkBox_2)
         QWidget.setTabOrder(self.checkBox_2, self.SaveButton)
@@ -419,13 +408,10 @@ class Ui_MyLovePDF(object):
         QWidget.setTabOrder(self.ButtonFileSelect_4, self.HojasSeparar_2)
         QWidget.setTabOrder(self.HojasSeparar_2, self.SaveButton_4)
         QWidget.setTabOrder(self.SaveButton_4, self.tabWidget_2)
-        QWidget.setTabOrder(self.tabWidget_2, self.FileSelector_5)
-        QWidget.setTabOrder(self.FileSelector_5, self.ButtonFileSelect_5)
-        QWidget.setTabOrder(self.ButtonFileSelect_5, self.SaveButton_5)
+        QWidget.setTabOrder(self.tabWidget_2, self.SaveButton_5)
         QWidget.setTabOrder(self.SaveButton_5, self.FileSelector_6)
         QWidget.setTabOrder(self.FileSelector_6, self.ButtonFileSelect_6)
         QWidget.setTabOrder(self.ButtonFileSelect_6, self.SaveButton_6)
-        QWidget.setTabOrder(self.SaveButton_6, self.tabWidget_3)
 
         self.menubar.addAction(self.menuNada.menuAction())
 
@@ -434,7 +420,6 @@ class Ui_MyLovePDF(object):
         self.checkBoxConsevar.clicked["bool"].connect(self.NombreExtra.setVisible)
         self.checkBoxConsevar.clicked["bool"].connect(self.label_5.setVisible)
         self.ButtonFileSelect_2.clicked.connect(MyLovePDF.selectFile)
-        self.ButtonFileSelect_5.clicked.connect(MyLovePDF.selectFile)
         self.ButtonFileSelect_3.clicked.connect(MyLovePDF.selectFile)
         self.ButtonFileSelect_6.clicked.connect(MyLovePDF.selectFile)
         self.ButtonFileSelect_4.clicked.connect(MyLovePDF.selectFile)
@@ -448,7 +433,7 @@ class Ui_MyLovePDF(object):
         self.SaveButton_4.clicked.connect(MyLovePDF.HojaBlanco)
 
         self.tabWidget.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(1)
+        self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget_3.setCurrentIndex(0)
 
 
@@ -459,7 +444,7 @@ class Ui_MyLovePDF(object):
         MyLovePDF.setWindowTitle(QCoreApplication.translate("MyLovePDF", u"MyLovePDF", None))
         self.toolButton.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.label.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDFs:", None))
-        self.ButtonFileSelect.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar", None))
+        self.ButtonFileSelect.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivo", None))
         self.label_2.setText(QCoreApplication.translate("MyLovePDF", u"Documento Par:", None))
         self.checkBox.setText(QCoreApplication.translate("MyLovePDF", u"Agegar Pagina Inicial", None))
         self.checkBox_2.setText(QCoreApplication.translate("MyLovePDF", u"Agregar Pagina Final", None))
@@ -490,7 +475,6 @@ class Ui_MyLovePDF(object):
         self.label_8.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_HojaBlanco), QCoreApplication.translate("MyLovePDF", u"Hoja en Blanco", None))
         self.label_9.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona Imagenes:", None))
-        self.ButtonFileSelect_5.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar", None))
         self.SaveButton_5.setText(QCoreApplication.translate("MyLovePDF", u"Convertir", None))
         self.label_11.setText(QCoreApplication.translate("MyLovePDF", u"FOTO", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), QCoreApplication.translate("MyLovePDF", u"Imagen a PDF", None))

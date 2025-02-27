@@ -16,15 +16,14 @@ class MainWindow(QMainWindow):
 		self.ui.setupUi(self)
 		self.ui.label_5.setHidden(True)
 		self.ui.NombreExtra.setHidden(True)
-
-
 	
+
 	def selectFile(self):
 		sender = self.sender()
 		opciones = QFileDialog.Options()
 		if sender == self.ui.ButtonFileSelect : 
 			archivo, _ = QFileDialog.getOpenFileNames(self, "Abrir PDF", "", "Archivos PDF (*.pdf)", options=opciones)
-			self.ui.FileSelector_1.setText("; ".join(archivo))
+			self.ui.ListFileSelector.listWidget.addItems(archivo)
 		elif sender == self.ui.ButtonFileSelect_2 :
 			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
 			self.ui.FileSelector_2.setText(archivo)
@@ -41,14 +40,17 @@ class MainWindow(QMainWindow):
 			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
 			self.ui.FileSelector_6.setText(archivo)
 
-	def ObtenerTexto( self, string: str ) -> list[str] : 
-		if not string :
+	def ObtenerTexto( self, listWidget: QListWidget ) -> list[str] : 
+		lista = []
+		for i in range(listWidget.count()):
+			lista.append(listWidget.item(i).text())
+		if not lista :
 			return None
 		else :
-			return string.split("; ")
+			return lista
 
 	def UnirPDF(self):
-		entradas = self.ObtenerTexto( self.ui.FileSelector_1.text() )
+		entradas = self.ObtenerTexto( self.ui.ListFileSelector.listWidget )
 		
 		if len(entradas) < 2:
 			print("ERROR1")
