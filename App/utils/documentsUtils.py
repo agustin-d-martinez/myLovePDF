@@ -119,7 +119,7 @@ def separar_pdf(entrada, salida, paginas, conservar= False, salida_extra = None)
 	doc_salida.close()
 	doc_salida_extra.close()
 
-def separar_hojas(entrada, salida, paginas):
+def separar_hojas(entrada, salida, paginas = None):
 	"""Separa hojas específicas de un PDF y las guarda individualmente en la carpeta de salida.
 
 	Parámetros:
@@ -135,21 +135,25 @@ def separar_hojas(entrada, salida, paginas):
 	if not os.path.exists(salida):
 		os.makedirs(salida)  # Crea la carpeta si no existe
 		
-	doc_inicial = fitz.open(entrada)
-	nombre_base = os.path.splitext(os.path.basename(entrada))[0]  # Nombre sin extensión
+	 # Abrir el documento de entrada
+	with fitz.open(entrada) as doc_inicial:
+		total_paginas = len(doc_inicial)
+		nombre_base = os.path.splitext(os.path.basename(entrada))[0]
 
-	for num_pagina in paginas:
-		if 1 <= num_pagina <= len(doc_inicial):
-			doc_tmp = fitz.open()
-			doc_tmp.insert_pdf(doc_inicial, from_page=num_pagina - 1, to_page=num_pagina - 1)
-			archivo_salida = os.path.join(salida, f"{nombre_base}_pag_{num_pagina}.pdf")
-			doc_tmp.save(archivo_salida)
-			doc_tmp.close()
-			print(f"Guardado: {archivo_salida}")
-		else :
-			print(f"Advertencia: La página {num_pagina} está fuera de rango y será omitida.")
+		# Si no se especifican páginas, extraemos todas
+		if paginas is None:
+			paginas = list(range(1, total_paginas + 1))
 
-	doc_inicial.close()
+		for num_pagina in paginas:
+			if 1 <= num_pagina <= total_paginas:
+				# Crear un nuevo documento para la página
+				with fitz.open() as doc_tmp:
+					doc_tmp.insert_pdf(doc_inicial, from_page=num_pagina - 1, to_page=num_pagina - 1)
+					archivo_salida = os.path.join(salida, f"{nombre_base}_pag_{num_pagina}.pdf")
+					doc_tmp.save(archivo_salida)
+					print(f"Guardado: {archivo_salida}")
+			else:
+				print(f"Advertencia: La página {num_pagina} está fuera de rango y será omitida.")
 
 def unir_pdfs(entradas, salida, inicial_par=False , final_par=False):
 	

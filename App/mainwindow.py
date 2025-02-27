@@ -1,18 +1,18 @@
 # This Python file uses the following encoding: utf-8
 import sys
 from PySide6.QtWidgets import *
-import documentsUtils as doc
+import utils.documentsUtils as doc
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic App\form.ui -o App\ui_form.py
 
-from ui_form import Ui_MainWindow
+from ui_form import Ui_MyLovePDF
 
 class MainWindow(QMainWindow):
 	def __init__(self, parent=None):
 		super().__init__(parent)
-		self.ui = Ui_MainWindow()
+		self.ui = Ui_MyLovePDF()
 		self.ui.setupUi(self)
 		self.ui.label_5.setHidden(True)
 		self.ui.NombreExtra.setHidden(True)
@@ -42,7 +42,10 @@ class MainWindow(QMainWindow):
 			self.ui.FileSelector_6.setText(archivo)
 
 	def ObtenerTexto( self, string: str ) -> list[str] : 
-		return string.split("; ")
+		if not string :
+			return None
+		else :
+			return string.split("; ")
 
 	def UnirPDF(self):
 		entradas = self.ObtenerTexto( self.ui.FileSelector_1.text() )
@@ -51,7 +54,7 @@ class MainWindow(QMainWindow):
 			print("ERROR1")
 			return
 		
-		salida , _ = QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , "Archivo PDF (*.pdf)")
+		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
 			doc.unir_pdfs(entradas,salida, self.ui.checkBox.isChecked() , self.ui.checkBox_2.isChecked() )
 
@@ -61,10 +64,66 @@ class MainWindow(QMainWindow):
 			print("ERROR1")
 			return
 		
-		salida , _ = QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , "Archivo PDF (*.pdf)")
+		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
 			doc.imagenes_a_pdf(entradas, salida)
 
+	def PDFtoImage (self):
+		entradas = self.ObtenerTexto( self.ui.FileSelector_6.text() )
+		if not entradas :
+			print("ERROR1")
+			return
+		
+		salida = self.SaveFile("Imagen (*.jpg)")
+		if salida :
+			print("NOT IMPLEMENTED")
+
+
+	def SepararPDF(self):
+		entrada = self.ui.FileSelector_2.text()
+		if not entrada : 
+			print("ERROR 1")
+			return
+		pags = self.ui.HojasSeparar.text().split(",")
+		pags_int = list(map(int,pags))
+
+		salida = self.SaveFile("Archivo PDF (*.pdf)")
+
+		if salida : 
+			doc.separar_pdf(entrada ,salida ,pags_int ,self.ui.checkBoxConsevar.isChecked() , self.ui.NombreExtra.text())
+
+	def SepararHojas(self):
+		entrada = self.ui.FileSelector_3.text()
+		if not entrada : 
+			print("ERROR 1")
+			return
+		if self.ui.checkBoxSplitAll.isChecked() :
+			paginas = None
+		else :
+			paginas = self.ui.HojasSeparar_3.text()
+			paginas = list(map(int, paginas))
+
+		salida = self.SaveFile("Archivo PDF (*.pdf)")
+		if salida :
+			doc.separar_hojas(entrada , salida , paginas)
+
+	def HojaBlanco (self): 
+		entrada = self.ui.FileSelector_4.text()
+		if not entrada : 
+			print("ERROR 1")
+			return
+		
+		paginas = self.ui.HojasSeparar_2.text()
+		paginas = list(map(int, paginas))
+
+		salida = self.SaveFile("Archivo PDF (*.pdf)")
+		if salida :
+			print("NO IMPLEMENTADO")
+
+
+	def SaveFile(self, type) :
+		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
+		return file
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
