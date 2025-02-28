@@ -11,6 +11,7 @@ class ButtonListWidget(QWidget):
 		super().__init__(parent)
 		# Exponer el QListWidget como un atributo público
 		self.listWidget = DroppableList()
+		self.listWidget.setEditTriggers(QListWidget.AllEditTriggers)
 		# self.listWidget.setDragDropMode(QAbstractItemView.DragDropMode.DragDrop)
 		# Layout para los botones (Vertical)
 		button_layout = QVBoxLayout()
@@ -47,12 +48,27 @@ class ButtonListWidget(QWidget):
 
 	def add_item(self):
 		"""Agrega un nuevo elemento a la lista."""
-		item = QListWidgetItem("")  # Crear un item vacío
-		item.setFlags(item.flags() )
-		self.listWidget.addItem(item)  # Agregarlo a la lista
-		self.listWidget.setCurrentItem(item)  # Seleccionarlo
-		self.listWidget.editItem(item)  # Habilitar la edición
+		item = QListWidgetItem("")  
+		self.listWidget.addItem(item)  
+		self.listWidget.setCurrentItem(item)  
 
+		# Crear un editor manualmente
+		editor = QLineEdit(self.listWidget)  
+		self.listWidget.setItemWidget(item, editor)  # Asignar el editor al item
+		editor.setFocus()  
+		editor.selectAll()  
+
+		# Guardar el texto en el item cuando el usuario termine de editar
+		editor.editingFinished.connect(lambda: self.finalizar_edicion(item, editor))
+
+	def finalizar_edicion(self, item: QListWidgetItem, editor: QLineEdit):
+		self.listWidget.setItemWidget(item, None)  # Remover el editor
+		text = editor.text()
+		if not text :
+			self.remove_item()
+		else:
+			item.setText(editor.text())  
+	
 	def remove_item(self):
 		"""Elimina el elemento seleccionado."""
 		item = self.listWidget.currentItem()

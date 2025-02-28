@@ -1,6 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 from PySide6.QtWidgets import *
+from PySide6.QtGui import *
 import utils.documentsUtils as doc
 
 # Important:
@@ -16,7 +17,13 @@ class MainWindow(QMainWindow):
 		self.ui.setupUi(self)
 		self.ui.label_5.setHidden(True)
 		self.ui.NombreExtra.setHidden(True)
-	
+
+		self.ui.ListFileSelector_2.listWidget.currentItemChanged.connect(self.UpdatePhoto)
+		
+	def UpdatePhoto(self , item : QListWidgetItem ):
+		path_img = QPixmap(item.text())
+		self.ui.label_11.setPixmap(path_img)
+		self.ui.label_11.setScaledContents(True)
 
 	def selectFile(self):
 		sender = self.sender()
@@ -35,19 +42,16 @@ class MainWindow(QMainWindow):
 			self.ui.FileSelector_4.setText(archivo)
 		elif sender == self.ui.ButtonFileSelect_5 :
 			archivo, _ = QFileDialog.getOpenFileNames(self, "Seleccionar Archivo", "", "Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)", options=opciones)
-			self.ui.FileSelector_5.setText("; ".join(archivo))
+			self.ui.ListFileSelector_2.listWidget.addItems(archivo)
 		elif sender == self.ui.ButtonFileSelect_6 :
 			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
-			self.ui.FileSelector_6.setText(archivo)
+			self.ui.ListFileSelector_3.listWidget.addItems(archivo)
 
 	def ObtenerTexto( self, listWidget: QListWidget ) -> list[str] : 
 		lista = []
 		for i in range(listWidget.count()):
 			lista.append(listWidget.item(i).text())
-		if not lista :
-			return None
-		else :
-			return lista
+		return lista
 
 	def UnirPDF(self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector.listWidget )
@@ -61,7 +65,7 @@ class MainWindow(QMainWindow):
 			doc.unir_pdfs(entradas,salida, self.ui.checkBox.isChecked() , self.ui.checkBox_2.isChecked() )
 
 	def ImageToPDF (self):
-		entradas = self.ObtenerTexto( self.ui.FileSelector_5.text() )
+		entradas = self.ObtenerTexto( self.ui.ListFileSelector_2.listWidget )
 		if not entradas :
 			print("ERROR1")
 			return
@@ -71,7 +75,7 @@ class MainWindow(QMainWindow):
 			doc.imagenes_a_pdf(entradas, salida)
 
 	def PDFtoImage (self):
-		entradas = self.ObtenerTexto( self.ui.FileSelector_6.text() )
+		entradas = self.ObtenerTexto( self.ui.ListFileSelector_3.listWidget )
 		if not entradas :
 			print("ERROR1")
 			return
