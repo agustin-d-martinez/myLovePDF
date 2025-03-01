@@ -1,0 +1,8 @@
+{
+    "files": [
+        "form.ui",
+        "mainwindow.py",
+        "res_rc.qrc",
+        "ui_form.py"
+    ]
+}

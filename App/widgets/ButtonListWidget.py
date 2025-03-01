@@ -1,4 +1,7 @@
 from PySide6.QtWidgets import *
+from PySide6.QtGui import *
+from PySide6.QtCore import *
+
 from .DroppableList import DroppableList
 
 class ButtonListWidget(QWidget):
@@ -12,23 +15,23 @@ class ButtonListWidget(QWidget):
 		# Exponer el QListWidget como un atributo público
 		self.listWidget = DroppableList()
 		self.listWidget.setEditTriggers(QListWidget.AllEditTriggers)
-		# self.listWidget.setDragDropMode(QAbstractItemView.DragDropMode.DragDrop)
+		self.setStyleSheet('''QPushButton { background-color: transparent;color: transparent; border: none;border-radius: 7px;} 
+					 QPushButton:hover{background-color: rgba(0, 172, 252, 50);}
+					 QPushButton:pressed{background-color: rgba(0, 120, 252, 150);}''')
+
 		# Layout para los botones (Vertical)
 		button_layout = QVBoxLayout()
+		button_layout.setSpacing(1)
 
-		self._btn_add = QPushButton("+")
-		self._btn_remove = QPushButton("-")
-		self._btn_up = QPushButton("▲")
-		self._btn_down = QPushButton("▼")
+		self._btn_add = QPushButton()
+		self._btn_remove = QPushButton()
+		self._btn_up = QPushButton()
+		self._btn_down = QPushButton()
 
-		sizePolicy = QSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Fixed)
-		sizePolicy.setHorizontalStretch(0)
-		sizePolicy.setVerticalStretch(0)
-
-		self._btn_add.setSizePolicy(sizePolicy)
-		self._btn_remove.setSizePolicy(sizePolicy)
-		self._btn_up.setSizePolicy(sizePolicy)
-		self._btn_down.setSizePolicy(sizePolicy)
+		self._btn_add.setIcon(QIcon("widgets\\add_symbol.svg"))				## No es generico!!!
+		self._btn_remove.setIcon(QIcon("widgets\\remove_symbol.svg"))
+		self._btn_up.setIcon(QIcon("widgets\\up_symbol.svg"))
+		self._btn_down.setIcon(QIcon("widgets\\down_symbol.svg"))
 
 		button_layout.addWidget(self._btn_add)
 		button_layout.addWidget(self._btn_remove)
@@ -39,12 +42,39 @@ class ButtonListWidget(QWidget):
 		main_layout = QHBoxLayout(self)
 		main_layout.addWidget(self.listWidget,10)  		# revisar el stretch
 		main_layout.addLayout(button_layout , 1)
+		main_layout.setContentsMargins(QMargins(2,0,2,0))
+		main_layout.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
 		# Conectar botones con funciones
 		self._btn_add.clicked.connect(self.add_item)
 		self._btn_remove.clicked.connect(self.remove_item)
 		self._btn_up.clicked.connect(self.move_item_up)
 		self._btn_down.clicked.connect(self.move_item_down)
+
+		#Conect para habilitar botones
+		self.listWidget.model().rowsInserted.connect(self.UpdateButtons)
+		self.listWidget.model().rowsRemoved.connect(self.UpdateButtons)
+
+		self.UpdateButtons()
+
+	def UpdateButtons(self, *args):
+		if self.listWidget.count() == 0:
+			self._btn_remove.setDisabled(True)
+			self._btn_up.setDisabled(True)
+			self._btn_down.setDisabled(True)
+		else:
+			self._btn_remove.setDisabled(False)
+			self._btn_up.setDisabled(False)
+			self._btn_down.setDisabled(False)
+
+	def resizeEvent(self, event):
+		btn_widht = min(self.width()//11,self.height()//4 - 2)
+		btn_size = QSize(btn_widht , btn_widht)
+
+		for btn in [self._btn_add , self._btn_remove , self._btn_up , self._btn_down] :
+			btn.setIconSize(btn_size)
+			btn.setFixedSize(btn_size)
+		return super().resizeEvent(event)
 
 	def add_item(self):
 		"""Agrega un nuevo elemento a la lista."""

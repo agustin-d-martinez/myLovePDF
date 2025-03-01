@@ -3,10 +3,10 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 import utils.documentsUtils as doc
-
+import res_rc
 # Important:
 # You need to run the following command to generate the ui_form.py file
-#     pyside6-uic App\form.ui -o App\ui_form.py
+#     pyside6-uic form.ui -o ui_form.py ; pyside6-rcc res_rc.qrc -o res_rc.py
 
 from ui_form import Ui_MyLovePDF
 
@@ -46,6 +46,10 @@ class MainWindow(QMainWindow):
 		elif sender == self.ui.ButtonFileSelect_6 :
 			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
 			self.ui.ListFileSelector_3.listWidget.addItems(archivo)
+		elif sender == self.ui.ButtonFileSelect_7 :
+			archivo, _ = QFileDialog.getOpenFileNames(self, "Abrir archivos", "", "All Files (*)", options=opciones)
+			self.ui.ListFileSelector_4.listWidget.addItems(archivo)
+
 
 	def ObtenerTexto( self, listWidget: QListWidget ) -> list[str] : 
 		lista = []
@@ -57,17 +61,18 @@ class MainWindow(QMainWindow):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector.listWidget )
 		
 		if len(entradas) < 2:
-			print("ERROR1")
+			self.ErrorMessage()
 			return
 		
+		idx = self.ui.comboBox.currentIndex()
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
-			doc.unir_pdfs(entradas,salida, self.ui.checkBox.isChecked() , self.ui.checkBox_2.isChecked() )
+			doc.unir_pdfs(entradas,salida,idx)
 
 	def ImageToPDF (self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector_2.listWidget )
 		if not entradas :
-			print("ERROR1")
+			self.ErrorMessage()
 			return
 		
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
@@ -77,7 +82,7 @@ class MainWindow(QMainWindow):
 	def PDFtoImage (self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector_3.listWidget )
 		if not entradas :
-			print("ERROR1")
+			self.ErrorMessage()
 			return
 		
 		salida = self.SaveFile("Imagen (*.jpg)")
@@ -88,7 +93,7 @@ class MainWindow(QMainWindow):
 	def SepararPDF(self):
 		entrada = self.ui.FileSelector_2.text()
 		if not entrada : 
-			print("ERROR 1")
+			self.ErrorMessage()
 			return
 		pags = self.ui.HojasSeparar.text().split(",")
 		pags_int = list(map(int,pags))
@@ -101,7 +106,7 @@ class MainWindow(QMainWindow):
 	def SepararHojas(self):
 		entrada = self.ui.FileSelector_3.text()
 		if not entrada : 
-			print("ERROR 1")
+			self.ErrorMessage()
 			return
 		if self.ui.checkBoxSplitAll.isChecked() :
 			paginas = None
@@ -116,7 +121,7 @@ class MainWindow(QMainWindow):
 	def HojaBlanco (self): 
 		entrada = self.ui.FileSelector_4.text()
 		if not entrada : 
-			print("ERROR 1")
+			self.ErrorMessage()
 			return
 		
 		paginas = self.ui.HojasSeparar_2.text()
@@ -124,12 +129,29 @@ class MainWindow(QMainWindow):
 
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
-			print("NO IMPLEMENTADO")
+			doc.agregar_hojas_blanco(entrada,salida,paginas)
 
+	def Renombrar(self):
+		entradas = self.ObtenerTexto( self.ui.ListFileSelector_4.listWidget )
+		if not entradas :
+			self.ErrorMessage()
+			return
+		
+		inicial = self.ui.spinBox.value()
+		doc.renombrar_template(entradas, self.ui.NameTemplate.text() , inicial)
 
 	def SaveFile(self, type) :
 		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
 		return file
+	
+	def ErrorMessage(self) :
+		msg = QMessageBox()
+		msg.setIcon(QMessageBox.Critical)  # Tipo de mensaje: Error
+		msg.setWindowTitle("Error")
+		msg.setText("No hay archivos de entrada.")
+		#msg.setInformativeText("Revisa los datos ingresados e intenta nuevamente.")
+		msg.exec()  # Mostrar el cuadro de diálogo
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

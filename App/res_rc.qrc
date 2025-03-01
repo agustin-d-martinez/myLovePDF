@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>resources/uicons-regular-rounded/fi-rr-interrogation.svg</file>
+    </qresource>
+</RCC>

@@ -3,42 +3,89 @@ import os
 #from PIL import Image
 #import sys
 
-def renombrar(archivos , nombre , numerar = True, inicial = 1 , post_idx = False):
-	"""Renombra archivos con un nombre base, opcionalmente numerándolos.
+A4_WIDTH, A4_HEIGHT = 595, 842  
 
+import os
+
+def renombrar_template(archivos, template, inicial=1):
+	"""
+	Renombra los archivos según un template.
+	
 	Parámetros:
-	archivos (list): Lista de archivos a renombrar (rutas completas o nombres).
-	nombre (str): Nuevo nombre base sin extensión.
-	numerar (bool): Si es True, agrega un número al nombre.
-	inicial (int): Número inicial si numerar es True.
-	post_idx (bool): Si es True, el número se coloca después del nombre y antes de la extensión.
-					 Si es False, el número se coloca antes del nombre.
+	  archivos (list): Lista de rutas de archivos a renombrar.
+	  template (str): Cadena de texto que define el nuevo nombre. Debe incluir "XXX"
+					  para indicar dónde se insertará el número. Ejemplo: "trabajo practico N°XXX"
+	  inicial (int): Número a partir del cual se numeran los archivos.
+	  
+	Si el template no contiene "XXX", se añadirá el número al final del nombre.
+	Se conserva la extensión original del archivo.
 	"""
 	for i, archivo in enumerate(archivos, start=inicial):
 		if not os.path.exists(archivo):
 			print(f"Advertencia: No se encontró '{archivo}', se omitirá.")
 			continue
 		
-		ruta, ext = os.path.splitext(archivo)  # Obtener extensión del archivo
-		dir_archivo = os.path.dirname(archivo)  # Directorio del archivo
+		# Obtener la extensión del archivo
+		_, ext = os.path.splitext(archivo)
 		
-		if numerar:
-			if post_idx:
-				nuevo_nombre = f"{nombre} #{i}{ext}"
-			else:
-				nuevo_nombre = f"{i}.{nombre}{ext}"
+		# Si el template contiene "XXX", se reemplaza por el número actual
+		if "XXX" in template:
+			nuevo_nombre = template.replace("XXX", str(i))
 		else:
-			nuevo_nombre = f"{nombre}{ext}"  # Si no se numera, solo usa el nombre base
-
+			nuevo_nombre = template + str(i)
+		
+		# Se conserva la extensión original
+		nuevo_nombre += ext
+		
+		# Se obtiene el directorio donde se encuentra el archivo original
+		dir_archivo = os.path.dirname(archivo)
 		nueva_ruta = os.path.join(dir_archivo, nuevo_nombre)
-
+		
 		try:
 			os.rename(archivo, nueva_ruta)
 			print(f"Renombrado: '{archivo}' → '{nueva_ruta}'")
 		except Exception as e:
 			print(f"Error al renombrar '{archivo}': {e}")
 
-A4_WIDTH, A4_HEIGHT = 595, 842  
+
+
+def agregar_hojas_blanco(entrada, salida, paginas):
+	"""
+	Agrega páginas en blanco a un PDF en las posiciones indicadas.
+	
+	Parámetros:
+	  entrada (str): Ruta del PDF original.
+	  salida (str): Ruta del PDF resultante.
+	  paginas (list): Lista de posiciones (1-based) donde se insertarán las páginas en blanco.
+	"""
+	if not os.path.exists(entrada):
+		print(f"Error: No se encontró '{entrada}'")
+		return
+
+	doc = fitz.open(entrada)
+	
+	# Obtener dimensiones para la página en blanco: usar la primera página si existe,
+	# de lo contrario, se usa tamaño A4 (595 x 842 puntos)
+	if len(doc) > 0:
+		rect = doc[0].rect
+	else:
+		rect = fitz.Rect(0, 0, A4_WIDTH, A4_HEIGHT)
+	
+	# Ordenamos las posiciones para insertar de forma ascendente
+	paginas = sorted(paginas)
+	
+	# offset se utiliza para ajustar la posición al insertar páginas adicionales
+	offset = 0
+	for pos in paginas:
+		# pos es 1-based; convertimos a índice 0-based y sumamos offset
+		indice = (pos - 1) + offset
+		doc.insert_page(indice, width=rect.width, height=rect.height)
+		offset += 1
+		print(f"Insertada página en blanco en la posición {indice + 1}")
+
+	doc.save(salida)
+	doc.close()
+	print(f"PDF modificado guardado como '{salida}'")
 
 
 def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842 ):
@@ -155,8 +202,16 @@ def separar_hojas(entrada, salida, paginas = None):
 			else:
 				print(f"Advertencia: La página {num_pagina} está fuera de rango y será omitida.")
 
-def unir_pdfs(entradas, salida, inicial_par=False , final_par=False):
-	
+def unir_pdfs(entradas, salida, archivo_par:int = 0):
+	"""Une los PDF de entrada en un único PDF.
+
+	Parámetros:
+	entradas (str): Ruta de los archivos PDF de entrada.
+	salida (str): Nombre del archivo de salida.
+	archivo_par (int): Si es 0, se unen los pdf. 
+		Si es 1 se agrega una hoja blanca al inicio para que el archivo sea par.
+		Si es 2 se agrega una hoja blanca al final para que el archivo sea par.
+	"""
 	if not entradas:
 		print("Error: La lista de PDFs está vacía.")
 		return
@@ -165,12 +220,12 @@ def unir_pdfs(entradas, salida, inicial_par=False , final_par=False):
 	for pdf in entradas:
 		if os.path.exists(pdf):
 			doc_temp = fitz.open(pdf)
-			if inicial_par and len(doc_temp) % 2 != 0 :
+			if archivo_par == 1 and len(doc_temp) % 2 != 0 :
 				doc_final.new_page()
 	
 			doc_final.insert_pdf(doc_temp)
 
-			if final_par and len(doc_temp) % 2 != 0 :
+			if archivo_par == 2 and len(doc_temp) % 2 != 0 :
 				doc_final.new_page()
 
 			doc_temp.close()
