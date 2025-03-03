@@ -30,7 +30,7 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_UnirPDF">
        <attribute name="title">
@@ -58,11 +58,15 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
                 <height>0</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Une los PDFs seleccionados en uno solo. &lt;/p&gt;&lt;p&gt;Si FORZAR par, les agregará una página al inicio/final para que todos los PDF sean pares antes de realizar la unión.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LayoutDirection::RightToLeft</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
               </property>
               <property name="text">
                <string>...</string>
@@ -134,6 +138,10 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
              <widget class="QPushButton" name="ButtonFileSelect">
               <property name="text">
                <string>Seleccionar archivo</string>
+              </property>
+              <property name="icon">
+               <iconset resource="res_rc.qrc">
+                <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
               </property>
              </widget>
             </item>
@@ -223,6 +231,12 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           </item>
           <item>
            <widget class="QPushButton" name="SaveButton">
+            <property name="styleSheet">
+             <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
+border-color: rgba(140, 140, 140,255); ;color: black;}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
+            </property>
             <property name="text">
              <string>Guardar</string>
             </property>
@@ -280,6 +294,10 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
            <property name="text">
             <string>Seleccionar archivo</string>
            </property>
+           <property name="icon">
+            <iconset resource="res_rc.qrc">
+             <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+           </property>
           </widget>
          </item>
         </layout>
@@ -313,9 +331,9 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
         <property name="geometry">
          <rect>
           <x>520</x>
-          <y>90</y>
-          <width>81</width>
-          <height>22</height>
+          <y>70</y>
+          <width>61</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="whatsThis">
@@ -431,6 +449,12 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <height>24</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
+border-color: rgba(140, 140, 140,255); ;color: black;}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
+        </property>
         <property name="text">
          <string>Guardar</string>
         </property>
@@ -450,11 +474,15 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Separa las hojas seleccionadas en un PDF nuevo.&lt;/p&gt;&lt;p&gt;Si CONSERVAR esta activo las hojas restantes se guardarán en un 2do PDF.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
         </property>
         <property name="text">
          <string>...</string>
@@ -540,6 +568,10 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
            <property name="text">
             <string>Seleccionar archivo</string>
            </property>
+           <property name="icon">
+            <iconset resource="res_rc.qrc">
+             <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+           </property>
           </widget>
          </item>
         </layout>
@@ -552,6 +584,12 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <width>946</width>
           <height>24</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
+border-color: rgba(140, 140, 140,255); ;color: black;}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
         </property>
         <property name="text">
          <string>Guardar</string>
@@ -629,11 +667,15 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Separa las Hojas indicadas del PDF y las guarda en PDFs individuales.&lt;/p&gt;&lt;p&gt;Si SEPARAR TODAS, se separa al PDF en la totalidad de las hojas.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
         </property>
         <property name="text">
          <string>...</string>
@@ -658,6 +700,12 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <width>946</width>
           <height>24</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
+border-color: rgba(140, 140, 140,255); ;color: black;}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
         </property>
         <property name="text">
          <string>Guardar</string>
@@ -732,6 +780,10 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
            <property name="text">
             <string>Seleccionar archivo</string>
            </property>
+           <property name="icon">
+            <iconset resource="res_rc.qrc">
+             <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+           </property>
           </widget>
          </item>
         </layout>
@@ -792,11 +844,15 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Agrega hojas en blanco en las posiciones indicadas.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
         </property>
         <property name="text">
          <string>...</string>
@@ -854,6 +910,12 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <height>24</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
+border-color: rgba(140, 140, 140,255); ;color: black;}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
+        </property>
         <property name="text">
          <string>Convertir</string>
         </property>
@@ -910,12 +972,16 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
          <rect>
           <x>570</x>
           <y>30</y>
-          <width>121</width>
+          <width>131</width>
           <height>24</height>
          </rect>
         </property>
         <property name="text">
          <string>Seleccionar archivos</string>
+        </property>
+        <property name="icon">
+         <iconset resource="res_rc.qrc">
+          <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
         </property>
        </widget>
        <widget class="QToolButton" name="toolButton_2">
@@ -933,11 +999,15 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Convierte los archivos seleccionados a PDF.&lt;/p&gt;&lt;p&gt;Deben ser archivos tipo imagen (.jpg, .png, .webp, etc.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
         </property>
         <property name="text">
          <string>...</string>
@@ -994,6 +1064,10 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
            <property name="text">
             <string>Seleccionar Archivo</string>
            </property>
+           <property name="icon">
+            <iconset resource="res_rc.qrc">
+             <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+           </property>
           </widget>
          </item>
         </layout>
@@ -1011,7 +1085,7 @@ border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogati
          <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
 border-color: rgba(140, 140, 140,255); ;color: black;}
 QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
-QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 120, 252, 150);}</string>
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
         </property>
         <property name="text">
          <string>Convertir</string>
@@ -1057,11 +1131,15 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Convierte los PDFs seleccionados en imágenes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
         </property>
         <property name="text">
          <string>...</string>
@@ -1094,6 +1172,12 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba
           <height>24</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;
+border-color: rgba(140, 140, 140,255); ;color: black;}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}</string>
+        </property>
         <property name="text">
          <string>Renombrar</string>
         </property>
@@ -1103,12 +1187,16 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba
          <rect>
           <x>570</x>
           <y>30</y>
-          <width>121</width>
+          <width>131</width>
           <height>24</height>
          </rect>
         </property>
         <property name="text">
          <string>Seleccionar archivos</string>
+        </property>
+        <property name="icon">
+         <iconset resource="res_rc.qrc">
+          <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
         </property>
        </widget>
        <widget class="QLabel" name="label_13">
@@ -1252,11 +1340,15 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renombra todos los archivos seleccionados utilizando el template.&lt;/p&gt;&lt;p&gt;El template reemplazará XXX por el número de archivo.&lt;/p&gt;&lt;p&gt;En caso de no encontrar indicarlo, se agrega numeración al final.&lt;/p&gt;&lt;p&gt;La numeración inicia desde el número indicado (0 por defecto).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
         </property>
         <property name="text">
          <string>...</string>
@@ -1310,7 +1402,9 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba
   <tabstop>ButtonFileSelect_6</tabstop>
   <tabstop>SaveButton_6</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="res_rc.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>ButtonFileSelect</sender>

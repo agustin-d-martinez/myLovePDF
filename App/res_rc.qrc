@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/resources">
         <file>resources/uicons-regular-rounded/fi-rr-interrogation.svg</file>
+        <file>resources/uicons-regular-rounded/fi-rr-files-medical.svg</file>
     </qresource>
 </RCC>

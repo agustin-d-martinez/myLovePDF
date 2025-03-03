@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGridLayout,
     QVBoxLayout, QWidget)
 
 from widgets import (ButtonListWidget, ModernCheckBox)
+import res_rc_rc
 
 class Ui_MyLovePDF(object):
     def setupUi(self, MyLovePDF):
@@ -54,7 +55,8 @@ class Ui_MyLovePDF(object):
         self.toolButton.setObjectName(u"toolButton")
         self.toolButton.setSizeIncrement(QSize(2, 0))
         self.toolButton.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton.setStyleSheet(u"")
+        self.toolButton.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton.setIconSize(QSize(16, 16))
 
         self.gridLayout.addWidget(self.toolButton, 0, 1, 1, 1)
@@ -93,6 +95,9 @@ class Ui_MyLovePDF(object):
 
         self.ButtonFileSelect = QPushButton(self.tab_UnirPDF)
         self.ButtonFileSelect.setObjectName(u"ButtonFileSelect")
+        icon = QIcon()
+        icon.addFile(u":/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.ButtonFileSelect.setIcon(icon)
 
         self.horizontalLayout.addWidget(self.ButtonFileSelect, 0, Qt.AlignmentFlag.AlignTop)
 
@@ -131,6 +136,10 @@ class Ui_MyLovePDF(object):
 
         self.SaveButton = QPushButton(self.tab_UnirPDF)
         self.SaveButton.setObjectName(u"SaveButton")
+        self.SaveButton.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
+"border-color: rgba(140, 140, 140,255); ;color: black;}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
 
         self.verticalLayout.addWidget(self.SaveButton)
 
@@ -163,6 +172,7 @@ class Ui_MyLovePDF(object):
 
         self.ButtonFileSelect_2 = QPushButton(self.layoutWidget)
         self.ButtonFileSelect_2.setObjectName(u"ButtonFileSelect_2")
+        self.ButtonFileSelect_2.setIcon(icon)
 
         self.horizontalLayout_3.addWidget(self.ButtonFileSelect_2)
 
@@ -174,7 +184,7 @@ class Ui_MyLovePDF(object):
         self.label_3.setMinimumSize(QSize(20, 20))
         self.checkBoxConsevar = ModernCheckBox(self.tab_SepararPDF)
         self.checkBoxConsevar.setObjectName(u"checkBoxConsevar")
-        self.checkBoxConsevar.setGeometry(QRect(520, 90, 81, 22))
+        self.checkBoxConsevar.setGeometry(QRect(520, 70, 61, 41))
         self.label_4 = QLabel(self.tab_SepararPDF)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(10, 70, 101, 20))
@@ -204,12 +214,17 @@ class Ui_MyLovePDF(object):
         self.SaveButton_2 = QPushButton(self.tab_SepararPDF)
         self.SaveButton_2.setObjectName(u"SaveButton_2")
         self.SaveButton_2.setGeometry(QRect(10, 120, 946, 24))
+        self.SaveButton_2.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
+"border-color: rgba(140, 140, 140,255); ;color: black;}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
         self.toolButton_7 = QToolButton(self.tab_SepararPDF)
         self.toolButton_7.setObjectName(u"toolButton_7")
         self.toolButton_7.setGeometry(QRect(985, 5, 20, 20))
         self.toolButton_7.setSizeIncrement(QSize(2, 0))
         self.toolButton_7.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton_7.setStyleSheet(u"")
+        self.toolButton_7.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton_7.setIconSize(QSize(16, 16))
         self.tabWidget.addTab(self.tab_SepararPDF, "")
         self.tab = QWidget()
@@ -240,12 +255,17 @@ class Ui_MyLovePDF(object):
 
         self.ButtonFileSelect_3 = QPushButton(self.layoutWidget_2)
         self.ButtonFileSelect_3.setObjectName(u"ButtonFileSelect_3")
+        self.ButtonFileSelect_3.setIcon(icon)
 
         self.horizontalLayout_4.addWidget(self.ButtonFileSelect_3)
 
         self.SaveButton_3 = QPushButton(self.tab)
         self.SaveButton_3.setObjectName(u"SaveButton_3")
         self.SaveButton_3.setGeometry(QRect(10, 120, 946, 24))
+        self.SaveButton_3.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
+"border-color: rgba(140, 140, 140,255); ;color: black;}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
         self.label_12 = QLabel(self.tab)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setGeometry(QRect(10, 70, 101, 20))
@@ -265,7 +285,8 @@ class Ui_MyLovePDF(object):
         self.toolButton_6.setGeometry(QRect(985, 5, 20, 20))
         self.toolButton_6.setSizeIncrement(QSize(2, 0))
         self.toolButton_6.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton_6.setStyleSheet(u"")
+        self.toolButton_6.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton_6.setIconSize(QSize(16, 16))
         self.tabWidget.addTab(self.tab, "")
         self.tab_HojaBlanco = QWidget()
@@ -273,6 +294,10 @@ class Ui_MyLovePDF(object):
         self.SaveButton_4 = QPushButton(self.tab_HojaBlanco)
         self.SaveButton_4.setObjectName(u"SaveButton_4")
         self.SaveButton_4.setGeometry(QRect(10, 120, 946, 24))
+        self.SaveButton_4.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
+"border-color: rgba(140, 140, 140,255); ;color: black;}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
         self.label_7 = QLabel(self.tab_HojaBlanco)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setGeometry(QRect(10, 10, 101, 20))
@@ -299,6 +324,7 @@ class Ui_MyLovePDF(object):
 
         self.ButtonFileSelect_4 = QPushButton(self.layoutWidget_3)
         self.ButtonFileSelect_4.setObjectName(u"ButtonFileSelect_4")
+        self.ButtonFileSelect_4.setIcon(icon)
 
         self.horizontalLayout_5.addWidget(self.ButtonFileSelect_4)
 
@@ -318,7 +344,8 @@ class Ui_MyLovePDF(object):
         self.toolButton_5.setGeometry(QRect(985, 5, 20, 20))
         self.toolButton_5.setSizeIncrement(QSize(2, 0))
         self.toolButton_5.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton_5.setStyleSheet(u"")
+        self.toolButton_5.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton_5.setIconSize(QSize(16, 16))
         self.tabWidget.addTab(self.tab_HojaBlanco, "")
 
@@ -337,6 +364,10 @@ class Ui_MyLovePDF(object):
         self.SaveButton_5 = QPushButton(self.tab_2)
         self.SaveButton_5.setObjectName(u"SaveButton_5")
         self.SaveButton_5.setGeometry(QRect(10, 140, 991, 24))
+        self.SaveButton_5.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
+"border-color: rgba(140, 140, 140,255); ;color: black;}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
         self.label_11 = QLabel(self.tab_2)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setGeometry(QRect(770, 20, 130, 130))
@@ -351,13 +382,15 @@ class Ui_MyLovePDF(object):
         self.ListFileSelector_2.setMaximumSize(QSize(16777215, 100))
         self.ButtonFileSelect_5 = QPushButton(self.tab_2)
         self.ButtonFileSelect_5.setObjectName(u"ButtonFileSelect_5")
-        self.ButtonFileSelect_5.setGeometry(QRect(570, 30, 121, 24))
+        self.ButtonFileSelect_5.setGeometry(QRect(570, 30, 131, 24))
+        self.ButtonFileSelect_5.setIcon(icon)
         self.toolButton_2 = QToolButton(self.tab_2)
         self.toolButton_2.setObjectName(u"toolButton_2")
         self.toolButton_2.setGeometry(QRect(985, 5, 20, 20))
         self.toolButton_2.setSizeIncrement(QSize(2, 0))
         self.toolButton_2.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton_2.setStyleSheet(u"")
+        self.toolButton_2.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton_2.setIconSize(QSize(16, 16))
         self.tabWidget_2.addTab(self.tab_2, "")
         self.tab_4 = QWidget()
@@ -380,6 +413,7 @@ class Ui_MyLovePDF(object):
         self.ButtonFileSelect_6 = QPushButton(self.layoutWidget_5)
         self.ButtonFileSelect_6.setObjectName(u"ButtonFileSelect_6")
         self.ButtonFileSelect_6.setMaximumSize(QSize(16777215, 80))
+        self.ButtonFileSelect_6.setIcon(icon)
 
         self.horizontalLayout_7.addWidget(self.ButtonFileSelect_6, 0, Qt.AlignmentFlag.AlignTop)
 
@@ -389,7 +423,7 @@ class Ui_MyLovePDF(object):
         self.SaveButton_6.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
 "border-color: rgba(140, 140, 140,255); ;color: black;}\n"
 "QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
-"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 120, 252, 150);}")
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
         self.label_10 = QLabel(self.tab_4)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setGeometry(QRect(10, 10, 121, 20))
@@ -401,7 +435,8 @@ class Ui_MyLovePDF(object):
         self.toolButton_4.setGeometry(QRect(985, 5, 20, 20))
         self.toolButton_4.setSizeIncrement(QSize(2, 0))
         self.toolButton_4.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton_4.setStyleSheet(u"")
+        self.toolButton_4.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton_4.setIconSize(QSize(16, 16))
         self.tabWidget_2.addTab(self.tab_4, "")
 
@@ -414,9 +449,14 @@ class Ui_MyLovePDF(object):
         self.SaveButton_7 = QPushButton(self.tab_3)
         self.SaveButton_7.setObjectName(u"SaveButton_7")
         self.SaveButton_7.setGeometry(QRect(20, 140, 981, 24))
+        self.SaveButton_7.setStyleSheet(u"QPushButton{border-style: solid;border-width: 2px;border-radius: 10px;\n"
+"border-color: rgba(140, 140, 140,255); ;color: black;}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: rgba(0, 172, 252, 50);}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: rgba(0, 172, 252, 100);}")
         self.ButtonFileSelect_7 = QPushButton(self.tab_3)
         self.ButtonFileSelect_7.setObjectName(u"ButtonFileSelect_7")
-        self.ButtonFileSelect_7.setGeometry(QRect(570, 30, 121, 24))
+        self.ButtonFileSelect_7.setGeometry(QRect(570, 30, 131, 24))
+        self.ButtonFileSelect_7.setIcon(icon)
         self.label_13 = QLabel(self.tab_3)
         self.label_13.setObjectName(u"label_13")
         self.label_13.setGeometry(QRect(20, 10, 101, 20))
@@ -457,7 +497,8 @@ class Ui_MyLovePDF(object):
         self.toolButton_3.setGeometry(QRect(985, 5, 20, 20))
         self.toolButton_3.setSizeIncrement(QSize(2, 0))
         self.toolButton_3.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.toolButton_3.setStyleSheet(u"")
+        self.toolButton_3.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
         self.toolButton_3.setIconSize(QSize(16, 16))
         self.tabWidget_3.addTab(self.tab_3, "")
 
@@ -506,7 +547,7 @@ class Ui_MyLovePDF(object):
         self.ButtonFileSelect_7.clicked.connect(MyLovePDF.selectFile)
         self.SaveButton_7.clicked.connect(MyLovePDF.Renombrar)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(3)
         self.comboBox.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(1)
         self.tabWidget_3.setCurrentIndex(0)
@@ -517,6 +558,9 @@ class Ui_MyLovePDF(object):
 
     def retranslateUi(self, MyLovePDF):
         MyLovePDF.setWindowTitle(QCoreApplication.translate("MyLovePDF", u"MyLovePDF", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Une los PDFs seleccionados en uno solo. </p><p>Si FORZAR par, les agregar\u00e1 una p\u00e1gina al inicio/final para que todos los PDF sean pares antes de realizar la uni\u00f3n.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.label.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDFs:", None))
         self.ButtonFileSelect.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivo", None))
@@ -536,6 +580,9 @@ class Ui_MyLovePDF(object):
         self.label_4.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
         self.label_5.setText(QCoreApplication.translate("MyLovePDF", u"Nombre extra:", None))
         self.SaveButton_2.setText(QCoreApplication.translate("MyLovePDF", u"Guardar", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_7.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Separa las hojas seleccionadas en un PDF nuevo.</p><p>Si CONSERVAR esta activo las hojas restantes se guardar\u00e1n en un 2do PDF.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_7.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_SepararPDF), QCoreApplication.translate("MyLovePDF", u"Separar PDFs", None))
         self.label_6.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDF:", None))
@@ -546,23 +593,35 @@ class Ui_MyLovePDF(object):
         self.checkBoxSplitAll.setWhatsThis(QCoreApplication.translate("MyLovePDF", u"Crea un 2do PDF con las hojas no elegidas.", None))
 #endif // QT_CONFIG(whatsthis)
         self.checkBoxSplitAll.setText(QCoreApplication.translate("MyLovePDF", u"Separar Todas", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_6.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Separa las Hojas indicadas del PDF y las guarda en PDFs individuales.</p><p>Si SEPARAR TODAS, se separa al PDF en la totalidad de las hojas.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_6.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MyLovePDF", u"Separar Hojas", None))
         self.SaveButton_4.setText(QCoreApplication.translate("MyLovePDF", u"Guardar", None))
         self.label_7.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDF:", None))
         self.ButtonFileSelect_4.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivo", None))
         self.label_8.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_5.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Agrega hojas en blanco en las posiciones indicadas.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_5.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_HojaBlanco), QCoreApplication.translate("MyLovePDF", u"Hoja en Blanco", None))
         self.label_9.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona Imagenes:", None))
         self.SaveButton_5.setText(QCoreApplication.translate("MyLovePDF", u"Convertir", None))
         self.label_11.setText("")
         self.ButtonFileSelect_5.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivos", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_2.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Convierte los archivos seleccionados a PDF.</p><p>Deben ser archivos tipo imagen (.jpg, .png, .webp, etc.)</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_2.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), QCoreApplication.translate("MyLovePDF", u"Imagen a PDF", None))
         self.ButtonFileSelect_6.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar Archivo", None))
         self.SaveButton_6.setText(QCoreApplication.translate("MyLovePDF", u"Convertir", None))
         self.label_10.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDFs:", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_4.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Convierte los PDFs seleccionados en im\u00e1genes.</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_4.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_4), QCoreApplication.translate("MyLovePDF", u"PDF a Imagen", None))
         self.SaveButton_7.setText(QCoreApplication.translate("MyLovePDF", u"Renombrar", None))
@@ -571,6 +630,9 @@ class Ui_MyLovePDF(object):
         self.NameTemplate.setText(QCoreApplication.translate("MyLovePDF", u"nombre_#XXX", None))
         self.label_14.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
         self.label_15.setText(QCoreApplication.translate("MyLovePDF", u"N\u00famero Inicial:", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_3.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Renombra todos los archivos seleccionados utilizando el template.</p><p>El template reemplazar\u00e1 XXX por el n\u00famero de archivo.</p><p>En caso de no encontrar indicarlo, se agrega numeraci\u00f3n al final.</p><p>La numeraci\u00f3n inicia desde el n\u00famero indicado (0 por defecto).</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton_3.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_3), QCoreApplication.translate("MyLovePDF", u"Renombrar Carpeta", None))
     # retranslateUi

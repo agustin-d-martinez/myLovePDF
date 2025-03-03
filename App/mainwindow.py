@@ -3,10 +3,10 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 import utils.documentsUtils as doc
-import res_rc
+import res_rc_rc
 # Important:
 # You need to run the following command to generate the ui_form.py file
-#     pyside6-uic form.ui -o ui_form.py ; pyside6-rcc res_rc.qrc -o res_rc.py
+#     pyside6-uic form.ui -o ui_form.py ; pyside6-rcc res_rc.qrc -o res_rc_rc.py
 
 from ui_form import Ui_MyLovePDF
 
@@ -19,7 +19,17 @@ class MainWindow(QMainWindow):
 		self.ui.NombreExtra.setHidden(True)
 
 		self.ui.ListFileSelector_2.listWidget.currentItemChanged.connect(self.UpdatePhoto)
-		
+	
+	def ObtenerRangos(string: str) -> list[int] :
+		lista = set()
+		for number in string.split(","):
+			if '-' in number:
+				start, stop = map(int,number.split('-'))
+				lista.update(range(start,stop + 1))
+			else :
+				lista.add(int(number))
+			return sorted(lista)
+
 	def UpdatePhoto(self , item : QListWidgetItem ):
 		path_img = QPixmap(item.text())
 		self.ui.label_11.setPixmap(path_img)
@@ -95,13 +105,11 @@ class MainWindow(QMainWindow):
 		if not entrada : 
 			self.ErrorMessage()
 			return
-		pags = self.ui.HojasSeparar.text().split(",")
-		pags_int = list(map(int,pags))
-
+		pags = self.ObtenerRangos(self.ui.HojasSeparar.text())
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 
 		if salida : 
-			doc.separar_pdf(entrada ,salida ,pags_int ,self.ui.checkBoxConsevar.isChecked() , self.ui.NombreExtra.text())
+			doc.separar_pdf(entrada ,salida , pags ,self.ui.checkBoxConsevar.isChecked() , self.ui.NombreExtra.text())
 
 	def SepararHojas(self):
 		entrada = self.ui.FileSelector_3.text()
@@ -124,8 +132,7 @@ class MainWindow(QMainWindow):
 			self.ErrorMessage()
 			return
 		
-		paginas = self.ui.HojasSeparar_2.text()
-		paginas = list(map(int, paginas))
+		paginas = self.ObtenerRangos(self.ui.HojasSeparar_2.text())
 
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
