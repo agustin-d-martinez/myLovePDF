@@ -36,29 +36,34 @@ class MainWindow(QMainWindow):
 		self.ui.label_11.setScaledContents(True)
 
 	def selectFile(self):
+		sender_map = {
+			self.ui.ButtonFileSelect: ("pdf", self.ui.ListFileSelector.listWidget, True),
+			self.ui.ButtonFileSelect_2: ("pdf", self.ui.FileSelector_2, False),
+			self.ui.ButtonFileSelect_3: ("pdf", self.ui.FileSelector_3, False),
+			self.ui.ButtonFileSelect_4: ("pdf", self.ui.FileSelector_4, False),
+			self.ui.ButtonFileSelect_5: ("img", self.ui.ListFileSelector_2.listWidget, True),
+			self.ui.ButtonFileSelect_6: ("pdf", self.ui.ListFileSelector_3.listWidget, True),
+			self.ui.ButtonFileSelect_7: ("all", self.ui.ListFileSelector_4.listWidget, True),
+		}
+
 		sender = self.sender()
 		opciones = QFileDialog.Options()
-		if sender == self.ui.ButtonFileSelect : 
-			archivo, _ = QFileDialog.getOpenFileNames(self, "Abrir PDF", "", "Archivos PDF (*.pdf)", options=opciones)
-			self.ui.ListFileSelector.listWidget.addItems(archivo)
-		elif sender == self.ui.ButtonFileSelect_2 :
-			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
-			self.ui.FileSelector_2.setText(archivo)
-		elif sender == self.ui.ButtonFileSelect_3 :
-			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
-			self.ui.FileSelector_3.setText(archivo)
-		elif sender == self.ui.ButtonFileSelect_4 :
-			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
-			self.ui.FileSelector_4.setText(archivo)
-		elif sender == self.ui.ButtonFileSelect_5 :
-			archivo, _ = QFileDialog.getOpenFileNames(self, "Seleccionar Archivo", "", "Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)", options=opciones)
-			self.ui.ListFileSelector_2.listWidget.addItems(archivo)
-		elif sender == self.ui.ButtonFileSelect_6 :
-			archivo, _ = QFileDialog.getOpenFileName(self, "Abrir PDF", "", "Archivo PDF (*.pdf)", options=opciones)
-			self.ui.ListFileSelector_3.listWidget.addItems(archivo)
-		elif sender == self.ui.ButtonFileSelect_7 :
-			archivo, _ = QFileDialog.getOpenFileNames(self, "Abrir archivos", "", "All Files (*)", options=opciones)
-			self.ui.ListFileSelector_4.listWidget.addItems(archivo)
+
+		if sender in sender_map:
+			file_type, target_widget, multiple = sender_map[sender]
+			
+			filters = {
+				"pdf": "Archivos PDF (*.pdf)",
+				"img": "Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)",
+				"all": "All Files (*)"
+			}
+
+			if multiple:
+				archivos, _ = QFileDialog.getOpenFileNames(self, "Seleccionar Archivo", "", filters[file_type], options=opciones)
+				target_widget.addItems(archivos)
+			else:
+				archivos, _ = QFileDialog.getOpenFileName(self, "Seleccionar Archivo", "", filters[file_type], options=opciones)
+				target_widget.setText(archivos)
 
 
 	def ObtenerTexto( self, listWidget: QListWidget ) -> list[str] : 
@@ -161,7 +166,7 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    widget = MainWindow()
-    widget.show()
-    sys.exit(app.exec())
+	app = QApplication(sys.argv)
+	widget = MainWindow()
+	widget.show()
+	sys.exit(app.exec())
