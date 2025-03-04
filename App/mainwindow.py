@@ -31,9 +31,10 @@ class MainWindow(QMainWindow):
 			return sorted(lista)
 
 	def UpdatePhoto(self , item : QListWidgetItem ):
-		path_img = QPixmap(item.text())
-		self.ui.label_11.setPixmap(path_img)
-		self.ui.label_11.setScaledContents(True)
+		path_img = item.text()
+		if path_img :
+			self.ui.label_11.setPixmap(QPixmap(path_img))
+			self.ui.label_11.setScaledContents(True)
 
 	def selectFile(self):
 		sender_map = {

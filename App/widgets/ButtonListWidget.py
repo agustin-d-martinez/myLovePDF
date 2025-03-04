@@ -15,9 +15,10 @@ class ButtonListWidget(QWidget):
 		# Exponer el QListWidget como un atributo público
 		self.listWidget = DroppableList()
 		self.listWidget.setEditTriggers(QListWidget.AllEditTriggers)
-		self.setStyleSheet('''QPushButton { background-color: transparent;color: transparent; border: none;border-radius: 7px;} 
-					 QPushButton:hover{background-color: rgba(0, 172, 252, 50);}
-					 QPushButton:pressed{background-color: rgba(0, 120, 252, 150);}''')
+		self.setStyleSheet('''QPushButton { background-color: rgba(255, 255, 255, 180);color: transparent; border: none;border-radius: 7px;} 
+					 QPushButton:hover{background-color: rgba(255, 255, 255, 220);;}
+					 QPushButton:pressed{background-color: rgba(255, 255, 255, 250);;}
+					 QListWidget{background-color: rgb(255, 255, 255);border-radius:10px;}''')
 
 		# Layout para los botones (Vertical)
 		button_layout = QVBoxLayout()
