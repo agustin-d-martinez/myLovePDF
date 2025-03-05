@@ -3,7 +3,8 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 import utils.documentsUtils as doc
-import res_rc_rc
+import os
+#import res_rc_rc
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py ; pyside6-rcc res_rc.qrc -o res_rc_rc.py
@@ -164,6 +165,18 @@ class MainWindow(QMainWindow):
 		msg.setText("No hay archivos de entrada.")
 		#msg.setInformativeText("Revisa los datos ingresados e intenta nuevamente.")
 		msg.exec()  # Mostrar el cuadro de diálogo
+
+	def UpdateMusicFile(self):
+		pass
+	def ChangeMusicFile(self):
+		archivo = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
+		archivos = []
+		if archivo :
+			for root, dirs, files in os.walk(archivo):
+				for file in files :
+					if file.endswith(".mp3"):
+						archivos.append(file)
+			self.ui.listWidgetMusic.addItems(archivos)
 
 
 if __name__ == "__main__":
