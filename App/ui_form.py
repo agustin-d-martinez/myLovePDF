@@ -29,8 +29,8 @@ class Ui_MyLovePDF(object):
     def setupUi(self, MyLovePDF):
         if not MyLovePDF.objectName():
             MyLovePDF.setObjectName(u"MyLovePDF")
-        MyLovePDF.resize(1204, 1144)
-        MyLovePDF.setMinimumSize(QSize(1050, 0))
+        MyLovePDF.resize(1125, 1145)
+        MyLovePDF.setMinimumSize(QSize(1125, 0))
         self.centralwidget = QWidget(MyLovePDF)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(0, 0))
@@ -60,7 +60,7 @@ class Ui_MyLovePDF(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1204, 1134))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1125, 1135))
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setSpacing(2)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -71,25 +71,29 @@ class Ui_MyLovePDF(object):
         self.widget.setSizePolicy(sizePolicy)
         self.horizontalLayout_5 = QHBoxLayout(self.widget)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.pushButton = QPushButton(self.widget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.pushButtonPDFmini = QPushButton(self.widget)
+        self.pushButtonPDFmini.setObjectName(u"pushButtonPDFmini")
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.horizontalLayout_5.addWidget(self.pushButtonPDFmini, 0, Qt.AlignmentFlag.AlignLeft)
 
-        self.pushButton_2 = QPushButton(self.widget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButtonIMGmini = QPushButton(self.widget)
+        self.pushButtonIMGmini.setObjectName(u"pushButtonIMGmini")
 
-        self.horizontalLayout_5.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addWidget(self.pushButtonIMGmini, 0, Qt.AlignmentFlag.AlignLeft)
 
-        self.pushButton_3 = QPushButton(self.widget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButtonFILEmini = QPushButton(self.widget)
+        self.pushButtonFILEmini.setObjectName(u"pushButtonFILEmini")
 
-        self.horizontalLayout_5.addWidget(self.pushButton_3)
+        self.horizontalLayout_5.addWidget(self.pushButtonFILEmini, 0, Qt.AlignmentFlag.AlignLeft)
 
-        self.pushButton_4 = QPushButton(self.widget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButtonMSCmini = QPushButton(self.widget)
+        self.pushButtonMSCmini.setObjectName(u"pushButtonMSCmini")
 
-        self.horizontalLayout_5.addWidget(self.pushButton_4)
+        self.horizontalLayout_5.addWidget(self.pushButtonMSCmini, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.horizontalSpacer_19 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_19)
 
 
         self.verticalLayout.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignTop)
@@ -134,7 +138,7 @@ class Ui_MyLovePDF(object):
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.tabWidgetPDF.sizePolicy().hasHeightForWidth())
         self.tabWidgetPDF.setSizePolicy(sizePolicy2)
-        self.tabWidgetPDF.setMinimumSize(QSize(960, 0))
+        self.tabWidgetPDF.setMinimumSize(QSize(1020, 0))
         self.tabWidgetPDF.setMaximumSize(QSize(1100, 16777215))
         self.tabWidgetPDF.setStyleSheet(u"QTabBar::tab {background:#850e0e;padding: 4px;border-top-left-radius: 5px;border-top-right-radius: 5px;color:white;}\n"
 "QTabBar::tab:selected {background: #CC0000;border: 1px solid grey;border-bottom: none;}\n"
@@ -160,7 +164,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout.addWidget(self.comboBox, 2, 3, 1, 1, Qt.AlignmentFlag.AlignTop)
 
-        self.horizontalSpacer_14 = QSpacerItem(88, 17, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_14 = QSpacerItem(10, 17, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_14, 1, 4, 2, 1)
 
@@ -193,7 +197,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout.addWidget(self.frame_4, 2, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
 
-        self.horizontalSpacer_9 = QSpacerItem(125, 13, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_9 = QSpacerItem(10, 13, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_9, 2, 2, 1, 1)
 
@@ -282,7 +286,7 @@ class Ui_MyLovePDF(object):
         self.NombreExtra.setEnabled(True)
         sizePolicy6.setHeightForWidth(self.NombreExtra.sizePolicy().hasHeightForWidth())
         self.NombreExtra.setSizePolicy(sizePolicy6)
-        self.NombreExtra.setMinimumSize(QSize(300, 0))
+        self.NombreExtra.setMinimumSize(QSize(250, 0))
         self.NombreExtra.setMaximumSize(QSize(200, 16777215))
         self.NombreExtra.setCursorPosition(0)
 
@@ -332,14 +336,6 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_7.addItem(self.horizontalSpacer_15, 4, 2, 1, 1)
 
-        self.label_4 = QLabel(self.tabSepararPDF)
-        self.label_4.setObjectName(u"label_4")
-        sizePolicy3.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
-        self.label_4.setSizePolicy(sizePolicy3)
-        self.label_4.setMinimumSize(QSize(20, 20))
-
-        self.gridLayout_7.addWidget(self.label_4, 3, 0, 1, 4)
-
         self.toolButton_7 = QToolButton(self.tabSepararPDF)
         self.toolButton_7.setObjectName(u"toolButton_7")
         self.toolButton_7.setSizeIncrement(QSize(2, 0))
@@ -366,6 +362,19 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_7.addWidget(self.ButtonFileSelect_2, 1, 3, 1, 1)
 
+        self.label_4 = QLabel(self.tabSepararPDF)
+        self.label_4.setObjectName(u"label_4")
+        sizePolicy3.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
+        self.label_4.setSizePolicy(sizePolicy3)
+        self.label_4.setMinimumSize(QSize(20, 20))
+
+        self.gridLayout_7.addWidget(self.label_4, 3, 0, 1, 2)
+
+        self.label_29 = QLabel(self.tabSepararPDF)
+        self.label_29.setObjectName(u"label_29")
+
+        self.gridLayout_7.addWidget(self.label_29, 3, 3, 1, 1)
+
         self.tabWidgetPDF.addTab(self.tabSepararPDF, "")
         self.tabSepararHojas = QWidget()
         self.tabSepararHojas.setObjectName(u"tabSepararHojas")
@@ -383,7 +392,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_6.addWidget(self.checkBoxSplitAll, 4, 3, 1, 1)
 
-        self.horizontalSpacer_5 = QSpacerItem(400, 68, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(10, 68, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_6.addItem(self.horizontalSpacer_5, 1, 4, 4, 1)
 
@@ -453,6 +462,11 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_6.addWidget(self.SaveButton_3, 5, 0, 1, 5)
 
+        self.label_16 = QLabel(self.tabSepararHojas)
+        self.label_16.setObjectName(u"label_16")
+
+        self.gridLayout_6.addWidget(self.label_16, 3, 3, 1, 1)
+
         self.label_12 = QLabel(self.tabSepararHojas)
         self.label_12.setObjectName(u"label_12")
         sizePolicy3.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
@@ -460,7 +474,7 @@ class Ui_MyLovePDF(object):
         self.label_12.setMinimumSize(QSize(20, 20))
         self.label_12.setStyleSheet(u"")
 
-        self.gridLayout_6.addWidget(self.label_12, 3, 0, 1, 4)
+        self.gridLayout_6.addWidget(self.label_12, 3, 0, 1, 2)
 
         self.tabWidgetPDF.addTab(self.tabSepararHojas, "")
         self.tabHojaBlanco = QWidget()
@@ -509,7 +523,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_5.addWidget(self.ButtonFileSelect_4, 1, 1, 1, 1, Qt.AlignmentFlag.AlignTop)
 
-        self.horizontalSpacer_2 = QSpacerItem(350, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(10, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_5.addItem(self.horizontalSpacer_2, 1, 2, 2, 1)
 
@@ -542,11 +556,11 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout_2.addWidget(self.tabWidgetPDF)
 
 
-        self.verticalLayout.addWidget(self.widgetPDF, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout.addWidget(self.widgetPDF, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.widgetIMG = QWidget(self.scrollAreaWidgetContents)
         self.widgetIMG.setObjectName(u"widgetIMG")
-        self.widgetIMG.setMinimumSize(QSize(960, 298))
+        self.widgetIMG.setMinimumSize(QSize(960, 0))
         self.widgetIMG.setMaximumSize(QSize(1190, 300))
         self.widgetIMG.setStyleSheet(u"")
         self.horizontalLayout_6 = QHBoxLayout(self.widgetIMG)
@@ -577,7 +591,7 @@ class Ui_MyLovePDF(object):
         self.tabWidgetIMG.setObjectName(u"tabWidgetIMG")
         sizePolicy2.setHeightForWidth(self.tabWidgetIMG.sizePolicy().hasHeightForWidth())
         self.tabWidgetIMG.setSizePolicy(sizePolicy2)
-        self.tabWidgetIMG.setMinimumSize(QSize(960, 0))
+        self.tabWidgetIMG.setMinimumSize(QSize(1020, 0))
         self.tabWidgetIMG.setMaximumSize(QSize(1100, 16777215))
         self.tabWidgetIMG.setBaseSize(QSize(1100, 0))
         self.tabWidgetIMG.setStyleSheet(u"QTabBar::tab {background:#0f2384;padding: 4px;border-top-left-radius: 5px;border-top-right-radius: 5px;color:white;}\n"
@@ -586,7 +600,7 @@ class Ui_MyLovePDF(object):
 "")
         self.tabIMG2PDF = QWidget()
         self.tabIMG2PDF.setObjectName(u"tabIMG2PDF")
-        self.tabIMG2PDF.setMinimumSize(QSize(0, 174))
+        self.tabIMG2PDF.setMinimumSize(QSize(0, 0))
         self.gridLayout_4 = QGridLayout(self.tabIMG2PDF)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setSizeConstraint(QLayout.SizeConstraint.SetMinimumSize)
@@ -657,7 +671,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_4.addWidget(self.label_11, 1, 3, 1, 1)
 
-        self.horizontalSpacer_12 = QSpacerItem(250, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_12 = QSpacerItem(10, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_4.addItem(self.horizontalSpacer_12, 1, 4, 1, 1)
 
@@ -738,10 +752,6 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_3.addItem(self.horizontalSpacer_11, 1, 2, 1, 1)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 200, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-
-        self.gridLayout_3.addItem(self.verticalSpacer_5, 1, 3, 1, 1)
-
         self.frame_2 = QFrame(self.tabPDF2IMG)
         self.frame_2.setObjectName(u"frame_2")
         sizePolicy8.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
@@ -770,15 +780,21 @@ class Ui_MyLovePDF(object):
         self.gridLayout_3.addWidget(self.frame_2, 1, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
 
         self.tabWidgetIMG.addTab(self.tabPDF2IMG, "")
+        self.tabIMG2IMG = QWidget()
+        self.tabIMG2IMG.setObjectName(u"tabIMG2IMG")
+        self.label_30 = QLabel(self.tabIMG2IMG)
+        self.label_30.setObjectName(u"label_30")
+        self.label_30.setGeometry(QRect(250, 40, 311, 71))
+        self.tabWidgetIMG.addTab(self.tabIMG2IMG, "")
 
         self.horizontalLayout_6.addWidget(self.tabWidgetIMG, 0, Qt.AlignmentFlag.AlignLeft)
 
 
-        self.verticalLayout.addWidget(self.widgetIMG, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout.addWidget(self.widgetIMG, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.widgetFILE = QWidget(self.scrollAreaWidgetContents)
         self.widgetFILE.setObjectName(u"widgetFILE")
-        self.widgetFILE.setMinimumSize(QSize(960, 220))
+        self.widgetFILE.setMinimumSize(QSize(960, 0))
         self.widgetFILE.setMaximumSize(QSize(1190, 300))
         self.widgetFILE.setStyleSheet(u"")
         self.horizontalLayout_8 = QHBoxLayout(self.widgetFILE)
@@ -788,7 +804,7 @@ class Ui_MyLovePDF(object):
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.horizontalSpacer_6 = QSpacerItem(25, 25, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        self.horizontalSpacer_6 = QSpacerItem(0, 25, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.verticalLayout_6.addItem(self.horizontalSpacer_6)
 
@@ -812,7 +828,7 @@ class Ui_MyLovePDF(object):
         self.tabWidgetFILE.setObjectName(u"tabWidgetFILE")
         sizePolicy2.setHeightForWidth(self.tabWidgetFILE.sizePolicy().hasHeightForWidth())
         self.tabWidgetFILE.setSizePolicy(sizePolicy2)
-        self.tabWidgetFILE.setMinimumSize(QSize(960, 0))
+        self.tabWidgetFILE.setMinimumSize(QSize(1020, 0))
         self.tabWidgetFILE.setMaximumSize(QSize(1100, 16777215))
         self.tabWidgetFILE.setStyleSheet(u"QTabBar::tab {background: #CCC000;padding: 4px;border-top-left-radius: 5px;border-top-right-radius: 5px;color:white;}\n"
 "QTabBar::tab:selected {background: #83840e;border:1px solid grey;border-bottom: none;}\n"
@@ -844,7 +860,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_2.addWidget(self.ButtonFileSelect_7, 1, 1, 1, 1)
 
-        self.horizontalSpacer_7 = QSpacerItem(150, 20, QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_7 = QSpacerItem(25, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_2.addItem(self.horizontalSpacer_7, 1, 4, 1, 1)
 
@@ -874,7 +890,7 @@ class Ui_MyLovePDF(object):
 
         self.gridLayout_2.addWidget(self.NameTemplate, 1, 3, 1, 1)
 
-        self.horizontalSpacer_4 = QSpacerItem(200, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(20, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_2.addItem(self.horizontalSpacer_4, 1, 2, 1, 1)
 
@@ -943,12 +959,12 @@ class Ui_MyLovePDF(object):
         self.horizontalLayout_8.addWidget(self.tabWidgetFILE)
 
 
-        self.verticalLayout.addWidget(self.widgetFILE, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout.addWidget(self.widgetFILE, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.widgetMSC = QWidget(self.scrollAreaWidgetContents)
         self.widgetMSC.setObjectName(u"widgetMSC")
-        self.widgetMSC.setMinimumSize(QSize(960, 290))
-        self.widgetMSC.setMaximumSize(QSize(1190, 300))
+        self.widgetMSC.setMinimumSize(QSize(960, 0))
+        self.widgetMSC.setMaximumSize(QSize(16777215, 1100))
         self.horizontalLayout_4 = QHBoxLayout(self.widgetMSC)
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
@@ -956,16 +972,16 @@ class Ui_MyLovePDF(object):
         self.verticalLayout_7 = QVBoxLayout()
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.horizontalSpacer_13 = QSpacerItem(25, 25, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        self.horizontalSpacer_13 = QSpacerItem(0, 25, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.verticalLayout_7.addItem(self.horizontalSpacer_13)
 
         self.pushButtonMSC = QPushButton(self.widgetMSC)
         self.pushButtonMSC.setObjectName(u"pushButtonMSC")
-        sizePolicy1.setHeightForWidth(self.pushButtonMSC.sizePolicy().hasHeightForWidth())
-        self.pushButtonMSC.setSizePolicy(sizePolicy1)
+        sizePolicy10.setHeightForWidth(self.pushButtonMSC.sizePolicy().hasHeightForWidth())
+        self.pushButtonMSC.setSizePolicy(sizePolicy10)
         self.pushButtonMSC.setMinimumSize(QSize(90, 50))
-        self.pushButtonMSC.setMaximumSize(QSize(16777215, 250))
+        self.pushButtonMSC.setMaximumSize(QSize(16777215, 16777215))
         self.pushButtonMSC.setStyleSheet(u"QPushButton {border: none;color: transparent;border-image: url(:/resources/resources/bgFILE2.png) 0 0 0 0 stretch;}")
 
         self.verticalLayout_7.addWidget(self.pushButtonMSC)
@@ -977,33 +993,154 @@ class Ui_MyLovePDF(object):
         self.tabWidget.setObjectName(u"tabWidget")
         sizePolicy2.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy2)
-        self.tabWidget.setMinimumSize(QSize(960, 0))
+        self.tabWidget.setMinimumSize(QSize(1020, 0))
         self.tabWidget.setMaximumSize(QSize(1100, 16777215))
         self.tabWidget.setBaseSize(QSize(1100, 0))
+        self.tabWidget.setStyleSheet(u"QTabBar::tab {background: #0b6f00;padding: 4px;border-top-left-radius: 5px;border-top-right-radius: 5px;color:white;}\n"
+"QTabBar::tab:selected {background: #15cc01;border:1px solid grey;border-bottom: none;}\n"
+"QLabel{background-color: transparent;padding:2px;border-bottom: 4px solid #1a5410;}")
         self.tabMusica = QWidget()
         self.tabMusica.setObjectName(u"tabMusica")
-        self.listWidgetMusic = QListWidget(self.tabMusica)
-        self.listWidgetMusic.setObjectName(u"listWidgetMusic")
-        self.listWidgetMusic.setGeometry(QRect(20, 40, 251, 161))
-        self.labelCover = QLabel(self.tabMusica)
-        self.labelCover.setObjectName(u"labelCover")
-        self.labelCover.setGeometry(QRect(400, 20, 111, 101))
-        self.ButtonUpdateMusic = QPushButton(self.tabMusica)
-        self.ButtonUpdateMusic.setObjectName(u"ButtonUpdateMusic")
-        self.ButtonUpdateMusic.setGeometry(QRect(280, 50, 80, 24))
+        self.gridLayout_9 = QGridLayout(self.tabMusica)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.gridLayout_9.setHorizontalSpacing(2)
+        self.label_27 = QLabel(self.tabMusica)
+        self.label_27.setObjectName(u"label_27")
+        sizePolicy3.setHeightForWidth(self.label_27.sizePolicy().hasHeightForWidth())
+        self.label_27.setSizePolicy(sizePolicy3)
+        self.label_27.setMinimumSize(QSize(0, 19))
+        self.label_27.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_9.addWidget(self.label_27, 0, 0, 1, 1)
+
+        self.horizontalSpacer_17 = QSpacerItem(36, 17, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_9.addItem(self.horizontalSpacer_17, 0, 4, 1, 1)
+
+        self.toolButton_8 = QToolButton(self.tabMusica)
+        self.toolButton_8.setObjectName(u"toolButton_8")
+        self.toolButton_8.setMinimumSize(QSize(19, 19))
+        self.toolButton_8.setMaximumSize(QSize(19, 19))
+        self.toolButton_8.setSizeIncrement(QSize(2, 0))
+        self.toolButton_8.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
+        self.toolButton_8.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
+        self.toolButton_8.setIconSize(QSize(16, 16))
+
+        self.gridLayout_9.addWidget(self.toolButton_8, 0, 5, 1, 1)
+
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.lineEditMusicFolder = QLineEdit(self.tabMusica)
+        self.lineEditMusicFolder.setObjectName(u"lineEditMusicFolder")
+        sizePolicy7.setHeightForWidth(self.lineEditMusicFolder.sizePolicy().hasHeightForWidth())
+        self.lineEditMusicFolder.setSizePolicy(sizePolicy7)
+        self.lineEditMusicFolder.setMinimumSize(QSize(220, 24))
+        self.lineEditMusicFolder.setMaximumSize(QSize(16777215, 24))
+
+        self.horizontalLayout_11.addWidget(self.lineEditMusicFolder)
+
         self.ButtonChangeMusic = QPushButton(self.tabMusica)
         self.ButtonChangeMusic.setObjectName(u"ButtonChangeMusic")
-        self.ButtonChangeMusic.setGeometry(QRect(280, 20, 80, 24))
-        self.lineEditSong = QLineEdit(self.tabMusica)
+        self.ButtonChangeMusic.setMinimumSize(QSize(34, 24))
+        self.ButtonChangeMusic.setMaximumSize(QSize(34, 24))
+        icon1 = QIcon()
+        icon1.addFile(u":/resources/resources/uicons-regular-rounded/fi-rr-add-folder.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.ButtonChangeMusic.setIcon(icon1)
+
+        self.horizontalLayout_11.addWidget(self.ButtonChangeMusic)
+
+
+        self.gridLayout_9.addLayout(self.horizontalLayout_11, 1, 0, 1, 1)
+
+        self.ButtonUpdateMusic = QPushButton(self.tabMusica)
+        self.ButtonUpdateMusic.setObjectName(u"ButtonUpdateMusic")
+        self.ButtonUpdateMusic.setMaximumSize(QSize(34, 24))
+        icon2 = QIcon()
+        icon2.addFile(u":/resources/resources/uicons-regular-rounded/fi-rr-refresh.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.ButtonUpdateMusic.setIcon(icon2)
+
+        self.gridLayout_9.addWidget(self.ButtonUpdateMusic, 1, 1, 1, 1, Qt.AlignmentFlag.AlignLeft)
+
+        self.WidgetMusicTag = QWidget(self.tabMusica)
+        self.WidgetMusicTag.setObjectName(u"WidgetMusicTag")
+        sizePolicy13 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.MinimumExpanding)
+        sizePolicy13.setHorizontalStretch(0)
+        sizePolicy13.setVerticalStretch(0)
+        sizePolicy13.setHeightForWidth(self.WidgetMusicTag.sizePolicy().hasHeightForWidth())
+        self.WidgetMusicTag.setSizePolicy(sizePolicy13)
+        self.WidgetMusicTag.setMinimumSize(QSize(572, 152))
+        self.gridLayout_8 = QGridLayout(self.WidgetMusicTag)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.gridLayout_8.setHorizontalSpacing(10)
+        self.gridLayout_8.setVerticalSpacing(0)
+        self.gridLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.lineEditCompositor = QLineEdit(self.WidgetMusicTag)
+        self.lineEditCompositor.setObjectName(u"lineEditCompositor")
+        self.lineEditCompositor.setMinimumSize(QSize(130, 24))
+
+        self.gridLayout_8.addWidget(self.lineEditCompositor, 9, 2, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.label_28 = QLabel(self.WidgetMusicTag)
+        self.label_28.setObjectName(u"label_28")
+        self.label_28.setMinimumSize(QSize(0, 19))
+        self.label_28.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_28, 8, 3, 1, 1)
+
+        self.labelCover = QLabel(self.WidgetMusicTag)
+        self.labelCover.setObjectName(u"labelCover")
+        sizePolicy3.setHeightForWidth(self.labelCover.sizePolicy().hasHeightForWidth())
+        self.labelCover.setSizePolicy(sizePolicy3)
+        self.labelCover.setMinimumSize(QSize(150, 150))
+        self.labelCover.setMaximumSize(QSize(150, 150))
+        self.labelCover.setStyleSheet(u"border: none;")
+        self.labelCover.setPixmap(QPixmap(u":/resources/resources/NoImage.svg"))
+        self.labelCover.setScaledContents(True)
+
+        self.gridLayout_8.addWidget(self.labelCover, 0, 0, 10, 1)
+
+        self.lineEditSong = QLineEdit(self.WidgetMusicTag)
         self.lineEditSong.setObjectName(u"lineEditSong")
-        self.lineEditSong.setGeometry(QRect(540, 30, 113, 24))
-        self.label_17 = QLabel(self.tabMusica)
+        self.lineEditSong.setMinimumSize(QSize(130, 24))
+
+        self.gridLayout_8.addWidget(self.lineEditSong, 1, 1, 1, 1)
+
+        self.label_17 = QLabel(self.WidgetMusicTag)
         self.label_17.setObjectName(u"label_17")
-        self.label_17.setGeometry(QRect(540, 10, 101, 16))
-        self.label_18 = QLabel(self.tabMusica)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setGeometry(QRect(670, 10, 101, 16))
-        self.comboBoxGenre = QComboBox(self.tabMusica)
+        self.label_17.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_17, 0, 1, 1, 1)
+
+        self.label_24 = QLabel(self.WidgetMusicTag)
+        self.label_24.setObjectName(u"label_24")
+        self.label_24.setMinimumSize(QSize(0, 19))
+        self.label_24.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_24, 5, 3, 1, 1)
+
+        self.lineEditInterpeter = QLineEdit(self.WidgetMusicTag)
+        self.lineEditInterpeter.setObjectName(u"lineEditInterpeter")
+        self.lineEditInterpeter.setMinimumSize(QSize(130, 24))
+
+        self.gridLayout_8.addWidget(self.lineEditInterpeter, 1, 2, 1, 1)
+
+        self.label_19 = QLabel(self.WidgetMusicTag)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setMinimumSize(QSize(0, 19))
+        self.label_19.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_19, 5, 1, 1, 1)
+
+        self.label_23 = QLabel(self.WidgetMusicTag)
+        self.label_23.setObjectName(u"label_23")
+        self.label_23.setMinimumSize(QSize(0, 19))
+        self.label_23.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_23, 8, 1, 1, 1)
+
+        self.comboBoxGenre = QComboBox(self.WidgetMusicTag)
         self.comboBoxGenre.addItem("")
         self.comboBoxGenre.addItem("")
         self.comboBoxGenre.addItem("")
@@ -1085,90 +1222,155 @@ class Ui_MyLovePDF(object):
         self.comboBoxGenre.addItem("")
         self.comboBoxGenre.addItem("")
         self.comboBoxGenre.setObjectName(u"comboBoxGenre")
-        self.comboBoxGenre.setGeometry(QRect(810, 30, 111, 24))
+        self.comboBoxGenre.setMinimumSize(QSize(130, 24))
         self.comboBoxGenre.setEditable(True)
-        self.label_19 = QLabel(self.tabMusica)
-        self.label_19.setObjectName(u"label_19")
-        self.label_19.setGeometry(QRect(810, 10, 101, 16))
-        self.lineEditInterpeter = QLineEdit(self.tabMusica)
-        self.lineEditInterpeter.setObjectName(u"lineEditInterpeter")
-        self.lineEditInterpeter.setGeometry(QRect(670, 30, 113, 24))
-        self.lineEditAlbum = QLineEdit(self.tabMusica)
-        self.lineEditAlbum.setObjectName(u"lineEditAlbum")
-        self.lineEditAlbum.setGeometry(QRect(540, 90, 113, 24))
-        self.label_20 = QLabel(self.tabMusica)
+
+        self.gridLayout_8.addWidget(self.comboBoxGenre, 6, 1, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.label_18 = QLabel(self.WidgetMusicTag)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_18, 0, 2, 1, 1)
+
+        self.label_20 = QLabel(self.WidgetMusicTag)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setGeometry(QRect(540, 70, 101, 16))
-        self.label_21 = QLabel(self.tabMusica)
-        self.label_21.setObjectName(u"label_21")
-        self.label_21.setGeometry(QRect(810, 70, 101, 16))
-        self.lineEditCompositor = QLineEdit(self.tabMusica)
-        self.lineEditCompositor.setObjectName(u"lineEditCompositor")
-        self.lineEditCompositor.setGeometry(QRect(810, 90, 113, 24))
-        self.label_22 = QLabel(self.tabMusica)
+        self.label_20.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_20, 0, 3, 1, 1)
+
+        self.lineEditAlbum = QLineEdit(self.WidgetMusicTag)
+        self.lineEditAlbum.setObjectName(u"lineEditAlbum")
+        self.lineEditAlbum.setMinimumSize(QSize(130, 24))
+
+        self.gridLayout_8.addWidget(self.lineEditAlbum, 1, 3, 1, 1)
+
+        self.label_22 = QLabel(self.WidgetMusicTag)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setGeometry(QRect(930, 10, 101, 16))
-        self.lineEditYear = QLineEdit(self.tabMusica)
+        self.label_22.setMinimumSize(QSize(0, 19))
+        self.label_22.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_22, 5, 2, 1, 1)
+
+        self.lineEditMood = QLineEdit(self.WidgetMusicTag)
+        self.lineEditMood.setObjectName(u"lineEditMood")
+        self.lineEditMood.setMinimumSize(QSize(130, 24))
+
+        self.gridLayout_8.addWidget(self.lineEditMood, 9, 3, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.label_21 = QLabel(self.WidgetMusicTag)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setMinimumSize(QSize(0, 19))
+        self.label_21.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_8.addWidget(self.label_21, 8, 2, 1, 1)
+
+        self.lineEditYear = QLineEdit(self.WidgetMusicTag)
         self.lineEditYear.setObjectName(u"lineEditYear")
-        self.lineEditYear.setGeometry(QRect(930, 30, 113, 24))
-        self.label_23 = QLabel(self.tabMusica)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setGeometry(QRect(670, 70, 111, 16))
-        self.lineEditAlbumInter = QLineEdit(self.tabMusica)
+        self.lineEditYear.setMinimumSize(QSize(0, 24))
+        self.lineEditYear.setMaximumSize(QSize(100, 16777215))
+
+        self.gridLayout_8.addWidget(self.lineEditYear, 6, 2, 1, 1)
+
+        self.lineEditAlbumInter = QLineEdit(self.WidgetMusicTag)
         self.lineEditAlbumInter.setObjectName(u"lineEditAlbumInter")
-        self.lineEditAlbumInter.setGeometry(QRect(670, 90, 113, 24))
-        self.label_24 = QLabel(self.tabMusica)
-        self.label_24.setObjectName(u"label_24")
-        self.label_24.setGeometry(QRect(940, 70, 101, 16))
+        self.lineEditAlbumInter.setMinimumSize(QSize(130, 24))
+
+        self.gridLayout_8.addWidget(self.lineEditAlbumInter, 9, 1, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.widgetTrack = QWidget(self.WidgetMusicTag)
+        self.widgetTrack.setObjectName(u"widgetTrack")
+        self.widgetTrack.setMinimumSize(QSize(0, 24))
+        self.widgetTrack.setMaximumSize(QSize(16777215, 24))
+        self.horizontalLayout_3 = QHBoxLayout(self.widgetTrack)
+        self.horizontalLayout_3.setSpacing(6)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.spinBoxTrack = QSpinBox(self.widgetTrack)
+        self.spinBoxTrack.setObjectName(u"spinBoxTrack")
+        self.spinBoxTrack.setMinimumSize(QSize(0, 24))
+
+        self.horizontalLayout_3.addWidget(self.spinBoxTrack, 0, Qt.AlignmentFlag.AlignTop)
+
+        self.label_25 = QLabel(self.widgetTrack)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setMinimumSize(QSize(0, 24))
+        self.label_25.setStyleSheet(u"border:none;")
+
+        self.horizontalLayout_3.addWidget(self.label_25)
+
+        self.spinBoxMaxTrack = QSpinBox(self.widgetTrack)
+        self.spinBoxMaxTrack.setObjectName(u"spinBoxMaxTrack")
+        self.spinBoxMaxTrack.setMinimumSize(QSize(0, 24))
+
+        self.horizontalLayout_3.addWidget(self.spinBoxMaxTrack)
+
+
+        self.gridLayout_8.addWidget(self.widgetTrack, 6, 3, 1, 1, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
+
+        self.verticalSpacer_7 = QSpacerItem(38, 15, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.gridLayout_8.addItem(self.verticalSpacer_7, 7, 1, 1, 3)
+
+        self.verticalSpacer_8 = QSpacerItem(38, 15, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.gridLayout_8.addItem(self.verticalSpacer_8, 2, 1, 1, 3)
+
+
+        self.gridLayout_9.addWidget(self.WidgetMusicTag, 1, 3, 2, 1)
+
+        self.verticalSpacer_10 = QSpacerItem(5, 15, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_10, 3, 3, 1, 1)
+
         self.label_26 = QLabel(self.tabMusica)
         self.label_26.setObjectName(u"label_26")
-        self.label_26.setGeometry(QRect(410, 130, 101, 16))
+        sizePolicy3.setHeightForWidth(self.label_26.sizePolicy().hasHeightForWidth())
+        self.label_26.setSizePolicy(sizePolicy3)
+        self.label_26.setMinimumSize(QSize(0, 19))
+        self.label_26.setMaximumSize(QSize(16777215, 19))
+
+        self.gridLayout_9.addWidget(self.label_26, 4, 3, 1, 1)
+
         self.TextEditLiryc = QPlainTextEdit(self.tabMusica)
         self.TextEditLiryc.setObjectName(u"TextEditLiryc")
-        self.TextEditLiryc.setGeometry(QRect(410, 150, 641, 51))
+        sizePolicy2.setHeightForWidth(self.TextEditLiryc.sizePolicy().hasHeightForWidth())
+        self.TextEditLiryc.setSizePolicy(sizePolicy2)
+        self.TextEditLiryc.setMinimumSize(QSize(572, 0))
+        self.TextEditLiryc.setMaximumSize(QSize(16777215, 16777215))
+
+        self.gridLayout_9.addWidget(self.TextEditLiryc, 5, 3, 1, 1, Qt.AlignmentFlag.AlignTop)
+
         self.SaveButton_8 = QPushButton(self.tabMusica)
         self.SaveButton_8.setObjectName(u"SaveButton_8")
-        self.SaveButton_8.setGeometry(QRect(10, 210, 1041, 20))
         self.SaveButton_8.setStyleSheet(u"QPushButton{border: 2px solid grey;border-radius: 10px;color: black;background-color: white}\n"
 "QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: lightgrey;}\n"
 "QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: darkgrey}\n"
 "")
-        self.layoutWidget = QWidget(self.tabMusica)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(940, 90, 121, 23))
-        self.horizontalLayout_3 = QHBoxLayout(self.layoutWidget)
-        self.horizontalLayout_3.setSpacing(6)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.spinBoxTrack = QSpinBox(self.layoutWidget)
-        self.spinBoxTrack.setObjectName(u"spinBoxTrack")
 
-        self.horizontalLayout_3.addWidget(self.spinBoxTrack)
+        self.gridLayout_9.addWidget(self.SaveButton_8, 6, 0, 1, 4)
 
-        self.label_25 = QLabel(self.layoutWidget)
-        self.label_25.setObjectName(u"label_25")
+        self.horizontalSpacer_18 = QSpacerItem(20, 157, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.horizontalLayout_3.addWidget(self.label_25)
+        self.gridLayout_9.addItem(self.horizontalSpacer_18, 1, 2, 2, 1)
 
-        self.spinBoxMaxTrack = QSpinBox(self.layoutWidget)
-        self.spinBoxMaxTrack.setObjectName(u"spinBoxMaxTrack")
+        self.listWidgetMusic = QListWidget(self.tabMusica)
+        self.listWidgetMusic.setObjectName(u"listWidgetMusic")
+        sizePolicy13.setHeightForWidth(self.listWidgetMusic.sizePolicy().hasHeightForWidth())
+        self.listWidgetMusic.setSizePolicy(sizePolicy13)
+        self.listWidgetMusic.setMinimumSize(QSize(254, 0))
+        self.listWidgetMusic.setMaximumSize(QSize(16777215, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.spinBoxMaxTrack)
+        self.gridLayout_9.addWidget(self.listWidgetMusic, 2, 0, 4, 1)
 
-        self.label_27 = QLabel(self.tabMusica)
-        self.label_27.setObjectName(u"label_27")
-        self.label_27.setGeometry(QRect(540, 10, 101, 16))
-        self.lineEditMusicFolder = QLineEdit(self.tabMusica)
-        self.lineEditMusicFolder.setObjectName(u"lineEditMusicFolder")
-        self.lineEditMusicFolder.setGeometry(QRect(20, 10, 251, 24))
         self.tabWidget.addTab(self.tabMusica, "")
 
-        self.horizontalLayout_4.addWidget(self.tabWidget)
+        self.horizontalLayout_4.addWidget(self.tabWidget, 0, Qt.AlignmentFlag.AlignLeft)
 
 
-        self.verticalLayout.addWidget(self.widgetMSC, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout.addWidget(self.widgetMSC, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
-        self.verticalSpacer_6 = QSpacerItem(0, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_6 = QSpacerItem(0, 1, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_6)
 
@@ -1212,21 +1414,22 @@ class Ui_MyLovePDF(object):
         self.SaveButton_2.clicked.connect(MyLovePDF.SepararPDF)
         self.ButtonFileSelect.clicked.connect(MyLovePDF.selectFile)
         self.checkBoxSplitAll.clicked["bool"].connect(self.label_12.setDisabled)
-        self.pushButtonPDF.clicked.connect(self.widgetPDF.hide)
+        self.pushButtonPDF.clicked.connect(MyLovePDF.CloseTab)
         self.ButtonFileSelect_5.clicked.connect(MyLovePDF.selectFile)
         self.SaveButton_5.clicked.connect(MyLovePDF.ImageToPDF)
         self.ButtonFileSelect_6.clicked.connect(MyLovePDF.selectFile)
         self.SaveButton_6.clicked.connect(MyLovePDF.PDFtoImage)
-        self.pushButtonIMG.clicked.connect(self.widgetIMG.hide)
-        self.pushButton_4.clicked.connect(self.widgetMSC.show)
-        self.pushButtonFILE.clicked.connect(self.widgetFILE.hide)
-        self.pushButtonMSC.clicked.connect(self.widgetMSC.hide)
-        self.pushButton.clicked.connect(self.widgetPDF.show)
-        self.pushButton_2.clicked.connect(self.widgetIMG.show)
-        self.pushButton_3.clicked.connect(self.widgetFILE.show)
-        self.ButtonChangeMusic.clicked.connect(MyLovePDF.ChangeMusicFile)
+        self.pushButtonIMG.clicked.connect(MyLovePDF.CloseTab)
+        self.pushButtonMSCmini.clicked.connect(MyLovePDF.OpenTab)
+        self.pushButtonFILE.clicked.connect(MyLovePDF.CloseTab)
+        self.pushButtonMSC.clicked.connect(MyLovePDF.CloseTab)
+        self.pushButtonPDFmini.clicked.connect(MyLovePDF.OpenTab)
+        self.pushButtonIMGmini.clicked.connect(MyLovePDF.OpenTab)
+        self.pushButtonFILEmini.clicked.connect(MyLovePDF.OpenTab)
         self.ButtonUpdateMusic.clicked.connect(MyLovePDF.UpdateMusicFile)
-        self.listWidgetMusic.currentItemChanged.connect(MyLovePDF.UpdateMusic)
+        self.listWidgetMusic.currentItemChanged.connect(MyLovePDF.GetItemMusicTags)
+        self.ButtonChangeMusic.clicked.connect(MyLovePDF.ChangeMusicFile)
+        self.SaveButton_8.clicked.connect(MyLovePDF.GuardarMusica)
 
         self.tabWidgetPDF.setCurrentIndex(0)
         self.comboBox.setCurrentIndex(0)
@@ -1240,10 +1443,10 @@ class Ui_MyLovePDF(object):
 
     def retranslateUi(self, MyLovePDF):
         MyLovePDF.setWindowTitle(QCoreApplication.translate("MyLovePDF", u"MyLovePDF", None))
-        self.pushButton.setText(QCoreApplication.translate("MyLovePDF", u"PDF", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MyLovePDF", u"IMAGEN", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MyLovePDF", u"ARCHIVO", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MyLovePDF", u"M\u00daSICA", None))
+        self.pushButtonPDFmini.setText(QCoreApplication.translate("MyLovePDF", u"PDF", None))
+        self.pushButtonIMGmini.setText(QCoreApplication.translate("MyLovePDF", u"IMAGEN", None))
+        self.pushButtonFILEmini.setText(QCoreApplication.translate("MyLovePDF", u"ARCHIVO", None))
+        self.pushButtonMSCmini.setText(QCoreApplication.translate("MyLovePDF", u"M\u00daSICA", None))
         self.pushButtonPDF.setText("")
         self.comboBox.setItemText(0, QCoreApplication.translate("MyLovePDF", u"No Forzar", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("MyLovePDF", u"Agregar P\u00e1gina Inicial", None))
@@ -1264,19 +1467,20 @@ class Ui_MyLovePDF(object):
 #if QT_CONFIG(whatsthis)
         self.checkBoxConsevar.setWhatsThis(QCoreApplication.translate("MyLovePDF", u"Crea un 2do PDF con las hojas no elegidas.", None))
 #endif // QT_CONFIG(whatsthis)
-        self.checkBoxConsevar.setText(QCoreApplication.translate("MyLovePDF", u"Conservar", None))
+        self.checkBoxConsevar.setText("")
         self.label_3.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDF:", None))
-        self.label_4.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_7.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Separa las hojas seleccionadas en un PDF nuevo.</p><p>Si CONSERVAR esta activo las hojas restantes se guardar\u00e1n en un 2do PDF.</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.toolButton_7.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
         self.ButtonFileSelect_2.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivo", None))
+        self.label_4.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
+        self.label_29.setText(QCoreApplication.translate("MyLovePDF", u"Conservar", None))
         self.tabWidgetPDF.setTabText(self.tabWidgetPDF.indexOf(self.tabSepararPDF), QCoreApplication.translate("MyLovePDF", u"Separar PDFs", None))
 #if QT_CONFIG(whatsthis)
         self.checkBoxSplitAll.setWhatsThis(QCoreApplication.translate("MyLovePDF", u"Crea un 2do PDF con las hojas no elegidas.", None))
 #endif // QT_CONFIG(whatsthis)
-        self.checkBoxSplitAll.setText(QCoreApplication.translate("MyLovePDF", u"Separar Todas", None))
+        self.checkBoxSplitAll.setText("")
         self.ButtonFileSelect_3.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivo", None))
 #if QT_CONFIG(tooltip)
         self.toolButton_6.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Separa las Hojas indicadas del PDF y las guarda en PDFs individuales.</p><p>Si SEPARAR TODAS, se separa al PDF en la totalidad de las hojas.</p></body></html>", None))
@@ -1285,6 +1489,7 @@ class Ui_MyLovePDF(object):
         self.FileSelector_3.setPlaceholderText(QCoreApplication.translate("MyLovePDF", u"E:\\deskopt\\file.pdf", None))
         self.label_6.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDF:", None))
         self.SaveButton_3.setText(QCoreApplication.translate("MyLovePDF", u"Guardar", None))
+        self.label_16.setText(QCoreApplication.translate("MyLovePDF", u"Separar Todas", None))
         self.label_12.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
         self.tabWidgetPDF.setTabText(self.tabWidgetPDF.indexOf(self.tabSepararHojas), QCoreApplication.translate("MyLovePDF", u"Separar Hojas", None))
         self.label_7.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDF:", None))
@@ -1315,6 +1520,8 @@ class Ui_MyLovePDF(object):
         self.SaveButton_6.setText(QCoreApplication.translate("MyLovePDF", u"Convertir", None))
         self.label_10.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona PDFs:", None))
         self.tabWidgetIMG.setTabText(self.tabWidgetIMG.indexOf(self.tabPDF2IMG), QCoreApplication.translate("MyLovePDF", u"PDF a Imagen", None))
+        self.label_30.setText(QCoreApplication.translate("MyLovePDF", u"NO IMPLEMENTADO", None))
+        self.tabWidgetIMG.setTabText(self.tabWidgetIMG.indexOf(self.tabIMG2IMG), QCoreApplication.translate("MyLovePDF", u"Imagen a Imagen", None))
         self.pushButtonFILE.setText(QCoreApplication.translate("MyLovePDF", u"PushButton", None))
         self.SaveButton_7.setText(QCoreApplication.translate("MyLovePDF", u"Renombrar", None))
         self.ButtonFileSelect_7.setText(QCoreApplication.translate("MyLovePDF", u"Seleccionar archivos", None))
@@ -1327,13 +1534,24 @@ class Ui_MyLovePDF(object):
         self.NameTemplate.setPlaceholderText(QCoreApplication.translate("MyLovePDF", u"nombre_#XXX", None))
         self.label_14.setText(QCoreApplication.translate("MyLovePDF", u"Hojas:", None))
         self.label_13.setText(QCoreApplication.translate("MyLovePDF", u"Selecciona archivos:", None))
-        self.tabWidgetFILE.setTabText(self.tabWidgetFILE.indexOf(self.tab_3), QCoreApplication.translate("MyLovePDF", u"Renombrar Carpeta", None))
+        self.tabWidgetFILE.setTabText(self.tabWidgetFILE.indexOf(self.tab_3), QCoreApplication.translate("MyLovePDF", u"Renombrar Archivos", None))
         self.pushButtonMSC.setText(QCoreApplication.translate("MyLovePDF", u"PushButton", None))
-        self.labelCover.setText(QCoreApplication.translate("MyLovePDF", u"Portada Cancion", None))
-        self.ButtonUpdateMusic.setText(QCoreApplication.translate("MyLovePDF", u"actualizar", None))
-        self.ButtonChangeMusic.setText(QCoreApplication.translate("MyLovePDF", u"Cambiar Carpeta", None))
+        self.label_27.setText(QCoreApplication.translate("MyLovePDF", u"Seleccione carpeta:", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_8.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Renombra todos los archivos seleccionados utilizando el template.</p><p>El template reemplazar\u00e1 XXX por el n\u00famero de archivo.</p><p>En caso de no encontrar indicarlo, se agrega numeraci\u00f3n al final.</p><p>La numeraci\u00f3n inicia desde el n\u00famero indicado (0 por defecto).</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(whatsthis)
+        self.toolButton_8.setWhatsThis(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Selecciona un archivo MP3 y agregua/edita los tags de dicha canci\u00f3n.</p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+        self.toolButton_8.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
+        self.ButtonChangeMusic.setText("")
+        self.ButtonUpdateMusic.setText("")
+        self.label_28.setText(QCoreApplication.translate("MyLovePDF", u"Mood:", None))
+        self.labelCover.setText("")
         self.label_17.setText(QCoreApplication.translate("MyLovePDF", u"T\u00edtulo:", None))
-        self.label_18.setText(QCoreApplication.translate("MyLovePDF", u"Int\u00e9rprete:", None))
+        self.label_24.setText(QCoreApplication.translate("MyLovePDF", u"Pista:", None))
+        self.label_19.setText(QCoreApplication.translate("MyLovePDF", u"G\u00e9nero:", None))
+        self.label_23.setText(QCoreApplication.translate("MyLovePDF", u"Int\u00e9rprete de album:", None))
         self.comboBoxGenre.setItemText(0, QCoreApplication.translate("MyLovePDF", u"Blues", None))
         self.comboBoxGenre.setItemText(1, QCoreApplication.translate("MyLovePDF", u"Classic Rock", None))
         self.comboBoxGenre.setItemText(2, QCoreApplication.translate("MyLovePDF", u"Country", None))
@@ -1415,16 +1633,13 @@ class Ui_MyLovePDF(object):
         self.comboBoxGenre.setItemText(78, QCoreApplication.translate("MyLovePDF", u"Rock & Roll", None))
         self.comboBoxGenre.setItemText(79, QCoreApplication.translate("MyLovePDF", u"Hard Rock", None))
 
-        self.label_19.setText(QCoreApplication.translate("MyLovePDF", u"G\u00e9nero:", None))
+        self.label_18.setText(QCoreApplication.translate("MyLovePDF", u"Int\u00e9rprete:", None))
         self.label_20.setText(QCoreApplication.translate("MyLovePDF", u"Album:", None))
-        self.label_21.setText(QCoreApplication.translate("MyLovePDF", u"Compositor:", None))
         self.label_22.setText(QCoreApplication.translate("MyLovePDF", u"A\u00f1o:", None))
-        self.label_23.setText(QCoreApplication.translate("MyLovePDF", u"Int\u00e9rprete de album:", None))
-        self.label_24.setText(QCoreApplication.translate("MyLovePDF", u"Pista:", None))
+        self.label_21.setText(QCoreApplication.translate("MyLovePDF", u"Compositor:", None))
+        self.label_25.setText(QCoreApplication.translate("MyLovePDF", u"de", None))
         self.label_26.setText(QCoreApplication.translate("MyLovePDF", u"Letra:", None))
         self.SaveButton_8.setText(QCoreApplication.translate("MyLovePDF", u"Guardar", None))
-        self.label_25.setText(QCoreApplication.translate("MyLovePDF", u"de", None))
-        self.label_27.setText(QCoreApplication.translate("MyLovePDF", u"T\u00edtulo:", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabMusica), QCoreApplication.translate("MyLovePDF", u"M\u00fasica", None))
     # retranslateUi
 

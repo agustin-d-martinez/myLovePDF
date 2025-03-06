@@ -2,6 +2,7 @@
 import sys
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
+from PySide6.QtCore import *
 import utils.documentsUtils as doc
 import os
 #import res_rc_rc
@@ -16,11 +17,48 @@ class MainWindow(QMainWindow):
 		super().__init__(parent)
 		self.ui = Ui_MyLovePDF()
 		self.ui.setupUi(self)
-		self.ui.label_5.setHidden(True)
-		self.ui.NombreExtra.setHidden(True)
 
+		#Initial hide() 
+		self.ui.pushButtonPDFmini.hide()
+		self.ui.pushButtonIMGmini.hide()
+		self.ui.pushButtonFILEmini.hide()
+		self.ui.pushButtonMSCmini.hide()
+		self.ui.label_5.hide()
+		self.ui.NombreExtra.hide()
+
+		#Custom connect
 		self.ui.ListFileSelector_2.listWidget.currentItemChanged.connect(self.UpdatePhoto)
-	
+
+		#Custom ContextMenu
+		self.coverMenu = QMenu("menu")
+		self.coverMenu.addAction('Borrar Portada', self.deleteCover)
+		self.coverMenu.addAction('Cortar Portada', self.CutCover)
+		self.coverMenu.addAction('Copiar Portada', self.CopyCover)
+		self.coverMenu.addAction('Pegar Portada', self.PasteCover)
+		self.coverMenu.addAction('Añadir Portada', self.addCover)
+		self.ui.labelCover.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+		self.ui.labelCover.customContextMenuRequested.connect(self.setContextMenu)
+
+	def setContextMenu(self, pos):
+		self.coverMenu.exec(self.ui.labelCover.mapToGlobal(pos))
+	def deleteCover(self):
+		self.ui.labelCover.setPixmap(QPixmap(u":/resources/resources/NoImage.svg"))
+	def CutCover(self):
+		self.CopyCover()
+		self.deleteCover()
+	def CopyCover(self):
+		clipboard = QApplication.clipboard()
+		pixmap = self.ui.labelCover.pixmap()
+		if pixmap :
+			clipboard.setPixmap(pixmap)
+	def PasteCover(self):
+		pixmap = QApplication.clipboard().pixmap()
+		if not pixmap.isNull():
+			self.ui.labelCover.setPixmap(pixmap)
+
+	def addCover(self):
+		archivo, _ = QFileDialog.getOpenFileName(self,"Seleccionar archivo","","Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)")
+		self.ui.labelCover.setPixmap(QPixmap(archivo))
 	def ObtenerRangos(string: str) -> list[int] :
 		lista = set()
 		for number in string.split(","):
@@ -154,35 +192,63 @@ class MainWindow(QMainWindow):
 		inicial = self.ui.spinBox.value()
 		doc.renombrar_template(entradas, self.ui.NameTemplate.text() , inicial)
 
+	def GuardarMusica(self):
+		archivo = os.path.join(self.ui.lineEditMusicFolder.text(),self.ui.listWidgetMusic.currentItem().text())
+		if not archivo :
+			self.ErrorMessage()
+			return
+		tags = {}
+		tags["title"] = self.ui.lineEditSong.text()
+		tags["artist"]= self.ui.lineEditInterpeter.text()
+		tags["album"]= self.ui.lineEditAlbum.text()
+		tags["composer"]= self.ui.lineEditCompositor.text()
+		tags["album_artist"]= self.ui.lineEditAlbumInter.text()
+		tags["genre"]= self.ui.comboBoxGenre.currentText()
+		tags["track"]= f"{self.ui.spinBoxTrack.value()}/{self.ui.spinBoxMaxTrack.value()}"
+		tags["lyrics"]= self.ui.TextEditLiryc.toPlainText()
+		tags["year"]= self.ui.lineEditYear.text()
+		tags["mood"]= self.ui.lineEditMood.text()
+
+		buffer = QBuffer()
+		buffer.open(QIODevice.WriteOnly)
+		# Puedes elegir el formato: "PNG" o "JPEG"
+		self.ui.labelCover.pixmap().save(buffer, "PNG")
+		tags["cover"]= bytes(buffer.data())
+		buffer.close()
+
+		doc.setMusicTags(archivo,tags)
+		QMessageBox.information(self,"Guardado","Los cambios han sido guardados.")
+
 	def SaveFile(self, type) :
 		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
 		return file
 	
 	def ErrorMessage(self) :
-		msg = QMessageBox()
+		msg = QMessageBox(self)
 		msg.setIcon(QMessageBox.Critical)  # Tipo de mensaje: Error
 		msg.setWindowTitle("Error")
 		msg.setText("No hay archivos de entrada.")
-		#msg.setInformativeText("Revisa los datos ingresados e intenta nuevamente.")
 		msg.exec()  # Mostrar el cuadro de diálogo
 
 	def UpdateMusicFile(self):
-		self.UpdateMusicList(self.ui.lineEditMusicFolder.text())
+		self._UpdateMusicList(self.ui.lineEditMusicFolder.text())
 	def ChangeMusicFile(self):
 		archivo = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
 		self.ui.lineEditMusicFolder.setText(archivo)
-		self.UpdateMusicList(archivo)
-	def UpdateMusicList(self, archivo):
+		self._UpdateMusicList(archivo)
+
+	def _UpdateMusicList(self, archivo):
 		self.ui.listWidgetMusic.clear()
 		archivos = []
 		if archivo :
 			for root, dirs, files in os.walk(archivo):
 				for file in files :
 					if file.endswith(".mp3"):
-						archivos.append(file)
+						full_path = os.path.join(root,file)
+						archivos.append(os.path.relpath(full_path,archivo))
 			self.ui.listWidgetMusic.addItems(archivos)
 
-	def UpdateMusic(self, item: QListWidgetItem):
+	def GetItemMusicTags(self, item: QListWidgetItem):
 		tags = doc.getMusicTags(os.path.join(self.ui.lineEditMusicFolder.text(),item.text()))
 		self.ui.lineEditSong.setText(tags.get("title",""))
 		self.ui.lineEditInterpeter.setText(tags.get("artist",""))
@@ -196,7 +262,16 @@ class MainWindow(QMainWindow):
 		self.ui.spinBoxTrack.setValue(tracks[0])
 		self.ui.spinBoxMaxTrack.setValue(tracks[1])
 		self.ui.comboBoxGenre.setCurrentText(tags.get("genre",""))
-		self.ui.labelCover.setPixmap(QImage(tags.get("cover","")))
+		self.ui.lineEditMood.setText(tags.get("mood",""))
+
+		pixmap = QPixmap()
+		cover = tags.get("cover",b"")
+		pixmap.loadFromData(cover)
+		if cover == b"":
+			pixmap.load(u":/resources/resources/NoImage.svg")
+		pixmap = pixmap.scaled(self.ui.labelCover.size(),Qt.AspectRatioMode.KeepAspectRatio,Qt.TransformationMode.SmoothTransformation)
+		self.ui.labelCover.setPixmap(pixmap)
+
 	def separateTracks(self,track_str:str):
 		try:
 			parts = track_str.split("/")
@@ -209,6 +284,30 @@ class MainWindow(QMainWindow):
 				return int(parts[0].strip()), 0
 		except Exception:
 			return 0, 0
+
+	def CloseTab(self):
+		sender = self.sender()
+		sender_map = {
+			self.ui.pushButtonPDF: (self.ui.pushButtonPDFmini, self.ui.widgetPDF),
+			self.ui.pushButtonIMG: (self.ui.pushButtonIMGmini, self.ui.widgetIMG),
+			self.ui.pushButtonFILE:(self.ui.pushButtonFILEmini, self.ui.widgetFILE),
+			self.ui.pushButtonMSC: (self.ui.pushButtonMSCmini, self.ui.widgetMSC),
+		}
+		button, widget = sender_map[sender]
+		button.show()
+		widget.hide()
+
+	def OpenTab(self):
+		sender = self.sender()
+		sender_map = {
+			self.ui.pushButtonPDFmini: (self.ui.widgetPDF),
+			self.ui.pushButtonIMGmini: (self.ui.widgetIMG),
+			self.ui.pushButtonFILEmini:(self.ui.widgetFILE),
+			self.ui.pushButtonMSCmini: (self.ui.widgetMSC),
+		}
+		widget = sender_map[sender]
+		widget.show()
+		sender.hide()
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import fitz  # pymupdf
 import os
-from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB, ID3TimeStamp
+from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB, TMOO
 
 A4_WIDTH, A4_HEIGHT = 595, 842  
 
@@ -21,7 +21,7 @@ def renombrar_template(archivos, template, inicial=1):
 	"""
 	for i, archivo in enumerate(archivos, start=inicial):
 		if not os.path.exists(archivo):
-			print(f"Advertencia: No se encontró '{archivo}', se omitirá.")
+			#print(f"Advertencia: No se encontró '{archivo}', se omitirá.")
 			continue
 		
 		# Obtener la extensión del archivo
@@ -42,7 +42,7 @@ def renombrar_template(archivos, template, inicial=1):
 		
 		try:
 			os.rename(archivo, nueva_ruta)
-			print(f"Renombrado: '{archivo}' → '{nueva_ruta}'")
+			#print(f"Renombrado: '{archivo}' → '{nueva_ruta}'")
 		except Exception as e:
 			print(f"Error al renombrar '{archivo}': {e}")
 
@@ -56,7 +56,7 @@ def agregar_hojas_blanco(entrada, salida, paginas):
 	  paginas (list): Lista de posiciones (1-based) donde se insertarán las páginas en blanco.
 	"""
 	if not os.path.exists(entrada):
-		print(f"Error: No se encontró '{entrada}'")
+		#print(f"Error: No se encontró '{entrada}'")
 		return
 
 	doc = fitz.open(entrada)
@@ -78,11 +78,9 @@ def agregar_hojas_blanco(entrada, salida, paginas):
 		indice = (pos - 1) + offset
 		doc.insert_page(indice, width=rect.width, height=rect.height)
 		offset += 1
-		print(f"Insertada página en blanco en la posición {indice + 1}")
 
 	doc.save(salida)
 	doc.close()
-	print(f"PDF modificado guardado como '{salida}'")
 
 def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842 ):
 	"""Convierte una lista de imágenes en un archivo PDF.
@@ -92,7 +90,6 @@ def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842
 	salida (str): Ruta del archivo PDF de salida.
 	"""
 	if not imagenes:
-		print("Error: La lista de imágenes está vacía.")
 		return
 
 	doc = fitz.open()
@@ -125,20 +122,14 @@ def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842
 			# Agregar la página con la imagen al documento final
 			doc.insert_pdf(img_doc)
 			img_doc.close()
-		else:
-			print(f"Advertencia: No se encontró '{imagen}' y será omitida.")
 
 	if len(doc) > 0:
 		doc.save(salida)
-		print(f"PDF guardado como '{salida}'")
-	else:
-		print("Error: No se pudo generar el PDF de salida.")
 
 	doc.close()
 
 def separar_pdf(entrada, salida, paginas, conservar= False, salida_extra = None):
 	if not os.path.exists(entrada):
-		print(f"Error: No se encontró '{entrada}'")
 		return
 
 	doc_inicial = fitz.open(entrada)
@@ -153,9 +144,8 @@ def separar_pdf(entrada, salida, paginas, conservar= False, salida_extra = None)
 
 	if len(doc_salida) > 0:
 		doc_salida.save(salida)
-		print(f"Guardado: {salida}")
 	if len(doc_salida_extra) > 0:
-		print(f"Guardado: {salida_extra}")
+		doc_salida.save(salida)
 
 	doc_inicial.close()
 	doc_salida.close()
@@ -171,7 +161,6 @@ def separar_hojas(entrada, salida, paginas = None):
 	"""
 
 	if not os.path.exists(entrada):
-		print(f"Error: No se encontró '{entrada}'")
 		return
 
 	if not os.path.exists(salida):
@@ -193,9 +182,6 @@ def separar_hojas(entrada, salida, paginas = None):
 					doc_tmp.insert_pdf(doc_inicial, from_page=num_pagina - 1, to_page=num_pagina - 1)
 					archivo_salida = os.path.join(salida, f"{nombre_base}_pag_{num_pagina}.pdf")
 					doc_tmp.save(archivo_salida)
-					print(f"Guardado: {archivo_salida}")
-			else:
-				print(f"Advertencia: La página {num_pagina} está fuera de rango y será omitida.")
 
 def unir_pdfs(entradas, salida, archivo_par:int = 0):
 	"""Une los PDF de entrada en un único PDF.
@@ -208,7 +194,6 @@ def unir_pdfs(entradas, salida, archivo_par:int = 0):
 		Si es 2 se agrega una hoja blanca al final para que el archivo sea par.
 	"""
 	if not entradas:
-		print("Error: La lista de PDFs está vacía.")
 		return
 	doc_final = fitz.open()
 
@@ -224,20 +209,14 @@ def unir_pdfs(entradas, salida, archivo_par:int = 0):
 				doc_final.new_page()
 
 			doc_temp.close()
-		else:
-			print(f"Advertencia: No se encontró '{pdf}' y será omitido.")
 
 	if len(doc_final) > 0:
 		doc_final.save(salida)
-		print(f"PDF guardado como '{salida}'")
 	else:
-		print("Error: No se pudo generar el PDF de salida.")
 		doc_final.close()
 		return
 
 	doc_final.close()
-
-	print(f"PDFs combinados y guardados en '{salida}'")
 
 def getMusicTags(archivo) -> dict[str]:
 	"""
@@ -261,8 +240,8 @@ def getMusicTags(archivo) -> dict[str]:
 		"album_artist": "TPE2",
 		"genre": "TCON",
 		"track": "TRCK",
-		"lyrics": "USLT",
-		"year": "TDRC"
+		"year": "TDRC",
+		"mood": "TMOO"
 	}
 	tags = {}
 	for key, frame_id in tags_frames.items():
@@ -278,8 +257,13 @@ def getMusicTags(archivo) -> dict[str]:
 		else:
 			tags[key] = ""
 
-	# Procesar portada (APIC)
-	apic_frame = audio.get("APIC:")
+	apic_frame = audio.getall("USLT")
+	if apic_frame:
+		tags["lyrics"] = apic_frame[0].text	# Podés filtrar por idioma si lo necesitas, aquí se toma el primero.
+	else:
+		tags["lyrics"] = ""
+
+	apic_frame = audio.get("APIC:")		# Procesar portada (APIC)
 	if apic_frame:
 		tags["cover"] = apic_frame.data  # Bytes de la imagen
 	else:
@@ -303,7 +287,8 @@ def setMusicTags(archivo, tags):
 		 'track': "1/10"  (puede ser string o número/total)
 		 'lyrics': "Letra completa..."
 		 'year': "2021"
-		 'cover': "cover.jpg"   <-- Ruta de la imagen para la portada
+		 'mood': "triste"
+		 'cover': "cover.jpg"
 		 
 	Se eliminan los frames existentes para evitar duplicados y se agrega la portada
 	usando el frame APIC si se especifica.
@@ -314,7 +299,7 @@ def setMusicTags(archivo, tags):
 		audio = ID3()
 
 	# Eliminar frames existentes para evitar duplicados
-	for frame in ["TIT2", "TPE1", "TALB", "TCOM", "TPE2", "TCON", "TRCK", "USLT", "TDRC", "APIC"]:
+	for frame in ["TIT2", "TPE1", "TALB", "TCOM", "TPE2", "TCON", "TRCK", "USLT", "TDRC", "APIC","TMOO"]:
 		audio.delall(frame)
 
 	if "title" in tags and tags["title"]:
@@ -335,22 +320,8 @@ def setMusicTags(archivo, tags):
 		audio.add(USLT(encoding=3, lang="XXX", desc="", text=tags["lyrics"]))
 	if "year" in tags and tags["year"]:
 		audio.add(TDRC(encoding=3, text=str(tags["year"])))
-	
-	# Procesar portada: si 'cover' existe en tags, se asume que es la ruta al archivo de imagen.
-	if "cover" in tags and tags["cover"]:
-		cover_path = tags["cover"]
-		if os.path.exists(cover_path):
-			ext = os.path.splitext(cover_path)[1].lower()
-			mime = "image/jpeg"
-			if ext == ".png":
-				mime = "image/png"
-			try:
-				with open(cover_path, "rb") as img_file:
-					data = img_file.read()
-				audio.add(APIC(encoding=3,mime=mime,type=3, desc="",data=data))
-			except Exception as e:
-				print("Error al agregar la portada:", e)
-		else:
-			print(f"Advertencia: No se encontró la imagen de portada '{cover_path}'.")
-	
+	if "mood" in tags and tags["mood"]:
+		audio.add(TMOO(encoding=3, text=str(tags["mood"])))
+	if "cover" in tags and tags["cover"]:		# Procesar portada: si 'cover' existe en tags, se asume bytes de PNG.
+		audio.add(APIC(encoding=3,mime="image/png",type=3, desc="",data=tags["cover"]))	
 	audio.save(archivo)

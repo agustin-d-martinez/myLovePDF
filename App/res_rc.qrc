@@ -11,5 +11,9 @@
         <file>resources/bgFILE3.png</file>
         <file>resources/bgPDF2.png</file>
         <file>resources/bgPDF3.png</file>
+        <file>resources/uicons-regular-rounded/fi-rr-add-document.svg</file>
+        <file>resources/uicons-regular-rounded/fi-rr-add-folder.svg</file>
+        <file>resources/uicons-regular-rounded/fi-rr-refresh.svg</file>
+        <file>resources/NoImage.svg</file>
     </qresource>
 </RCC>

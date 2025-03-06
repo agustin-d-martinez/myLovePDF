@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1204</width>
-    <height>1144</height>
+    <width>1125</width>
+    <height>1145</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1050</width>
+    <width>1125</width>
     <height>0</height>
    </size>
   </property>
@@ -74,8 +74,8 @@ QTabWidget#tabWidgetPDF::pane {background: transparent;border: none;border-image
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1204</width>
-         <height>1134</height>
+         <width>1125</width>
+         <height>1135</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -103,38 +103,51 @@ QTabWidget#tabWidgetPDF::pane {background: transparent;border: none;border-image
            </sizepolicy>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QPushButton" name="pushButton">
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
+            <widget class="QPushButton" name="pushButtonPDFmini">
              <property name="text">
               <string>PDF</string>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_2">
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
+            <widget class="QPushButton" name="pushButtonIMGmini">
              <property name="text">
               <string>IMAGEN</string>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_3">
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
+            <widget class="QPushButton" name="pushButtonFILEmini">
              <property name="text">
               <string>ARCHIVO</string>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_4">
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
+            <widget class="QPushButton" name="pushButtonMSCmini">
              <property name="text">
               <string>MÚSICA</string>
              </property>
             </widget>
            </item>
+           <item>
+            <spacer name="horizontalSpacer_19">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignmentFlag::AlignTop">
+        <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
          <widget class="QWidget" name="widgetPDF" native="true">
           <property name="minimumSize">
            <size>
@@ -231,7 +244,7 @@ QTabWidget#tabWidgetPDF::pane {background: transparent;border: none;border-image
              </property>
              <property name="minimumSize">
               <size>
-               <width>960</width>
+               <width>1020</width>
                <height>0</height>
               </size>
              </property>
@@ -307,7 +320,7 @@ QLabel{background-color: transparent;padding:2px;border-bottom: 4px solid #540c0
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>88</width>
+                   <width>10</width>
                    <height>17</height>
                   </size>
                  </property>
@@ -394,7 +407,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>125</width>
+                   <width>10</width>
                    <height>13</height>
                   </size>
                  </property>
@@ -582,7 +595,7 @@ border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>300</width>
+                   <width>250</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -668,7 +681,7 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                   <string>Crea un 2do PDF con las hojas no elegidas.</string>
                  </property>
                  <property name="text">
-                  <string>Conservar</string>
+                  <string/>
                  </property>
                 </widget>
                </item>
@@ -706,25 +719,6 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                   </size>
                  </property>
                 </spacer>
-               </item>
-               <item row="3" column="0" colspan="4">
-                <widget class="QLabel" name="label_4">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>20</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>Hojas:</string>
-                 </property>
-                </widget>
                </item>
                <item row="0" column="7" alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTop">
                 <widget class="QToolButton" name="toolButton_7">
@@ -800,6 +794,32 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                 </widget>
                </item>
+               <item row="3" column="0" colspan="2">
+                <widget class="QLabel" name="label_4">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Hojas:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string>Conservar</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
              <widget class="QWidget" name="tabSepararHojas">
@@ -828,7 +848,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                   <string>Crea un 2do PDF con las hojas no elegidas.</string>
                  </property>
                  <property name="text">
-                  <string>Separar Todas</string>
+                  <string/>
                  </property>
                 </widget>
                </item>
@@ -842,7 +862,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>400</width>
+                   <width>10</width>
                    <height>68</height>
                   </size>
                  </property>
@@ -1009,7 +1029,14 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                  </property>
                 </widget>
                </item>
-               <item row="3" column="0" colspan="4">
+               <item row="3" column="3">
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>Separar Todas</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" colspan="2">
                 <widget class="QLabel" name="label_12">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -1154,7 +1181,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>350</width>
+                   <width>10</width>
                    <height>20</height>
                   </size>
                  </property>
@@ -1209,12 +1236,12 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignmentFlag::AlignTop">
+        <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
          <widget class="QWidget" name="widgetIMG" native="true">
           <property name="minimumSize">
            <size>
             <width>960</width>
-            <height>298</height>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -1303,7 +1330,7 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
              </property>
              <property name="minimumSize">
               <size>
-               <width>960</width>
+               <width>1020</width>
                <height>0</height>
               </size>
              </property>
@@ -1332,7 +1359,7 @@ QLabel{background-color: transparent;padding:2px;border-bottom: 4px solid #0f0f5
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>174</height>
+                <height>0</height>
                </size>
               </property>
               <attribute name="title">
@@ -1534,7 +1561,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>250</width>
+                   <width>10</width>
                    <height>20</height>
                   </size>
                  </property>
@@ -1727,22 +1754,6 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                  </property>
                 </spacer>
                </item>
-               <item row="1" column="3">
-                <spacer name="verticalSpacer_5">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Vertical</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Policy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>200</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
                <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignTop">
                 <widget class="QFrame" name="frame_2">
                  <property name="sizePolicy">
@@ -1822,17 +1833,35 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                </item>
               </layout>
              </widget>
+             <widget class="QWidget" name="tabIMG2IMG">
+              <attribute name="title">
+               <string>Imagen a Imagen</string>
+              </attribute>
+              <widget class="QLabel" name="label_30">
+               <property name="geometry">
+                <rect>
+                 <x>250</x>
+                 <y>40</y>
+                 <width>311</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>NO IMPLEMENTADO</string>
+               </property>
+              </widget>
+             </widget>
             </widget>
            </item>
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignmentFlag::AlignTop">
+        <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
          <widget class="QWidget" name="widgetFILE" native="true">
           <property name="minimumSize">
            <size>
             <width>960</width>
-            <height>220</height>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -1875,7 +1904,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
-                 <width>25</width>
+                 <width>0</width>
                  <height>25</height>
                 </size>
                </property>
@@ -1921,7 +1950,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
              </property>
              <property name="minimumSize">
               <size>
-               <width>960</width>
+               <width>1020</width>
                <height>0</height>
               </size>
              </property>
@@ -1942,7 +1971,7 @@ QLabel{background-color: transparent;padding:2px;border-bottom: 4px solid #53540
              </property>
              <widget class="QWidget" name="tab_3">
               <attribute name="title">
-               <string>Renombrar Carpeta</string>
+               <string>Renombrar Archivos</string>
               </attribute>
               <layout class="QGridLayout" name="gridLayout_2">
                <property name="horizontalSpacing">
@@ -1996,11 +2025,11 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                   <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Policy::Maximum</enum>
+                  <enum>QSizePolicy::Policy::Expanding</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>150</width>
+                   <width>25</width>
                    <height>20</height>
                   </size>
                  </property>
@@ -2086,7 +2115,7 @@ border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>200</width>
+                   <width>20</width>
                    <height>20</height>
                   </size>
                  </property>
@@ -2237,18 +2266,18 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignmentFlag::AlignTop">
+        <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
          <widget class="QWidget" name="widgetMSC" native="true">
           <property name="minimumSize">
            <size>
             <width>960</width>
-            <height>290</height>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>1190</width>
-            <height>300</height>
+            <width>16777215</width>
+            <height>1100</height>
            </size>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -2282,7 +2311,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
-                 <width>25</width>
+                 <width>0</width>
                  <height>25</height>
                 </size>
                </property>
@@ -2291,7 +2320,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
              <item>
               <widget class="QPushButton" name="pushButtonMSC">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -2305,7 +2334,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>250</height>
+                 <height>16777215</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -2318,7 +2347,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
              </item>
             </layout>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
             <widget class="QTabWidget" name="tabWidget">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2328,7 +2357,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
              </property>
              <property name="minimumSize">
               <size>
-               <width>960</width>
+               <width>1020</width>
                <height>0</height>
               </size>
              </property>
@@ -2344,6 +2373,11 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                <height>0</height>
               </size>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QTabBar::tab {background: #0b6f00;padding: 4px;border-top-left-radius: 5px;border-top-right-radius: 5px;color:white;}
+QTabBar::tab:selected {background: #15cc01;border:1px solid grey;border-bottom: none;}
+QLabel{background-color: transparent;padding:2px;border-bottom: 4px solid #1a5410;}</string>
+             </property>
              <property name="currentIndex">
               <number>0</number>
              </property>
@@ -2351,725 +2385,1095 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
               <attribute name="title">
                <string>Música</string>
               </attribute>
-              <widget class="QListWidget" name="listWidgetMusic">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>40</y>
-                 <width>251</width>
-                 <height>161</height>
-                </rect>
+              <layout class="QGridLayout" name="gridLayout_9">
+               <property name="horizontalSpacing">
+                <number>2</number>
                </property>
-              </widget>
-              <widget class="QLabel" name="labelCover">
-               <property name="geometry">
-                <rect>
-                 <x>400</x>
-                 <y>20</y>
-                 <width>111</width>
-                 <height>101</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Portada Cancion</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="ButtonUpdateMusic">
-               <property name="geometry">
-                <rect>
-                 <x>280</x>
-                 <y>50</y>
-                 <width>80</width>
-                 <height>24</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>actualizar</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="ButtonChangeMusic">
-               <property name="geometry">
-                <rect>
-                 <x>280</x>
-                 <y>20</y>
-                 <width>80</width>
-                 <height>24</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Cambiar Carpeta</string>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditSong">
-               <property name="geometry">
-                <rect>
-                 <x>540</x>
-                 <y>30</y>
-                 <width>113</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_17">
-               <property name="geometry">
-                <rect>
-                 <x>540</x>
-                 <y>10</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Título:</string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_18">
-               <property name="geometry">
-                <rect>
-                 <x>670</x>
-                 <y>10</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Intérprete:</string>
-               </property>
-              </widget>
-              <widget class="QComboBox" name="comboBoxGenre">
-               <property name="geometry">
-                <rect>
-                 <x>810</x>
-                 <y>30</y>
-                 <width>111</width>
-                 <height>24</height>
-                </rect>
-               </property>
-               <property name="editable">
-                <bool>true</bool>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Blues</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Classic Rock</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Country</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Dance</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Disco</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Funk</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Grunge</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Hip-Hop</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Jazz</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Metal</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>New Age</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Oldies</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Other</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Pop</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>R&amp;B</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Rap</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Reggae</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Rock</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Techno</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Industrial</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Alternative</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Ska</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Death Metal</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Pranks</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Soundtrack</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Euro-Techno</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Ambient</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Trip-Hop</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Vocal</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Jazz+Funk</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Fusion</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Trance</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Classical</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Instrumental</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Acid</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>House</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Game</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Sound Clip</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Gospel</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Noise</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>AlternRock</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Bass</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Soul</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Punk</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Space</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Meditative</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Instrumental Pop</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Instrumental Rock</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Ethnic</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Gothic</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Darkwave</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Techno-Industrial</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Electronic</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Pop-Folk</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Eurodance</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Dream</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Southern Rock</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Comedy</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Cult</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Gangsta</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Top 40</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Christian Rap</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Pop/Funk</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Jungle</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Native American</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Cabaret</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>New Wave</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Psychedelic</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Rave</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Showtunes</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Trailer</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Lo-Fi</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Tribal</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Acid Punk</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Acid Jazz</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Polka</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Retro</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Musical</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Rock &amp; Roll</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Hard Rock</string>
-                </property>
-               </item>
-              </widget>
-              <widget class="QLabel" name="label_19">
-               <property name="geometry">
-                <rect>
-                 <x>810</x>
-                 <y>10</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Género:</string>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditInterpeter">
-               <property name="geometry">
-                <rect>
-                 <x>670</x>
-                 <y>30</y>
-                 <width>113</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditAlbum">
-               <property name="geometry">
-                <rect>
-                 <x>540</x>
-                 <y>90</y>
-                 <width>113</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_20">
-               <property name="geometry">
-                <rect>
-                 <x>540</x>
-                 <y>70</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Album:</string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_21">
-               <property name="geometry">
-                <rect>
-                 <x>810</x>
-                 <y>70</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Compositor:</string>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditCompositor">
-               <property name="geometry">
-                <rect>
-                 <x>810</x>
-                 <y>90</y>
-                 <width>113</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_22">
-               <property name="geometry">
-                <rect>
-                 <x>930</x>
-                 <y>10</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Año:</string>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditYear">
-               <property name="geometry">
-                <rect>
-                 <x>930</x>
-                 <y>30</y>
-                 <width>113</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_23">
-               <property name="geometry">
-                <rect>
-                 <x>670</x>
-                 <y>70</y>
-                 <width>111</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Intérprete de album:</string>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditAlbumInter">
-               <property name="geometry">
-                <rect>
-                 <x>670</x>
-                 <y>90</y>
-                 <width>113</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_24">
-               <property name="geometry">
-                <rect>
-                 <x>940</x>
-                 <y>70</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Pista:</string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_26">
-               <property name="geometry">
-                <rect>
-                 <x>410</x>
-                 <y>130</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Letra:</string>
-               </property>
-              </widget>
-              <widget class="QPlainTextEdit" name="TextEditLiryc">
-               <property name="geometry">
-                <rect>
-                 <x>410</x>
-                 <y>150</y>
-                 <width>641</width>
-                 <height>51</height>
-                </rect>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="SaveButton_8">
-               <property name="geometry">
-                <rect>
-                 <x>10</x>
-                 <y>210</y>
-                 <width>1041</width>
-                 <height>20</height>
-                </rect>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{border: 2px solid grey;border-radius: 10px;color: black;background-color: white}
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_27">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>19</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>19</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Seleccione carpeta:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <spacer name="horizontalSpacer_17">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>36</width>
+                   <height>17</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="5">
+                <widget class="QToolButton" name="toolButton_8">
+                 <property name="minimumSize">
+                  <size>
+                   <width>19</width>
+                   <height>19</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>19</width>
+                   <height>19</height>
+                  </size>
+                 </property>
+                 <property name="sizeIncrement">
+                  <size>
+                   <width>2</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renombra todos los archivos seleccionados utilizando el template.&lt;/p&gt;&lt;p&gt;El template reemplazará XXX por el número de archivo.&lt;/p&gt;&lt;p&gt;En caso de no encontrar indicarlo, se agrega numeración al final.&lt;/p&gt;&lt;p&gt;La numeración inicia desde el número indicado (0 por defecto).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="whatsThis">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selecciona un archivo MP3 y agregua/edita los tags de dicha canción.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LayoutDirection::RightToLeft</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>16</width>
+                   <height>16</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMusicFolder">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>220</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="ButtonChangeMusic">
+                   <property name="minimumSize">
+                    <size>
+                     <width>34</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>34</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="res_rc.qrc">
+                     <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-add-folder.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-add-folder.svg</iconset>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="1" alignment="Qt::AlignmentFlag::AlignLeft">
+                <widget class="QPushButton" name="ButtonUpdateMusic">
+                 <property name="maximumSize">
+                  <size>
+                   <width>34</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="res_rc.qrc">
+                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-refresh.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-refresh.svg</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3" rowspan="2">
+                <widget class="QWidget" name="WidgetMusicTag" native="true">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>572</width>
+                   <height>152</height>
+                  </size>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_8">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="horizontalSpacing">
+                   <number>10</number>
+                  </property>
+                  <property name="verticalSpacing">
+                   <number>0</number>
+                  </property>
+                  <item row="9" column="2" alignment="Qt::AlignmentFlag::AlignTop">
+                   <widget class="QLineEdit" name="lineEditCompositor">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="3">
+                   <widget class="QLabel" name="label_28">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Mood:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" rowspan="10">
+                   <widget class="QLabel" name="labelCover">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>150</width>
+                      <height>150</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>150</height>
+                     </size>
+                    </property>
+                    <property name="contextMenuPolicy">
+                     <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border: none;</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="res_rc.qrc">:/resources/resources/NoImage.svg</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="lineEditSong">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_17">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Título:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="3">
+                   <widget class="QLabel" name="label_24">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Pista:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLineEdit" name="lineEditInterpeter">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QLabel" name="label_19">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Género:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="QLabel" name="label_23">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Intérprete de album:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1" alignment="Qt::AlignmentFlag::AlignTop">
+                   <widget class="QComboBox" name="comboBoxGenre">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="editable">
+                     <bool>true</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Blues</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Classic Rock</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Country</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dance</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Disco</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Funk</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Grunge</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Hip-Hop</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Jazz</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Metal</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>New Age</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Oldies</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Other</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pop</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>R&amp;B</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Rap</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Reggae</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Rock</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Techno</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Industrial</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Alternative</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Ska</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Death Metal</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pranks</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Soundtrack</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Euro-Techno</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Ambient</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Trip-Hop</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Vocal</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Jazz+Funk</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Fusion</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Trance</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Classical</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Instrumental</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Acid</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>House</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Game</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Sound Clip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Gospel</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Noise</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>AlternRock</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Bass</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Soul</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Punk</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Space</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Meditative</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Instrumental Pop</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Instrumental Rock</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Ethnic</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Gothic</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Darkwave</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Techno-Industrial</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Electronic</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pop-Folk</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Eurodance</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dream</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Southern Rock</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Comedy</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Cult</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Gangsta</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Top 40</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Christian Rap</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Pop/Funk</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Jungle</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Native American</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Cabaret</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>New Wave</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Psychedelic</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Rave</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Showtunes</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Trailer</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Lo-Fi</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Tribal</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Acid Punk</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Acid Jazz</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Polka</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Retro</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Musical</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Rock &amp; Roll</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Hard Rock</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="label_18">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Intérprete:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QLabel" name="label_20">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Album:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QLineEdit" name="lineEditAlbum">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="2">
+                   <widget class="QLabel" name="label_22">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Año:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="3" alignment="Qt::AlignmentFlag::AlignTop">
+                   <widget class="QLineEdit" name="lineEditMood">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="2">
+                   <widget class="QLabel" name="label_21">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>19</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Compositor:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="2">
+                   <widget class="QLineEdit" name="lineEditYear">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="1" alignment="Qt::AlignmentFlag::AlignTop">
+                   <widget class="QLineEdit" name="lineEditAlbumInter">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="3" alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+                   <widget class="QWidget" name="widgetTrack" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                     <property name="spacing">
+                      <number>6</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item alignment="Qt::AlignmentFlag::AlignTop">
+                      <widget class="QSpinBox" name="spinBoxTrack">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_25">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border:none;</string>
+                       </property>
+                       <property name="text">
+                        <string>de</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="spinBoxMaxTrack">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="7" column="1" colspan="3">
+                   <spacer name="verticalSpacer_7">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>38</width>
+                      <height>15</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="2" column="1" colspan="3">
+                   <spacer name="verticalSpacer_8">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>38</width>
+                      <height>15</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <spacer name="verticalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>5</width>
+                   <height>15</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="4" column="3">
+                <widget class="QLabel" name="label_26">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>19</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>19</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Letra:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3" alignment="Qt::AlignmentFlag::AlignTop">
+                <widget class="QPlainTextEdit" name="TextEditLiryc">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>572</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0" colspan="4">
+                <widget class="QPushButton" name="SaveButton_8">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{border: 2px solid grey;border-radius: 10px;color: black;background-color: white}
 QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: lightgrey;}
 QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: darkgrey}
 </string>
-               </property>
-               <property name="text">
-                <string>Guardar</string>
-               </property>
-              </widget>
-              <widget class="QWidget" name="layoutWidget">
-               <property name="geometry">
-                <rect>
-                 <x>940</x>
-                 <y>90</y>
-                 <width>121</width>
-                 <height>23</height>
-                </rect>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
-                <property name="spacing">
-                 <number>6</number>
-                </property>
-                <item>
-                 <widget class="QSpinBox" name="spinBoxTrack"/>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_25">
-                  <property name="text">
-                   <string>de</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QSpinBox" name="spinBoxMaxTrack"/>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QLabel" name="label_27">
-               <property name="geometry">
-                <rect>
-                 <x>540</x>
-                 <y>10</y>
-                 <width>101</width>
-                 <height>16</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Título:</string>
-               </property>
-              </widget>
-              <widget class="QLineEdit" name="lineEditMusicFolder">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>10</y>
-                 <width>251</width>
-                 <height>24</height>
-                </rect>
-               </property>
-              </widget>
+                 </property>
+                 <property name="text">
+                  <string>Guardar</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2" rowspan="2">
+                <spacer name="horizontalSpacer_18">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>157</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="0" rowspan="4">
+                <widget class="QListWidget" name="listWidgetMusic">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>254</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </widget>
            </item>
@@ -3087,7 +3491,7 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
           <property name="sizeHint" stdset="0">
            <size>
             <width>0</width>
-            <height>40</height>
+            <height>1</height>
            </size>
           </property>
          </spacer>
@@ -3360,16 +3764,16 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
   <connection>
    <sender>pushButtonPDF</sender>
    <signal>clicked()</signal>
-   <receiver>widgetPDF</receiver>
-   <slot>hide()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>CloseTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>45</x>
      <y>137</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>172</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
@@ -3440,128 +3844,112 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
   <connection>
    <sender>pushButtonIMG</sender>
    <signal>clicked()</signal>
-   <receiver>widgetIMG</receiver>
-   <slot>hide()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>CloseTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>45</x>
      <y>485</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>468</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_4</sender>
+   <sender>pushButtonMSCmini</sender>
    <signal>clicked()</signal>
-   <receiver>widgetMSC</receiver>
-   <slot>show()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>OpenTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>1046</x>
      <y>64</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>1056</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>pushButtonFILE</sender>
    <signal>clicked()</signal>
-   <receiver>widgetFILE</receiver>
-   <slot>hide()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>CloseTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>45</x>
      <y>779</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>765</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>pushButtonMSC</sender>
    <signal>clicked()</signal>
-   <receiver>widgetMSC</receiver>
-   <slot>hide()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>CloseTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>45</x>
      <y>1070</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>1056</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>pushButtonPDFmini</sender>
    <signal>clicked()</signal>
-   <receiver>widgetPDF</receiver>
-   <slot>show()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>OpenTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>147</x>
      <y>64</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>257</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>pushButtonIMGmini</sender>
    <signal>clicked()</signal>
-   <receiver>widgetIMG</receiver>
-   <slot>show()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>OpenTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>447</x>
      <y>64</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>534</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_3</sender>
+   <sender>pushButtonFILEmini</sender>
    <signal>clicked()</signal>
-   <receiver>widgetFILE</receiver>
-   <slot>show()</slot>
+   <receiver>MyLovePDF</receiver>
+   <slot>OpenTab()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>747</x>
      <y>64</y>
     </hint>
     <hint type="destinationlabel">
-     <x>594</x>
-     <y>797</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ButtonChangeMusic</sender>
-   <signal>clicked()</signal>
-   <receiver>MyLovePDF</receiver>
-   <slot>ChangeMusicFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>413</x>
-     <y>865</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>597</x>
-     <y>605</y>
+     <x>712</x>
+     <y>665</y>
     </hint>
    </hints>
   </connection>
@@ -3585,7 +3973,7 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
    <sender>listWidgetMusic</sender>
    <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
    <receiver>MyLovePDF</receiver>
-   <slot>UpdateMusic()</slot>
+   <slot>GetItemMusicTags()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>239</x>
@@ -3594,6 +3982,38 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
     <hint type="destinationlabel">
      <x>601</x>
      <y>571</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonChangeMusic</sender>
+   <signal>clicked()</signal>
+   <receiver>MyLovePDF</receiver>
+   <slot>ChangeMusicFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>865</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>597</x>
+     <y>605</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MyLovePDF</receiver>
+   <slot>GuardarMusica()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>610</x>
+     <y>1296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>712</x>
+     <y>667</y>
     </hint>
    </hints>
   </connection>
@@ -3609,6 +4029,9 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
   <slot>Renombrar()</slot>
   <slot>UpdateMusicFile()</slot>
   <slot>ChangeMusicFile()</slot>
-  <slot>UpdateMusic()</slot>
+  <slot>GuardarMusica()</slot>
+  <slot>GetItemMusicTags()</slot>
+  <slot>CloseTab()</slot>
+  <slot>OpenTab()</slot>
  </slots>
 </ui>
