@@ -1,6 +1,6 @@
 import fitz  # pymupdf
 import os
-from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB
+from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB, ID3TimeStamp
 
 A4_WIDTH, A4_HEIGHT = 595, 842  
 
@@ -239,122 +239,118 @@ def unir_pdfs(entradas, salida, archivo_par:int = 0):
 
 	print(f"PDFs combinados y guardados en '{salida}'")
 
-def getMusicTags(archivo):
-    """
-    Devuelve un diccionario con los metadatos básicos de un archivo MP3.
-    Se intentan obtener: título, artista, álbum, compositor, artista del álbum,
-    género, track (número/total), letra, año y portada.
-    
-    Si un tag no está presente, su valor será None. Para la portada, se devuelve
-    un diccionario con 'mime', 'desc' y 'size' o None si no existe.
-    """
-    try:
-        audio = ID3(archivo)
-    except Exception as e:
-        print(f"Error al abrir {archivo}: {e}")
-        return {}
+def getMusicTags(archivo) -> dict[str]:
+	"""
+	Devuelve un diccionario con los metadatos básicos de un archivo MP3.
+	Se intentan obtener: título, artista, álbum, compositor, artista del álbum,
+	género, track (número/total), letra, año y portada.
+	
+	Si un tag no está presente, su valor será None. Para la portada, se devuelve
+	un diccionario con 'mime', 'desc' y 'size' o None si no existe.
+	"""
+	try:
+		audio = ID3(archivo)
+	except Exception as e:
+		#print(f"Error al abrir {archivo}: {e}")
+		return {}
+	tags_frames = {
+		"title": "TIT2",
+		"artist": "TPE1",
+		"album": "TALB",
+		"composer": "TCOM",
+		"album_artist": "TPE2",
+		"genre": "TCON",
+		"track": "TRCK",
+		"lyrics": "USLT",
+		"year": "TDRC"
+	}
+	tags = {}
+	for key, frame_id in tags_frames.items():
+		frame = audio.get(frame_id)
+		if frame:
+			try:
+				if key == "year":
+					tags[key] = str(frame.text[0])
+				else:
+					tags[key] = frame.text[0] if isinstance(frame.text, list) else frame.text
+			except Exception:
+				tags[key] = str(frame)
+		else:
+			tags[key] = ""
 
-    tags_frames = {
-        "title": "TIT2",
-        "artist": "TPE1",
-        "album": "TALB",
-        "composer": "TCOM",
-        "album_artist": "TPE2",
-        "genre": "TCON",
-        "track": "TRCK",
-        "lyrics": "USLT",
-        "year": "TDRC"
-    }
-    tags = {}
-    for key, frame_id in tags_frames.items():
-        frame = audio.get(frame_id)
-        if frame:
-            try:
-                tags[key] = frame.text[0]
-            except Exception:
-                tags[key] = str(frame)
-        else:
-            tags[key] = None
+	# Procesar portada (APIC)
+	apic_frame = audio.get("APIC:")
+	if apic_frame:
+		tags["cover"] = apic_frame.data  # Bytes de la imagen
+	else:
+		tags["cover"] = ""
 
-    # Procesar portada (APIC)
-    cover_frames = audio.getall("APIC")
-    if cover_frames:
-        # Tomamos el primer frame de portada
-        cover = cover_frames[0]
-        tags["cover"] = {
-            "mime": cover.mime,
-            "desc": cover.desc,
-            "size": len(cover.data)
-        }
-    else:
-        tags["cover"] = None
-
-    return tags
+	return tags
 
 def setMusicTags(archivo, tags):
-    """
-    Actualiza o agrega metadatos en un archivo MP3.
-    
-    Parámetros:
-      archivo (str): Ruta del archivo MP3.
-      tags (dict): Diccionario con las siguientes claves (valores de ejemplo):
-         'title': "Mi Canción"
-         'artist': "Mi Artista"
-         'album': "Mi Álbum"
-         'composer': "Mi Compositor"
-         'album_artist': "Artista del Álbum"
-         'genre': "Pop"
-         'track': "1/10"  (puede ser string o número/total)
-         'lyrics': "Letra completa..."
-         'year': "2021"
-         'cover': "cover.jpg"   <-- Ruta de la imagen para la portada
-         
-    Se eliminan los frames existentes para evitar duplicados y se agrega la portada
-    usando el frame APIC si se especifica.
-    """
-    try:
-        audio = ID3(archivo)
-    except Exception:
-        audio = ID3()
+	"""
+	Actualiza o agrega metadatos en un archivo MP3.
+	
+	Parámetros:
+	  archivo (str): Ruta del archivo MP3.
+	  tags (dict): Diccionario con las siguientes claves (valores de ejemplo):
+		 'title': "Mi Canción"
+		 'artist': "Mi Artista"
+		 'album': "Mi Álbum"
+		 'composer': "Mi Compositor"
+		 'album_artist': "Artista del Álbum"
+		 'genre': "Pop"
+		 'track': "1/10"  (puede ser string o número/total)
+		 'lyrics': "Letra completa..."
+		 'year': "2021"
+		 'cover': "cover.jpg"   <-- Ruta de la imagen para la portada
+		 
+	Se eliminan los frames existentes para evitar duplicados y se agrega la portada
+	usando el frame APIC si se especifica.
+	"""
+	try:
+		audio = ID3(archivo)
+	except Exception:
+		audio = ID3()
 
-    # Eliminar frames existentes para evitar duplicados
-    for frame in ["TIT2", "TPE1", "TALB", "TCOM", "TPE2", "TCON", "TRCK", "USLT", "TDRC", "APIC"]:
-        audio.delall(frame)
+	# Eliminar frames existentes para evitar duplicados
+	for frame in ["TIT2", "TPE1", "TALB", "TCOM", "TPE2", "TCON", "TRCK", "USLT", "TDRC", "APIC"]:
+		audio.delall(frame)
 
-    if "title" in tags and tags["title"]:
-        audio.add(TIT2(encoding=3, text=tags["title"]))
-    if "artist" in tags and tags["artist"]:
-        audio.add(TPE1(encoding=3, text=tags["artist"]))
-    if "album" in tags and tags["album"]:
-        audio.add(TALB(encoding=3, text=tags["album"]))
-    if "composer" in tags and tags["composer"]:
-        audio.add(TCOM(encoding=3, text=tags["composer"]))
-    if "album_artist" in tags and tags["album_artist"]:
-        audio.add(TPE2(encoding=3, text=tags["album_artist"]))
-    if "genre" in tags and tags["genre"]:
-        audio.add(TCON(encoding=3, text=tags["genre"]))
-    if "track" in tags and tags["track"]:
-        audio.add(TRCK(encoding=3, text=tags["track"]))
-    if "lyrics" in tags and tags["lyrics"]:
-        audio.add(USLT(encoding=3, lang="XXX", desc="", text=tags["lyrics"]))
-    if "year" in tags and tags["year"]:
-        audio.add(TDRC(encoding=3, text=str(tags["year"])))
-    
-    # Procesar portada: si 'cover' existe en tags, se asume que es la ruta al archivo de imagen.
-    if "cover" in tags and tags["cover"]:
-        cover_path = tags["cover"]
-        if os.path.exists(cover_path):
-            ext = os.path.splitext(cover_path)[1].lower()
-            mime = "image/jpeg"
-            if ext == ".png":
-                mime = "image/png"
-            try:
-                with open(cover_path, "rb") as img_file:
-                    data = img_file.read()
-                audio.add(APIC(encoding=3,mime=mime,type=3, desc="",data=data))
-            except Exception as e:
-                print("Error al agregar la portada:", e)
-        else:
-            print(f"Advertencia: No se encontró la imagen de portada '{cover_path}'.")
-    
-    audio.save(archivo)
+	if "title" in tags and tags["title"]:
+		audio.add(TIT2(encoding=3, text=tags["title"]))
+	if "artist" in tags and tags["artist"]:
+		audio.add(TPE1(encoding=3, text=tags["artist"]))
+	if "album" in tags and tags["album"]:
+		audio.add(TALB(encoding=3, text=tags["album"]))
+	if "composer" in tags and tags["composer"]:
+		audio.add(TCOM(encoding=3, text=tags["composer"]))
+	if "album_artist" in tags and tags["album_artist"]:
+		audio.add(TPE2(encoding=3, text=tags["album_artist"]))
+	if "genre" in tags and tags["genre"]:
+		audio.add(TCON(encoding=3, text=tags["genre"]))
+	if "track" in tags and tags["track"]:
+		audio.add(TRCK(encoding=3, text=tags["track"]))
+	if "lyrics" in tags and tags["lyrics"]:
+		audio.add(USLT(encoding=3, lang="XXX", desc="", text=tags["lyrics"]))
+	if "year" in tags and tags["year"]:
+		audio.add(TDRC(encoding=3, text=str(tags["year"])))
+	
+	# Procesar portada: si 'cover' existe en tags, se asume que es la ruta al archivo de imagen.
+	if "cover" in tags and tags["cover"]:
+		cover_path = tags["cover"]
+		if os.path.exists(cover_path):
+			ext = os.path.splitext(cover_path)[1].lower()
+			mime = "image/jpeg"
+			if ext == ".png":
+				mime = "image/png"
+			try:
+				with open(cover_path, "rb") as img_file:
+					data = img_file.read()
+				audio.add(APIC(encoding=3,mime=mime,type=3, desc="",data=data))
+			except Exception as e:
+				print("Error al agregar la portada:", e)
+		else:
+			print(f"Advertencia: No se encontró la imagen de portada '{cover_path}'.")
+	
+	audio.save(archivo)

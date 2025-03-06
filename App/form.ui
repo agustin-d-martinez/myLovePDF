@@ -95,7 +95,7 @@ QTabWidget#tabWidgetPDF::pane {background: transparent;border: none;border-image
          <number>20</number>
         </property>
         <item alignment="Qt::AlignmentFlag::AlignTop">
-         <widget class="QWidget" name="" native="true">
+         <widget class="QWidget" name="widget" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -2355,9 +2355,9 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
                <property name="geometry">
                 <rect>
                  <x>20</x>
-                 <y>10</y>
+                 <y>40</y>
                  <width>251</width>
-                 <height>191</height>
+                 <height>161</height>
                 </rect>
                </property>
               </widget>
@@ -3060,6 +3060,16 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                 <string>Título:</string>
                </property>
               </widget>
+              <widget class="QLineEdit" name="lineEditMusicFolder">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>10</y>
+                 <width>251</width>
+                 <height>24</height>
+                </rect>
+               </property>
+              </widget>
              </widget>
             </widget>
            </item>
@@ -3571,6 +3581,22 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>listWidgetMusic</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>MyLovePDF</receiver>
+   <slot>UpdateMusic()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>239</x>
+     <y>951</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>601</x>
+     <y>571</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>selectFile()</slot>
@@ -3583,5 +3609,6 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
   <slot>Renombrar()</slot>
   <slot>UpdateMusicFile()</slot>
   <slot>ChangeMusicFile()</slot>
+  <slot>UpdateMusic()</slot>
  </slots>
 </ui>

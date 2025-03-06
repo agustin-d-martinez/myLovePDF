@@ -167,9 +167,13 @@ class MainWindow(QMainWindow):
 		msg.exec()  # Mostrar el cuadro de diálogo
 
 	def UpdateMusicFile(self):
-		pass
+		self.UpdateMusicList(self.ui.lineEditMusicFolder.text())
 	def ChangeMusicFile(self):
 		archivo = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
+		self.ui.lineEditMusicFolder.setText(archivo)
+		self.UpdateMusicList(archivo)
+	def UpdateMusicList(self, archivo):
+		self.ui.listWidgetMusic.clear()
 		archivos = []
 		if archivo :
 			for root, dirs, files in os.walk(archivo):
@@ -177,6 +181,34 @@ class MainWindow(QMainWindow):
 					if file.endswith(".mp3"):
 						archivos.append(file)
 			self.ui.listWidgetMusic.addItems(archivos)
+
+	def UpdateMusic(self, item: QListWidgetItem):
+		tags = doc.getMusicTags(os.path.join(self.ui.lineEditMusicFolder.text(),item.text()))
+		self.ui.lineEditSong.setText(tags.get("title",""))
+		self.ui.lineEditInterpeter.setText(tags.get("artist",""))
+		self.ui.lineEditAlbum.setText(tags.get("album",""))
+		self.ui.lineEditCompositor.setText(tags.get("composer",""))
+		self.ui.lineEditAlbumInter.setText(tags.get("album_artist",""))
+		self.ui.TextEditLiryc.setPlainText(tags.get("lyrics",""))
+		self.ui.lineEditYear.setText(tags.get("year",""))
+
+		tracks = self.separateTracks(tags.get("track",""))
+		self.ui.spinBoxTrack.setValue(tracks[0])
+		self.ui.spinBoxMaxTrack.setValue(tracks[1])
+		self.ui.comboBoxGenre.setCurrentText(tags.get("genre",""))
+		self.ui.labelCover.setPixmap(QImage(tags.get("cover","")))
+	def separateTracks(self,track_str:str):
+		try:
+			parts = track_str.split("/")
+			if len(parts) == 2:
+				track = int(parts[0].strip())
+				total = int(parts[1].strip())
+				return track, total
+			elif len(parts) == 1:
+				# Si solo viene un número, asumimos total 0
+				return int(parts[0].strip()), 0
+		except Exception:
+			return 0, 0
 
 
 if __name__ == "__main__":
