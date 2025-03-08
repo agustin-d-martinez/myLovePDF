@@ -35,7 +35,7 @@ QWidget#widgetIMG{background:none;}
 QWidget#widgetFILE{background:none;}
 QWidget#widgetMSC{background:none;}
 QToolButton{color: rgba(255,255,255,0);background-color: rgba(0, 0, 0,0);
-border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogation.svg);}
+border-image: url(:/resources/resources/fi-rr-interrogation.svg);}
 QTabWidget#tabWidgetFILE::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgFILE3.png') 0 0 0 0 stretch}
 QTabWidget#tabWidgetIMG::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgIMG3.png') 0 0 0 0 stretch}
 QTabWidget#tabWidgetPDF::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgPDF3.png') 0 0 0 0 stretch}
@@ -529,7 +529,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -865,7 +865,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -968,7 +968,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -1248,7 +1248,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -1584,7 +1584,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -1771,7 +1771,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -2021,7 +2021,7 @@ QPushButton:pressed{border-color: #05051a;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -2330,7 +2330,7 @@ QPushButton:pressed{border-color: #020224;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-files-medical.svg</normaloff>:/resources/resources/fi-rr-files-medical.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -2662,7 +2662,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}</string>
              </item>
             </layout>
            </item>
-           <item alignment="Qt::AlignmentFlag::AlignLeft">
+           <item>
             <widget class="QTabWidget" name="tabWidgetMSC">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2694,11 +2694,11 @@ QTabBar::tab:selected {background: #15cc01;border:1px solid grey;border-bottom: 
 QLabel{background-color: transparent;padding:2px;color:white;border-bottom: 4px solid #1a5410;}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="tabMusica">
               <attribute name="title">
-               <string>Música</string>
+               <string>Tag Música</string>
               </attribute>
               <layout class="QGridLayout" name="gridLayout_9">
                <property name="leftMargin">
@@ -2857,7 +2857,7 @@ QPushButton:pressed{border-color: #0a1f06;background-color: darkgrey}</string>
                    </property>
                    <property name="icon">
                     <iconset resource="res_rc.qrc">
-                     <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-add-folder.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-add-folder.svg</iconset>
+                     <normaloff>:/resources/resources/fi-rr-add-folder.svg</normaloff>:/resources/resources/fi-rr-add-folder.svg</iconset>
                    </property>
                   </widget>
                  </item>
@@ -2882,7 +2882,7 @@ QPushButton:pressed{border-color: #0a1f06;background-color: darkgrey}</string>
                  </property>
                  <property name="icon">
                   <iconset resource="res_rc.qrc">
-                   <normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-refresh.svg</normaloff>:/resources/resources/uicons-regular-rounded/fi-rr-refresh.svg</iconset>
+                   <normaloff>:/resources/resources/fi-rr-refresh.svg</normaloff>:/resources/resources/fi-rr-refresh.svg</iconset>
                  </property>
                 </widget>
                </item>
@@ -3838,6 +3838,309 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                 </widget>
                </item>
               </layout>
+             </widget>
+             <widget class="QWidget" name="tabYoutube">
+              <attribute name="title">
+               <string>Descarga Youtube</string>
+              </attribute>
+              <widget class="QPushButton" name="SaveButton_10">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>310</y>
+                 <width>951</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{border: 2px solid grey;border-radius: 10px;color: black;background-color: white}
+QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: lightgrey;}
+QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: darkgrey}
+</string>
+               </property>
+               <property name="text">
+                <string>Guardar</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="lineEditUrl">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>50</y>
+                 <width>381</width>
+                 <height>24</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>220</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 2px solid #1a5410;padding:2px;color: black;background-color: white;
+border-radius: 10px;</string>
+               </property>
+               <property name="placeholderText">
+                <string>https://www.youtube.com/watch?v=XXXXXX</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_32">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>20</y>
+                 <width>371</width>
+                 <height>19</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>URL del video:</string>
+               </property>
+              </widget>
+              <widget class="QComboBox" name="comboBoxFileType">
+               <property name="geometry">
+                <rect>
+                 <x>480</x>
+                 <y>50</y>
+                 <width>101</width>
+                 <height>24</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>mp3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>mp4</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QLabel" name="labelYoutubeMiniature">
+               <property name="geometry">
+                <rect>
+                 <x>630</x>
+                 <y>20</y>
+                 <width>150</width>
+                 <height>150</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>150</width>
+                 <height>150</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>150</height>
+                </size>
+               </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: none;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="res_rc.qrc">:/resources/resources/NoImage.svg</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_33">
+               <property name="geometry">
+                <rect>
+                 <x>480</x>
+                 <y>20</y>
+                 <width>101</width>
+                 <height>19</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Tipo de Archivo:</string>
+               </property>
+              </widget>
+              <widget class="QToolButton" name="toolButton_10">
+               <property name="geometry">
+                <rect>
+                 <x>980</x>
+                 <y>20</y>
+                 <width>19</width>
+                 <height>19</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>19</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>19</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="sizeIncrement">
+                <size>
+                 <width>2</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renombra todos los archivos seleccionados utilizando el template.&lt;/p&gt;&lt;p&gt;El template reemplazará XXX por el número de archivo.&lt;/p&gt;&lt;p&gt;En caso de no encontrar indicarlo, se agrega numeración al final.&lt;/p&gt;&lt;p&gt;La numeración inicia desde el número indicado (0 por defecto).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="whatsThis">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selecciona un archivo MP3 y agregua/edita los tags de dicha canción.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LayoutDirection::RightToLeft</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;
+border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_34">
+               <property name="geometry">
+                <rect>
+                 <x>40</x>
+                 <y>140</y>
+                 <width>371</width>
+                 <height>19</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Título del video:</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="lineEditUrl_2">
+               <property name="geometry">
+                <rect>
+                 <x>40</x>
+                 <y>170</y>
+                 <width>371</width>
+                 <height>24</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>220</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 2px solid #1a5410;padding:2px;color: black;background-color: white;
+border-radius: 10px;</string>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string/>
+               </property>
+              </widget>
              </widget>
             </widget>
            </item>

@@ -2,3 +2,6 @@ PySide6
 pymupdf
 pillow
 mutagen
+pytubefix
+pydub
+ffmpeg
