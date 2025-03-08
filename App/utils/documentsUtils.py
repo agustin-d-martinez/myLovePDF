@@ -1,5 +1,6 @@
 import fitz  # pymupdf
 import os
+from PIL import Image
 from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB, TMOO
 
 A4_WIDTH, A4_HEIGHT = 595, 842  
@@ -127,6 +128,48 @@ def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842
 		doc.save(salida)
 
 	doc.close()
+def pdf_a_imagen(archivos, salida):
+	"""
+	Convierte uno o varios archivos PDF en imágenes utilizando PyMuPDF (fitz).
+	
+	Parámetros:
+	  archivos: ruta (string) a un PDF o lista de rutas de archivos PDF.
+	  salida: carpeta de salida donde se guardarán las imágenes.
+			  Para cada PDF se creará una subcarpeta con el nombre del PDF (sin extensión).
+	"""
+	if not archivos:
+		return
+	if isinstance(archivos,str):
+		archivos = [archivos]
+	os.makedirs(salida,exist_ok=True)
+
+	for pdf in archivos:
+		nombre_pdf = os.path.splitext(os.path.basename(pdf))[0]
+		carpeta_pdf = os.path.join(salida,nombre_pdf)
+		os.makedirs(carpeta_pdf,exist_ok=True)
+
+		try:
+			doc = fitz.open(pdf)
+		except Exception as e:
+			continue
+		for i, pagina in enumerate(doc):
+			pix = pagina.get_pixmap()
+			path = os.path.join(carpeta_pdf,f"{nombre_pdf}_{i+1:03}.png")
+			try:
+				pix.save(path)
+			except Exception as e:
+				continue
+		
+		doc.close()
+
+def cambiar_img_ext(imagen, extension):
+	if not imagen:
+		return
+	salida = os.path.splitext(imagen)[0] + extension
+	img = Image.open(imagen)
+	if img.mode in ("RGBA","P"):
+		img = img.convert("RGB")
+	img.save(salida)
 
 def separar_pdf(entrada, salida, paginas, conservar= False, salida_extra = None):
 	if not os.path.exists(entrada):

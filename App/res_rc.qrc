@@ -2,18 +2,23 @@
     <qresource prefix="/resources">
         <file>resources/uicons-regular-rounded/fi-rr-interrogation.svg</file>
         <file>resources/uicons-regular-rounded/fi-rr-files-medical.svg</file>
-        <file>resources/bgPDF.png</file>
         <file>resources/bgFILE.png</file>
         <file>resources/bgIMG.png</file>
         <file>resources/bgIMG2.png</file>
         <file>resources/bgIMG3.png</file>
         <file>resources/bgFILE2.png</file>
         <file>resources/bgFILE3.png</file>
-        <file>resources/bgPDF2.png</file>
-        <file>resources/bgPDF3.png</file>
         <file>resources/uicons-regular-rounded/fi-rr-add-document.svg</file>
         <file>resources/uicons-regular-rounded/fi-rr-add-folder.svg</file>
         <file>resources/uicons-regular-rounded/fi-rr-refresh.svg</file>
         <file>resources/NoImage.svg</file>
+        <file>resources/bgPDF2.png</file>
+        <file>resources/bgPDF3.png</file>
+        <file>resources/bgPDF4.png</file>
+        <file>resources/bgFILE4.png</file>
+        <file>resources/bgIMG4.png</file>
+        <file>resources/bgMSC2.png</file>
+        <file>resources/bgMSC3.png</file>
+        <file>resources/bgMSC4.png</file>
     </qresource>
 </RCC>

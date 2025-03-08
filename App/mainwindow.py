@@ -84,6 +84,7 @@ class MainWindow(QMainWindow):
 			self.ui.ButtonFileSelect_5: ("img", self.ui.ListFileSelector_2.listWidget, True),
 			self.ui.ButtonFileSelect_6: ("pdf", self.ui.ListFileSelector_3.listWidget, True),
 			self.ui.ButtonFileSelect_7: ("all", self.ui.ListFileSelector_4.listWidget, True),
+			self.ui.ButtonFileSelect_8: ("img", self.ui.FileSelector_8, False),
 		}
 
 		sender = self.sender()
@@ -140,10 +141,14 @@ class MainWindow(QMainWindow):
 			self.ErrorMessage()
 			return
 		
-		salida = self.SaveFile("Imagen (*.jpg)")
+		salida = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
 		if salida :
-			print("NOT IMPLEMENTED")
+			doc.pdf_a_imagen(entradas,salida)
 
+	def ExtensionImg(self):
+		entrada = self.ui.FileSelector_8.text()
+		extension = self.ui.comboBox_2.currentText()
+		doc.cambiar_img_ext(entrada , extension)
 
 	def SepararPDF(self):
 		entrada = self.ui.FileSelector_2.text()
