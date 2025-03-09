@@ -4,6 +4,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 import utils.documentsUtils as doc
+import utils.videoUtils as vid
 import os
 
 # Important:
@@ -229,7 +230,7 @@ class MainWindow(QMainWindow):
 		archivo = self.SaveFile(f".{formato}")
 		url = self.ui.lineEditUrl.text()
 		if url:
-			doc.descargar_video(url,archivo,formato)
+			vid.descargar_video(url,archivo,formato)
 
 	def SaveFile(self, type) :
 		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
@@ -250,7 +251,7 @@ class MainWindow(QMainWindow):
 		self._UpdateMusicList(archivo)
 
 	def UpdateVideo(self):
-		titulo, miniatura = doc.obtenerTituloPortadaVideo(self.ui.lineEditUrl.text())
+		titulo, miniatura = vid.obtenerTituloPortadaVideo(self.ui.lineEditUrl.text())
 		self.ui.lineEditVideoTitle.setText(titulo)
 		pixmap = QPixmap()
 		pixmap.loadFromData(miniatura)

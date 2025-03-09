@@ -2,7 +2,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 
-from DroppableList import DroppableList
+from .DroppableList import DroppableList
 
 class ButtonListWidget(QWidget):
 	_btn_add = None

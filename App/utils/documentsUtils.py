@@ -2,10 +2,6 @@ import fitz  # pymupdf
 import os
 from PIL import Image
 from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB, TMOO
-from pytubefix import YouTube
-from pydub import AudioSegment
-import requests
-from io import BytesIO
 
 A4_WIDTH, A4_HEIGHT = 595, 842  
 
@@ -372,71 +368,3 @@ def setMusicTags(archivo, tags):
 	if "cover" in tags and tags["cover"]:		# Procesar portada: si 'cover' existe en tags, se asume bytes de PNG.
 		audio.add(APIC(encoding=3,mime="image/png",type=3, desc="",data=tags["cover"]))	
 	audio.save(archivo)
-
-def descargar_video(url, salida, formato="mp4"):
-	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
-	path, nombre = os.path.split(os.path.splitext(salida)[0])
-	
-	if formato == "mp3":
-		# Descargar el mejor stream de audio
-		audio_stream = yt.streams.filter(only_audio=True, file_extension="mp4") \
-								  .order_by('abr').desc().first()
-		archivo_temp = f"{nombre}_temp.mp4"
-		ruta_temp = os.path.join(path, archivo_temp)
-		audio_stream.download(output_path=path, filename=archivo_temp)
-		
-		# Convertir a mp3 usando ffmpeg 
-		salida_final = os.path.join(path, f"{nombre}.mp3")
-		comando = f'ffmpeg -y -i "{ruta_temp}" -vn -c:a libmp3lame -q:a 2 "{salida_final}"'
-		os.system(comando)
-		os.remove(ruta_temp)
-	
-	else:  # formato "mp4"
-		archivo_mp4 = f"{nombre}.mp4"
-		ruta_archivo = os.path.join(path, archivo_mp4)
-
-		# Intentar obtener un stream adaptativo (video sin audio) de mayor resolución
-		stream_progresivo = yt.streams.filter(progressive=True, file_extension="mp4") \
-									  .order_by('resolution').desc().first()
-		stream_video_only = yt.streams.filter(adaptive=True, only_video=True, file_extension="mp4") \
-									  .order_by('resolution').desc().first()
-		
-		if stream_video_only is not None:
-			# Convertir la resolución (p.ej. "1080p") a número
-			res_progresiva = int(stream_progresivo.resolution.replace("p", "")) if stream_progresivo else 0
-			res_adaptativa = int(stream_video_only.resolution.replace("p", ""))
-			
-			if res_adaptativa > res_progresiva:
-				archivo_video = f"{nombre}_video.mp4"
-				archivo_audio = f"{nombre}_audio.mp4"
-				ruta_video = os.path.join(path, archivo_video)
-				ruta_audio = os.path.join(path, archivo_audio)
-				
-				# Descargar video (sin audio) y el mejor audio por separado
-				stream_video_only.download(output_path=path, filename=archivo_video)
-				stream_audio = yt.streams.filter(only_audio=True, file_extension="mp4") \
-										 .order_by('abr').desc().first()
-				stream_audio.download(output_path=path, filename=archivo_audio)
-				
-				# Combinar video y audio con ffmpeg
-				comando = f'ffmpeg -y -i "{ruta_video}" -i "{ruta_audio}" -c:v copy -c:a aac "{ruta_archivo}"'
-				os.system(comando)
-				os.remove(ruta_video)
-				os.remove(ruta_audio)
-				return
-		
-		# Si no hay stream adaptativo o no es de mayor calidad, usar el stream progresivo
-		stream_progresivo.download(output_path=path, filename=archivo_mp4)
-
-#descargar_video_alta_resolucion("https://www.youtube.com/watch?v=oTRJNfjh_iU", "E:\\Agustin\\Downloads\\prueba2.mp3","mp3")
-
-def obtenerTituloPortadaVideo(url):
-	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
-	titulo = yt.title
-	miniatura_url = yt.thumbnail_url
-	response = requests.get(miniatura_url)
-	if response.status_code == 200:
-		miniatura = BytesIO(response.content).read()
-	else :
-		miniatura = b""
-	return titulo , miniatura

@@ -3,6 +3,5 @@ pymupdf
 pillow
 mutagen
 pytubefix
-pydub
-ffmpeg
-request
+requests
+moviepy==1.0.3

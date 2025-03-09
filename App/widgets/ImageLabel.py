@@ -3,21 +3,55 @@ from PySide6.QtCore import *
 from PySide6.QtGui import * 
 
 class ImageLabel(QLabel):
-	def __init__(self, parent = None, pixmap = u"widgets\\add_symbol.svg", editable = False):
-		super().__init__(parent)
-		fondo = QPixmap(pixmap)
-		self.setPixmap(fondo)
-		self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+	def __init__(self, *args, editable=False, default_pixmap_path=u"widgets/NoImage.svg", **kwargs):
+		super().__init__(*args, **kwargs)
+		self.setScaledContents(True)
 
-		self.contextMenu = QMenu("",self)
-		action_cut = QAction("Cortar",None)
+		self._defaultPixmap = QPixmap(default_pixmap_path) 	
+		if self.pixmap().isNull():
+			self.clear()
+			self.setPixmap(self._defaultPixmap)
+		self._context_menu = QMenu(self)
+
+		action_cut = QAction(QIcon.fromTheme("edit-cut"),"Cortar",self)
+		action_cut.setShortcut(QKeySequence("CTRL+X"))
+		action_cut.triggered.connect(self.cut)		
+
+		action_copy = QAction(QIcon.fromTheme("edit-copy"),"Copiar",self)
+		action_copy.setShortcut(QKeySequence("CTRL+C"))		
+		action_copy.triggered.connect(self.copy)	
+
+		action_paste = QAction(QIcon.fromTheme("edit-paste"),"Pegar",self)
+		action_paste.setShortcut(QKeySequence("CTRL+V"))
+		action_paste.triggered.connect(self.paste)		
+
+		action_delete = QAction(QIcon.fromTheme("edit-delete"),"Borrar",self)
+		action_delete.setShortcut(Qt.Key.Key_Delete)
+		action_delete.triggered.connect(self.delete)
+		
+		self._context_menu.addAction(action_cut)
+		self._context_menu.addAction(action_copy)
+		self._context_menu.addAction(action_paste)
+		self._context_menu.addAction(action_delete)
 
 		if editable:
-			self.contextMenu.addAction("cortar", self.cut, shortcut=QKeySequence(Qt.Key.Key_Control | Qt.Key.Key_X) )
-	
+			self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+			self.customContextMenuRequested.connect(self.execContextMenu)
+
+	def execContextMenu(self, pos):
+		self._context_menu.exec(self.mapToGlobal(pos))
 	def cut (self):
-		print(1234567898)
+		self.copy()
+		self.delete()
 	def copy (self):
-		pass
+		clipboard = QApplication.clipboard()
+		pixmap = self.pixmap()
+		if pixmap :
+			clipboard.setPixmap(pixmap)
 	def paste (self):
-		pass
+		pixmap = QApplication.clipboard().pixmap()
+		if not pixmap.isNull():
+			self.setPixmap(pixmap)
+	def delete(self):
+		self.clear()
+		self.setPixmap(self._defaultPixmap)
