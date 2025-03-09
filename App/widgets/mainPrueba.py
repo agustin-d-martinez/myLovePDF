@@ -3,6 +3,8 @@ from PySide6.QtCore import *
 
 from ButtonListWidget import ButtonListWidget  # Importamos el widget personalizado
 from ModernCheckBox import ModernCheckBox
+from DroppableLineEdit import DroppableLineEdit
+from ImageLabel import ImageLabel
 
 class MainWindow(QMainWindow):
 	def __init__(self):
@@ -10,17 +12,19 @@ class MainWindow(QMainWindow):
 		self.resize(500,500)
 
 		self.containter = QFrame()
-		self._layout = QHBoxLayout()
-
+		self._layout = QVBoxLayout()
+		self.lineEdit = DroppableLineEdit()
 
 		# Instanciar el CustomListWidget
 		self.custom_list = ButtonListWidget(self)
 		self.custom_list.setFixedSize(300,200)
-		self.boton = ModernCheckBox("hola",self)
-		
+		self.boton = ModernCheckBox(self,"hola")
+		self.imagen = ImageLabel(self,editable=True)
+
 		self._layout.addWidget(self.custom_list, Qt.AlignCenter, Qt.AlignCenter)
 		self._layout.addWidget(self.boton, Qt.AlignCenter, Qt.AlignCenter)
-
+		self._layout.addWidget(self.lineEdit)
+		self._layout.addWidget(self.imagen)
 		# Acceder directamente al QListWidget
 		self.custom_list.listWidget.addItem("Archivo1.pdf")
 		self.custom_list.listWidget.addItem("Archivo2.pdf")

@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
+from PySide6.QtGui import *
 
 class DroppableList(QListWidget):
 	def __init__(self, parent = None):
@@ -50,26 +51,26 @@ class DroppableList(QListWidget):
 			self.delFile()
 		return super().keyPressEvent(event)
 
-	def dragEnterEvent(self, event):
+	def dragEnterEvent(self, event: QDragEnterEvent):
 		if event.mimeData().hasUrls:
 			event.accept()
 		else : 
 			event.ignore()
 	
-	def dragMoveEvent(self, event):
+	def dragMoveEvent(self, event: QDragMoveEvent):
 		if event.mimeData().hasUrls:
-			event.setDropAction(Qt.CopyAction)
+			event.setDropAction(Qt.DropAction.CopyAction)
 			event.accept()
 		else : 
 			event.ignore()
-	def dropEvent(self, event):
+	def dropEvent(self, event: QDropEvent):
 		if event.mimeData().hasUrls : 
-			event.setDropAction(Qt.CopyAction)
+			event.setDropAction(Qt.DropAction.CopyAction)
 			event.accept()
 			links = []
 			for url in event.mimeData().urls() :
-				if url.isLocalFile : 
-					links.append(str(url.toLocalFile()))
+				if url.isLocalFile() : 
+					links.append(url.toLocalFile())
 					## links.append(url.toString()) ##Para links de internet
 			self.addItems(links)
 

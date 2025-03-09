@@ -34,7 +34,7 @@ class Ui_MyLovePDF(object):
         self.centralwidget = QWidget(MyLovePDF)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(0, 0))
-        self.centralwidget.setStyleSheet(u"QWidget#centralwidget{background-color:#464646;}\n"
+        self.centralwidget.setStyleSheet(u"QWidget#centralwidget{background-color:#404142;}\n"
 "QScrollArea{background:transparent;}\n"
 "QWidget#scrollAreaWidgetContents{background:transparent;}\n"
 "QWidget#widgetPDF{background:none;}\n"
@@ -42,12 +42,12 @@ class Ui_MyLovePDF(object):
 "QWidget#widgetFILE{background:none;}\n"
 "QWidget#widgetMSC{background:none;}\n"
 "QToolButton{color: rgba(255,255,255,0);background-color: rgba(0, 0, 0,0);\n"
-"border-image: url(:/resources/resources/uicons-regular-rounded/fi-rr-interrogation.svg);}\n"
+"border-image: url(:/resources/resources/fi-rr-interrogation.svg);}\n"
 "QTabWidget#tabWidgetFILE::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgFILE3.png') 0 0 0 0 stretch}\n"
 "QTabWidget#tabWidgetIMG::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgIMG3.png') 0 0 0 0 stretch}\n"
 "QTabWidget#tabWidgetPDF::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgPDF3.png') 0 0 0 0 stretch}\n"
-"QTabWidget#tabWidgetMSC::pane {background: transparent;border: none;border-image: url(':/resources/resour"
-                        "ces/bgMSC3.png') 0 0 0 0 stretch}")
+"QTabWidget#tabWidgetMSC::pane {background: transparent;border: none;border-image: url(':/resources/resources/bgMSC3.png') 0 0 0 "
+                        "0 stretch}")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -241,7 +241,7 @@ class Ui_MyLovePDF(object):
 "QPushButton:hover{border-color: #050343;background-color: lightgrey;}\n"
 "QPushButton:pressed{border-color: #020224;background-color: darkgrey}")
         icon = QIcon()
-        icon.addFile(u":/resources/resources/uicons-regular-rounded/fi-rr-files-medical.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/resources/resources/fi-rr-files-medical.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.ButtonFileSelect.setIcon(icon)
 
         self.gridLayout.addWidget(self.ButtonFileSelect, 2, 1, 1, 1, Qt.AlignmentFlag.AlignTop)
@@ -1159,7 +1159,7 @@ class Ui_MyLovePDF(object):
 "QPushButton:hover{border-color: #133d0c;background-color: lightgrey;}\n"
 "QPushButton:pressed{border-color: #0a1f06;background-color: darkgrey}")
         icon1 = QIcon()
-        icon1.addFile(u":/resources/resources/uicons-regular-rounded/fi-rr-add-folder.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon1.addFile(u":/resources/resources/fi-rr-add-folder.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.ButtonChangeMusic.setIcon(icon1)
 
         self.horizontalLayout_11.addWidget(self.ButtonChangeMusic)
@@ -1175,7 +1175,7 @@ class Ui_MyLovePDF(object):
 "QPushButton:hover{border-color: #133d0c;background-color: lightgrey;}\n"
 "QPushButton:pressed{border-color: #0a1f06;background-color: darkgrey}")
         icon2 = QIcon()
-        icon2.addFile(u":/resources/resources/uicons-regular-rounded/fi-rr-refresh.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon2.addFile(u":/resources/resources/fi-rr-refresh.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.ButtonUpdateMusic.setIcon(icon2)
 
         self.gridLayout_9.addWidget(self.ButtonUpdateMusic, 1, 1, 1, 1, Qt.AlignmentFlag.AlignLeft)
@@ -1478,12 +1478,89 @@ class Ui_MyLovePDF(object):
         self.listWidgetMusic.setSizePolicy(sizePolicy13)
         self.listWidgetMusic.setMinimumSize(QSize(254, 0))
         self.listWidgetMusic.setMaximumSize(QSize(16777215, 16777215))
+        self.listWidgetMusic.setContextMenuPolicy(Qt.ContextMenuPolicy.DefaultContextMenu)
 
         self.gridLayout_9.addWidget(self.listWidgetMusic, 2, 0, 4, 1)
 
         self.tabWidgetMSC.addTab(self.tabMusica, "")
+        self.tabYoutube = QWidget()
+        self.tabYoutube.setObjectName(u"tabYoutube")
+        self.SaveButton_10 = QPushButton(self.tabYoutube)
+        self.SaveButton_10.setObjectName(u"SaveButton_10")
+        self.SaveButton_10.setGeometry(QRect(30, 310, 951, 20))
+        self.SaveButton_10.setStyleSheet(u"QPushButton{border: 2px solid grey;border-radius: 10px;color: black;background-color: white}\n"
+"QPushButton:hover{border-color: rgba(140, 120, 150,255);background-color: lightgrey;}\n"
+"QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: darkgrey}\n"
+"")
+        self.lineEditUrl = QLineEdit(self.tabYoutube)
+        self.lineEditUrl.setObjectName(u"lineEditUrl")
+        self.lineEditUrl.setGeometry(QRect(30, 50, 381, 24))
+        sizePolicy7.setHeightForWidth(self.lineEditUrl.sizePolicy().hasHeightForWidth())
+        self.lineEditUrl.setSizePolicy(sizePolicy7)
+        self.lineEditUrl.setMinimumSize(QSize(220, 24))
+        self.lineEditUrl.setMaximumSize(QSize(16777215, 24))
+        self.lineEditUrl.setStyleSheet(u"border: 2px solid #1a5410;padding:2px;color: black;background-color: white;\n"
+"border-radius: 10px;")
+        self.label_32 = QLabel(self.tabYoutube)
+        self.label_32.setObjectName(u"label_32")
+        self.label_32.setGeometry(QRect(30, 20, 371, 19))
+        sizePolicy3.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
+        self.label_32.setSizePolicy(sizePolicy3)
+        self.label_32.setMinimumSize(QSize(0, 19))
+        self.label_32.setMaximumSize(QSize(16777215, 19))
+        self.comboBoxFileType = QComboBox(self.tabYoutube)
+        self.comboBoxFileType.addItem("")
+        self.comboBoxFileType.addItem("")
+        self.comboBoxFileType.setObjectName(u"comboBoxFileType")
+        self.comboBoxFileType.setGeometry(QRect(480, 50, 101, 24))
+        self.labelThumbnail = QLabel(self.tabYoutube)
+        self.labelThumbnail.setObjectName(u"labelThumbnail")
+        self.labelThumbnail.setGeometry(QRect(630, 20, 150, 150))
+        sizePolicy3.setHeightForWidth(self.labelThumbnail.sizePolicy().hasHeightForWidth())
+        self.labelThumbnail.setSizePolicy(sizePolicy3)
+        self.labelThumbnail.setMinimumSize(QSize(150, 150))
+        self.labelThumbnail.setMaximumSize(QSize(150, 150))
+        self.labelThumbnail.setContextMenuPolicy(Qt.ContextMenuPolicy.DefaultContextMenu)
+        self.labelThumbnail.setStyleSheet(u"border: none;")
+        self.labelThumbnail.setPixmap(QPixmap(u":/resources/resources/NoImage.svg"))
+        self.labelThumbnail.setScaledContents(True)
+        self.label_33 = QLabel(self.tabYoutube)
+        self.label_33.setObjectName(u"label_33")
+        self.label_33.setGeometry(QRect(480, 20, 101, 19))
+        sizePolicy3.setHeightForWidth(self.label_33.sizePolicy().hasHeightForWidth())
+        self.label_33.setSizePolicy(sizePolicy3)
+        self.label_33.setMinimumSize(QSize(0, 19))
+        self.label_33.setMaximumSize(QSize(16777215, 19))
+        self.toolButton_10 = QToolButton(self.tabYoutube)
+        self.toolButton_10.setObjectName(u"toolButton_10")
+        self.toolButton_10.setGeometry(QRect(980, 20, 19, 19))
+        self.toolButton_10.setMinimumSize(QSize(19, 19))
+        self.toolButton_10.setMaximumSize(QSize(19, 19))
+        self.toolButton_10.setSizeIncrement(QSize(2, 0))
+        self.toolButton_10.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
+        self.toolButton_10.setStyleSheet(u"QToolTip {background-color: rgba(50, 50, 50, 128);color: #ffffff;\n"
+"border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}")
+        self.toolButton_10.setIconSize(QSize(16, 16))
+        self.label_34 = QLabel(self.tabYoutube)
+        self.label_34.setObjectName(u"label_34")
+        self.label_34.setGeometry(QRect(40, 140, 371, 19))
+        sizePolicy3.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
+        self.label_34.setSizePolicy(sizePolicy3)
+        self.label_34.setMinimumSize(QSize(0, 19))
+        self.label_34.setMaximumSize(QSize(16777215, 19))
+        self.lineEditVideoTitle = QLineEdit(self.tabYoutube)
+        self.lineEditVideoTitle.setObjectName(u"lineEditVideoTitle")
+        self.lineEditVideoTitle.setGeometry(QRect(40, 170, 371, 24))
+        sizePolicy7.setHeightForWidth(self.lineEditVideoTitle.sizePolicy().hasHeightForWidth())
+        self.lineEditVideoTitle.setSizePolicy(sizePolicy7)
+        self.lineEditVideoTitle.setMinimumSize(QSize(220, 24))
+        self.lineEditVideoTitle.setMaximumSize(QSize(16777215, 24))
+        self.lineEditVideoTitle.setStyleSheet(u"border: 2px solid #1a5410;padding:2px;color: black;background-color: white;\n"
+"border-radius: 10px;")
+        self.lineEditVideoTitle.setReadOnly(True)
+        self.tabWidgetMSC.addTab(self.tabYoutube, "")
 
-        self.horizontalLayout_4.addWidget(self.tabWidgetMSC, 0, Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_4.addWidget(self.tabWidgetMSC)
 
 
         self.verticalLayout.addWidget(self.widgetMSC, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
@@ -1552,12 +1629,14 @@ class Ui_MyLovePDF(object):
         self.SaveButton_8.clicked.connect(MyLovePDF.GuardarMusica)
         self.SaveButton_9.clicked.connect(MyLovePDF.ExtensionImg)
         self.ButtonFileSelect_8.clicked.connect(MyLovePDF.selectFile)
+        self.SaveButton_10.clicked.connect(MyLovePDF.DescargarVideo)
+        self.lineEditUrl.editingFinished.connect(MyLovePDF.UpdateVideo)
 
         self.tabWidgetPDF.setCurrentIndex(0)
         self.comboBox.setCurrentIndex(0)
         self.tabWidgetIMG.setCurrentIndex(0)
         self.tabWidgetFILE.setCurrentIndex(0)
-        self.tabWidgetMSC.setCurrentIndex(0)
+        self.tabWidgetMSC.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MyLovePDF)
@@ -1790,6 +1869,24 @@ class Ui_MyLovePDF(object):
         self.label_25.setText(QCoreApplication.translate("MyLovePDF", u"de", None))
         self.label_26.setText(QCoreApplication.translate("MyLovePDF", u"Letra:", None))
         self.SaveButton_8.setText(QCoreApplication.translate("MyLovePDF", u"Guardar", None))
-        self.tabWidgetMSC.setTabText(self.tabWidgetMSC.indexOf(self.tabMusica), QCoreApplication.translate("MyLovePDF", u"M\u00fasica", None))
+        self.tabWidgetMSC.setTabText(self.tabWidgetMSC.indexOf(self.tabMusica), QCoreApplication.translate("MyLovePDF", u"Tag M\u00fasica", None))
+        self.SaveButton_10.setText(QCoreApplication.translate("MyLovePDF", u"Guardar", None))
+        self.lineEditUrl.setPlaceholderText(QCoreApplication.translate("MyLovePDF", u"https://www.youtube.com/watch?v=XXXXXX", None))
+        self.label_32.setText(QCoreApplication.translate("MyLovePDF", u"URL del video:", None))
+        self.comboBoxFileType.setItemText(0, QCoreApplication.translate("MyLovePDF", u"mp3", None))
+        self.comboBoxFileType.setItemText(1, QCoreApplication.translate("MyLovePDF", u"mp4", None))
+
+        self.labelThumbnail.setText("")
+        self.label_33.setText(QCoreApplication.translate("MyLovePDF", u"Tipo de Archivo:", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton_10.setToolTip(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Renombra todos los archivos seleccionados utilizando el template.</p><p>El template reemplazar\u00e1 XXX por el n\u00famero de archivo.</p><p>En caso de no encontrar indicarlo, se agrega numeraci\u00f3n al final.</p><p>La numeraci\u00f3n inicia desde el n\u00famero indicado (0 por defecto).</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(whatsthis)
+        self.toolButton_10.setWhatsThis(QCoreApplication.translate("MyLovePDF", u"<html><head/><body><p>Selecciona un archivo MP3 y agregua/edita los tags de dicha canci\u00f3n.</p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+        self.toolButton_10.setText(QCoreApplication.translate("MyLovePDF", u"...", None))
+        self.label_34.setText(QCoreApplication.translate("MyLovePDF", u"T\u00edtulo del video:", None))
+        self.lineEditVideoTitle.setPlaceholderText("")
+        self.tabWidgetMSC.setTabText(self.tabWidgetMSC.indexOf(self.tabYoutube), QCoreApplication.translate("MyLovePDF", u"Descarga Youtube", None))
     # retranslateUi
 

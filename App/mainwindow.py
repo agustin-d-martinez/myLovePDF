@@ -5,7 +5,7 @@ from PySide6.QtGui import *
 from PySide6.QtCore import *
 import utils.documentsUtils as doc
 import os
-#import res_rc_rc
+
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py ; pyside6-rcc res_rc.qrc -o res_rc_rc.py
@@ -216,13 +216,20 @@ class MainWindow(QMainWindow):
 
 		buffer = QBuffer()
 		buffer.open(QIODevice.WriteOnly)
-		# Puedes elegir el formato: "PNG" o "JPEG"
-		self.ui.labelCover.pixmap().save(buffer, "PNG")
+		
+		self.ui.labelCover.pixmap().save(buffer, "PNG")		# Puedes elegir el formato: "PNG" o "JPEG"
 		tags["cover"]= bytes(buffer.data())
 		buffer.close()
 
 		doc.setMusicTags(archivo,tags)
 		QMessageBox.information(self,"Guardado","Los cambios han sido guardados.")
+
+	def DescargarVideo(self):
+		formato = self.ui.comboBoxFileType.currentText()
+		archivo = self.SaveFile(f".{formato}")
+		url = self.ui.lineEditUrl.text()
+		if url:
+			doc.descargar_video(url,archivo,formato)
 
 	def SaveFile(self, type) :
 		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
@@ -241,6 +248,15 @@ class MainWindow(QMainWindow):
 		archivo = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
 		self.ui.lineEditMusicFolder.setText(archivo)
 		self._UpdateMusicList(archivo)
+
+	def UpdateVideo(self):
+		titulo, miniatura = doc.obtenerTituloPortadaVideo(self.ui.lineEditUrl.text())
+		self.ui.lineEditVideoTitle.setText(titulo)
+		pixmap = QPixmap()
+		pixmap.loadFromData(miniatura)
+		self.ui.labelThumbnail.setPixmap(pixmap)
+		self.ui.labelThumbnail.setScaledContents(True)
+		#self.ui.labelThumbnail.setAlignment(Qt.alignCenter)
 
 	def _UpdateMusicList(self, archivo):
 		self.ui.listWidgetMusic.clear()

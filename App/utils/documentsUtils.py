@@ -4,6 +4,8 @@ from PIL import Image
 from mutagen.id3 import APIC, ID3, TIT2, TPE1, TCOM, TPE2, TRCK, USLT, TCON, TDRC, TALB, TMOO
 from pytubefix import YouTube
 from pydub import AudioSegment
+import requests
+from io import BytesIO
 
 A4_WIDTH, A4_HEIGHT = 595, 842  
 
@@ -371,24 +373,8 @@ def setMusicTags(archivo, tags):
 		audio.add(APIC(encoding=3,mime="image/png",type=3, desc="",data=tags["cover"]))	
 	audio.save(archivo)
 
-def descargar_video(url,salida, formato="mp4"):
-	yt = YouTube(url, use_oauth=True,allow_oauth_cache=True)
-	video = yt.streams.get_highest_resolution()
-
-	path, nombre = os.path.split(os.path.splitext(salida)[0])
-	archivo_mp4 = f"{nombre}.mp4" 
-	path_mp4 = os.path.join(path,archivo_mp4)
-
-	video.download(path, archivo_mp4)
-
-	if formato == "mp3":
-		# Convertir a MP3 con pydub
-		audio = AudioSegment.from_file(path_mp4, format="mp4")
-		audio.export(os.path.join(path,f"{nombre}.mp3"), format="mp3")
-		os.remove(path_mp4)  # Borrar el archivo MP4 temporal
-		
-def descargar_video_alta_resolucion(url, salida, formato="mp4"):
-	yt = YouTube(url, use_oauth=True, allow_oauth_cache=True)
+def descargar_video(url, salida, formato="mp4"):
+	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
 	path, nombre = os.path.split(os.path.splitext(salida)[0])
 	
 	if formato == "mp3":
@@ -442,4 +428,15 @@ def descargar_video_alta_resolucion(url, salida, formato="mp4"):
 		# Si no hay stream adaptativo o no es de mayor calidad, usar el stream progresivo
 		stream_progresivo.download(output_path=path, filename=archivo_mp4)
 
-descargar_video_alta_resolucion("https://www.youtube.com/watch?v=oTRJNfjh_iU", "E:\\Agustin\\Downloads\\prueba2.mp3","mp3")
+#descargar_video_alta_resolucion("https://www.youtube.com/watch?v=oTRJNfjh_iU", "E:\\Agustin\\Downloads\\prueba2.mp3","mp3")
+
+def obtenerTituloPortadaVideo(url):
+	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
+	titulo = yt.title
+	miniatura_url = yt.thumbnail_url
+	response = requests.get(miniatura_url)
+	if response.status_code == 200:
+		miniatura = BytesIO(response.content).read()
+	else :
+		miniatura = b""
+	return titulo , miniatura

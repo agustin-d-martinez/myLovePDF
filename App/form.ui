@@ -27,7 +27,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">QWidget#centralwidget{background-color:#464646;}
+    <string notr="true">QWidget#centralwidget{background-color:#404142;}
 QScrollArea{background:transparent;}
 QWidget#scrollAreaWidgetContents{background:transparent;}
 QWidget#widgetPDF{background:none;}
@@ -3835,6 +3835,9 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                    <height>16777215</height>
                   </size>
                  </property>
+                 <property name="contextMenuPolicy">
+                  <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -3948,7 +3951,7 @@ border-radius: 10px;</string>
                 </property>
                </item>
               </widget>
-              <widget class="QLabel" name="labelYoutubeMiniature">
+              <widget class="QLabel" name="labelThumbnail">
                <property name="geometry">
                 <rect>
                  <x>630</x>
@@ -3976,7 +3979,7 @@ border-radius: 10px;</string>
                 </size>
                </property>
                <property name="contextMenuPolicy">
-                <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
+                <enum>Qt::ContextMenuPolicy::ActionsContextMenu</enum>
                </property>
                <property name="styleSheet">
                 <string notr="true">border: none;</string>
@@ -4103,7 +4106,7 @@ border: 1px solid #ffffff;padding: 5px;font-size: 10pt;}</string>
                 <string>Título del video:</string>
                </property>
               </widget>
-              <widget class="QLineEdit" name="lineEditUrl_2">
+              <widget class="QLineEdit" name="lineEditVideoTitle">
                <property name="geometry">
                 <rect>
                  <x>40</x>
@@ -4716,6 +4719,38 @@ border-radius: 10px;</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>SaveButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>MyLovePDF</receiver>
+   <slot>DescargarVideo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>597</x>
+     <y>1108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>590</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditUrl</sender>
+   <signal>editingFinished()</signal>
+   <receiver>MyLovePDF</receiver>
+   <slot>UpdateVideo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>850</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>590</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>selectFile()</slot>
@@ -4733,5 +4768,7 @@ border-radius: 10px;</string>
   <slot>CloseTab()</slot>
   <slot>OpenTab()</slot>
   <slot>ExtensionImg()</slot>
+  <slot>DescargarVideo()</slot>
+  <slot>UpdateVideo()</slot>
  </slots>
 </ui>
