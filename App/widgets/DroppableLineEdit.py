@@ -8,12 +8,12 @@ class DroppableLineEdit(QLineEdit):
 		#self.setContextMenuPolicy(Qt.ContextMenuPolicy.DefaultContextMenu)
 
 	def dragEnterEvent(self, event: QDragEnterEvent):
-		if event.mimeData().hasUrls :
+		if event.mimeData().hasUrls() :
 			event.accept()
 		else : 
 			event.ignore()
 	def dragMoveEvent(self, event: QDragMoveEvent):
-		if event.mimeData().hasUrls:
+		if event.mimeData().hasUrls():
 			event.setDropAction(Qt.DropAction.CopyAction)
 			event.accept()
 		else : 

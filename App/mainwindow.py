@@ -21,45 +21,15 @@ class MainWindow(QMainWindow):
 
 		#Initial hide() 
 		self.ui.pushButtonPDFmini.hide()
-		self.ui.pushButtonIMGmini.hide()
-		self.ui.pushButtonFILEmini.hide()
-		self.ui.pushButtonMSCmini.hide()
+		self.ui.widgetIMG.hide()
+		self.ui.widgetFILE.hide()
+		self.ui.widgetMSC.hide()
 		self.ui.label_5.hide()
 		self.ui.NombreExtra.hide()
 
 		#Custom connect
 		self.ui.ListFileSelector_2.listWidget.currentItemChanged.connect(self.UpdatePhoto)
 
-		#Custom ContextMenu
-		self.coverMenu = QMenu("menu")
-		self.coverMenu.addAction('Borrar Portada', self.deleteCover)
-		self.coverMenu.addAction('Cortar Portada', self.CutCover)
-		self.coverMenu.addAction('Copiar Portada', self.CopyCover)
-		self.coverMenu.addAction('Pegar Portada', self.PasteCover)
-		self.coverMenu.addAction('Añadir Portada', self.addCover)
-		self.ui.labelCover.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-		self.ui.labelCover.customContextMenuRequested.connect(self.setContextMenu)
-
-	def setContextMenu(self, pos):
-		self.coverMenu.exec(self.ui.labelCover.mapToGlobal(pos))
-	def deleteCover(self):
-		self.ui.labelCover.setPixmap(QPixmap(u":/resources/resources/NoImage.svg"))
-	def CutCover(self):
-		self.CopyCover()
-		self.deleteCover()
-	def CopyCover(self):
-		clipboard = QApplication.clipboard()
-		pixmap = self.ui.labelCover.pixmap()
-		if pixmap :
-			clipboard.setPixmap(pixmap)
-	def PasteCover(self):
-		pixmap = QApplication.clipboard().pixmap()
-		if not pixmap.isNull():
-			self.ui.labelCover.setPixmap(pixmap)
-
-	def addCover(self):
-		archivo, _ = QFileDialog.getOpenFileName(self,"Seleccionar archivo","","Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)")
-		self.ui.labelCover.setPixmap(QPixmap(archivo))
 	def ObtenerRangos(string: str) -> list[int] :
 		lista = set()
 		for number in string.split(","):
@@ -86,6 +56,7 @@ class MainWindow(QMainWindow):
 			self.ui.ButtonFileSelect_6: ("pdf", self.ui.ListFileSelector_3.listWidget, True),
 			self.ui.ButtonFileSelect_7: ("all", self.ui.ListFileSelector_4.listWidget, True),
 			self.ui.ButtonFileSelect_8: ("img", self.ui.FileSelector_8, False),
+			self.ui.ButtonFileSelect_9: ("mp4", self.ui.FileSelector_9, False),
 		}
 
 		sender = self.sender()
@@ -97,6 +68,7 @@ class MainWindow(QMainWindow):
 			filters = {
 				"pdf": "Archivos PDF (*.pdf)",
 				"img": "Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)",
+				"mp4": "Video Files (*.mp4)",
 				"all": "All Files (*)"
 			}
 
@@ -225,11 +197,17 @@ class MainWindow(QMainWindow):
 		doc.setMusicTags(archivo,tags)
 		QMessageBox.information(self,"Guardado","Los cambios han sido guardados.")
 
+	def MP4_a_MP3(self):
+		mp4 = self.ui.FileSelector_9.text()
+		mp3 = self.SaveFile(".mp3")
+		if mp3 and mp4 : 
+			vid.mp4_a_mp3(mp4,mp3)
+
 	def DescargarVideo(self):
 		formato = self.ui.comboBoxFileType.currentText()
 		archivo = self.SaveFile(f".{formato}")
 		url = self.ui.lineEditUrl.text()
-		if url:
+		if url and archivo:
 			vid.descargar_video(url,archivo,formato)
 
 	def SaveFile(self, type) :
@@ -307,30 +285,49 @@ class MainWindow(QMainWindow):
 		except Exception:
 			return 0, 0
 
-	def CloseTab(self):
+
+	def OpenTab(self):
+		mapping = {
+			self.ui.pushButtonPDFmini: self.ui.widgetPDF,
+			self.ui.pushButtonIMGmini: self.ui.widgetIMG,
+			self.ui.pushButtonFILEmini:self.ui.widgetFILE,
+			self.ui.pushButtonMSCmini: self.ui.widgetMSC,
+		}
 		sender = self.sender()
-		sender_map = {
+		for button , widget  in mapping.items():
+			if button == sender :
+				button.hide()
+				widget.show()
+			else :
+				button.show()
+				widget.hide()
+
+	def CloseTab(self):
+		mapping = {
 			self.ui.pushButtonPDF: (self.ui.pushButtonPDFmini, self.ui.widgetPDF),
 			self.ui.pushButtonIMG: (self.ui.pushButtonIMGmini, self.ui.widgetIMG),
 			self.ui.pushButtonFILE:(self.ui.pushButtonFILEmini, self.ui.widgetFILE),
 			self.ui.pushButtonMSC: (self.ui.pushButtonMSCmini, self.ui.widgetMSC),
 		}
-		button, widget = sender_map[sender]
+		sender = self.sender()
+		button , widget  = mapping(sender)
 		button.show()
 		widget.hide()
 
-	def OpenTab(self):
-		sender = self.sender()
-		sender_map = {
-			self.ui.pushButtonPDFmini: (self.ui.widgetPDF),
-			self.ui.pushButtonIMGmini: (self.ui.widgetIMG),
-			self.ui.pushButtonFILEmini:(self.ui.widgetFILE),
-			self.ui.pushButtonMSCmini: (self.ui.widgetMSC),
-		}
-		widget = sender_map[sender]
-		widget.show()
-		sender.hide()
+	def setActiveTab(self, active_key):
+		tabs = {'PDF': (self.ui.pushButtonPDF, self.ui.widgetPDF),
+		'IMG': (self.ui.pushButtonIMG, self.ui.widgetIMG),
+		'FILE': (self.ui.pushButtonFILE, self.ui.widgetFILE),
+		'MSC': (self.ui.pushButtonMSC, self.ui.widgetMSC),}
 
+		for key , (button , widget) in tabs.items():
+			if key == active_key :
+				button.hide()
+				widget.show()
+			else:
+				button.show()
+				widget.hide()
+		
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
