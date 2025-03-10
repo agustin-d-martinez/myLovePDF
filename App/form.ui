@@ -87,7 +87,7 @@ QTabWidget#tabWidgetMSC::pane {background: transparent;border: none;border-image
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-627</y>
+         <y>-11</y>
          <width>1111</width>
          <height>1169</height>
         </rect>
@@ -347,7 +347,7 @@ QLabel{background-color: transparent;padding:2px;border-bottom: 4px solid #540c0
               <enum>QTabWidget::TabShape::Rounded</enum>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>3</number>
              </property>
              <property name="elideMode">
               <enum>Qt::TextElideMode::ElideNone</enum>
@@ -1446,7 +1446,7 @@ QLabel{background-color: transparent;padding:2px;color:white;border-bottom: 4px 
 </string>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="tabIMG2PDF">
               <property name="minimumSize">
@@ -1474,7 +1474,7 @@ QLabel{background-color: transparent;padding:2px;color:white;border-bottom: 4px 
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Convierte los archivos seleccionados a PDF.&lt;/p&gt;&lt;p&gt;Deben ser archivos tipo imagen (.jpg, .png, .webp, etc.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Convierte los archivos seleccionados en PDF's.&lt;/p&gt;&lt;p&gt;Deben ser archivos tipo imagen (.jpg, .png, .webp, etc.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="layoutDirection">
                   <enum>Qt::LayoutDirection::RightToLeft</enum>
@@ -2069,11 +2069,6 @@ QPushButton:pressed{border-color: #05051a;background-color: darkgrey}</string>
                  <item>
                   <property name="text">
                    <string>.jpg</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>.jpeg</string>
                   </property>
                  </item>
                  <item>
@@ -2706,7 +2701,7 @@ QTabBar::tab:selected {background: #15cc01;border:1px solid grey;border-bottom: 
 QLabel{background-color: transparent;padding:2px;color:white;border-bottom: 4px solid #1a5410;}</string>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="tabMusica">
               <attribute name="title">
@@ -2787,7 +2782,7 @@ QLabel{background-color: transparent;padding:2px;color:white;border-bottom: 4px 
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renombra todos los archivos seleccionados utilizando el template.&lt;/p&gt;&lt;p&gt;El template reemplazará XXX por el número de archivo.&lt;/p&gt;&lt;p&gt;En caso de no encontrar indicarlo, se agrega numeración al final.&lt;/p&gt;&lt;p&gt;La numeración inicia desde el número indicado (0 por defecto).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Coloca tags a archivos de música (.mp3). Pueden completarse todos los campos o dejar algunos vacíos.&lt;/p&gt;&lt;p&gt;Los cambios se guardan al presionar &amp;quot;Guardar&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="whatsThis">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selecciona un archivo MP3 y agregua/edita los tags de dicha canción.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -3871,7 +3866,7 @@ QPushButton:pressed{border-color: rgba(140, 110, 170,255);background-color: dark
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renombra todos los archivos seleccionados utilizando el template.&lt;/p&gt;&lt;p&gt;El template reemplazará XXX por el número de archivo.&lt;/p&gt;&lt;p&gt;En caso de no encontrar indicarlo, se agrega numeración al final.&lt;/p&gt;&lt;p&gt;La numeración inicia desde el número indicado (0 por defecto).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transforma el archivo de video seleccionado en un archivo de audio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="layoutDirection">
                   <enum>Qt::LayoutDirection::RightToLeft</enum>
@@ -4220,7 +4215,7 @@ border-radius: 10px;</string>
                 </size>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renombra todos los archivos seleccionados utilizando el template.&lt;/p&gt;&lt;p&gt;El template reemplazará XXX por el número de archivo.&lt;/p&gt;&lt;p&gt;En caso de no encontrar indicarlo, se agrega numeración al final.&lt;/p&gt;&lt;p&gt;La numeración inicia desde el número indicado (0 por defecto).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Descarga un video seleccionado de Youtube a la computadora. Se descarga con la calidad seleccionada.&lt;/p&gt;&lt;p&gt;El proceso de descarga puede demorar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="whatsThis">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selecciona un archivo MP3 y agregua/edita los tags de dicha canción.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

@@ -208,7 +208,10 @@ class MainWindow(QMainWindow):
 		archivo = self.SaveFile(f".{formato}")
 		url = self.ui.lineEditUrl.text()
 		if url and archivo:
-			vid.descargar_video(url,archivo,formato)
+			if formato == "mp3" :
+				vid.descargar_audio(url,archivo)
+			else :
+				vid.descargar_video(url,archivo)
 
 	def SaveFile(self, type) :
 		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
@@ -235,7 +238,6 @@ class MainWindow(QMainWindow):
 		pixmap.loadFromData(miniatura)
 		self.ui.labelThumbnail.setPixmap(pixmap)
 		self.ui.labelThumbnail.setScaledContents(True)
-		#self.ui.labelThumbnail.setAlignment(Qt.alignCenter)
 
 	def _UpdateMusicList(self, archivo):
 		self.ui.listWidgetMusic.clear()
