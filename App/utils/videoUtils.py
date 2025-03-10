@@ -2,24 +2,42 @@ from pytubefix import YouTube
 import requests
 from io import BytesIO
 import os
-import moviepy.editor as mp
+import subprocess
+#import moviepy.editor as mp
 
-def mp4_a_mp3(mp4, mp3):
-	clip = mp.VideoFileClip(mp4)
-	clip.audio.write_audiofile(mp3, codec='libx264')
-	clip.close()
 
-def unir_audio_video(path_audio, path_video, salida):
-	audio = mp.AudioFileClip(path_audio)
-	video = mp.VideoFileClip(path_video)
-	final = video.set_audio(audio)
-	final.write_videofile(salida, codec= 'libx264' ,audio_codec='aac', preset='veryfast')
-	audio.close()
-	video.close()
+def mp4_a_mp3(input_video, output_audio):
+	comando = [
+		'ffmpeg',
+		'-i', input_video,
+		'-vn',
+		'-acodec', 'libmp3lame',
+		'-q:a', '2',
+		'-y',  # Sobrescribe el archivo de salida sin preguntar
+		output_audio
+	]
+	subprocess.run(comando, check=True)
+	return True
+
+def unir_audio_video(input_audio, input_video, output_video):
+	comando = [
+		'ffmpeg',
+		'-i', input_video,
+		'-i', input_audio,
+		'-c:v', 'copy',
+		'-c:a', 'aac',
+		'-strict', 'experimental',
+		'-y',
+		output_video
+	]
+	subprocess.run(comando, check=True)
 
 def descargar_audio(url, salida):
-	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
-	path, nombre = os.path.split(os.path.splitext(salida)[0])
+	try:
+		yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
+		path, nombre = os.path.split(os.path.splitext(salida)[0])
+	except Exception:
+		return False
 	
 	archivo_final = f"{nombre}.mp3"
 	salida_final = os.path.join(path, archivo_final)
@@ -30,14 +48,25 @@ def descargar_audio(url, salida):
 	ruta_tmp = os.path.join(path, archivo_tmp)
 	audio_stream.download(output_path=path, filename=archivo_tmp)
 		
-	clip = mp.AudioFileClip(ruta_tmp)
-	clip.write_audiofile(salida_final, codec='libmp3lame')
-	clip.close()
+	comando = [
+		'ffmpeg',
+		'-i', ruta_tmp,       # Archivo de entrada
+		'-vn',                # Sin video
+		'-acodec', 'libmp3lame',  # Codec para mp3
+		'-q:a', '2',          # Calidad del audio (ajusta según lo necesites)
+		'-y',                 # Sobrescribe el archivo de salida sin preguntar
+		salida_final
+	]
+	subprocess.run(comando, check=True)
 	os.remove(ruta_tmp)
+	return True
 
-def descargar_video(url, salida):
-	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
-	path, nombre = os.path.split(os.path.splitext(salida)[0])
+def descargar_video(url, salida, vid_resolution):
+	try:
+		yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
+		path, nombre = os.path.split(os.path.splitext(salida)[0])
+	except Exception:
+		return False
 	
 	archivo_final = f"{nombre}.mp4"
 	salida_final = os.path.join(path, archivo_final)
@@ -45,11 +74,11 @@ def descargar_video(url, salida):
 	# Filtrar streams que tengan resolución <= 1080p
 	progressive_streams = [
 		s for s in yt.streams.filter(progressive=True, file_extension="mp4") 
-		if s.resolution and int(s.resolution.replace("p", "")) <= 1080
+		if s.resolution and int(s.resolution.replace("p", "")) <= vid_resolution
 	]
 	adaptive_streams = [
 		s for s in yt.streams.filter(adaptive=True, only_video=True, file_extension="mp4") 
-		if s.resolution and int(s.resolution.replace("p", "")) <= 1080
+		if s.resolution and int(s.resolution.replace("p", "")) <= vid_resolution
 	]
 	
 	# Seleccionar el stream de mayor resolución (dentro del límite)
@@ -82,18 +111,21 @@ def descargar_video(url, salida):
 			unir_audio_video(ruta_aud_tmp, ruta_vid_tmp, salida_final)
 			os.remove(ruta_vid_tmp)
 			os.remove(ruta_aud_tmp)
-			return
+			return True
 		if stream_progresivo:	# Si no hay opción adaptativa
 			stream_progresivo.download(output_path=path, filename=archivo_final)
-	
+	return True
 
 def obtenerTituloPortadaVideo(url):
-	yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
-	titulo = yt.title
-	miniatura_url = yt.thumbnail_url
-	response = requests.get(miniatura_url)
-	if response.status_code == 200:
-		miniatura = BytesIO(response.content).read()
-	else :
-		miniatura = b""
-	return titulo , miniatura
+	try:
+		yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
+		titulo = yt.title
+		miniatura_url = yt.thumbnail_url
+		response = requests.get(miniatura_url)
+		if response.status_code == 200:
+			miniatura = BytesIO(response.content).read()
+		else :
+			miniatura = b""
+		return titulo , miniatura
+	except Exception as e:
+		return "" , None

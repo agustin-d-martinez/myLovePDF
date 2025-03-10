@@ -1,11 +1,15 @@
 # This Python file uses the following encoding: utf-8
 import sys
+import os
+import ctypes
+
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
+
 import utils.documentsUtils as doc
 import utils.videoUtils as vid
-import os
+from utils.DownloadThread import DownloadThread
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -17,8 +21,9 @@ class MainWindow(QMainWindow):
 	def __init__(self, parent=None):
 		super().__init__(parent)
 		self.ui = Ui_MyLovePDF()
+		self.setWindowIcon(QIcon(":/resources/resources/AppIcon.png"))	#Icono arriba a la izq.
+		ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('MyLovePDF.app.1')	#Permite que cambie el logo del taskbar
 		self.ui.setupUi(self)
-
 		#Initial hide() 
 		self.ui.pushButtonPDFmini.hide()
 		self.ui.widgetIMG.hide()
@@ -30,7 +35,7 @@ class MainWindow(QMainWindow):
 		#Custom connect
 		self.ui.ListFileSelector_2.listWidget.currentItemChanged.connect(self.UpdatePhoto)
 
-	def ObtenerRangos(string: str) -> list[int] :
+	def ObtenerRangos(self,string: str) -> list[int] :
 		lista = set()
 		for number in string.split(","):
 			if '-' in number:
@@ -38,7 +43,7 @@ class MainWindow(QMainWindow):
 				lista.update(range(start,stop + 1))
 			else :
 				lista.add(int(number))
-			return sorted(lista)
+		return sorted(lista)
 
 	def UpdatePhoto(self , item : QListWidgetItem ):
 		path_img = item.text()
@@ -68,7 +73,7 @@ class MainWindow(QMainWindow):
 			filters = {
 				"pdf": "Archivos PDF (*.pdf)",
 				"img": "Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)",
-				"mp4": "Video Files (*.mp4)",
+				"mp4": "MP4 Video Files (*.mp4)",
 				"all": "All Files (*)"
 			}
 
@@ -79,6 +84,46 @@ class MainWindow(QMainWindow):
 				archivos, _ = QFileDialog.getOpenFileName(self, "Seleccionar Archivo", "", filters[file_type], options=opciones)
 				target_widget.setText(archivos)
 
+	def separateTracks(self,track_str:str):
+		try:
+			parts = track_str.split("/")
+			if len(parts) == 2:
+				track = int(parts[0].strip())
+				total = int(parts[1].strip())
+				return track, total
+			elif len(parts) == 1:
+				# Si solo viene un número, asumimos total 0
+				return int(parts[0].strip()), 0
+		except Exception:
+			return 0, 0
+
+	def OpenTab(self):
+		mapping = {
+			self.ui.pushButtonPDFmini: self.ui.widgetPDF,
+			self.ui.pushButtonIMGmini: self.ui.widgetIMG,
+			self.ui.pushButtonFILEmini:self.ui.widgetFILE,
+			self.ui.pushButtonMSCmini: self.ui.widgetMSC,
+		}
+		sender = self.sender()
+		for button , widget  in mapping.items():
+			if button == sender :
+				button.hide()
+				widget.show()
+			else :
+				button.show()
+				widget.hide()
+
+	def CloseTab(self):
+		mapping = {
+			self.ui.pushButtonPDF: (self.ui.pushButtonPDFmini, self.ui.widgetPDF),
+			self.ui.pushButtonIMG: (self.ui.pushButtonIMGmini, self.ui.widgetIMG),
+			self.ui.pushButtonFILE:(self.ui.pushButtonFILEmini, self.ui.widgetFILE),
+			self.ui.pushButtonMSC: (self.ui.pushButtonMSCmini, self.ui.widgetMSC),
+		}
+		sender = self.sender()
+		button , widget  = mapping[sender]
+		button.show()
+		widget.hide()		
 
 	def ObtenerTexto( self, listWidget: QListWidget ) -> list[str] : 
 		lista = []
@@ -89,91 +134,119 @@ class MainWindow(QMainWindow):
 	def UnirPDF(self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector.listWidget )
 		
-		if len(entradas) < 2:
-			self.ErrorMessage()
+		if len(entradas) == 0:
+			self.ErrorMessage("No se ingresó ningún archivo.")
+			return
+		elif len(entradas) == 1:
+			self.ErrorMessage("No se ingresaron suficientes archivos.")
 			return
 		
 		idx = self.ui.comboBox.currentIndex()
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
-			doc.unir_pdfs(entradas,salida,idx)
+			if doc.unir_pdfs(entradas,salida,idx):
+				QMessageBox().information(self,"PDF generado", "PDF's unidos con éxito.")
+			else:
+				self.ErrorMessage("Error al unir los PDF's.")
 
 	def ImageToPDF (self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector_2.listWidget )
 		if not entradas :
-			self.ErrorMessage()
+			self.ErrorMessage("No se ingresó ningún archivo.")
 			return
 		
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
-			doc.imagenes_a_pdf(entradas, salida)
+			if doc.imagenes_a_pdf(entradas, salida):
+				QMessageBox().information(self,"PDF generado", "PDF guardado con éxito.")
+			else:
+				self.ErrorMessage("Erroral convertir imágenes a PDF.")
 
 	def PDFtoImage (self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector_3.listWidget )
 		if not entradas :
-			self.ErrorMessage()
+			self.ErrorMessage("No se seleccionó ningún archivo.")
 			return
 		
 		salida = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
 		if salida :
-			doc.pdf_a_imagen(entradas,salida)
+			if doc.pdf_a_imagen(entradas,salida):
+				QMessageBox().information(self,"Imagen generada", "Imágenes guardadas con éxito.")
+			else:
+				self.ErrorMessage("Error al convertir el PDF en imágenes.")
 
 	def ExtensionImg(self):
 		entrada = self.ui.FileSelector_8.text()
+		if not entrada :
+			self.ErrorMessage("No se ingresó ninguna imagen.")
+			return
 		extension = self.ui.comboBox_2.currentText()
-		doc.cambiar_img_ext(entrada , extension)
+		if doc.cambiar_img_ext(entrada , extension):
+			QMessageBox().information(self,"Imagen generada", "Imagen guardada con éxito.")
+		else:
+			self.ErrorMessage("Error al cambiar la extensión de la imagen.")
 
 	def SepararPDF(self):
 		entrada = self.ui.FileSelector_2.text()
 		if not entrada : 
-			self.ErrorMessage()
+			self.ErrorMessage("No se seleccionó ningún archivo.")
 			return
 		pags = self.ObtenerRangos(self.ui.HojasSeparar.text())
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 
 		if salida : 
-			doc.separar_pdf(entrada ,salida , pags ,self.ui.checkBoxConsevar.isChecked() , self.ui.NombreExtra.text())
+			if doc.separar_pdf(entrada ,salida , pags ,self.ui.checkBoxConsevar.isChecked() , self.ui.NombreExtra.text()):
+				QMessageBox().information(self,"PDF generado", "PDF's separados con éxito.")
+			else:
+				self.ErrorMessage("Error al separar los PDFs")
 
 	def SepararHojas(self):
 		entrada = self.ui.FileSelector_3.text()
 		if not entrada : 
-			self.ErrorMessage()
+			self.ErrorMessage("No se ingresó ningún archivo.")
 			return
 		if self.ui.checkBoxSplitAll.isChecked() :
 			paginas = None
 		else :
-			paginas = self.ui.HojasSeparar_3.text()
-			paginas = list(map(int, paginas))
+			paginas = self.ObtenerRangos(self.ui.HojasSeparar_3.text())
 
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
-			doc.separar_hojas(entrada , salida , paginas)
+			if doc.separar_hojas(entrada , salida , paginas):
+				QMessageBox().information(self,"PDF's generados", "Hojas separadas con éxito.")
+			else:
+				self.ErrorMessage("Error al separar las hojas.")
 
 	def HojaBlanco (self): 
 		entrada = self.ui.FileSelector_4.text()
 		if not entrada : 
-			self.ErrorMessage()
+			self.ErrorMessage("No se ingresó ningún archivo.")
 			return
 		
 		paginas = self.ObtenerRangos(self.ui.HojasSeparar_2.text())
-
 		salida = self.SaveFile("Archivo PDF (*.pdf)")
 		if salida :
-			doc.agregar_hojas_blanco(entrada,salida,paginas)
+			if doc.agregar_hojas_blanco(entrada,salida,paginas):
+				QMessageBox().information(self,"PDF actualizado", "Hojas blancas colocadas con éxito.")
+			else:
+				self.ErrorMessage("Error al colocar hojas en blanco.")
 
 	def Renombrar(self):
 		entradas = self.ObtenerTexto( self.ui.ListFileSelector_4.listWidget )
 		if not entradas :
-			self.ErrorMessage()
+			self.ErrorMessage("No se ingresó ningún archivo.")
 			return
 		
 		inicial = self.ui.spinBox.value()
-		doc.renombrar_template(entradas, self.ui.NameTemplate.text() , inicial)
+		if doc.renombrar_template(entradas, self.ui.NameTemplate.text() , inicial):
+			QMessageBox().information(self,"Guardado", "Archivos renombrados con éxito.")
+		else:
+			self.ErrorMessage("Error al renombrar los archivos")
 
 	def GuardarMusica(self):
 		archivo = os.path.join(self.ui.lineEditMusicFolder.text(),self.ui.listWidgetMusic.currentItem().text())
 		if not archivo :
-			self.ErrorMessage()
+			self.ErrorMessage("No se seleccionó ningún archivo.")
 			return
 		tags = {}
 		tags["title"] = self.ui.lineEditSong.text()
@@ -194,44 +267,62 @@ class MainWindow(QMainWindow):
 		tags["cover"]= bytes(buffer.data())
 		buffer.close()
 
-		doc.setMusicTags(archivo,tags)
-		QMessageBox.information(self,"Guardado","Los cambios han sido guardados.")
+		if doc.setMusicTags(archivo,tags):
+			QMessageBox.information(self,"Archivo Actualizado","Música guardada con éxito.")
+		else:
+			self.ErrorMessage("Error al actualizar MP3.")
 
 	def MP4_a_MP3(self):
 		mp4 = self.ui.FileSelector_9.text()
+		if not mp4 and not mp4.endswith(".mp4"):
+			self.ErrorMessage("No se ingresó ningún archivo MP4.")
+			return
 		mp3 = self.SaveFile(".mp3")
 		if mp3 and mp4 : 
-			vid.mp4_a_mp3(mp4,mp3)
+			if vid.mp4_a_mp3(mp4,mp3):
+				QMessageBox().information(self,"MP3 generado", "Archivo MP3 guardado con éxito.")
+			else:
+				self.ErrorMessage("Error al convertir a MP3.")
 
 	def DescargarVideo(self):
-		formato = self.ui.comboBoxFileType.currentText()
-		archivo = self.SaveFile(f".{formato}")
 		url = self.ui.lineEditUrl.text()
-		if url and archivo:
-			if formato == "mp3" :
-				vid.descargar_audio(url,archivo)
-			else :
-				vid.descargar_video(url,archivo)
+		if not 'youtube.com' in url and not 'youtu.be' in url: 
+			self.ErrorMessage("No se colocó ninguna URL.")
+			return
+		formato = self.ui.comboBoxFileType.currentText()
+		archivo_salida = self.SaveFile(f"{formato.upper()} File (*.{formato}))")
+		if archivo_salida:
+			resolusion = None
+			if formato == "mp4" :
+				resolusion = int(self.ui.comboBoxResolution.currentText().replace("p",""))
+			self.download_thread = DownloadThread(url,archivo_salida,formato,resolusion)
+			self.download_thread.finished.connect(self.onDownloadFinished)
+			self.download_thread.error.connect(self.onDownloadError)
+
+			self.ui.SaveButton_10.setText("Descargando...")
+			self.ui.SaveButton_10.setEnabled(False)
+			self.download_thread.start()
+
+	def onDownloadFinished(self):
+		self.ui.SaveButton_10.setEnabled(True)
+		self.ui.SaveButton_10.setText("Guardar")
+		QMessageBox().information(self,"Descarga completa", "Video descargado con éxito.")
+	def onDownloadError(self, err_msg):
+		self.ErrorMessage(f"No se pudo descargar el video\n{err_msg}")
+		self.ui.SaveButton_10.setEnabled(True)
+		self.ui.SaveButton_10.setText("Guardar")
 
 	def SaveFile(self, type) :
 		file , _ =  QFileDialog.getSaveFileName(self,"Guardar Archivo", "" , type)
-		return file
-	
-	def ErrorMessage(self) :
+		return file		
+
+	def ErrorMessage(self, mensaje: str) :
 		msg = QMessageBox(self)
-		msg.setIcon(QMessageBox.Critical)  # Tipo de mensaje: Error
+		msg.setIcon(QMessageBox.Critical)  
 		msg.setWindowTitle("Error")
-		msg.setText("No hay archivos de entrada.")
-		msg.exec()  # Mostrar el cuadro de diálogo
-
-	def UpdateMusicFile(self):
-		self._UpdateMusicList(self.ui.lineEditMusicFolder.text())
-	def ChangeMusicFile(self):
-		archivo = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
-		self.ui.lineEditMusicFolder.setText(archivo)
-		self._UpdateMusicList(archivo)
-
-	def UpdateVideo(self):
+		msg.setText(mensaje)
+		msg.exec()  
+	def UpdateYoutubeVid(self):
 		titulo, miniatura = vid.obtenerTituloPortadaVideo(self.ui.lineEditUrl.text())
 		self.ui.lineEditVideoTitle.setText(titulo)
 		pixmap = QPixmap()
@@ -239,6 +330,12 @@ class MainWindow(QMainWindow):
 		self.ui.labelThumbnail.setPixmap(pixmap)
 		self.ui.labelThumbnail.setScaledContents(True)
 
+	def UpdateMusicFile(self):
+		self._UpdateMusicList(self.ui.lineEditMusicFolder.text())
+	def ChangeMusicFile(self):
+		archivo = QFileDialog.getExistingDirectory(self, "Seleccionar Archivo", "")
+		self.ui.lineEditMusicFolder.setText(archivo)
+		self._UpdateMusicList(archivo)
 	def _UpdateMusicList(self, archivo):
 		self.ui.listWidgetMusic.clear()
 		archivos = []
@@ -273,63 +370,6 @@ class MainWindow(QMainWindow):
 			pixmap.load(u":/resources/resources/NoImage.svg")
 		pixmap = pixmap.scaled(self.ui.labelCover.size(),Qt.AspectRatioMode.KeepAspectRatio,Qt.TransformationMode.SmoothTransformation)
 		self.ui.labelCover.setPixmap(pixmap)
-
-	def separateTracks(self,track_str:str):
-		try:
-			parts = track_str.split("/")
-			if len(parts) == 2:
-				track = int(parts[0].strip())
-				total = int(parts[1].strip())
-				return track, total
-			elif len(parts) == 1:
-				# Si solo viene un número, asumimos total 0
-				return int(parts[0].strip()), 0
-		except Exception:
-			return 0, 0
-
-
-	def OpenTab(self):
-		mapping = {
-			self.ui.pushButtonPDFmini: self.ui.widgetPDF,
-			self.ui.pushButtonIMGmini: self.ui.widgetIMG,
-			self.ui.pushButtonFILEmini:self.ui.widgetFILE,
-			self.ui.pushButtonMSCmini: self.ui.widgetMSC,
-		}
-		sender = self.sender()
-		for button , widget  in mapping.items():
-			if button == sender :
-				button.hide()
-				widget.show()
-			else :
-				button.show()
-				widget.hide()
-
-	def CloseTab(self):
-		mapping = {
-			self.ui.pushButtonPDF: (self.ui.pushButtonPDFmini, self.ui.widgetPDF),
-			self.ui.pushButtonIMG: (self.ui.pushButtonIMGmini, self.ui.widgetIMG),
-			self.ui.pushButtonFILE:(self.ui.pushButtonFILEmini, self.ui.widgetFILE),
-			self.ui.pushButtonMSC: (self.ui.pushButtonMSCmini, self.ui.widgetMSC),
-		}
-		sender = self.sender()
-		button , widget  = mapping(sender)
-		button.show()
-		widget.hide()
-
-	def setActiveTab(self, active_key):
-		tabs = {'PDF': (self.ui.pushButtonPDF, self.ui.widgetPDF),
-		'IMG': (self.ui.pushButtonIMG, self.ui.widgetIMG),
-		'FILE': (self.ui.pushButtonFILE, self.ui.widgetFILE),
-		'MSC': (self.ui.pushButtonMSC, self.ui.widgetMSC),}
-
-		for key , (button , widget) in tabs.items():
-			if key == active_key :
-				button.hide()
-				widget.show()
-			else:
-				button.show()
-				widget.hide()
-		
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)

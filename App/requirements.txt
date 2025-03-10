@@ -4,4 +4,3 @@ pillow
 mutagen
 pytubefix
 requests
-moviepy==1.0.3

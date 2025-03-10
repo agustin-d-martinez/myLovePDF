@@ -20,5 +20,6 @@
         <file>resources/fi-rr-files-medical.svg</file>
         <file>resources/fi-rr-interrogation.svg</file>
         <file>resources/fi-rr-refresh.svg</file>
+        <file>resources/AppIcon.png</file>
     </qresource>
 </RCC>

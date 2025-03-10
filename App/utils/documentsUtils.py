@@ -22,19 +22,14 @@ def renombrar_template(archivos, template, inicial=1):
 	"""
 	for i, archivo in enumerate(archivos, start=inicial):
 		if not os.path.exists(archivo):
-			#print(f"Advertencia: No se encontró '{archivo}', se omitirá.")
 			continue
 		
 		# Obtener la extensión del archivo
 		_, ext = os.path.splitext(archivo)
-		
-		# Si el template contiene "XXX", se reemplaza por el número actual
-		if "XXX" in template:
+		if "XXX" in template:		# Reemplaza XXX por el número
 			nuevo_nombre = template.replace("XXX", str(i))
 		else:
 			nuevo_nombre = template + str(i)
-		
-		# Se conserva la extensión original
 		nuevo_nombre += ext
 		
 		# Se obtiene el directorio donde se encuentra el archivo original
@@ -46,6 +41,7 @@ def renombrar_template(archivos, template, inicial=1):
 			#print(f"Renombrado: '{archivo}' → '{nueva_ruta}'")
 		except Exception as e:
 			print(f"Error al renombrar '{archivo}': {e}")
+	return True
 
 def agregar_hojas_blanco(entrada, salida, paginas):
 	"""
@@ -57,8 +53,7 @@ def agregar_hojas_blanco(entrada, salida, paginas):
 	  paginas (list): Lista de posiciones (1-based) donde se insertarán las páginas en blanco.
 	"""
 	if not os.path.exists(entrada):
-		#print(f"Error: No se encontró '{entrada}'")
-		return
+		return False
 
 	doc = fitz.open(entrada)
 	
@@ -69,10 +64,8 @@ def agregar_hojas_blanco(entrada, salida, paginas):
 	else:
 		rect = fitz.Rect(0, 0, A4_WIDTH, A4_HEIGHT)
 	
-	# Ordenamos las posiciones para insertar de forma ascendente
+
 	paginas = sorted(paginas)
-	
-	# offset se utiliza para ajustar la posición al insertar páginas adicionales
 	offset = 0
 	for pos in paginas:
 		# pos es 1-based; convertimos a índice 0-based y sumamos offset
@@ -82,6 +75,7 @@ def agregar_hojas_blanco(entrada, salida, paginas):
 
 	doc.save(salida)
 	doc.close()
+	return True
 
 def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842 ):
 	"""Convierte una lista de imágenes en un archivo PDF.
@@ -91,15 +85,13 @@ def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842
 	salida (str): Ruta del archivo PDF de salida.
 	"""
 	if not imagenes:
-		return
+		return False
 
 	doc = fitz.open()
-
 	for imagen in imagenes:
 		if os.path.exists(imagen):
-			img_doc = fitz.open()  # Documento temporal
+			img_doc = fitz.open()  
 			img_doc.insert_page(0, width=scale_widht, height=scale_height)  # Página A4 en blanco
-			rect = img_doc[0].rect  # Rectángulo de la página
 			
 			# Obtener el tamaño de la imagen
 			img = fitz.Pixmap(imagen)
@@ -126,8 +118,12 @@ def imagenes_a_pdf(imagenes, salida, scale_widht = A4_WIDTH , scale_height = 842
 
 	if len(doc) > 0:
 		doc.save(salida)
+		doc.close()
+		return True
 
 	doc.close()
+	return False
+
 def pdf_a_imagen(archivos, salida):
 	"""
 	Convierte uno o varios archivos PDF en imágenes utilizando PyMuPDF (fitz).
@@ -138,7 +134,7 @@ def pdf_a_imagen(archivos, salida):
 			  Para cada PDF se creará una subcarpeta con el nombre del PDF (sin extensión).
 	"""
 	if not archivos:
-		return
+		return False
 	if isinstance(archivos,str):
 		archivos = [archivos]
 	os.makedirs(salida,exist_ok=True)
@@ -161,19 +157,21 @@ def pdf_a_imagen(archivos, salida):
 				continue
 		
 		doc.close()
+	return True
 
 def cambiar_img_ext(imagen, extension):
 	if not imagen:
-		return
+		return False
 	salida = os.path.splitext(imagen)[0] + extension
 	img = Image.open(imagen)
 	if img.mode in ("RGBA","P"):
 		img = img.convert("RGB")
 	img.save(salida)
+	return True
 
 def separar_pdf(entrada, salida, paginas, conservar= False, salida_extra = None):
 	if not os.path.exists(entrada):
-		return
+		return False
 
 	doc_inicial = fitz.open(entrada)
 	doc_salida = fitz.open()
@@ -193,6 +191,7 @@ def separar_pdf(entrada, salida, paginas, conservar= False, salida_extra = None)
 	doc_inicial.close()
 	doc_salida.close()
 	doc_salida_extra.close()
+	return True
 
 def separar_hojas(entrada, salida, paginas = None):
 	"""Separa hojas específicas de un PDF y las guarda individualmente en la carpeta de salida.
@@ -202,14 +201,12 @@ def separar_hojas(entrada, salida, paginas = None):
 	salida (str): Carpeta donde se guardarán los archivos.
 	paginas (list): Lista de números de páginas a extraer (base 1).
 	"""
-
 	if not os.path.exists(entrada):
-		return
+		return False
 
 	if not os.path.exists(salida):
 		os.makedirs(salida)  # Crea la carpeta si no existe
 		
-	 # Abrir el documento de entrada
 	with fitz.open(entrada) as doc_inicial:
 		total_paginas = len(doc_inicial)
 		nombre_base = os.path.splitext(os.path.basename(entrada))[0]
@@ -225,6 +222,7 @@ def separar_hojas(entrada, salida, paginas = None):
 					doc_tmp.insert_pdf(doc_inicial, from_page=num_pagina - 1, to_page=num_pagina - 1)
 					archivo_salida = os.path.join(salida, f"{nombre_base}_pag_{num_pagina}.pdf")
 					doc_tmp.save(archivo_salida)
+	return True
 
 def unir_pdfs(entradas, salida, archivo_par:int = 0):
 	"""Une los PDF de entrada en un único PDF.
@@ -237,7 +235,7 @@ def unir_pdfs(entradas, salida, archivo_par:int = 0):
 		Si es 2 se agrega una hoja blanca al final para que el archivo sea par.
 	"""
 	if not entradas:
-		return
+		return False
 	doc_final = fitz.open()
 
 	for pdf in entradas:
@@ -255,11 +253,11 @@ def unir_pdfs(entradas, salida, archivo_par:int = 0):
 
 	if len(doc_final) > 0:
 		doc_final.save(salida)
-	else:
 		doc_final.close()
-		return
+		return True
 
 	doc_final.close()
+	return False
 
 def getMusicTags(archivo) -> dict[str]:
 	"""
@@ -339,7 +337,7 @@ def setMusicTags(archivo, tags):
 	try:
 		audio = ID3(archivo)
 	except Exception:
-		audio = ID3()
+		return False
 
 	# Eliminar frames existentes para evitar duplicados
 	for frame in ["TIT2", "TPE1", "TALB", "TCOM", "TPE2", "TCON", "TRCK", "USLT", "TDRC", "APIC","TMOO"]:
@@ -368,3 +366,4 @@ def setMusicTags(archivo, tags):
 	if "cover" in tags and tags["cover"]:		# Procesar portada: si 'cover' existe en tags, se asume bytes de PNG.
 		audio.add(APIC(encoding=3,mime="image/png",type=3, desc="",data=tags["cover"]))	
 	audio.save(archivo)
+	return True
