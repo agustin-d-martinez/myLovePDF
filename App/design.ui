@@ -1,0 +1,2457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1114</width>
+    <height>665</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QMainWindow, 
+QWidget {
+    color: #181818;
+	background-color: transparent; 
+    font-family: &quot;Segoe UI&quot;;
+   /* font-size: 10pt;*/
+}
+
+/* Labels */
+QLabel {
+    color: #d0d0d0;
+}
+
+QFrame { 
+background-color: transparent; 
+border: none; 
+} 
+/* Barra superior */ 
+#exit_frame { 
+background-color: #000000; 
+padding: 4px; 
+} 
+
+/* ===== BOTONES GENERALES ===== */ 
+QPushButton {
+    background-color: #242424;
+    border: 1px solid #2f2f2f;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+QPushButton:hover {
+    background-color: #2e2e2e;
+}
+
+QPushButton:pressed {
+    background-color: #3a3a3a;
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_8">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="exit_frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* ===== BOTONES DE VENTANA ===== */ 
+#exit_frame {
+    background-color: #181818;
+}
+
+QPushButton#minimize_button, 
+QPushButton#maximize_button, 
+QPushButton#close_button { 
+background-color: transparent; 
+border: none; 
+min-width: 28px; 
+max-width: 28px; 
+min-height: 28px; 
+max-height: 28px; 
+border-radius: 14px; 
+} 
+
+/* Hover */ 
+QPushButton#minimize_button:hover { 
+background-color: #0d86f0; 
+} 
+QPushButton#maximize_button:hover { 
+background-color: #2f2f2f; 
+} 
+QPushButton#close_button:hover { 
+background-color: #b53030; } 
+
+/* Pressed */
+ QPushButton#minimize_button:pressed, 
+QPushButton#maximize_button:pressed { 
+background-color: #3a3a3a; 
+} 
+QPushButton#close_button:pressed { 
+background-color: #8f2424; 
+}
+
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10000</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="minimize_button">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Icons/resources.qrc">
+           <normaloff>:/dark_icon/minimise_w.png</normaloff>:/dark_icon/minimise_w.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="maximize_button">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Icons/resources.qrc">
+           <normaloff>:/dark_icon/stop_w.png</normaloff>:/dark_icon/stop_w.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="close_button">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Icons/resources.qrc">
+           <normaloff>:/dark_icon/close_w.png</normaloff>:/dark_icon/close_w.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="app_widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="l_widget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#l_widget {
+    background-color: #1e1e1e;
+}
+
+#menu_frame,
+#opt_frame,
+#config_frame {
+    background-color: transparent;
+}
+
+/* ===== BOTONES DEL MENÚ ===== */
+QPushButton {
+    background-color: transparent;
+    color: #dcdcdc;
+    padding: 10px 12px;
+    padding-left: 16px;
+    text-align: left;
+
+    border: none;
+
+    /* redondeado solo a la izquierda */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QToolButton{
+    background-color: transparent;
+    color: #dcdcdc;
+    padding: 10px 10px;
+}
+
+/* Hover */
+QToolButton:hover,
+QPushButton:hover {
+    background-color: #2a2a2a;
+}
+
+/* Botón seleccionado */
+QPushButton:checked {
+    background-color: #3a3a3a;
+    color: white;
+}
+
+/* Click */
+QToolButton:pressed,
+QPushButton:pressed {
+    background-color: #444444;
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,6,1">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignmentFlag::AlignTop">
+           <widget class="QFrame" name="opt_frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="menu_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>  Menu</string>
+               </property>
+               <property name="icon">
+                <iconset resource="Icons/resources.qrc">
+                 <normaloff>:/dark_icon/menu_w.png</normaloff>:/dark_icon/menu_w.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignmentFlag::AlignTop">
+           <widget class="QFrame" name="menu_frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="pdf_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>220</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> PDF</string>
+               </property>
+               <property name="icon">
+                <iconset resource="Icons/resources.qrc">
+                 <normaloff>:/icon/pdf.png</normaloff>:/icon/pdf.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>false</bool>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="img_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>220</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Images</string>
+               </property>
+               <property name="icon">
+                <iconset resource="Icons/resources.qrc">
+                 <normaloff>:/icon/image.png</normaloff>:/icon/image.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="file_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>220</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Files</string>
+               </property>
+               <property name="icon">
+                <iconset resource="Icons/resources.qrc">
+                 <normaloff>:/icon/folder.png</normaloff>:/icon/folder.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="video_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>220</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Video</string>
+               </property>
+               <property name="icon">
+                <iconset resource="Icons/resources.qrc">
+                 <normaloff>:/icon/video.png</normaloff>:/icon/video.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>10000</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QFrame" name="config_frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QToolButton" name="toolButton">
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset resource="Icons/resources.qrc">
+                 <normaloff>:/dark_icon/setting_w.png</normaloff>:/dark_icon/setting_w.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="r_widget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* ================= GENERAL ===================== */
+QWidget#r_widget {
+    background-color: #3a3a3a;
+}
+QStackedWidget {
+    background-color: #3a3a3a;
+}
+
+/* ================= LOWER FRAME ================= */
+QFrame#frame {
+    background-color: #181818;
+    color: #9e9e9e;
+}
+
+/* ================= TAB WIDGET BASE ================= */
+QTabWidget::pane {
+    border: none;
+    background-color: #2f2f2f;
+}
+
+QTabWidget &gt; QWidget &gt; QWidget {
+    background-color: #2f2f2f;
+}
+
+QTabBar {
+    background-color: #2f2f2f;
+}
+
+QTabBar::tab {
+    background-color: #464646;
+    color: #d0d0d0;
+    padding: 6px 14px;
+    margin-right: 2px;
+    border: none;
+}
+
+/* Hover */
+QTabBar::tab:hover {
+    background-color: #505050;
+}
+
+/* Tab seleccionada (base común) */
+QTabBar::tab:selected {
+    background-color: #2f2f2f;
+    color: #ffffff;
+    border-top: 3px solid transparent;
+}
+
+/* ================= PAGE COLORS ================= */
+QWidget#pdf_page QTabBar::tab:selected {
+    border-top-color: #e53935;		/* Rojo */
+}
+
+QWidget#img_page QTabBar::tab:selected {
+    border-top-color: #43a047;		/* Verde */
+}
+
+QWidget#file_page QTabBar::tab:selected {
+    border-top-color: #fbc02d;		/* Amarillo */
+}
+
+QWidget#vid_page QTabBar::tab:selected {
+    border-top-color: #1e88e5;		/* Azul */
+}
+</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="main_frame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QStackedWidget" name="stackedWidget">
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <widget class="QWidget" name="pdf_page">
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QTabWidget" name="pdf_tabs">
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <widget class="QWidget" name="JoinPdf_tab">
+                    <attribute name="title">
+                     <string>Unir Pdf</string>
+                    </attribute>
+                    <layout class="QFormLayout" name="formLayout_3">
+                     <property name="fieldGrowthPolicy">
+                      <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+                     </property>
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="verticalLayout_10">
+                       <item>
+                        <widget class="QLabel" name="label_15">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="text">
+                          <string>Seleccionar PDF's:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_7">
+                         <item>
+                          <widget class="ButtonListWidget" name="JoinPdf_In"/>
+                         </item>
+                         <item alignment="Qt::AlignmentFlag::AlignTop">
+                          <widget class="QPushButton" name="JoinPdf_selFile">
+                           <property name="text">
+                            <string>Seleccionar Archivos</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QVBoxLayout" name="verticalLayout_9">
+                       <property name="spacing">
+                        <number>25</number>
+                       </property>
+                       <item>
+                        <spacer name="verticalSpacer_3">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Vertical</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Policy::Minimum</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>16</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item alignment="Qt::AlignmentFlag::AlignTop">
+                        <widget class="QCheckBox" name="JoinPdf_isEven_Button">
+                         <property name="text">
+                          <string>Documento Par</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignmentFlag::AlignTop">
+                        <widget class="QComboBox" name="joinPdf_EvenPolicy_comboBox">
+                         <item>
+                          <property name="text">
+                           <string>Añadir Hoja al Inicio</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Añadir Hoja al Final</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignmentFlag::AlignTop">
+                        <widget class="QCheckBox" name="JoinPdf_ApplyEven_Button">
+                         <property name="text">
+                          <string>Aplicar a todos los Documentos</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_2">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="0" colspan="2">
+                      <widget class="QPushButton" name="JoinPdf_Button">
+                       <property name="text">
+                        <string>GUARDAR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="SplitPdf_tab">
+                    <attribute name="title">
+                     <string>Separar PDF</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_14">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_13">
+                       <item>
+                        <widget class="QLabel" name="label_17">
+                         <property name="text">
+                          <string>Seleccionar PDF:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_9">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="SplitPdf_In">
+                           <property name="maximumSize">
+                            <size>
+                             <width>800</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="SplitPdf_selFile">
+                           <property name="text">
+                            <string>Seleccionar Archivo</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Policy::Minimum</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>16</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_12">
+                       <item>
+                        <widget class="QLabel" name="label_16">
+                         <property name="text">
+                          <string>Hojas:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_10">
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="SplitPdf_Sheets">
+                           <property name="maximumSize">
+                            <size>
+                             <width>800</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="SplitPdf_SaveAll_Button">
+                           <property name="text">
+                            <string>Guardar las Demás</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_4">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="SplitPdf_Button">
+                       <property name="text">
+                        <string>GUARDAR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="ExtractPDF_tab">
+                    <attribute name="title">
+                     <string>Extraer Hojas</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_17">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_16">
+                       <item>
+                        <widget class="QLabel" name="label_33">
+                         <property name="text">
+                          <string>Seleccionar PDF:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_12">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="ExtractPdf_In">
+                           <property name="maximumSize">
+                            <size>
+                             <width>800</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="ExtractPdf_selFile">
+                           <property name="text">
+                            <string>Seleccionar Archivo</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_7">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Policy::Minimum</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>16</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_15">
+                       <item>
+                        <widget class="QLabel" name="label_34">
+                         <property name="text">
+                          <string>Hojas:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_11">
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="ExtractPdf_Sheets">
+                           <property name="maximumSize">
+                            <size>
+                             <width>800</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="ExtractPdf_All_Button">
+                           <property name="text">
+                            <string>Separar Todas</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_6">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="ExtractPdf_Button">
+                       <property name="text">
+                        <string>GUARDAR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="BlankPdf_tab">
+                    <attribute name="title">
+                     <string>Hoja en Blanco</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_20">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_19">
+                       <item>
+                        <widget class="QLabel" name="label_13">
+                         <property name="text">
+                          <string>Seleccionar PDF:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_13">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="BlankPdf_In">
+                           <property name="maximumSize">
+                            <size>
+                             <width>800</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="BlankPdf_selFile">
+                           <property name="text">
+                            <string>Seleccionar Archivo</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_9">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Policy::Minimum</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>16</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_18">
+                       <item>
+                        <widget class="QLabel" name="label_14">
+                         <property name="text">
+                          <string>Hojas</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_14">
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="BlankPdf_Sheets">
+                           <property name="maximumSize">
+                            <size>
+                             <width>800</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="BlankPdf_Inplace_Button">
+                           <property name="text">
+                            <string>Sobreescribir Archivo</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_8">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="BlankPdf_Button">
+                       <property name="text">
+                        <string>Guardar</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="img_page">
+                <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QTabWidget" name="img_tabs">
+                   <property name="currentIndex">
+                    <number>3</number>
+                   </property>
+                   <widget class="QWidget" name="ImgPdf_tab">
+                    <attribute name="title">
+                     <string>Imágen a PDF</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_21">
+                     <item>
+                      <widget class="QLabel" name="label_6">
+                       <property name="text">
+                        <string>Selecciona Imágenes:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_15">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>2</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="ImgPdf_In"/>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="ImgPdf_selFile">
+                         <property name="text">
+                          <string>Selecciona Archivos</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_10">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="ImgPdf_Button">
+                       <property name="text">
+                        <string>CONVERTIR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="PdfImg_tab">
+                    <attribute name="title">
+                     <string>PDF a Imágen</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <item>
+                      <widget class="QLabel" name="label_12">
+                       <property name="text">
+                        <string>Seleccione PDF's:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_16">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>2</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="PdfImg_In"/>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="PdfImg_selFile">
+                         <property name="text">
+                          <string>Seleccionar Archivos</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_11">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="PdfImg_Button">
+                       <property name="text">
+                        <string>CONVERTIR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="ImgExt_tab">
+                    <attribute name="title">
+                     <string>Cambiar Extensión</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_25">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_18">
+                       <property name="spacing">
+                        <number>50</number>
+                       </property>
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_24">
+                         <item>
+                          <widget class="QLabel" name="label_4">
+                           <property name="text">
+                            <string>Seleccionar Imagen:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_17">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLineEdit" name="ImgExt_In"/>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="ImgExt_selFile">
+                             <property name="text">
+                              <string>Seleccionar Archivo</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_23">
+                         <item>
+                          <widget class="QLabel" name="label_5">
+                           <property name="text">
+                            <string>Extensión:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="ImgExt_comboBox">
+                           <item>
+                            <property name="text">
+                             <string>.png</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>.jpeg</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>.gif</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>.bmp</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>.dds</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>.ico</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>.xbm</string>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_3">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_12">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="ImgExt_Button">
+                       <property name="text">
+                        <string>CONVERTIR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="ImgRsize_tab">
+                    <attribute name="title">
+                     <string>Redimensionar Imagen</string>
+                    </attribute>
+                    <layout class="QFormLayout" name="formLayout">
+                     <property name="fieldGrowthPolicy">
+                      <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                     </property>
+                     <property name="horizontalSpacing">
+                      <number>50</number>
+                     </property>
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="verticalLayout_28">
+                       <item>
+                        <widget class="QLabel" name="label_7">
+                         <property name="text">
+                          <string>Seleccionar Imagen:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_20">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>2</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="ImgRsize_In"/>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="ImgRsize_selFile">
+                           <property name="text">
+                            <string>Seleccionar Archivo</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QVBoxLayout" name="verticalLayout_26">
+                       <item>
+                        <widget class="QLabel" name="label_8">
+                         <property name="text">
+                          <string>Tamaño Actual:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_19">
+                         <item>
+                          <widget class="QLineEdit" name="ImgRsize_AW">
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_9">
+                           <property name="text">
+                            <string>x</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLineEdit" name="ImgRsize_AH">
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="0">
+                      <layout class="QHBoxLayout" name="horizontalLayout_22">
+                       <property name="spacing">
+                        <number>25</number>
+                       </property>
+                       <item>
+                        <widget class="QCheckBox" name="ImgRsize_Scale_Button">
+                         <property name="text">
+                          <string>Escalar</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="ImgRsize_Inplace_Button">
+                         <property name="text">
+                          <string>Sobreescribir Imagen</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="1">
+                      <layout class="QVBoxLayout" name="verticalLayout_27">
+                       <item>
+                        <widget class="QLabel" name="label_11">
+                         <property name="text">
+                          <string>Nueva Dimensión:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_21">
+                         <item>
+                          <widget class="QLineEdit" name="ImgRsize_NW">
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_10">
+                           <property name="text">
+                            <string>x</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLineEdit" name="ImgRsize_NH">
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="3" column="0" colspan="2">
+                      <widget class="QPushButton" name="ImgRsize_Button">
+                       <property name="text">
+                        <string>GUARDAR</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <spacer name="verticalSpacer_13">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="file_page">
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QTabWidget" name="file_tabs">
+                   <widget class="QWidget" name="FileRname_tab">
+                    <attribute name="title">
+                     <string>Renombrar Archivos</string>
+                    </attribute>
+                    <layout class="QFormLayout" name="formLayout_2">
+                     <item row="0" column="0">
+                      <layout class="QVBoxLayout" name="verticalLayout_31">
+                       <item>
+                        <widget class="QLabel" name="label_1">
+                         <property name="text">
+                          <string>Seleccione Archivos:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_25">
+                         <item>
+                          <widget class="ButtonListWidget" name="FileRname_In"/>
+                         </item>
+                         <item alignment="Qt::AlignmentFlag::AlignTop">
+                          <widget class="QPushButton" name="FileRname_selFile">
+                           <property name="text">
+                            <string>Seleccionar Archivos</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QVBoxLayout" name="verticalLayout_32">
+                       <item>
+                        <widget class="QLabel" name="label_2">
+                         <property name="text">
+                          <string>Template:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="FileRname_Template"/>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_15">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Vertical</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Policy::Minimum</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>16</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_3">
+                         <property name="text">
+                          <string>Número Inicial:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="FileRname_Num"/>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_16">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="0" colspan="2">
+                      <widget class="QPushButton" name="FileRname_Button">
+                       <property name="text">
+                        <string>RENOMBRAR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="vid_page">
+                <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QTabWidget" name="vid_tabs">
+                   <property name="currentIndex">
+                    <number>1</number>
+                   </property>
+                   <widget class="QWidget" name="VidTag_tab">
+                    <attribute name="title">
+                     <string>Tag Música</string>
+                    </attribute>
+                    <widget class="QLabel" name="label_90">
+                     <property name="geometry">
+                      <rect>
+                       <x>530</x>
+                       <y>30</y>
+                       <width>71</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Título:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_23">
+                     <property name="geometry">
+                      <rect>
+                       <x>640</x>
+                       <y>30</y>
+                       <width>81</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Intérprete:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_32">
+                     <property name="geometry">
+                      <rect>
+                       <x>780</x>
+                       <y>30</y>
+                       <width>49</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Álbum:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_Title">
+                     <property name="geometry">
+                      <rect>
+                       <x>520</x>
+                       <y>50</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_Intr">
+                     <property name="geometry">
+                      <rect>
+                       <x>650</x>
+                       <y>60</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_Alb">
+                     <property name="geometry">
+                      <rect>
+                       <x>780</x>
+                       <y>60</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_Year">
+                     <property name="geometry">
+                      <rect>
+                       <x>650</x>
+                       <y>130</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_31">
+                     <property name="geometry">
+                      <rect>
+                       <x>790</x>
+                       <y>100</y>
+                       <width>121</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Número de Pista:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_30">
+                     <property name="geometry">
+                      <rect>
+                       <x>550</x>
+                       <y>100</y>
+                       <width>49</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Género:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_29">
+                     <property name="geometry">
+                      <rect>
+                       <x>640</x>
+                       <y>100</y>
+                       <width>49</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Año:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_27">
+                     <property name="geometry">
+                      <rect>
+                       <x>530</x>
+                       <y>170</y>
+                       <width>131</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Intérprete de Album:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_28">
+                     <property name="geometry">
+                      <rect>
+                       <x>800</x>
+                       <y>170</y>
+                       <width>49</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Mood:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_IntrAlb">
+                     <property name="geometry">
+                      <rect>
+                       <x>540</x>
+                       <y>200</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_26">
+                     <property name="geometry">
+                      <rect>
+                       <x>660</x>
+                       <y>170</y>
+                       <width>101</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Compositor:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_Comp">
+                     <property name="geometry">
+                      <rect>
+                       <x>670</x>
+                       <y>200</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidTag_Mood">
+                     <property name="geometry">
+                      <rect>
+                       <x>800</x>
+                       <y>200</y>
+                       <width>113</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_25">
+                     <property name="geometry">
+                      <rect>
+                       <x>830</x>
+                       <y>130</y>
+                       <width>21</width>
+                       <height>21</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>de</string>
+                     </property>
+                    </widget>
+                    <widget class="QSpinBox" name="VidTag_Track">
+                     <property name="geometry">
+                      <rect>
+                       <x>780</x>
+                       <y>130</y>
+                       <width>42</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QSpinBox" name="VidTag_TrackAll">
+                     <property name="geometry">
+                      <rect>
+                       <x>880</x>
+                       <y>130</y>
+                       <width>42</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_24">
+                     <property name="geometry">
+                      <rect>
+                       <x>380</x>
+                       <y>260</y>
+                       <width>49</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Letra:</string>
+                     </property>
+                    </widget>
+                    <widget class="QPlainTextEdit" name="VidTag_Lyrics">
+                     <property name="geometry">
+                      <rect>
+                       <x>360</x>
+                       <y>290</y>
+                       <width>561</width>
+                       <height>151</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="VidTag_Button">
+                     <property name="geometry">
+                      <rect>
+                       <x>30</x>
+                       <y>460</y>
+                       <width>751</width>
+                       <height>24</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>GUARDAR</string>
+                     </property>
+                    </widget>
+                    <widget class="DroppableImageLabel" name="VidTag_Cover">
+                     <property name="geometry">
+                      <rect>
+                       <x>380</x>
+                       <y>40</y>
+                       <width>131</width>
+                       <height>181</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                    <widget class="QComboBox" name="VidTag_Genre_comboBox">
+                     <property name="geometry">
+                      <rect>
+                       <x>540</x>
+                       <y>130</y>
+                       <width>69</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                     <property name="editable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                    <widget class="QWidget" name="">
+                     <property name="geometry">
+                      <rect>
+                       <x>20</x>
+                       <y>20</y>
+                       <width>321</width>
+                       <height>431</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_30">
+                      <item>
+                       <widget class="QLabel" name="label_80">
+                        <property name="text">
+                         <string>Seleccione Carpeta:</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_24">
+                        <item>
+                         <widget class="QLineEdit" name="VidTag_In"/>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="VidTag_selFile">
+                          <property name="text">
+                           <string>Selecciona Archivo</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="VidTag_Update">
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="ButtonListWidget" name="VidTag_List"/>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                   <widget class="QWidget" name="MP3toMP4_tab">
+                    <attribute name="title">
+                     <string>MP4 a MP3</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_29">
+                     <item>
+                      <widget class="QLabel" name="label_18">
+                       <property name="text">
+                        <string>Video a Convertir:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_23">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>2</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="MP3toMP4_In"/>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="MP3toMP4_selFile">
+                         <property name="text">
+                          <string>Seleccionar Archivo</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_14">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="MP3toMP4_Button">
+                       <property name="text">
+                        <string>Guardar</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="VidDown">
+                    <attribute name="title">
+                     <string>Descargar Internet</string>
+                    </attribute>
+                    <widget class="QPushButton" name="VidDown_Button">
+                     <property name="geometry">
+                      <rect>
+                       <x>20</x>
+                       <y>330</y>
+                       <width>781</width>
+                       <height>41</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>DESCARGAR</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="VidDown_Thumb">
+                     <property name="geometry">
+                      <rect>
+                       <x>630</x>
+                       <y>40</y>
+                       <width>131</width>
+                       <height>181</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>IMG</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_20">
+                     <property name="geometry">
+                      <rect>
+                       <x>20</x>
+                       <y>30</y>
+                       <width>101</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>URL del Video:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_21">
+                     <property name="geometry">
+                      <rect>
+                       <x>20</x>
+                       <y>130</y>
+                       <width>121</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Título del Video:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="label_22">
+                     <property name="geometry">
+                      <rect>
+                       <x>370</x>
+                       <y>110</y>
+                       <width>91</width>
+                       <height>16</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Resolución:</string>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidDown_In">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>50</y>
+                       <width>301</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QLineEdit" name="VidDown_Title">
+                     <property name="geometry">
+                      <rect>
+                       <x>20</x>
+                       <y>150</y>
+                       <width>301</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QComboBox" name="VidDown_res">
+                     <property name="geometry">
+                      <rect>
+                       <x>380</x>
+                       <y>140</y>
+                       <width>69</width>
+                       <height>22</height>
+                      </rect>
+                     </property>
+                    </widget>
+                    <widget class="QCheckBox" name="VidDown_OnlyAudio">
+                     <property name="geometry">
+                      <rect>
+                       <x>340</x>
+                       <y>60</y>
+                       <width>161</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="text">
+                      <string>Solo Audio</string>
+                     </property>
+                    </widget>
+                    <widget class="QProgressBar" name="VidDown_progressBar">
+                     <property name="geometry">
+                      <rect>
+                       <x>30</x>
+                       <y>380</y>
+                       <width>771</width>
+                       <height>23</height>
+                      </rect>
+                     </property>
+                     <property name="value">
+                      <number>0</number>
+                     </property>
+                     <property name="invertedAppearance">
+                      <bool>false</bool>
+                     </property>
+                     <property name="textDirection">
+                      <enum>QProgressBar::Direction::TopToBottom</enum>
+                     </property>
+                    </widget>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <spacer name="verticalSpacer_1">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Policy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Python + PySide6</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DroppableImageLabel</class>
+   <extends>QLabel</extends>
+   <header>customWidgets/DroppableImageLabel</header>
+  </customwidget>
+  <customwidget>
+   <class>ButtonListWidget</class>
+   <extends>QListWidget</extends>
+   <header>customWidgets/ButtonListWidget</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="Icons/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>JoinPdf_isEven_Button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>joinPdf_EvenPolicy_comboBox</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>722</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>753</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>JoinPdf_isEven_Button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>JoinPdf_ApplyEven_Button</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>787</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>730</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ExtractPdf_All_Button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ExtractPdf_Sheets</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>382</x>
+     <y>347</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>211</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

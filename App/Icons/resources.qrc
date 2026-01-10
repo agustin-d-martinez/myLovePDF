@@ -1,0 +1,43 @@
+<RCC>
+  <qresource prefix="light_icon">
+    <file>stop.png</file>
+    <file>add.png</file>
+    <file>add_file.png</file>
+    <file>arrow-left.png</file>
+    <file>arrow-right.png</file>
+    <file>close.png</file>
+    <file>copy.png</file>
+    <file>maximize-size.png</file>
+    <file>menu.png</file>
+    <file>minimise.png</file>
+    <file>minus.png</file>
+    <file>music.png</file>
+    <file>no_image.png</file>
+    <file>pdf-file.svg</file>
+    <file>reload.png</file>
+    <file>setting.png</file>
+  </qresource>
+  <qresource prefix="icon">
+    <file>folder.png</file>
+    <file>image.png</file>
+    <file>pdf.png</file>
+    <file>video.png</file>
+  </qresource>
+  <qresource prefix="dark_icon">
+    <file>add_file_w.png</file>
+    <file>add_w.png</file>
+    <file>arrow-left_w.png</file>
+    <file>arrow-right_w.png</file>
+    <file>close_w.png</file>
+    <file>copy_w.png</file>
+    <file>maximize-size_w.png</file>
+    <file>menu_w.png</file>
+    <file>minimise_w.png</file>
+    <file>minus_w.png</file>
+    <file>music_w.png</file>
+    <file>no_image_w.png</file>
+    <file>reload_w.png</file>
+    <file>setting_w.png</file>
+    <file>stop_w.png</file>
+  </qresource>
+</RCC>
