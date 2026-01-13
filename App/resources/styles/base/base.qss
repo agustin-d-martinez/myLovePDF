@@ -1,0 +1,35 @@
+QMainWindow,
+QWidget {
+    font-family: "Segoe UI";
+}
+QFrame {
+    border: none; 
+    background-color: transparent;
+}
+
+#exit_frame { 
+    padding: 4px; 
+} 
+
+/* Bordes y radios base */
+QPushButton,
+QLineEdit,
+QComboBox,
+QSpinBox,
+QDoubleSpinBox,
+QPlainTextEdit,
+QListWidget {
+    border-radius: 6px;
+}
+
+/* Espaciados comunes */
+QPushButton {
+    padding: 6px 12px;
+}
+
+QLineEdit,
+QComboBox,
+QSpinBox,
+QDoubleSpinBox {
+    padding: 4px 8px;
+}

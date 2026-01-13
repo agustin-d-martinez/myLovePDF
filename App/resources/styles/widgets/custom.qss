@@ -1,0 +1,8 @@
+ButtonListWidget {
+    border-radius: 12px;
+    padding: 6px;
+}
+
+ButtonListWidget QListWidget {
+    border: none;
+}

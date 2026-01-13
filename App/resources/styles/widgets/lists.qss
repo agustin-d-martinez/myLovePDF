@@ -1,0 +1,18 @@
+QListWidget {
+    border-radius: 8px;
+    padding: 4px;
+}
+QListWidget::item {
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+QListWidget::item:selected {
+    font-weight: bold;
+}
+
+QListWidget QPushButton {
+    border: none;
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+

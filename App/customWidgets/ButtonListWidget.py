@@ -11,14 +11,11 @@ class ButtonListWidget(QWidget):
     def __init__(self, parent=None, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.setObjectName("ButtonListWidget")
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
         # Exponer el QListWidget como un atributo público
         self.listWidget = DroppableList()
         self.listWidget.setEditTriggers(QAbstractItemView.EditTrigger.AllEditTriggers)
-        self.setStyleSheet('''QPushButton { background-color: rgba(255, 255, 255, 180);color: transparent; border: none;border-radius: 7px;} 
-                     QPushButton:hover{background-color: rgba(255, 255, 255, 220);;}
-                     QPushButton:pressed{background-color: rgba(255, 255, 255, 250);;}
-                     QListWidget{background-color: rgb(255, 255, 255);border-radius:10px;}''')
 
         # Layout para los botones (Vertical)
         buttons_container = QWidget(self)
@@ -55,7 +52,8 @@ class ButtonListWidget(QWidget):
         main_layout = QHBoxLayout(self)
         main_layout.addWidget(self.listWidget, 10)
         main_layout.addWidget(buttons_container, 1)
-        main_layout.setContentsMargins(QMargins(2,0,2,0))
+        main_layout.setContentsMargins(QMargins(6,6,6,6))
+        main_layout.setSpacing(6)
         main_layout.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
         # Conectar botones con funciones

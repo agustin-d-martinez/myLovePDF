@@ -1,0 +1,45 @@
+<RCC>
+  <qresource prefix="/">
+    <file>styles/widgets/lists.qss</file>
+    <file>styles/base/base.qss</file>
+    <file>styles/themes/dark.qss</file>
+    <file>styles/widgets/buttons.qss</file>
+    <file>styles/widgets/custom.qss</file>
+    <file>styles/widgets/inputs.qss</file>
+    <file>styles/widgets/tabs.qss</file>
+    <file>Icons/add.png</file>
+    <file>Icons/add_file.png</file>
+    <file>Icons/add_file_w.png</file>
+    <file>Icons/add_w.png</file>
+    <file>Icons/arrow-left.png</file>
+    <file>Icons/arrow-left_w.png</file>
+    <file>Icons/arrow-right.png</file>
+    <file>Icons/arrow-right_w.png</file>
+    <file>Icons/close.png</file>
+    <file>Icons/close_w.png</file>
+    <file>Icons/copy.png</file>
+    <file>Icons/copy_w.png</file>
+    <file>Icons/folder.png</file>
+    <file>Icons/image.png</file>
+    <file>Icons/maximize-size.png</file>
+    <file>Icons/maximize-size_w.png</file>
+    <file>Icons/menu.png</file>
+    <file>Icons/menu_w.png</file>
+    <file>Icons/minimise.png</file>
+    <file>Icons/minimise_w.png</file>
+    <file>Icons/minus.png</file>
+    <file>Icons/minus_w.png</file>
+    <file>Icons/music.png</file>
+    <file>Icons/music_w.png</file>
+    <file>Icons/no_image.png</file>
+    <file>Icons/no_image_w.png</file>
+    <file>Icons/pdf.png</file>
+    <file>Icons/reload.png</file>
+    <file>Icons/reload_w.png</file>
+    <file>Icons/setting.png</file>
+    <file>Icons/setting_w.png</file>
+    <file>Icons/stop.png</file>
+    <file>Icons/stop_w.png</file>
+    <file>Icons/video.png</file>
+  </qresource>
+</RCC>

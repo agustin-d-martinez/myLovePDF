@@ -2,5 +2,5 @@ PySide6
 pymupdf
 pillow
 mutagen
-pytubefix
 requests
+yt-dlp[default]>=2024.12.0

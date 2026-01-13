@@ -1,0 +1,27 @@
+QTabWidget::pane {
+    border: none;
+}
+QTabBar::tab {
+    padding: 6px 14px;
+    margin-right: 2px;
+    border: none;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 1px;
+}
+QTabBar::tab:selected {
+    border-top: 3px solid transparent;
+}
+/* ================= PAGE COLORS ================= */
+QWidget#pdf_page QTabBar::tab:selected {
+    border-top-color: #e53935;		/* Rojo */
+}
+QWidget#img_page QTabBar::tab:selected {
+    border-top-color: #43a047;		/* Verde */
+}
+QWidget#file_page QTabBar::tab:selected {
+    border-top-color: #fbc02d;		/* Amarillo */
+}
+QWidget#vid_page QTabBar::tab:selected {
+    border-top-color: #1e88e5;		/* Azul */
+}

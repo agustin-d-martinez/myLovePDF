@@ -1,0 +1,43 @@
+QLineEdit:focus,
+QComboBox:focus,
+QSpinBox:focus,
+QDoubleSpinBox:focus {
+    border-width: 1px;
+}
+QComboBox {
+    border-radius: 6px;
+    padding: 4px 10px;
+    padding-right: 28px;
+}
+
+QLineEdit {
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+QSpinBox,
+QDoubleSpinBox {
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+
+QPlainTextEdit {
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+QPlainTextEdit QScrollBar:vertical {
+    width: 10px;
+    margin: 2px;
+}
+QPlainTextEdit QScrollBar::handle:vertical {
+    border-radius: 5px;
+}
+QPlainTextEdit QScrollBar::add-line:vertical,
+QPlainTextEdit QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QLineEdit {
+    border-radius: 6px;
+    padding: 4px 8px;
+}

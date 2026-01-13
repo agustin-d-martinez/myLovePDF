@@ -1,5 +1,6 @@
 import yt_dlp
 from pathlib import Path
+import re
 from libs.file.core import check_directory
 
 def get_video_info(url: str) -> dict:
@@ -11,12 +12,12 @@ def get_video_info(url: str) -> dict:
     ydl_opts = {
         "quiet": True,
         "skip_download": True,
+        "extract_flat": "in_playlist",
+        "noplaylist": False,
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=False)
-
-    return info
+        return ydl.extract_info(url, download=False)
 
 def normalize_videos(info: dict) -> list[dict]:
     """
@@ -26,6 +27,50 @@ def normalize_videos(info: dict) -> list[dict]:
     if info.get("_type") == "playlist":
         return [v for v in info["entries"] if v]
     return [info]
+
+def get_estimated_size(video: dict) -> str:
+    size = (
+        video.get("filesize")
+        or video.get("filesize_approx")
+    )
+
+    if not size:
+        return "—"
+
+    for unit in ("B", "KB", "MB", "GB"):
+        if size < 1024:
+            return f"{size:.1f} {unit}"
+        size /= 1024
+
+    return f"{size:.1f} TB"
+
+def format_duration(seconds: int | None) -> str:
+    if not seconds:
+        return "--:--"
+
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+
+    if h:
+        return f"{h:d}:{m:02d}:{s:02d}"
+    return f"{m:d}:{s:02d}"
+
+_YT_ID_RE = re.compile(r"(?:v=|\/)([0-9A-Za-z_-]{11})")
+def get_thumbnail_url(video: dict) -> str | None:
+    # 1. Caso ideal
+    video_id = video.get("id")
+
+    # 2. Playlist (extract_flat)
+    if not video_id:
+        url = video.get("url", "")
+        match = _YT_ID_RE.search(url)
+        if match:
+            video_id = match.group(1)
+
+    if not video_id:
+        return None
+
+    return f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg"
 
 VALID = {144, 240, 360, 480, 720, 1080, 1440, 2160}
 def get_resolutions(video_info: dict) -> list[int]:
@@ -42,6 +87,26 @@ def get_resolutions(video_info: dict) -> list[int]:
     }
 
     return sorted(resolutions)
+
+def get_thumbnail_url(video_url: str) -> str | None:
+    """
+    Devuelve la URL del thumbnail de un video.
+    Hace una extracción mínima (sin descargar contenido).
+    """
+    ydl_opts = {
+        "quiet": True,
+        "skip_download": True,
+        "noplaylist": True,
+    }
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(video_url, download=False)
+    except Exception:
+        return None
+
+    return info.get("thumbnail")
+
 
 def summarize_formats(video_info: dict) -> list[dict]:
     """

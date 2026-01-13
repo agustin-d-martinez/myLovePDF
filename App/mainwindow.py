@@ -5,12 +5,13 @@ import requests
 from pathlib import Path
 import re
 from typing import Optional, Tuple
-
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 
 from ui_design import Ui_MainWindow
+#import resources_rc
+
 import libs.file as file
 import libs.pdf as pdf
 import libs.image as img
@@ -35,6 +36,7 @@ class MainWindow(QMainWindow):
         # self.ui.main_frame.setAttribute(Qt.WA_StyledBackground, True)
 
         # Set Stylesheets
+        self._set_styles()
 
         # Set GRIP
         self.grip = QSizeGrip(self)
@@ -75,13 +77,17 @@ class MainWindow(QMainWindow):
         self.ui.menu_button.clicked.connect(self.left_menu_toggle)
 
         # Pdf   
-        self.ui.joinPdf_EvenPolicy_comboBox.hide()                      # TODO temp
-        self.ui.JoinPdf_ApplyEven_Button.hide()                         # TODO temp
+        self.ui.joinPdf_EvenPolicy_comboBox.hide()
+        self.ui.JoinPdf_ApplyEven_Button.hide()
+        self.ui.JoinPdf_ApplyEvenLabel.hide()
         self.ui.JoinPdf_Button.clicked.connect(self.join_pdf_clicked)
         self.ui.JoinPdf_selFile.clicked.connect(self._file_select)
 
         self.ui.SplitPdf_selFile.clicked.connect(self._file_select)
         self.ui.SplitPdf_Button.clicked.connect(self.split_pdf_clicked)
+
+        self.ui.ExtractPdf_selFile.clicked.connect(self._file_select)
+        self.ui.ExtractPdf_Button.clicked.connect(self.extract_sheets_clicked)
 
         self.ui.BlankPdf_selFile.clicked.connect(self._file_select)
         self.ui.BlankPdf_Button.clicked.connect(self.blank_sheet_clicked)
@@ -106,9 +112,13 @@ class MainWindow(QMainWindow):
         self.ui.ImgRsize_Button.clicked.connect(self.resize_img_clicked)
 
         # Video/Media
-        self.ui.VidDown_progressBar.hide()                                      # TODO temp
+        self._thumb_pixmap_cache = {}
+        self.ui.VidDown_listFrame.hide()
+        self.ui.VidDown_all_checkBox.hide()
+        self.ui.VidDown_progressBar.hide()                                      
         self.ui.VidDown_Button.clicked.connect(self.video_download_clicked)
-        self.ui.VidDown_In.editingFinished.connect(self.update_thumbnail)
+        self.ui.VidDown_list.currentItemChanged.connect( lambda current, _: self.on_playlist_item_changed(current) )
+        self.ui.VidDown_In.editingFinished.connect(self.update_from_url)
 
         self.ui.MP3toMP4_selFile.clicked.connect(self._file_select)
         self.ui.MP3toMP4_Button.clicked.connect(self.mp4_to_mp3_clicked)
@@ -290,7 +300,7 @@ class MainWindow(QMainWindow):
         
         is_even = self.ui.JoinPdf_isEven_Button.isChecked()
         policy = even_policy_dict[self.ui.joinPdf_EvenPolicy_comboBox.currentIndex()]
-        apply_all = self.ui.JoinPdf_ApplyEven_Button.isChecked()
+        apply_all = self.ui.JoinPdf_ApplyEven_Button.isChecked()                    # TODO falta esto
 
         output_path = self._save_file("Archivo PDF (*.pdf)")
         if not output_path:
@@ -359,6 +369,103 @@ class MainWindow(QMainWindow):
 
         self.download_thread.start()
 
+    def update_from_url(self):
+        url = self.ui.VidDown_In.text().strip()
+        if not url:
+            return
+
+        try:
+            raw_data = media.get_video_info(url)
+        except Exception:
+            return
+
+        self._video_data = media.normalize_videos(raw_data)
+
+        if len(self._video_data) > 1:
+            self._setup_playlist()
+        else:
+            self._setup_single_video(self._video_data[0])
+
+    def _setup_single_video(self, video):
+        self.ui.VidDown_listFrame.hide()
+        self.ui.VidDown_all_checkBox.hide()
+
+        self._update_common_fields(video)
+        self._viddown_update_thumbnail(video)
+
+    def _setup_playlist(self):
+        self.ui.VidDown_listFrame.show()
+        self.ui.VidDown_all_checkBox.show()
+        self.ui.VidDown_list.clear()
+
+        for video in self._video_data:
+            item = QListWidgetItem(video.get("title", "Sin título"))
+            item.setData(Qt.ItemDataRole.UserRole, video)
+            self.ui.VidDown_list.addItem(item)
+
+        self.ui.VidDown_list.setCurrentRow(0)
+
+    def _viddown_update_thumbnail(self, video: dict):
+        thumb_url = video.get("thumbnail")
+        if not thumb_url:
+            thumb_url = media.get_thumbnail_url(video)
+
+        if thumb_url in self._thumb_pixmap_cache:
+            pixmap = self._thumb_pixmap_cache[thumb_url]
+        else:
+            pixmap = self._get_pixmap_from_url(thumb_url)
+            if not pixmap:
+                return
+            self._thumb_pixmap_cache[thumb_url] = pixmap
+
+        self.ui.VidDown_Thumb.setPixmap(
+            pixmap.scaled(
+                self.ui.VidDown_Thumb.size(),
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation
+            )
+        )
+
+    def on_playlist_item_changed(self, current: QListWidgetItem):
+        if not current:
+            return
+
+        video = current.data(Qt.ItemDataRole.UserRole)
+        if not video:
+            return
+
+        self._update_common_fields(video)
+        self._viddown_update_thumbnail(video)
+
+    def _update_common_fields(self, video: dict):
+        self.ui.VidDown_Title.setText(video.get("title", "Sin título"))
+
+        duration = media.format_duration(video.get("duration"))
+        size = media.get_estimated_size(video)
+
+        self.ui.VidDown_dur.setText(duration)
+        self.ui.VidDown_size.setText(size)
+
+    def _viddown_update_thumbnail_from_url(self, thumb_url: str):
+        if not thumb_url:
+            return
+
+        if thumb_url in self._thumb_pixmap_cache :
+            pixmap = self._thumb_pixmap_cache [thumb_url]
+        else:
+            pixmap = self._get_pixmap_from_url(thumb_url)
+            if pixmap:
+                self._thumb_pixmap_cache[thumb_url] = pixmap
+
+        if pixmap:
+            self.ui.VidDown_Thumb.setPixmap(
+                pixmap.scaled(
+                    self.ui.VidDown_Thumb.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                )
+            )
+
     def mp4_to_mp3_clicked(self):   
         input_path = self.ui.MP3toMP4_In.text()
         if not input_path and not input_path.endswith(".mp4"):
@@ -376,7 +483,7 @@ class MainWindow(QMainWindow):
         QMessageBox().information(self, "Archivo generado", f"Audio extraido con éxito.")
 
     def video_tag_clicked(self):   
-        music_file = self.ui.VidTag_list.listWidget.currentItem()
+        music_file = self.ui.VidTag_List.listWidget.currentItem()
         if not music_file:
             self._error_message("No se seleccionó ninguna canción")
             return    
@@ -393,8 +500,8 @@ class MainWindow(QMainWindow):
         tags["composer"]= self.ui.VidTag_Comp.text()
         tags["album_artist"]= self.ui.VidTag_IntrAlb.text()
         tags["genre"]= self.ui.VidTag_Genre_comboBox.currentText()
-        tags["track"]= f"{self.ui.VidTag_Pista.value()}/{self.ui.VidTag_PistaAll.value()}"
-        tags["lyrics"]= self.ui.VidTag_Letter.toPlainText()
+        tags["track"]= f"{self.ui.VidTag_Track.value()}/{self.ui.VidTag_TrackAll.value()}"
+        tags["lyrics"]= self.ui.VidTag_Lyrics.toPlainText()
         tags["year"]= self.ui.VidTag_Year.text()
         tags["mood"]= self.ui.VidTag_Mood.text()
 
@@ -412,38 +519,13 @@ class MainWindow(QMainWindow):
             return
         QMessageBox.information(self,"Archivo Actualizado","Música guardada con éxito.")
 
-    def update_thumbnail(self):
-        url = self.ui.VidDown_In.text()
-        try:
-            video_data = media.get_video_info(url)
-        except:
-            return
-        video_data = media.normalize_videos(video_data)
-
-        title = video_data[0].get("title", "Sin título")
-        thumbnail_url = video_data[0].get("thumbnail")
-        pixmap = self._get_pixmap_from_url(thumbnail_url)
-        resolutions = media.get_resolutions(video_data[0])
-
-        self.ui.VidDown_Title.setText(title)
-        if pixmap:
-            self.ui.VidDown_Thumb.setPixmap(
-                pixmap.scaled(
-                    self.ui.VidDown_Thumb.size(),
-                    Qt.AspectRatioMode.KeepAspectRatio,
-                    Qt.TransformationMode.SmoothTransformation
-                )
-            )
-        
-        self.ui.VidDown_res.clear()
-        for res in resolutions:
-            self.ui.VidDown_res.addItem(str(res))
-        self.ui.VidDown_res.addItem("Best Resolution")
-
     def _update_music_folder(self):
-        self.ui.VidTag_list.listWidget.clear()
-        music_list = file.search_file_tipe(dir, ".mp3", recursive=True)
-        self.ui.VidTag_list.listWidget.addItems(music_list)
+        self.ui.VidTag_List.listWidget.clear()
+        folder = self.ui.VidTag_In.text()
+        if not folder:
+            return
+        music_list = file.search_file_tipe(folder, ".mp3", recursive=True)
+        self.ui.VidTag_List.listWidget.addItems(music_list)
 
     def _update_selected_music(self):
         has_selection = bool(self.ui.VidTag_List.listWidget.selectedIndexes())
@@ -477,15 +559,21 @@ class MainWindow(QMainWindow):
         self.ui.VidTag_TrackAll.setValue(tracks[1])
         self.ui.VidTag_Genre_comboBox.setCurrentText(tags.get("genre",""))
         self.ui.VidTag_Mood.setText(tags.get("mood",""))
+        cover = tags.get("cover")
 
-        pixmap = QPixmap()
-        cover = tags.get("cover",b"")
-        pixmap.loadFromData(cover)
-        if cover == b"":
-            pixmap = self.ui.VidTag_Cover.default_pixmap
-        pixmap = pixmap.scaled(self.ui.VidTag_Cover.size(),
-                               Qt.AspectRatioMode.KeepAspectRatio,
-                               Qt.TransformationMode.SmoothTransformation)
+        pixmap = self.ui.VidTag_Cover.default_pixmap
+        if isinstance(cover, dict):
+            img_bytes = cover.get("data")
+            pm = QPixmap()
+            if pm.loadFromData(img_bytes):
+                pixmap = pm
+
+        pixmap = pixmap.scaled(
+            self.ui.VidTag_Cover.size(),
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation
+        )
+
         self.ui.VidTag_Cover.setPixmap(pixmap)
 
     def _parse_track_tag(self, tag: str) -> Tuple[Optional[int], Optional[int]]:
@@ -643,6 +731,7 @@ class MainWindow(QMainWindow):
         sender_map = {
             self.ui.JoinPdf_selFile: ("pdf", self.ui.JoinPdf_In.listWidget, True),
             self.ui.SplitPdf_selFile: ("pdf", self.ui.SplitPdf_In, False),
+            self.ui.ExtractPdf_selFile: ("pdf", self.ui.ExtractPdf_In, False),
             self.ui.BlankPdf_selFile: ("pdf", self.ui.BlankPdf_In, False),
             self.ui.FileRname_selFile: ("all", self.ui.FileRname_In.listWidget, True),
             self.ui.ImgExt_selFile: ("img", self.ui.ImgExt_In, False),
@@ -650,33 +739,46 @@ class MainWindow(QMainWindow):
             self.ui.ImgRsize_selFile: ("img", self.ui.ImgRsize_In, False),
             self.ui.PdfImg_selFile: ("pdf", self.ui.PdfImg_In, False),
             self.ui.MP3toMP4_selFile: ("mp4", self.ui.MP3toMP4_In, False),
-            self.ui.VidTag_selFile: ("mp4", self.ui.VidTag_In, False),
+            self.ui.VidTag_selFile: ("dir", self.ui.VidTag_In, False),
         }
-
         sender = self.sender()
-        if not sender in sender_map:
+        if sender not in sender_map:
             return
-        
+
         file_type, target_widget, multiple = sender_map[sender]
+        if file_type == "dir":
+            directory = QFileDialog.getExistingDirectory(self, "Seleccionar carpeta de música", "")
+            if not directory:
+                return
+
+            target_widget.setText(directory)
+
+            self._update_music_folder()
+            return
+
         filters = {
             "pdf": "Archivos PDF (*.pdf)",
             "img": "Image Files (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)",
             "mp4": "MP4 Video Files (*.mp4)",
-            "all": "All Files (*)"
+            "all": "All Files (*)",
         }
 
         if multiple:
-            dir, _ = QFileDialog.getOpenFileNames(self, "Seleccionar Archivo", "", filters[file_type])
-            target_widget.addItems(dir)
+            files, _ = QFileDialog.getOpenFileNames(
+                self, "Seleccionar Archivo", "", filters[file_type]
+            )
+            if not files:
+                return
+            target_widget.addItems(files)
         else:
-            dir, _ = QFileDialog.getOpenFileName(self, "Seleccionar Archivo", "", filters[file_type])
-            target_widget.setText(dir)
-        if not dir:
-            return
-            
-        if sender == self.ui.VidTag_selFile:
-            self._update_music_folder()
-        elif sender == self.ui.ImgRsize_selFile:
+            file, _ = QFileDialog.getOpenFileName(
+                self, "Seleccionar Archivo", "", filters[file_type]
+            )
+            if not file:
+                return
+            target_widget.setText(file)
+
+        if sender == self.ui.ImgRsize_selFile:
             self._update_img_res()
 
     def _get_pixmap_from_url(self, url: str) -> QPixmap | None:
@@ -701,6 +803,30 @@ class MainWindow(QMainWindow):
                 lista.add(int(number))
         return sorted(lista)
 
+    def _set_styles(self, theme="dark"):
+        qss = ""
+
+        # Base (estructura)
+        qss += self._load_qss(":/styles/base/base.qss")
+
+        # Widgets
+        qss += self._load_qss(":/styles/widgets/buttons.qss")
+        qss += self._load_qss(":/styles/widgets/inputs.qss")
+        qss += self._load_qss(":/styles/widgets/lists.qss")
+        qss += self._load_qss(":/styles/widgets/tabs.qss")
+        qss += self._load_qss(":/styles/widgets/custom.qss")
+
+        # Theme (solo colores)
+        qss += self._load_qss(f":/styles/themes/{theme}.qss")
+
+        QApplication.instance().setStyleSheet(qss)
+
+    def _load_qss(self, resource_path: str) -> str:
+        file = QFile(resource_path)
+        if not file.open( QIODevice.OpenModeFlag.ReadOnly | QIODevice.OpenModeFlag.Text):
+            return
+        stream = QTextStream(file)
+        return stream.readAll()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
