@@ -3,8 +3,7 @@ from libs import media
 
 class DownloadWorker(QThread):
     progress = Signal(int)
-    completed = Signal()
-    error = Signal(str)
+    completed = Signal(bool, str)
 
     def __init__(self, *, url, output_path, only_audio, resolution=None):
         super().__init__()
@@ -41,8 +40,7 @@ class DownloadWorker(QThread):
                         progress_hook=self.progress_hook,
                 )
         except Exception as e:
-            self.error.emit(str(e))
-            return   
-
-        self.completed.emit()
+            self.completed.emit(False, str(e))   
+        else:
+            self.completed.emit(True, "")
 

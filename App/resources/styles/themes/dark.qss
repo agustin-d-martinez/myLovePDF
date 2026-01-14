@@ -11,12 +11,17 @@ QDoubleSpinBox {
     color: #e0e0e0;
     font-family: "Segoe UI";
 }
-
-/* ================= LEFT MENU ================= */
-#l_widget {
-    background-color: #1e1e1e;
+QFrame {
+    background-color: transparent;
 }
 
+/* ================= LEFT MENU ================= */
+QWidget#l_widget {
+    background-color: #1e1e1e;
+}
+#l_widget QFrame {
+    background-color: transparent;
+}
 #l_widget QToolButton,
 #l_widget QPushButton {
     background-color: transparent;
@@ -29,7 +34,7 @@ QDoubleSpinBox {
 }
 
 #l_widget QPushButton:checked {
-    background-color: #3a3a3a;
+    background-color: #3f3f3f;
 }
 
 #l_widget QToolButton:pressed,
@@ -39,7 +44,15 @@ QDoubleSpinBox {
 
 /* ================= MAIN APP ================= */
 #r_widget {
+    background-color: #2f2f2f;
+}
+
+QWidget#pdf_page,
+QWidget#vid_page, 
+QWidget#file_page, 
+QWidget#img_page {
     background-color: #3e3e3e;
+    border: none;
 }
 
 /* ================= LOWER / EXIT FRAMES ================= */
@@ -124,10 +137,6 @@ QListWidget::item:selected {
 }
 
 /* ================= TAB WIDGET ================= */
-QTabWidget > QWidget > QWidget {
-    background-color: #2f2f2f;
-}
-
 QTabBar {
     background-color: #2f2f2f;
 }
@@ -138,6 +147,10 @@ QTabBar::tab:selected {
 
 QTabBar::tab:!selected {
     background-color: #414141;
+}
+
+QTabWidget > QStackedWidget > QWidget {
+    background-color: #2f2f2f;
 }
 
 /* ================= PLAIN TEXT ================= */
@@ -179,9 +192,33 @@ ButtonListWidget QListWidget {
     background-color: #2b2b2b;
 }
 
-/* ================= MODERN CHECKBOX ================= */
+/* ================= MODERN CHECKBOX (custom) ================= */
 ModernCheckBox {
     qproperty-inactiveColor: #4f4f4f;
     qproperty-activeColor: #1e88e5;
     qproperty-circleColor: #e0e0e0;
+}
+ModernCheckBox QWidget,
+ModernCheckBox QLabel {
+    background-color: transparent;
+}
+
+/* ================= Message Box ================= */
+QMessageBox {
+    background-color: #2b2b2b;
+}
+
+QMessageBox QLabel {
+    color: #e0e0e0;
+    background: none;
+}
+
+QMessageBox QPushButton {
+    background-color: #3f3f3f;
+    border: 1px solid #555;
+    padding: 6px 12px;
+}
+
+QMessageBox QPushButton:hover {
+    background-color: #4a4a4a;
 }

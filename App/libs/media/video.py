@@ -140,10 +140,15 @@ def download_video(url: str, output_path: str | Path, resolution: int | None = N
     output_dir = output_path.parent          
     filename = output_path.stem or "%(title)s"             
 
-    fmt = "bv*[vcodec^=avc1]"
     if resolution:
-        fmt += f"[height<={resolution}]"
-    fmt += "+ba"
+        fmt = (
+            f"bv*[vcodec^=avc1][height<={resolution}]/"
+            f"bv*[height<={resolution}]/"
+            "best"
+        )
+    else:
+        fmt = "bv*[vcodec^=avc1]/bv*/best"
+
 
     video_options = {
         "format": fmt,

@@ -16,7 +16,7 @@ def download_audio(url: str, output_path: str | Path, quality: str = "192", code
     filename = output_path.stem or "%(title)s"             
 
     audio_options = {
-        "format": "ba",
+        "format": "bestaudio/best",
         "outtmpl": f"{filename}.%(ext)s",
         "paths": {"home": str(output_dir)},
         "progress_hooks": [progress_hook],

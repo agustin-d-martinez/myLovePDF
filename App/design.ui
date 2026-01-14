@@ -615,7 +615,7 @@
                           <number>0</number>
                          </property>
                          <item>
-                          <widget class="QLabel" name="label_15">
+                          <widget class="QLabel" name="JoinPdf_Inlabel">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                              <horstretch>0</horstretch>
@@ -628,7 +628,7 @@
                           </widget>
                          </item>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_7">
+                          <layout class="QHBoxLayout" name="JoinPdf_InLayout">
                            <property name="spacing">
                             <number>0</number>
                            </property>
@@ -664,7 +664,7 @@ border-bottom-left-radius: 0px;
                           <number>16</number>
                          </property>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_38">
+                          <layout class="QHBoxLayout" name="JoinPdf_isEvenLayout">
                            <property name="spacing">
                             <number>6</number>
                            </property>
@@ -694,7 +694,7 @@ border-bottom-left-radius: 0px;
                             </widget>
                            </item>
                            <item>
-                            <widget class="QLabel" name="label_19">
+                            <widget class="QLabel" name="JoinPdf_isEvenlabel">
                              <property name="sizePolicy">
                               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                                <horstretch>0</horstretch>
@@ -729,7 +729,7 @@ border-bottom-left-radius: 0px;
                           </widget>
                          </item>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_37">
+                          <layout class="QHBoxLayout" name="JoinPdf_ApplyEvenLayout">
                            <property name="spacing">
                             <number>6</number>
                            </property>
@@ -824,12 +824,12 @@ border-bottom-left-radius: 0px;
                       <number>16</number>
                      </property>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_13">
+                      <layout class="QVBoxLayout" name="SplitPdf_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_17">
+                        <widget class="QLabel" name="SplitPdf_Inlabel">
                          <property name="text">
                           <string>Seleccionar PDF:</string>
                          </property>
@@ -925,7 +925,7 @@ border-bottom-left-radius: 0px;
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLabel" name="label_16">
+                           <widget class="QLabel" name="SplitPdf_Sheetslabel">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                               <horstretch>0</horstretch>
@@ -960,7 +960,7 @@ border-bottom-left-radius: 0px;
                         </widget>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_35">
+                        <layout class="QHBoxLayout" name="SplitPdf_SaveAllLayout">
                          <property name="spacing">
                           <number>6</number>
                          </property>
@@ -984,7 +984,7 @@ border-bottom-left-radius: 0px;
                           </widget>
                          </item>
                          <item alignment="Qt::AlignmentFlag::AlignBottom">
-                          <widget class="QLabel" name="label_22">
+                          <widget class="QLabel" name="SplitPdf_SaveAlllabel">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                              <horstretch>0</horstretch>
@@ -1031,12 +1031,12 @@ border-bottom-left-radius: 0px;
                       <number>16</number>
                      </property>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_16">
+                      <layout class="QVBoxLayout" name="ExtractPdf_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_33">
+                        <widget class="QLabel" name="ExtractPdf_Inlabel">
                          <property name="text">
                           <string>Seleccionar PDF:</string>
                          </property>
@@ -1126,7 +1126,7 @@ border-bottom-left-radius: 0px;
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLabel" name="label_34">
+                           <widget class="QLabel" name="ExtractPdf_Sheetslabel">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                               <horstretch>0</horstretch>
@@ -1161,7 +1161,7 @@ border-bottom-left-radius: 0px;
                         </widget>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_36">
+                        <layout class="QHBoxLayout" name="ExtractPdf_AllLayout">
                          <property name="spacing">
                           <number>6</number>
                          </property>
@@ -1191,7 +1191,7 @@ border-bottom-left-radius: 0px;
                           </widget>
                          </item>
                          <item alignment="Qt::AlignmentFlag::AlignBottom">
-                          <widget class="QLabel" name="label_24">
+                          <widget class="QLabel" name="ExtractPdf_Alllabel">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -1238,12 +1238,12 @@ border-bottom-left-radius: 0px;
                       <number>16</number>
                      </property>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_19">
+                      <layout class="QVBoxLayout" name="BlankPdf_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_13">
+                        <widget class="QLabel" name="BlankPdf_Inlabel">
                          <property name="text">
                           <string>Seleccionar PDF:</string>
                          </property>
@@ -1333,7 +1333,7 @@ border-bottom-left-radius: 0px;
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLabel" name="label_14">
+                           <widget class="QLabel" name="BlankPdf_Sheetslabel">
                             <property name="text">
                              <string>Hojas:</string>
                             </property>
@@ -1362,7 +1362,7 @@ border-bottom-left-radius: 0px;
                         </widget>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_14">
+                        <layout class="QHBoxLayout" name="BlankPdf_InplaceLayout">
                          <item alignment="Qt::AlignmentFlag::AlignBottom">
                           <widget class="ModernCheckBox" name="BlankPdf_Inplace_Button">
                            <property name="sizePolicy">
@@ -1383,7 +1383,7 @@ border-bottom-left-radius: 0px;
                           </widget>
                          </item>
                          <item alignment="Qt::AlignmentFlag::AlignBottom">
-                          <widget class="QLabel" name="label_26">
+                          <widget class="QLabel" name="BlankPdf_Inplacelabel">
                            <property name="text">
                             <string>Sobreescribir Archivo</string>
                            </property>
@@ -1438,14 +1438,14 @@ border-bottom-left-radius: 0px;
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QLabel" name="label_6">
+                      <widget class="QLabel" name="ImgPdf_Inlabel">
                        <property name="text">
                         <string>Selecciona Imágenes:</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_15">
+                      <layout class="QHBoxLayout" name="ImgPdf_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
@@ -1519,14 +1519,14 @@ border-bottom-left-radius: 0px;
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QLabel" name="label_12">
+                      <widget class="QLabel" name="PdfImg_Inlabel">
                        <property name="text">
                         <string>Seleccione PDF's:</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_16">
+                      <layout class="QHBoxLayout" name="PdfImg_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
@@ -1600,12 +1600,12 @@ border-bottom-left-radius: 0px;
                         <number>50</number>
                        </property>
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_24">
+                        <layout class="QVBoxLayout" name="ImgExt_InLayout">
                          <property name="spacing">
                           <number>0</number>
                          </property>
                          <item>
-                          <widget class="QLabel" name="label_4">
+                          <widget class="QLabel" name="ImgExt_Inlabel">
                            <property name="text">
                             <string>Seleccionar Imagen:</string>
                            </property>
@@ -1656,12 +1656,12 @@ border-bottom-left-radius: 0px;
                         </layout>
                        </item>
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_23">
+                        <layout class="QVBoxLayout" name="ImgExt_ExtLayout">
                          <property name="spacing">
                           <number>0</number>
                          </property>
                          <item>
-                          <widget class="QLabel" name="label_5">
+                          <widget class="QLabel" name="ImgExt_Extlabel">
                            <property name="text">
                             <string>Extensión:</string>
                            </property>
@@ -1757,12 +1757,12 @@ border-bottom-left-radius: 0px;
                       <number>16</number>
                      </property>
                      <item row="0" column="0">
-                      <layout class="QVBoxLayout" name="verticalLayout_28">
+                      <layout class="QVBoxLayout" name="ImgRsize_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_7">
+                        <widget class="QLabel" name="ImgRsize_Inlabel">
                          <property name="text">
                           <string>Seleccionar Imagen:</string>
                          </property>
@@ -1813,12 +1813,12 @@ border-bottom-left-radius: 0px;
                       </layout>
                      </item>
                      <item row="0" column="1">
-                      <layout class="QVBoxLayout" name="verticalLayout_26">
+                      <layout class="QVBoxLayout" name="ImgRsize_ActualLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_8">
+                        <widget class="QLabel" name="ImgRsize_Actuallabel_2">
                          <property name="text">
                           <string>Tamaño Actual:</string>
                          </property>
@@ -1840,7 +1840,7 @@ border-bottom-left-radius: 0px;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLabel" name="label_9">
+                          <widget class="QLabel" name="label_13">
                            <property name="text">
                             <string>x</string>
                            </property>
@@ -1864,7 +1864,7 @@ border-bottom-left-radius: 0px;
                       </layout>
                      </item>
                      <item row="1" column="0">
-                      <layout class="QHBoxLayout" name="horizontalLayout_22">
+                      <layout class="QHBoxLayout" name="ImgRsize_OptionsLayout">
                        <property name="spacing">
                         <number>25</number>
                        </property>
@@ -1885,12 +1885,12 @@ border-bottom-left-radius: 0px;
                       </layout>
                      </item>
                      <item row="1" column="1">
-                      <layout class="QVBoxLayout" name="verticalLayout_27">
+                      <layout class="QVBoxLayout" name="ImgRsize_NewLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_11">
+                        <widget class="QLabel" name="ImgRsize_Newlabel">
                          <property name="text">
                           <string>Nueva Dimensión:</string>
                          </property>
@@ -1974,12 +1974,12 @@ border-bottom-left-radius: 0px;
                     </attribute>
                     <layout class="QFormLayout" name="formLayout_2">
                      <item row="0" column="0">
-                      <layout class="QVBoxLayout" name="verticalLayout_31">
+                      <layout class="QVBoxLayout" name="FileRname_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_1">
+                        <widget class="QLabel" name="FileRname_Inlabel">
                          <property name="text">
                           <string>Seleccione Archivos:</string>
                          </property>
@@ -2018,7 +2018,7 @@ border-bottom-left-radius: 0px;</string>
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_2">
+                        <widget class="QLabel" name="FileRname_Templatelabel">
                          <property name="text">
                           <string>Template:</string>
                          </property>
@@ -2054,7 +2054,7 @@ border-bottom-left-radius: 0px;</string>
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_3">
+                        <widget class="QLabel" name="FileRname_Numlabel">
                          <property name="text">
                           <string>Número Inicial:</string>
                          </property>
@@ -2109,12 +2109,12 @@ border-bottom-left-radius: 0px;</string>
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_34">
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_30">
+                        <layout class="QVBoxLayout" name="VidTag_InLayout">
                          <property name="spacing">
                           <number>0</number>
                          </property>
                          <item>
-                          <widget class="QLabel" name="label_80">
+                          <widget class="QLabel" name="VidTag_Inlabel">
                            <property name="text">
                             <string>Seleccione Carpeta:</string>
                            </property>
@@ -2215,7 +2215,7 @@ border-bottom-left-radius: 0px;
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_90">
+                                  <widget class="QLabel" name="VidTag_Titlelabel">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
@@ -2251,7 +2251,7 @@ border-bottom-left-radius: 0px;
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_23">
+                                  <widget class="QLabel" name="VidTag_Intrlabel">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
@@ -2287,7 +2287,7 @@ border-bottom-left-radius: 0px;
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_32">
+                                  <widget class="QLabel" name="VidTag_Alblabel">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
@@ -2327,7 +2327,7 @@ border-bottom-left-radius: 0px;
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_30">
+                                  <widget class="QLabel" name="VidTag_Genrelabel">
                                    <property name="text">
                                     <string>Género:</string>
                                    </property>
@@ -2352,12 +2352,12 @@ border-bottom-left-radius: 0px;
                                 </layout>
                                </item>
                                <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_11">
+                                <layout class="QVBoxLayout" name="VidTag_YearLayout">
                                  <property name="spacing">
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_29">
+                                  <widget class="QLabel" name="VidTag_Yearlabel">
                                    <property name="text">
                                     <string>Año:</string>
                                    </property>
@@ -2382,12 +2382,12 @@ border-bottom-left-radius: 0px;
                                 </layout>
                                </item>
                                <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_36">
+                                <layout class="QVBoxLayout" name="VidTag_TrackLayout">
                                  <property name="spacing">
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_31">
+                                  <widget class="QLabel" name="VidTag_Tracklabel">
                                    <property name="text">
                                     <string>Número de Pista:</string>
                                    </property>
@@ -2397,7 +2397,7 @@ border-bottom-left-radius: 0px;
                                   </widget>
                                  </item>
                                  <item>
-                                  <layout class="QHBoxLayout" name="VidTag_TrackLayout">
+                                  <layout class="QHBoxLayout" name="verticalLayout_11">
                                    <item>
                                     <widget class="QSpinBox" name="VidTag_Track"/>
                                    </item>
@@ -2516,7 +2516,7 @@ border-bottom-left-radius: 0px;
                           </layout>
                          </item>
                          <item>
-                          <layout class="QVBoxLayout" name="verticalLayout_47">
+                          <layout class="QVBoxLayout" name="VidTag_LyricsLayout">
                            <property name="spacing">
                             <number>0</number>
                            </property>
@@ -2564,7 +2564,7 @@ border-bottom-left-radius: 0px;
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_23">
+                      <layout class="QHBoxLayout" name="MP3toMP4_InLayout">
                        <property name="spacing">
                         <number>0</number>
                        </property>
@@ -2643,12 +2643,12 @@ border-bottom-left-radius: 0px;
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_8">
                            <item>
-                            <layout class="QVBoxLayout" name="verticalLayout_18">
+                            <layout class="QVBoxLayout" name="VidDown_InLayout">
                              <property name="spacing">
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QLabel" name="label_20">
+                              <widget class="QLabel" name="VidDown_Inlabel">
                                <property name="text">
                                 <string>URL del Video:</string>
                                </property>
@@ -2670,12 +2670,12 @@ border-bottom-left-radius: 0px;
                             </layout>
                            </item>
                            <item>
-                            <layout class="QVBoxLayout" name="verticalLayout_15">
+                            <layout class="QVBoxLayout" name="VidDown_OnlyAudioLayout">
                              <property name="spacing">
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QLabel" name="label_27">
+                              <widget class="QLabel" name="VidDown_OnlyAudiolabel">
                                <property name="text">
                                 <string>Solo Audio:</string>
                                </property>
@@ -2779,7 +2779,7 @@ border-bottom-left-radius: 0px;
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_26">
                            <item>
-                            <layout class="QVBoxLayout" name="verticalLayout_33">
+                            <layout class="QVBoxLayout" name="VidDown_TitleLayout">
                              <property name="spacing">
                               <number>0</number>
                              </property>
@@ -2806,12 +2806,12 @@ border-bottom-left-radius: 0px;
                             </layout>
                            </item>
                            <item>
-                            <layout class="QVBoxLayout" name="verticalLayout_20">
+                            <layout class="QVBoxLayout" name="VidDown_allLayout">
                              <property name="spacing">
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QLabel" name="label_28">
+                              <widget class="QLabel" name="VidDown_alllabel">
                                <property name="text">
                                 <string>Descargar Todo:</string>
                                </property>
@@ -3169,12 +3169,12 @@ border-bottom-left-radius: 0px;
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>530</x>
-     <y>89</y>
+     <x>547</x>
+     <y>120</y>
     </hint>
     <hint type="destinationlabel">
-     <x>552</x>
-     <y>127</y>
+     <x>723</x>
+     <y>159</y>
     </hint>
    </hints>
   </connection>
@@ -3185,12 +3185,12 @@ border-bottom-left-radius: 0px;
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>533</x>
-     <y>87</y>
+     <x>547</x>
+     <y>120</y>
     </hint>
     <hint type="destinationlabel">
-     <x>521</x>
-     <y>162</y>
+     <x>547</x>
+     <y>201</y>
     </hint>
    </hints>
   </connection>
@@ -3201,8 +3201,8 @@ border-bottom-left-radius: 0px;
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>540</x>
-     <y>94</y>
+     <x>547</x>
+     <y>120</y>
     </hint>
     <hint type="destinationlabel">
      <x>646</x>

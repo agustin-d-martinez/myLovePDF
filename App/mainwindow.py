@@ -12,6 +12,7 @@ from PySide6.QtCore import *
 import ctypes
 
 from ui_design import Ui_MainWindow
+import resources_rc
 
 from customWidgets.ButtonListWidget import ButtonListWidget 
 import libs.file as file
@@ -26,21 +27,23 @@ from download_thread import DownloadWorker
 #     pyside6-rcc .\Icons\resources.qrc -o .\Icons\resources.py
 # pyside6-designer
 # from Icons import resources
-# pyinstaller --onefile --windowed --ico=resources/Icons/app_icon.ico  mainwindow.py
+# pyinstaller --onefile --windowed --name="MyLovePDF" --icon=resources/Icons/app_icon.ico  mainwindow.py
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+
+        # Set UI
         self.ui = Ui_MainWindow()
+        # Set Window Icon
+        self.setWindowTitle("MyLovePDF")
+        self.setWindowIcon(QIcon(":/Icons/app_icon.ico"))
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(u'MyLovePDF.app.888')	# Permite que cambie el logo del taskbar
+        
         self.ui.setupUi(self)
 
-        # Set Window Icon
-        self.setWindowTitle("ILovePDF")
-        self.setWindowIcon(QIcon(":/Icons/App_icon.ico"))
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('AgustinM.MyLovePDF.app')	# Permite que cambie el logo del taskbar
-        # self.ui.main_frame.setAttribute(Qt.WA_StyledBackground, True)
-
         # Set Stylesheets
+        # self.ui.main_frame.setAttribute(Qt.WA_StyledBackground, True)
         self._set_styles()
         self._set_icons()
 
@@ -123,6 +126,7 @@ class MainWindow(QMainWindow):
         self._thumb_pixmap_cache = {}
         self.ui.VidDown_listFrame.hide()
         self.ui.VidDown_all_checkBox.hide()
+        self.ui.VidDown_alllabel.hide()
         self.ui.VidDown_progressBar.hide()                                      
         self.ui.VidDown_Button.clicked.connect(self.video_download_clicked)
         self.ui.VidDown_list.currentItemChanged.connect( lambda current, _: self.on_playlist_item_changed(current) )
@@ -387,21 +391,18 @@ class MainWindow(QMainWindow):
 
         self.download_thread = DownloadWorker(url=url, output_path=output_path, only_audio=only_audio, resolution=resolution)
         self.download_thread.progress.connect(self.ui.VidDown_progressBar.setValue)
-        self.download_thread.finished.connect(self._download_finish)
-        self.download_thread.error.connect(self._download_error)
+        self.download_thread.completed.connect(self._download_finish)
 
         self.download_thread.start()
 
-    def _download_error(self, msg):
+    def _download_finish(self, finished: bool, msg: str):
         self.ui.VidDown_Button.show()
         self.ui.VidDown_progressBar.hide()
-        self._error_message(f"Error durante la descarga:\n{msg}")
 
-    def _download_finish(self):
-        print("paso")
-        self.ui.VidDown_Button.show()
-        self.ui.VidDown_progressBar.hide()
-        QMessageBox().information(self, "Archivo descargado", f"Archivo Descargado con éxito.")
+        if finished:
+            QMessageBox().information(self, "Archivo descargado", f"Archivo Descargado con éxito.")
+        else:
+            self._error_message(f"Error durante la descarga:\n{msg}")
 
     def update_from_url(self):
         url = self.ui.VidDown_In.text().strip()
@@ -423,6 +424,7 @@ class MainWindow(QMainWindow):
     def _setup_single_video(self, video):
         self.ui.VidDown_listFrame.hide()
         self.ui.VidDown_all_checkBox.hide()
+        self.ui.VidDown_alllabel.hide()
 
         self._update_common_fields(video)
         self._viddown_update_thumbnail(video)
@@ -430,6 +432,7 @@ class MainWindow(QMainWindow):
     def _setup_playlist(self):
         self.ui.VidDown_listFrame.show()
         self.ui.VidDown_all_checkBox.show()
+        self.ui.VidDown_alllabel.show()
         self.ui.VidDown_list.clear()
 
         for video in self._video_data:
@@ -909,7 +912,11 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
+
     app = QApplication(sys.argv)
+    # app.setApplicationName("MyLovePDF")
+    # app.setWindowIcon(QIcon(":/Icons/App_icon.ico"))
+
     widget = MainWindow()
     widget.show()
     sys.exit(app.exec())

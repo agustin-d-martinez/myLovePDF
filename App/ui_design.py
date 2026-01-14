@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'designduTaSr.ui'
+## Form generated from reading UI file 'design.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.10.1
 ##
@@ -292,21 +292,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_10 = QVBoxLayout()
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.label_15 = QLabel(self.JoinPdf_tab)
-        self.label_15.setObjectName(u"label_15")
-        sizePolicy.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
-        self.label_15.setSizePolicy(sizePolicy)
+        self.JoinPdf_Inlabel = QLabel(self.JoinPdf_tab)
+        self.JoinPdf_Inlabel.setObjectName(u"JoinPdf_Inlabel")
+        sizePolicy.setHeightForWidth(self.JoinPdf_Inlabel.sizePolicy().hasHeightForWidth())
+        self.JoinPdf_Inlabel.setSizePolicy(sizePolicy)
 
-        self.verticalLayout_10.addWidget(self.label_15)
+        self.verticalLayout_10.addWidget(self.JoinPdf_Inlabel)
 
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setSpacing(0)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.JoinPdf_InLayout = QHBoxLayout()
+        self.JoinPdf_InLayout.setSpacing(0)
+        self.JoinPdf_InLayout.setObjectName(u"JoinPdf_InLayout")
         self.JoinPdf_In = ButtonListWidget(self.JoinPdf_tab)
         self.JoinPdf_In.setObjectName(u"JoinPdf_In")
         self.JoinPdf_In.setStyleSheet(u"border-top-right-radius: 0px;")
 
-        self.horizontalLayout_7.addWidget(self.JoinPdf_In)
+        self.JoinPdf_InLayout.addWidget(self.JoinPdf_In)
 
         self.JoinPdf_selFile = QPushButton(self.JoinPdf_tab)
         self.JoinPdf_selFile.setObjectName(u"JoinPdf_selFile")
@@ -314,10 +314,10 @@ class Ui_MainWindow(object):
 "border-bottom-left-radius: 0px;\n"
 "")
 
-        self.horizontalLayout_7.addWidget(self.JoinPdf_selFile, 0, Qt.AlignmentFlag.AlignTop)
+        self.JoinPdf_InLayout.addWidget(self.JoinPdf_selFile, 0, Qt.AlignmentFlag.AlignTop)
 
 
-        self.verticalLayout_10.addLayout(self.horizontalLayout_7)
+        self.verticalLayout_10.addLayout(self.JoinPdf_InLayout)
 
 
         self.horizontalLayout_29.addLayout(self.verticalLayout_10)
@@ -326,9 +326,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_35.setSpacing(16)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(-1, 16, -1, -1)
-        self.horizontalLayout_38 = QHBoxLayout()
-        self.horizontalLayout_38.setSpacing(6)
-        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
+        self.JoinPdf_isEvenLayout = QHBoxLayout()
+        self.JoinPdf_isEvenLayout.setSpacing(6)
+        self.JoinPdf_isEvenLayout.setObjectName(u"JoinPdf_isEvenLayout")
         self.JoinPdf_isEven_Button = ModernCheckBox(self.JoinPdf_tab)
         self.JoinPdf_isEven_Button.setObjectName(u"JoinPdf_isEven_Button")
         sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
@@ -339,17 +339,17 @@ class Ui_MainWindow(object):
         self.JoinPdf_isEven_Button.setMinimumSize(QSize(50, 25))
         self.JoinPdf_isEven_Button.setMaximumSize(QSize(50, 25))
 
-        self.horizontalLayout_38.addWidget(self.JoinPdf_isEven_Button)
+        self.JoinPdf_isEvenLayout.addWidget(self.JoinPdf_isEven_Button)
 
-        self.label_19 = QLabel(self.JoinPdf_tab)
-        self.label_19.setObjectName(u"label_19")
-        sizePolicy6.setHeightForWidth(self.label_19.sizePolicy().hasHeightForWidth())
-        self.label_19.setSizePolicy(sizePolicy6)
+        self.JoinPdf_isEvenlabel = QLabel(self.JoinPdf_tab)
+        self.JoinPdf_isEvenlabel.setObjectName(u"JoinPdf_isEvenlabel")
+        sizePolicy6.setHeightForWidth(self.JoinPdf_isEvenlabel.sizePolicy().hasHeightForWidth())
+        self.JoinPdf_isEvenlabel.setSizePolicy(sizePolicy6)
 
-        self.horizontalLayout_38.addWidget(self.label_19)
+        self.JoinPdf_isEvenLayout.addWidget(self.JoinPdf_isEvenlabel)
 
 
-        self.verticalLayout_35.addLayout(self.horizontalLayout_38)
+        self.verticalLayout_35.addLayout(self.JoinPdf_isEvenLayout)
 
         self.joinPdf_EvenPolicy_comboBox = QComboBox(self.JoinPdf_tab)
         self.joinPdf_EvenPolicy_comboBox.addItem("")
@@ -360,9 +360,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_35.addWidget(self.joinPdf_EvenPolicy_comboBox)
 
-        self.horizontalLayout_37 = QHBoxLayout()
-        self.horizontalLayout_37.setSpacing(6)
-        self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
+        self.JoinPdf_ApplyEvenLayout = QHBoxLayout()
+        self.JoinPdf_ApplyEvenLayout.setSpacing(6)
+        self.JoinPdf_ApplyEvenLayout.setObjectName(u"JoinPdf_ApplyEvenLayout")
         self.JoinPdf_ApplyEven_Button = ModernCheckBox(self.JoinPdf_tab)
         self.JoinPdf_ApplyEven_Button.setObjectName(u"JoinPdf_ApplyEven_Button")
         sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Minimum)
@@ -373,17 +373,17 @@ class Ui_MainWindow(object):
         self.JoinPdf_ApplyEven_Button.setMinimumSize(QSize(50, 25))
         self.JoinPdf_ApplyEven_Button.setMaximumSize(QSize(50, 25))
 
-        self.horizontalLayout_37.addWidget(self.JoinPdf_ApplyEven_Button)
+        self.JoinPdf_ApplyEvenLayout.addWidget(self.JoinPdf_ApplyEven_Button)
 
         self.JoinPdf_ApplyEvenLabel = QLabel(self.JoinPdf_tab)
         self.JoinPdf_ApplyEvenLabel.setObjectName(u"JoinPdf_ApplyEvenLabel")
         sizePolicy6.setHeightForWidth(self.JoinPdf_ApplyEvenLabel.sizePolicy().hasHeightForWidth())
         self.JoinPdf_ApplyEvenLabel.setSizePolicy(sizePolicy6)
 
-        self.horizontalLayout_37.addWidget(self.JoinPdf_ApplyEvenLabel)
+        self.JoinPdf_ApplyEvenLayout.addWidget(self.JoinPdf_ApplyEvenLabel)
 
 
-        self.verticalLayout_35.addLayout(self.horizontalLayout_37)
+        self.verticalLayout_35.addLayout(self.JoinPdf_ApplyEvenLayout)
 
         self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -410,13 +410,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_41 = QVBoxLayout(self.SplitPdf_tab)
         self.verticalLayout_41.setSpacing(16)
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
-        self.verticalLayout_13 = QVBoxLayout()
-        self.verticalLayout_13.setSpacing(0)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.label_17 = QLabel(self.SplitPdf_tab)
-        self.label_17.setObjectName(u"label_17")
+        self.SplitPdf_InLayout = QVBoxLayout()
+        self.SplitPdf_InLayout.setSpacing(0)
+        self.SplitPdf_InLayout.setObjectName(u"SplitPdf_InLayout")
+        self.SplitPdf_Inlabel = QLabel(self.SplitPdf_tab)
+        self.SplitPdf_Inlabel.setObjectName(u"SplitPdf_Inlabel")
 
-        self.verticalLayout_13.addWidget(self.label_17)
+        self.SplitPdf_InLayout.addWidget(self.SplitPdf_Inlabel)
 
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setSpacing(0)
@@ -447,10 +447,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.SplitPdf_selFile)
 
 
-        self.verticalLayout_13.addLayout(self.horizontalLayout_9)
+        self.SplitPdf_InLayout.addLayout(self.horizontalLayout_9)
 
 
-        self.verticalLayout_41.addLayout(self.verticalLayout_13)
+        self.verticalLayout_41.addLayout(self.SplitPdf_InLayout)
 
         self.horizontalLayout_10 = QHBoxLayout()
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
@@ -466,12 +466,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.setSpacing(0)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.label_16 = QLabel(self.SplitPDF_Sheets_widget)
-        self.label_16.setObjectName(u"label_16")
-        sizePolicy6.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
-        self.label_16.setSizePolicy(sizePolicy6)
+        self.SplitPdf_Sheetslabel = QLabel(self.SplitPDF_Sheets_widget)
+        self.SplitPdf_Sheetslabel.setObjectName(u"SplitPdf_Sheetslabel")
+        sizePolicy6.setHeightForWidth(self.SplitPdf_Sheetslabel.sizePolicy().hasHeightForWidth())
+        self.SplitPdf_Sheetslabel.setSizePolicy(sizePolicy6)
 
-        self.verticalLayout_12.addWidget(self.label_16)
+        self.verticalLayout_12.addWidget(self.SplitPdf_Sheetslabel)
 
         self.SplitPdf_Sheets = QLineEdit(self.SplitPDF_Sheets_widget)
         self.SplitPdf_Sheets.setObjectName(u"SplitPdf_Sheets")
@@ -484,25 +484,25 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addWidget(self.SplitPDF_Sheets_widget)
 
-        self.horizontalLayout_35 = QHBoxLayout()
-        self.horizontalLayout_35.setSpacing(6)
-        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
+        self.SplitPdf_SaveAllLayout = QHBoxLayout()
+        self.SplitPdf_SaveAllLayout.setSpacing(6)
+        self.SplitPdf_SaveAllLayout.setObjectName(u"SplitPdf_SaveAllLayout")
         self.SplitPdf_SaveAll_Button = ModernCheckBox(self.SplitPdf_tab)
         self.SplitPdf_SaveAll_Button.setObjectName(u"SplitPdf_SaveAll_Button")
         self.SplitPdf_SaveAll_Button.setMinimumSize(QSize(50, 22))
         self.SplitPdf_SaveAll_Button.setMaximumSize(QSize(50, 22))
 
-        self.horizontalLayout_35.addWidget(self.SplitPdf_SaveAll_Button, 0, Qt.AlignmentFlag.AlignBottom)
+        self.SplitPdf_SaveAllLayout.addWidget(self.SplitPdf_SaveAll_Button, 0, Qt.AlignmentFlag.AlignBottom)
 
-        self.label_22 = QLabel(self.SplitPdf_tab)
-        self.label_22.setObjectName(u"label_22")
-        sizePolicy6.setHeightForWidth(self.label_22.sizePolicy().hasHeightForWidth())
-        self.label_22.setSizePolicy(sizePolicy6)
+        self.SplitPdf_SaveAlllabel = QLabel(self.SplitPdf_tab)
+        self.SplitPdf_SaveAlllabel.setObjectName(u"SplitPdf_SaveAlllabel")
+        sizePolicy6.setHeightForWidth(self.SplitPdf_SaveAlllabel.sizePolicy().hasHeightForWidth())
+        self.SplitPdf_SaveAlllabel.setSizePolicy(sizePolicy6)
 
-        self.horizontalLayout_35.addWidget(self.label_22, 0, Qt.AlignmentFlag.AlignBottom)
+        self.SplitPdf_SaveAllLayout.addWidget(self.SplitPdf_SaveAlllabel, 0, Qt.AlignmentFlag.AlignBottom)
 
 
-        self.horizontalLayout_10.addLayout(self.horizontalLayout_35)
+        self.horizontalLayout_10.addLayout(self.SplitPdf_SaveAllLayout)
 
 
         self.verticalLayout_41.addLayout(self.horizontalLayout_10)
@@ -522,13 +522,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_42 = QVBoxLayout(self.ExtractPDF_tab)
         self.verticalLayout_42.setSpacing(16)
         self.verticalLayout_42.setObjectName(u"verticalLayout_42")
-        self.verticalLayout_16 = QVBoxLayout()
-        self.verticalLayout_16.setSpacing(0)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.label_33 = QLabel(self.ExtractPDF_tab)
-        self.label_33.setObjectName(u"label_33")
+        self.ExtractPdf_InLayout = QVBoxLayout()
+        self.ExtractPdf_InLayout.setSpacing(0)
+        self.ExtractPdf_InLayout.setObjectName(u"ExtractPdf_InLayout")
+        self.ExtractPdf_Inlabel = QLabel(self.ExtractPDF_tab)
+        self.ExtractPdf_Inlabel.setObjectName(u"ExtractPdf_Inlabel")
 
-        self.verticalLayout_16.addWidget(self.label_33)
+        self.ExtractPdf_InLayout.addWidget(self.ExtractPdf_Inlabel)
 
         self.horizontalLayout_12 = QHBoxLayout()
         self.horizontalLayout_12.setSpacing(0)
@@ -554,10 +554,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.addWidget(self.ExtractPdf_selFile)
 
 
-        self.verticalLayout_16.addLayout(self.horizontalLayout_12)
+        self.ExtractPdf_InLayout.addLayout(self.horizontalLayout_12)
 
 
-        self.verticalLayout_42.addLayout(self.verticalLayout_16)
+        self.verticalLayout_42.addLayout(self.ExtractPdf_InLayout)
 
         self.horizontalLayout_11 = QHBoxLayout()
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
@@ -570,15 +570,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
-        self.label_34 = QLabel(self.ExtractPDF_SheetsWidget)
-        self.label_34.setObjectName(u"label_34")
+        self.ExtractPdf_Sheetslabel = QLabel(self.ExtractPDF_SheetsWidget)
+        self.ExtractPdf_Sheetslabel.setObjectName(u"ExtractPdf_Sheetslabel")
         sizePolicy10 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
         sizePolicy10.setHorizontalStretch(0)
         sizePolicy10.setVerticalStretch(0)
-        sizePolicy10.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
-        self.label_34.setSizePolicy(sizePolicy10)
+        sizePolicy10.setHeightForWidth(self.ExtractPdf_Sheetslabel.sizePolicy().hasHeightForWidth())
+        self.ExtractPdf_Sheetslabel.setSizePolicy(sizePolicy10)
 
-        self.verticalLayout_17.addWidget(self.label_34)
+        self.verticalLayout_17.addWidget(self.ExtractPdf_Sheetslabel)
 
         self.ExtractPdf_Sheets = QLineEdit(self.ExtractPDF_SheetsWidget)
         self.ExtractPdf_Sheets.setObjectName(u"ExtractPdf_Sheets")
@@ -591,9 +591,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_11.addWidget(self.ExtractPDF_SheetsWidget)
 
-        self.horizontalLayout_36 = QHBoxLayout()
-        self.horizontalLayout_36.setSpacing(6)
-        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
+        self.ExtractPdf_AllLayout = QHBoxLayout()
+        self.ExtractPdf_AllLayout.setSpacing(6)
+        self.ExtractPdf_AllLayout.setObjectName(u"ExtractPdf_AllLayout")
         self.ExtractPdf_All_Button = ModernCheckBox(self.ExtractPDF_tab)
         self.ExtractPdf_All_Button.setObjectName(u"ExtractPdf_All_Button")
         sizePolicy3.setHeightForWidth(self.ExtractPdf_All_Button.sizePolicy().hasHeightForWidth())
@@ -601,20 +601,20 @@ class Ui_MainWindow(object):
         self.ExtractPdf_All_Button.setMinimumSize(QSize(50, 22))
         self.ExtractPdf_All_Button.setMaximumSize(QSize(50, 22))
 
-        self.horizontalLayout_36.addWidget(self.ExtractPdf_All_Button, 0, Qt.AlignmentFlag.AlignBottom)
+        self.ExtractPdf_AllLayout.addWidget(self.ExtractPdf_All_Button, 0, Qt.AlignmentFlag.AlignBottom)
 
-        self.label_24 = QLabel(self.ExtractPDF_tab)
-        self.label_24.setObjectName(u"label_24")
+        self.ExtractPdf_Alllabel = QLabel(self.ExtractPDF_tab)
+        self.ExtractPdf_Alllabel.setObjectName(u"ExtractPdf_Alllabel")
         sizePolicy11 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
         sizePolicy11.setHorizontalStretch(0)
         sizePolicy11.setVerticalStretch(0)
-        sizePolicy11.setHeightForWidth(self.label_24.sizePolicy().hasHeightForWidth())
-        self.label_24.setSizePolicy(sizePolicy11)
+        sizePolicy11.setHeightForWidth(self.ExtractPdf_Alllabel.sizePolicy().hasHeightForWidth())
+        self.ExtractPdf_Alllabel.setSizePolicy(sizePolicy11)
 
-        self.horizontalLayout_36.addWidget(self.label_24, 0, Qt.AlignmentFlag.AlignBottom)
+        self.ExtractPdf_AllLayout.addWidget(self.ExtractPdf_Alllabel, 0, Qt.AlignmentFlag.AlignBottom)
 
 
-        self.horizontalLayout_11.addLayout(self.horizontalLayout_36)
+        self.horizontalLayout_11.addLayout(self.ExtractPdf_AllLayout)
 
 
         self.verticalLayout_42.addLayout(self.horizontalLayout_11)
@@ -634,13 +634,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_14 = QVBoxLayout(self.BlankPdf_tab)
         self.verticalLayout_14.setSpacing(16)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_19 = QVBoxLayout()
-        self.verticalLayout_19.setSpacing(0)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.label_13 = QLabel(self.BlankPdf_tab)
-        self.label_13.setObjectName(u"label_13")
+        self.BlankPdf_InLayout = QVBoxLayout()
+        self.BlankPdf_InLayout.setSpacing(0)
+        self.BlankPdf_InLayout.setObjectName(u"BlankPdf_InLayout")
+        self.BlankPdf_Inlabel = QLabel(self.BlankPdf_tab)
+        self.BlankPdf_Inlabel.setObjectName(u"BlankPdf_Inlabel")
 
-        self.verticalLayout_19.addWidget(self.label_13)
+        self.BlankPdf_InLayout.addWidget(self.BlankPdf_Inlabel)
 
         self.horizontalLayout_13 = QHBoxLayout()
         self.horizontalLayout_13.setSpacing(0)
@@ -666,10 +666,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.addWidget(self.BlankPdf_selFile)
 
 
-        self.verticalLayout_19.addLayout(self.horizontalLayout_13)
+        self.BlankPdf_InLayout.addLayout(self.horizontalLayout_13)
 
 
-        self.verticalLayout_14.addLayout(self.verticalLayout_19)
+        self.verticalLayout_14.addLayout(self.BlankPdf_InLayout)
 
         self.horizontalLayout_39 = QHBoxLayout()
         self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
@@ -682,10 +682,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.label_14 = QLabel(self.BlankPdf_SheetsWidget)
-        self.label_14.setObjectName(u"label_14")
+        self.BlankPdf_Sheetslabel = QLabel(self.BlankPdf_SheetsWidget)
+        self.BlankPdf_Sheetslabel.setObjectName(u"BlankPdf_Sheetslabel")
 
-        self.verticalLayout_9.addWidget(self.label_14)
+        self.verticalLayout_9.addWidget(self.BlankPdf_Sheetslabel)
 
         self.BlankPdf_Sheets = QLineEdit(self.BlankPdf_SheetsWidget)
         self.BlankPdf_Sheets.setObjectName(u"BlankPdf_Sheets")
@@ -698,8 +698,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_39.addWidget(self.BlankPdf_SheetsWidget)
 
-        self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.BlankPdf_InplaceLayout = QHBoxLayout()
+        self.BlankPdf_InplaceLayout.setObjectName(u"BlankPdf_InplaceLayout")
         self.BlankPdf_Inplace_Button = ModernCheckBox(self.BlankPdf_tab)
         self.BlankPdf_Inplace_Button.setObjectName(u"BlankPdf_Inplace_Button")
         sizePolicy12 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
@@ -709,15 +709,15 @@ class Ui_MainWindow(object):
         self.BlankPdf_Inplace_Button.setSizePolicy(sizePolicy12)
         self.BlankPdf_Inplace_Button.setMinimumSize(QSize(50, 22))
 
-        self.horizontalLayout_14.addWidget(self.BlankPdf_Inplace_Button, 0, Qt.AlignmentFlag.AlignBottom)
+        self.BlankPdf_InplaceLayout.addWidget(self.BlankPdf_Inplace_Button, 0, Qt.AlignmentFlag.AlignBottom)
 
-        self.label_26 = QLabel(self.BlankPdf_tab)
-        self.label_26.setObjectName(u"label_26")
+        self.BlankPdf_Inplacelabel = QLabel(self.BlankPdf_tab)
+        self.BlankPdf_Inplacelabel.setObjectName(u"BlankPdf_Inplacelabel")
 
-        self.horizontalLayout_14.addWidget(self.label_26, 0, Qt.AlignmentFlag.AlignBottom)
+        self.BlankPdf_InplaceLayout.addWidget(self.BlankPdf_Inplacelabel, 0, Qt.AlignmentFlag.AlignBottom)
 
 
-        self.horizontalLayout_39.addLayout(self.horizontalLayout_14)
+        self.horizontalLayout_39.addLayout(self.BlankPdf_InplaceLayout)
 
 
         self.verticalLayout_14.addLayout(self.horizontalLayout_39)
@@ -748,15 +748,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_21 = QVBoxLayout(self.ImgPdf_tab)
         self.verticalLayout_21.setSpacing(0)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.label_6 = QLabel(self.ImgPdf_tab)
-        self.label_6.setObjectName(u"label_6")
+        self.ImgPdf_Inlabel = QLabel(self.ImgPdf_tab)
+        self.ImgPdf_Inlabel.setObjectName(u"ImgPdf_Inlabel")
 
-        self.verticalLayout_21.addWidget(self.label_6)
+        self.verticalLayout_21.addWidget(self.ImgPdf_Inlabel)
 
-        self.horizontalLayout_15 = QHBoxLayout()
-        self.horizontalLayout_15.setSpacing(0)
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.horizontalLayout_15.setContentsMargins(-1, 2, -1, 2)
+        self.ImgPdf_InLayout = QHBoxLayout()
+        self.ImgPdf_InLayout.setSpacing(0)
+        self.ImgPdf_InLayout.setObjectName(u"ImgPdf_InLayout")
+        self.ImgPdf_InLayout.setContentsMargins(-1, 2, -1, 2)
         self.ImgPdf_In = QLineEdit(self.ImgPdf_tab)
         self.ImgPdf_In.setObjectName(u"ImgPdf_In")
         sizePolicy8.setHeightForWidth(self.ImgPdf_In.sizePolicy().hasHeightForWidth())
@@ -766,7 +766,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
 
-        self.horizontalLayout_15.addWidget(self.ImgPdf_In)
+        self.ImgPdf_InLayout.addWidget(self.ImgPdf_In)
 
         self.ImgPdf_selFile = QPushButton(self.ImgPdf_tab)
         self.ImgPdf_selFile.setObjectName(u"ImgPdf_selFile")
@@ -774,10 +774,10 @@ class Ui_MainWindow(object):
 "border-bottom-left-radius: 0px;\n"
 "")
 
-        self.horizontalLayout_15.addWidget(self.ImgPdf_selFile)
+        self.ImgPdf_InLayout.addWidget(self.ImgPdf_selFile)
 
 
-        self.verticalLayout_21.addLayout(self.horizontalLayout_15)
+        self.verticalLayout_21.addLayout(self.ImgPdf_InLayout)
 
         self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -794,15 +794,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_22 = QVBoxLayout(self.PdfImg_tab)
         self.verticalLayout_22.setSpacing(0)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
-        self.label_12 = QLabel(self.PdfImg_tab)
-        self.label_12.setObjectName(u"label_12")
+        self.PdfImg_Inlabel = QLabel(self.PdfImg_tab)
+        self.PdfImg_Inlabel.setObjectName(u"PdfImg_Inlabel")
 
-        self.verticalLayout_22.addWidget(self.label_12)
+        self.verticalLayout_22.addWidget(self.PdfImg_Inlabel)
 
-        self.horizontalLayout_16 = QHBoxLayout()
-        self.horizontalLayout_16.setSpacing(0)
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.horizontalLayout_16.setContentsMargins(-1, 2, -1, 2)
+        self.PdfImg_InLayout = QHBoxLayout()
+        self.PdfImg_InLayout.setSpacing(0)
+        self.PdfImg_InLayout.setObjectName(u"PdfImg_InLayout")
+        self.PdfImg_InLayout.setContentsMargins(-1, 2, -1, 2)
         self.PdfImg_In = QLineEdit(self.PdfImg_tab)
         self.PdfImg_In.setObjectName(u"PdfImg_In")
         sizePolicy8.setHeightForWidth(self.PdfImg_In.sizePolicy().hasHeightForWidth())
@@ -810,7 +810,7 @@ class Ui_MainWindow(object):
         self.PdfImg_In.setStyleSheet(u"border-top-right-radius: 0px;\n"
 "border-bottom-right-radius: 0px;")
 
-        self.horizontalLayout_16.addWidget(self.PdfImg_In)
+        self.PdfImg_InLayout.addWidget(self.PdfImg_In)
 
         self.PdfImg_selFile = QPushButton(self.PdfImg_tab)
         self.PdfImg_selFile.setObjectName(u"PdfImg_selFile")
@@ -818,10 +818,10 @@ class Ui_MainWindow(object):
 "border-bottom-left-radius: 0px;\n"
 "")
 
-        self.horizontalLayout_16.addWidget(self.PdfImg_selFile)
+        self.PdfImg_InLayout.addWidget(self.PdfImg_selFile)
 
 
-        self.verticalLayout_22.addLayout(self.horizontalLayout_16)
+        self.verticalLayout_22.addLayout(self.PdfImg_InLayout)
 
         self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -840,13 +840,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18 = QHBoxLayout()
         self.horizontalLayout_18.setSpacing(50)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.verticalLayout_24 = QVBoxLayout()
-        self.verticalLayout_24.setSpacing(0)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.label_4 = QLabel(self.ImgExt_tab)
-        self.label_4.setObjectName(u"label_4")
+        self.ImgExt_InLayout = QVBoxLayout()
+        self.ImgExt_InLayout.setSpacing(0)
+        self.ImgExt_InLayout.setObjectName(u"ImgExt_InLayout")
+        self.ImgExt_Inlabel = QLabel(self.ImgExt_tab)
+        self.ImgExt_Inlabel.setObjectName(u"ImgExt_Inlabel")
 
-        self.verticalLayout_24.addWidget(self.label_4)
+        self.ImgExt_InLayout.addWidget(self.ImgExt_Inlabel)
 
         self.horizontalLayout_17 = QHBoxLayout()
         self.horizontalLayout_17.setSpacing(0)
@@ -870,18 +870,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.addWidget(self.ImgExt_selFile)
 
 
-        self.verticalLayout_24.addLayout(self.horizontalLayout_17)
+        self.ImgExt_InLayout.addLayout(self.horizontalLayout_17)
 
 
-        self.horizontalLayout_18.addLayout(self.verticalLayout_24)
+        self.horizontalLayout_18.addLayout(self.ImgExt_InLayout)
 
-        self.verticalLayout_23 = QVBoxLayout()
-        self.verticalLayout_23.setSpacing(0)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.label_5 = QLabel(self.ImgExt_tab)
-        self.label_5.setObjectName(u"label_5")
+        self.ImgExt_ExtLayout = QVBoxLayout()
+        self.ImgExt_ExtLayout.setSpacing(0)
+        self.ImgExt_ExtLayout.setObjectName(u"ImgExt_ExtLayout")
+        self.ImgExt_Extlabel = QLabel(self.ImgExt_tab)
+        self.ImgExt_Extlabel.setObjectName(u"ImgExt_Extlabel")
 
-        self.verticalLayout_23.addWidget(self.label_5)
+        self.ImgExt_ExtLayout.addWidget(self.ImgExt_Extlabel)
 
         self.ImgExt_comboBox = QComboBox(self.ImgExt_tab)
         self.ImgExt_comboBox.addItem("")
@@ -893,10 +893,10 @@ class Ui_MainWindow(object):
         self.ImgExt_comboBox.addItem("")
         self.ImgExt_comboBox.setObjectName(u"ImgExt_comboBox")
 
-        self.verticalLayout_23.addWidget(self.ImgExt_comboBox)
+        self.ImgExt_ExtLayout.addWidget(self.ImgExt_comboBox)
 
 
-        self.horizontalLayout_18.addLayout(self.verticalLayout_23)
+        self.horizontalLayout_18.addLayout(self.ImgExt_ExtLayout)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -921,13 +921,13 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(25)
         self.gridLayout.setVerticalSpacing(16)
-        self.verticalLayout_28 = QVBoxLayout()
-        self.verticalLayout_28.setSpacing(0)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.label_7 = QLabel(self.ImgRsize_tab)
-        self.label_7.setObjectName(u"label_7")
+        self.ImgRsize_InLayout = QVBoxLayout()
+        self.ImgRsize_InLayout.setSpacing(0)
+        self.ImgRsize_InLayout.setObjectName(u"ImgRsize_InLayout")
+        self.ImgRsize_Inlabel = QLabel(self.ImgRsize_tab)
+        self.ImgRsize_Inlabel.setObjectName(u"ImgRsize_Inlabel")
 
-        self.verticalLayout_28.addWidget(self.label_7)
+        self.ImgRsize_InLayout.addWidget(self.ImgRsize_Inlabel)
 
         self.horizontalLayout_20 = QHBoxLayout()
         self.horizontalLayout_20.setSpacing(0)
@@ -951,18 +951,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_20.addWidget(self.ImgRsize_selFile)
 
 
-        self.verticalLayout_28.addLayout(self.horizontalLayout_20)
+        self.ImgRsize_InLayout.addLayout(self.horizontalLayout_20)
 
 
-        self.gridLayout.addLayout(self.verticalLayout_28, 0, 0, 1, 1)
+        self.gridLayout.addLayout(self.ImgRsize_InLayout, 0, 0, 1, 1)
 
-        self.verticalLayout_26 = QVBoxLayout()
-        self.verticalLayout_26.setSpacing(0)
-        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.label_8 = QLabel(self.ImgRsize_tab)
-        self.label_8.setObjectName(u"label_8")
+        self.ImgRsize_ActualLayout = QVBoxLayout()
+        self.ImgRsize_ActualLayout.setSpacing(0)
+        self.ImgRsize_ActualLayout.setObjectName(u"ImgRsize_ActualLayout")
+        self.ImgRsize_Actuallabel_2 = QLabel(self.ImgRsize_tab)
+        self.ImgRsize_Actuallabel_2.setObjectName(u"ImgRsize_Actuallabel_2")
 
-        self.verticalLayout_26.addWidget(self.label_8)
+        self.ImgRsize_ActualLayout.addWidget(self.ImgRsize_Actuallabel_2)
 
         self.horizontalLayout_19 = QHBoxLayout()
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
@@ -974,10 +974,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_19.addWidget(self.ImgRsize_AW)
 
-        self.label_9 = QLabel(self.ImgRsize_tab)
-        self.label_9.setObjectName(u"label_9")
+        self.label_13 = QLabel(self.ImgRsize_tab)
+        self.label_13.setObjectName(u"label_13")
 
-        self.horizontalLayout_19.addWidget(self.label_9)
+        self.horizontalLayout_19.addWidget(self.label_13)
 
         self.ImgRsize_AH = QLineEdit(self.ImgRsize_tab)
         self.ImgRsize_AH.setObjectName(u"ImgRsize_AH")
@@ -988,34 +988,34 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.addWidget(self.ImgRsize_AH)
 
 
-        self.verticalLayout_26.addLayout(self.horizontalLayout_19)
+        self.ImgRsize_ActualLayout.addLayout(self.horizontalLayout_19)
 
 
-        self.gridLayout.addLayout(self.verticalLayout_26, 0, 1, 1, 1)
+        self.gridLayout.addLayout(self.ImgRsize_ActualLayout, 0, 1, 1, 1)
 
-        self.horizontalLayout_22 = QHBoxLayout()
-        self.horizontalLayout_22.setSpacing(25)
-        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.ImgRsize_OptionsLayout = QHBoxLayout()
+        self.ImgRsize_OptionsLayout.setSpacing(25)
+        self.ImgRsize_OptionsLayout.setObjectName(u"ImgRsize_OptionsLayout")
         self.ImgRsize_Scale_Button = QCheckBox(self.ImgRsize_tab)
         self.ImgRsize_Scale_Button.setObjectName(u"ImgRsize_Scale_Button")
 
-        self.horizontalLayout_22.addWidget(self.ImgRsize_Scale_Button)
+        self.ImgRsize_OptionsLayout.addWidget(self.ImgRsize_Scale_Button)
 
         self.ImgRsize_Inplace_Button = QCheckBox(self.ImgRsize_tab)
         self.ImgRsize_Inplace_Button.setObjectName(u"ImgRsize_Inplace_Button")
 
-        self.horizontalLayout_22.addWidget(self.ImgRsize_Inplace_Button)
+        self.ImgRsize_OptionsLayout.addWidget(self.ImgRsize_Inplace_Button)
 
 
-        self.gridLayout.addLayout(self.horizontalLayout_22, 1, 0, 1, 1)
+        self.gridLayout.addLayout(self.ImgRsize_OptionsLayout, 1, 0, 1, 1)
 
-        self.verticalLayout_27 = QVBoxLayout()
-        self.verticalLayout_27.setSpacing(0)
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.label_11 = QLabel(self.ImgRsize_tab)
-        self.label_11.setObjectName(u"label_11")
+        self.ImgRsize_NewLayout = QVBoxLayout()
+        self.ImgRsize_NewLayout.setSpacing(0)
+        self.ImgRsize_NewLayout.setObjectName(u"ImgRsize_NewLayout")
+        self.ImgRsize_Newlabel = QLabel(self.ImgRsize_tab)
+        self.ImgRsize_Newlabel.setObjectName(u"ImgRsize_Newlabel")
 
-        self.verticalLayout_27.addWidget(self.label_11)
+        self.ImgRsize_NewLayout.addWidget(self.ImgRsize_Newlabel)
 
         self.horizontalLayout_21 = QHBoxLayout()
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
@@ -1041,10 +1041,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_21.addWidget(self.ImgRsize_NH)
 
 
-        self.verticalLayout_27.addLayout(self.horizontalLayout_21)
+        self.ImgRsize_NewLayout.addLayout(self.horizontalLayout_21)
 
 
-        self.gridLayout.addLayout(self.verticalLayout_27, 1, 1, 1, 1)
+        self.gridLayout.addLayout(self.ImgRsize_NewLayout, 1, 1, 1, 1)
 
         self.verticalSpacer_13 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -1071,13 +1071,13 @@ class Ui_MainWindow(object):
         self.FileRname_tab.setObjectName(u"FileRname_tab")
         self.formLayout_2 = QFormLayout(self.FileRname_tab)
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.verticalLayout_31 = QVBoxLayout()
-        self.verticalLayout_31.setSpacing(0)
-        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.label_1 = QLabel(self.FileRname_tab)
-        self.label_1.setObjectName(u"label_1")
+        self.FileRname_InLayout = QVBoxLayout()
+        self.FileRname_InLayout.setSpacing(0)
+        self.FileRname_InLayout.setObjectName(u"FileRname_InLayout")
+        self.FileRname_Inlabel = QLabel(self.FileRname_tab)
+        self.FileRname_Inlabel.setObjectName(u"FileRname_Inlabel")
 
-        self.verticalLayout_31.addWidget(self.label_1)
+        self.FileRname_InLayout.addWidget(self.FileRname_Inlabel)
 
         self.horizontalLayout_25 = QHBoxLayout()
         self.horizontalLayout_25.setSpacing(0)
@@ -1096,18 +1096,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.FileRname_selFile, 0, Qt.AlignmentFlag.AlignTop)
 
 
-        self.verticalLayout_31.addLayout(self.horizontalLayout_25)
+        self.FileRname_InLayout.addLayout(self.horizontalLayout_25)
 
 
-        self.formLayout_2.setLayout(0, QFormLayout.ItemRole.LabelRole, self.verticalLayout_31)
+        self.formLayout_2.setLayout(0, QFormLayout.ItemRole.LabelRole, self.FileRname_InLayout)
 
         self.verticalLayout_32 = QVBoxLayout()
         self.verticalLayout_32.setSpacing(0)
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
-        self.label_2 = QLabel(self.FileRname_tab)
-        self.label_2.setObjectName(u"label_2")
+        self.FileRname_Templatelabel = QLabel(self.FileRname_tab)
+        self.FileRname_Templatelabel.setObjectName(u"FileRname_Templatelabel")
 
-        self.verticalLayout_32.addWidget(self.label_2)
+        self.verticalLayout_32.addWidget(self.FileRname_Templatelabel)
 
         self.FileRname_Template = QLineEdit(self.FileRname_tab)
         self.FileRname_Template.setObjectName(u"FileRname_Template")
@@ -1120,10 +1120,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_32.addItem(self.verticalSpacer_15)
 
-        self.label_3 = QLabel(self.FileRname_tab)
-        self.label_3.setObjectName(u"label_3")
+        self.FileRname_Numlabel = QLabel(self.FileRname_tab)
+        self.FileRname_Numlabel.setObjectName(u"FileRname_Numlabel")
 
-        self.verticalLayout_32.addWidget(self.label_3)
+        self.verticalLayout_32.addWidget(self.FileRname_Numlabel)
 
         self.FileRname_Num = QSpinBox(self.FileRname_tab)
         self.FileRname_Num.setObjectName(u"FileRname_Num")
@@ -1160,14 +1160,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_49.setObjectName(u"verticalLayout_49")
         self.horizontalLayout_34 = QHBoxLayout()
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
-        self.verticalLayout_30 = QVBoxLayout()
-        self.verticalLayout_30.setSpacing(0)
-        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
-        self.label_80 = QLabel(self.VidTag_tab)
-        self.label_80.setObjectName(u"label_80")
-        self.label_80.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+        self.VidTag_InLayout = QVBoxLayout()
+        self.VidTag_InLayout.setSpacing(0)
+        self.VidTag_InLayout.setObjectName(u"VidTag_InLayout")
+        self.VidTag_Inlabel = QLabel(self.VidTag_tab)
+        self.VidTag_Inlabel.setObjectName(u"VidTag_Inlabel")
+        self.VidTag_Inlabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.verticalLayout_30.addWidget(self.label_80)
+        self.VidTag_InLayout.addWidget(self.VidTag_Inlabel)
 
         self.horizontalLayout_24 = QHBoxLayout()
         self.horizontalLayout_24.setSpacing(0)
@@ -1199,17 +1199,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.addWidget(self.VidTag_Update)
 
 
-        self.verticalLayout_30.addLayout(self.horizontalLayout_24)
+        self.VidTag_InLayout.addLayout(self.horizontalLayout_24)
 
         self.VidTag_List = ButtonListWidget(self.VidTag_tab)
         self.VidTag_List.setObjectName(u"VidTag_List")
         sizePolicy2.setHeightForWidth(self.VidTag_List.sizePolicy().hasHeightForWidth())
         self.VidTag_List.setSizePolicy(sizePolicy2)
 
-        self.verticalLayout_30.addWidget(self.VidTag_List)
+        self.VidTag_InLayout.addWidget(self.VidTag_List)
 
 
-        self.horizontalLayout_34.addLayout(self.verticalLayout_30)
+        self.horizontalLayout_34.addLayout(self.VidTag_InLayout)
 
         self.verticalLayout_48 = QVBoxLayout()
         self.verticalLayout_48.setObjectName(u"verticalLayout_48")
@@ -1231,13 +1231,13 @@ class Ui_MainWindow(object):
         self.VidTag_TitleLayout = QVBoxLayout()
         self.VidTag_TitleLayout.setSpacing(0)
         self.VidTag_TitleLayout.setObjectName(u"VidTag_TitleLayout")
-        self.label_90 = QLabel(self.VidTag_tab)
-        self.label_90.setObjectName(u"label_90")
-        sizePolicy5.setHeightForWidth(self.label_90.sizePolicy().hasHeightForWidth())
-        self.label_90.setSizePolicy(sizePolicy5)
-        self.label_90.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+        self.VidTag_Titlelabel = QLabel(self.VidTag_tab)
+        self.VidTag_Titlelabel.setObjectName(u"VidTag_Titlelabel")
+        sizePolicy5.setHeightForWidth(self.VidTag_Titlelabel.sizePolicy().hasHeightForWidth())
+        self.VidTag_Titlelabel.setSizePolicy(sizePolicy5)
+        self.VidTag_Titlelabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.VidTag_TitleLayout.addWidget(self.label_90)
+        self.VidTag_TitleLayout.addWidget(self.VidTag_Titlelabel)
 
         self.VidTag_Title = QLineEdit(self.VidTag_tab)
         self.VidTag_Title.setObjectName(u"VidTag_Title")
@@ -1252,13 +1252,13 @@ class Ui_MainWindow(object):
         self.VidTag_IntrLayout = QVBoxLayout()
         self.VidTag_IntrLayout.setSpacing(0)
         self.VidTag_IntrLayout.setObjectName(u"VidTag_IntrLayout")
-        self.label_23 = QLabel(self.VidTag_tab)
-        self.label_23.setObjectName(u"label_23")
-        sizePolicy5.setHeightForWidth(self.label_23.sizePolicy().hasHeightForWidth())
-        self.label_23.setSizePolicy(sizePolicy5)
-        self.label_23.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+        self.VidTag_Intrlabel = QLabel(self.VidTag_tab)
+        self.VidTag_Intrlabel.setObjectName(u"VidTag_Intrlabel")
+        sizePolicy5.setHeightForWidth(self.VidTag_Intrlabel.sizePolicy().hasHeightForWidth())
+        self.VidTag_Intrlabel.setSizePolicy(sizePolicy5)
+        self.VidTag_Intrlabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.VidTag_IntrLayout.addWidget(self.label_23)
+        self.VidTag_IntrLayout.addWidget(self.VidTag_Intrlabel)
 
         self.VidTag_Intr = QLineEdit(self.VidTag_tab)
         self.VidTag_Intr.setObjectName(u"VidTag_Intr")
@@ -1273,13 +1273,13 @@ class Ui_MainWindow(object):
         self.VidTag_AlbLayout = QVBoxLayout()
         self.VidTag_AlbLayout.setSpacing(0)
         self.VidTag_AlbLayout.setObjectName(u"VidTag_AlbLayout")
-        self.label_32 = QLabel(self.VidTag_tab)
-        self.label_32.setObjectName(u"label_32")
-        sizePolicy5.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
-        self.label_32.setSizePolicy(sizePolicy5)
-        self.label_32.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+        self.VidTag_Alblabel = QLabel(self.VidTag_tab)
+        self.VidTag_Alblabel.setObjectName(u"VidTag_Alblabel")
+        sizePolicy5.setHeightForWidth(self.VidTag_Alblabel.sizePolicy().hasHeightForWidth())
+        self.VidTag_Alblabel.setSizePolicy(sizePolicy5)
+        self.VidTag_Alblabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.VidTag_AlbLayout.addWidget(self.label_32)
+        self.VidTag_AlbLayout.addWidget(self.VidTag_Alblabel)
 
         self.VidTag_Alb = QLineEdit(self.VidTag_tab)
         self.VidTag_Alb.setObjectName(u"VidTag_Alb")
@@ -1299,11 +1299,11 @@ class Ui_MainWindow(object):
         self.VidTag_GenreLayout = QVBoxLayout()
         self.VidTag_GenreLayout.setSpacing(0)
         self.VidTag_GenreLayout.setObjectName(u"VidTag_GenreLayout")
-        self.label_30 = QLabel(self.VidTag_tab)
-        self.label_30.setObjectName(u"label_30")
-        self.label_30.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+        self.VidTag_Genrelabel = QLabel(self.VidTag_tab)
+        self.VidTag_Genrelabel.setObjectName(u"VidTag_Genrelabel")
+        self.VidTag_Genrelabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.VidTag_GenreLayout.addWidget(self.label_30)
+        self.VidTag_GenreLayout.addWidget(self.VidTag_Genrelabel)
 
         self.VidTag_Genre_comboBox = QComboBox(self.VidTag_tab)
         self.VidTag_Genre_comboBox.setObjectName(u"VidTag_Genre_comboBox")
@@ -1316,56 +1316,56 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_31.addLayout(self.VidTag_GenreLayout)
 
-        self.verticalLayout_11 = QVBoxLayout()
-        self.verticalLayout_11.setSpacing(0)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.label_29 = QLabel(self.VidTag_tab)
-        self.label_29.setObjectName(u"label_29")
-        self.label_29.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+        self.VidTag_YearLayout = QVBoxLayout()
+        self.VidTag_YearLayout.setSpacing(0)
+        self.VidTag_YearLayout.setObjectName(u"VidTag_YearLayout")
+        self.VidTag_Yearlabel = QLabel(self.VidTag_tab)
+        self.VidTag_Yearlabel.setObjectName(u"VidTag_Yearlabel")
+        self.VidTag_Yearlabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.verticalLayout_11.addWidget(self.label_29)
+        self.VidTag_YearLayout.addWidget(self.VidTag_Yearlabel)
 
         self.VidTag_Year = QLineEdit(self.VidTag_tab)
         self.VidTag_Year.setObjectName(u"VidTag_Year")
         sizePolicy3.setHeightForWidth(self.VidTag_Year.sizePolicy().hasHeightForWidth())
         self.VidTag_Year.setSizePolicy(sizePolicy3)
 
-        self.verticalLayout_11.addWidget(self.VidTag_Year)
+        self.VidTag_YearLayout.addWidget(self.VidTag_Year)
 
 
-        self.horizontalLayout_31.addLayout(self.verticalLayout_11)
+        self.horizontalLayout_31.addLayout(self.VidTag_YearLayout)
 
-        self.verticalLayout_36 = QVBoxLayout()
-        self.verticalLayout_36.setSpacing(0)
-        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
-        self.label_31 = QLabel(self.VidTag_tab)
-        self.label_31.setObjectName(u"label_31")
-        self.label_31.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
-
-        self.verticalLayout_36.addWidget(self.label_31)
-
-        self.VidTag_TrackLayout = QHBoxLayout()
+        self.VidTag_TrackLayout = QVBoxLayout()
+        self.VidTag_TrackLayout.setSpacing(0)
         self.VidTag_TrackLayout.setObjectName(u"VidTag_TrackLayout")
+        self.VidTag_Tracklabel = QLabel(self.VidTag_tab)
+        self.VidTag_Tracklabel.setObjectName(u"VidTag_Tracklabel")
+        self.VidTag_Tracklabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
+
+        self.VidTag_TrackLayout.addWidget(self.VidTag_Tracklabel)
+
+        self.verticalLayout_11 = QHBoxLayout()
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.VidTag_Track = QSpinBox(self.VidTag_tab)
         self.VidTag_Track.setObjectName(u"VidTag_Track")
 
-        self.VidTag_TrackLayout.addWidget(self.VidTag_Track)
+        self.verticalLayout_11.addWidget(self.VidTag_Track)
 
         self.label_25 = QLabel(self.VidTag_tab)
         self.label_25.setObjectName(u"label_25")
 
-        self.VidTag_TrackLayout.addWidget(self.label_25)
+        self.verticalLayout_11.addWidget(self.label_25)
 
         self.VidTag_TrackAll = QSpinBox(self.VidTag_tab)
         self.VidTag_TrackAll.setObjectName(u"VidTag_TrackAll")
 
-        self.VidTag_TrackLayout.addWidget(self.VidTag_TrackAll)
+        self.verticalLayout_11.addWidget(self.VidTag_TrackAll)
 
 
-        self.verticalLayout_36.addLayout(self.VidTag_TrackLayout)
+        self.VidTag_TrackLayout.addLayout(self.verticalLayout_11)
 
 
-        self.horizontalLayout_31.addLayout(self.verticalLayout_36)
+        self.horizontalLayout_31.addLayout(self.VidTag_TrackLayout)
 
 
         self.verticalLayout_46.addLayout(self.horizontalLayout_31)
@@ -1438,22 +1438,22 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_48.addLayout(self.horizontalLayout_33)
 
-        self.verticalLayout_47 = QVBoxLayout()
-        self.verticalLayout_47.setSpacing(0)
-        self.verticalLayout_47.setObjectName(u"verticalLayout_47")
+        self.VidTag_LyricsLayout = QVBoxLayout()
+        self.VidTag_LyricsLayout.setSpacing(0)
+        self.VidTag_LyricsLayout.setObjectName(u"VidTag_LyricsLayout")
         self.VidTag_Lyricslabel = QLabel(self.VidTag_tab)
         self.VidTag_Lyricslabel.setObjectName(u"VidTag_Lyricslabel")
         self.VidTag_Lyricslabel.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
-        self.verticalLayout_47.addWidget(self.VidTag_Lyricslabel)
+        self.VidTag_LyricsLayout.addWidget(self.VidTag_Lyricslabel)
 
         self.VidTag_Lyrics = QPlainTextEdit(self.VidTag_tab)
         self.VidTag_Lyrics.setObjectName(u"VidTag_Lyrics")
 
-        self.verticalLayout_47.addWidget(self.VidTag_Lyrics)
+        self.VidTag_LyricsLayout.addWidget(self.VidTag_Lyrics)
 
 
-        self.verticalLayout_48.addLayout(self.verticalLayout_47)
+        self.verticalLayout_48.addLayout(self.VidTag_LyricsLayout)
 
 
         self.horizontalLayout_34.addLayout(self.verticalLayout_48)
@@ -1477,10 +1477,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addWidget(self.label_18)
 
-        self.horizontalLayout_23 = QHBoxLayout()
-        self.horizontalLayout_23.setSpacing(0)
-        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
-        self.horizontalLayout_23.setContentsMargins(-1, 2, -1, 2)
+        self.MP3toMP4_InLayout = QHBoxLayout()
+        self.MP3toMP4_InLayout.setSpacing(0)
+        self.MP3toMP4_InLayout.setObjectName(u"MP3toMP4_InLayout")
+        self.MP3toMP4_InLayout.setContentsMargins(-1, 2, -1, 2)
         self.MP3toMP4_In = QLineEdit(self.MP3toMP4_tab)
         self.MP3toMP4_In.setObjectName(u"MP3toMP4_In")
         sizePolicy8.setHeightForWidth(self.MP3toMP4_In.sizePolicy().hasHeightForWidth())
@@ -1489,7 +1489,7 @@ class Ui_MainWindow(object):
 "border-bottom-right-radius: 0px;\n"
 "")
 
-        self.horizontalLayout_23.addWidget(self.MP3toMP4_In)
+        self.MP3toMP4_InLayout.addWidget(self.MP3toMP4_In)
 
         self.MP3toMP4_selFile = QPushButton(self.MP3toMP4_tab)
         self.MP3toMP4_selFile.setObjectName(u"MP3toMP4_selFile")
@@ -1497,10 +1497,10 @@ class Ui_MainWindow(object):
 "border-bottom-left-radius: 0px;\n"
 "")
 
-        self.horizontalLayout_23.addWidget(self.MP3toMP4_selFile)
+        self.MP3toMP4_InLayout.addWidget(self.MP3toMP4_selFile)
 
 
-        self.verticalLayout_29.addLayout(self.horizontalLayout_23)
+        self.verticalLayout_29.addLayout(self.MP3toMP4_InLayout)
 
         self.verticalSpacer_14 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -1523,31 +1523,31 @@ class Ui_MainWindow(object):
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.verticalLayout_18 = QVBoxLayout()
-        self.verticalLayout_18.setSpacing(0)
-        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
-        self.label_20 = QLabel(self.VidDown)
-        self.label_20.setObjectName(u"label_20")
+        self.VidDown_InLayout = QVBoxLayout()
+        self.VidDown_InLayout.setSpacing(0)
+        self.VidDown_InLayout.setObjectName(u"VidDown_InLayout")
+        self.VidDown_Inlabel = QLabel(self.VidDown)
+        self.VidDown_Inlabel.setObjectName(u"VidDown_Inlabel")
 
-        self.verticalLayout_18.addWidget(self.label_20)
+        self.VidDown_InLayout.addWidget(self.VidDown_Inlabel)
 
         self.VidDown_In = QLineEdit(self.VidDown)
         self.VidDown_In.setObjectName(u"VidDown_In")
         sizePolicy8.setHeightForWidth(self.VidDown_In.sizePolicy().hasHeightForWidth())
         self.VidDown_In.setSizePolicy(sizePolicy8)
 
-        self.verticalLayout_18.addWidget(self.VidDown_In)
+        self.VidDown_InLayout.addWidget(self.VidDown_In)
 
 
-        self.horizontalLayout_8.addLayout(self.verticalLayout_18)
+        self.horizontalLayout_8.addLayout(self.VidDown_InLayout)
 
-        self.verticalLayout_15 = QVBoxLayout()
-        self.verticalLayout_15.setSpacing(0)
-        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.label_27 = QLabel(self.VidDown)
-        self.label_27.setObjectName(u"label_27")
+        self.VidDown_OnlyAudioLayout = QVBoxLayout()
+        self.VidDown_OnlyAudioLayout.setSpacing(0)
+        self.VidDown_OnlyAudioLayout.setObjectName(u"VidDown_OnlyAudioLayout")
+        self.VidDown_OnlyAudiolabel = QLabel(self.VidDown)
+        self.VidDown_OnlyAudiolabel.setObjectName(u"VidDown_OnlyAudiolabel")
 
-        self.verticalLayout_15.addWidget(self.label_27)
+        self.VidDown_OnlyAudioLayout.addWidget(self.VidDown_OnlyAudiolabel)
 
         self.VidDown_OnlyAudio = ModernCheckBox(self.VidDown)
         self.VidDown_OnlyAudio.setObjectName(u"VidDown_OnlyAudio")
@@ -1555,10 +1555,10 @@ class Ui_MainWindow(object):
         self.VidDown_OnlyAudio.setSizePolicy(sizePolicy4)
         self.VidDown_OnlyAudio.setMinimumSize(QSize(0, 22))
 
-        self.verticalLayout_15.addWidget(self.VidDown_OnlyAudio)
+        self.VidDown_OnlyAudioLayout.addWidget(self.VidDown_OnlyAudio)
 
 
-        self.horizontalLayout_8.addLayout(self.verticalLayout_15)
+        self.horizontalLayout_8.addLayout(self.VidDown_OnlyAudioLayout)
 
         self.VidDown_resLayout = QVBoxLayout()
         self.VidDown_resLayout.setSpacing(0)
@@ -1592,13 +1592,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_26 = QHBoxLayout()
         self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
-        self.verticalLayout_33 = QVBoxLayout()
-        self.verticalLayout_33.setSpacing(0)
-        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
+        self.VidDown_TitleLayout = QVBoxLayout()
+        self.VidDown_TitleLayout.setSpacing(0)
+        self.VidDown_TitleLayout.setObjectName(u"VidDown_TitleLayout")
         self.VidDown_Titlelabel = QLabel(self.VidDown)
         self.VidDown_Titlelabel.setObjectName(u"VidDown_Titlelabel")
 
-        self.verticalLayout_33.addWidget(self.VidDown_Titlelabel)
+        self.VidDown_TitleLayout.addWidget(self.VidDown_Titlelabel)
 
         self.VidDown_Title = QLineEdit(self.VidDown)
         self.VidDown_Title.setObjectName(u"VidDown_Title")
@@ -1606,27 +1606,27 @@ class Ui_MainWindow(object):
         self.VidDown_Title.setSizePolicy(sizePolicy8)
         self.VidDown_Title.setReadOnly(True)
 
-        self.verticalLayout_33.addWidget(self.VidDown_Title)
+        self.VidDown_TitleLayout.addWidget(self.VidDown_Title)
 
 
-        self.horizontalLayout_26.addLayout(self.verticalLayout_33)
+        self.horizontalLayout_26.addLayout(self.VidDown_TitleLayout)
 
-        self.verticalLayout_20 = QVBoxLayout()
-        self.verticalLayout_20.setSpacing(0)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.label_28 = QLabel(self.VidDown)
-        self.label_28.setObjectName(u"label_28")
+        self.VidDown_allLayout = QVBoxLayout()
+        self.VidDown_allLayout.setSpacing(0)
+        self.VidDown_allLayout.setObjectName(u"VidDown_allLayout")
+        self.VidDown_alllabel = QLabel(self.VidDown)
+        self.VidDown_alllabel.setObjectName(u"VidDown_alllabel")
 
-        self.verticalLayout_20.addWidget(self.label_28)
+        self.VidDown_allLayout.addWidget(self.VidDown_alllabel)
 
         self.VidDown_all_checkBox = ModernCheckBox(self.VidDown)
         self.VidDown_all_checkBox.setObjectName(u"VidDown_all_checkBox")
         self.VidDown_all_checkBox.setMinimumSize(QSize(0, 22))
 
-        self.verticalLayout_20.addWidget(self.VidDown_all_checkBox)
+        self.VidDown_allLayout.addWidget(self.VidDown_all_checkBox)
 
 
-        self.horizontalLayout_26.addLayout(self.verticalLayout_20)
+        self.horizontalLayout_26.addLayout(self.VidDown_allLayout)
 
 
         self.verticalLayout_34.addLayout(self.horizontalLayout_26)
@@ -1879,10 +1879,10 @@ class Ui_MainWindow(object):
         self.file_button.setText(QCoreApplication.translate("MainWindow", u" Files", None))
         self.video_button.setText(QCoreApplication.translate("MainWindow", u" Video", None))
         self.toolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF's:", None))
+        self.JoinPdf_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF's:", None))
         self.JoinPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivos", None))
         self.JoinPdf_isEven_Button.setText("")
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Documento Par", None))
+        self.JoinPdf_isEvenlabel.setText(QCoreApplication.translate("MainWindow", u"Documento Par", None))
         self.joinPdf_EvenPolicy_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"A\u00f1adir Hoja al Inicio", None))
         self.joinPdf_EvenPolicy_comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"A\u00f1adir Hoja al Final", None))
 
@@ -1890,47 +1890,47 @@ class Ui_MainWindow(object):
         self.JoinPdf_ApplyEvenLabel.setText(QCoreApplication.translate("MainWindow", u"Aplicar a Todos los Documentos", None))
         self.JoinPdf_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.JoinPdf_tab), QCoreApplication.translate("MainWindow", u"Unir Pdf", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
+        self.SplitPdf_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
         self.SplitPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.SplitPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
+        self.SplitPdf_Sheetslabel.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
         self.SplitPdf_Sheets.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1,4,7-10", None))
         self.SplitPdf_SaveAll_Button.setText("")
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Guardar las Dem\u00e1s", None))
+        self.SplitPdf_SaveAlllabel.setText(QCoreApplication.translate("MainWindow", u"Guardar las Dem\u00e1s", None))
         self.SplitPdf_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.SplitPdf_tab), QCoreApplication.translate("MainWindow", u"Separar PDF", None))
-        self.label_33.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
+        self.ExtractPdf_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
         self.ExtractPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.ExtractPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
-        self.label_34.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
+        self.ExtractPdf_Sheetslabel.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
         self.ExtractPdf_Sheets.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1,4,7-10", None))
         self.ExtractPdf_All_Button.setText("")
-        self.label_24.setText(QCoreApplication.translate("MainWindow", u"Separar Todas", None))
+        self.ExtractPdf_Alllabel.setText(QCoreApplication.translate("MainWindow", u"Separar Todas", None))
         self.ExtractPdf_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.ExtractPDF_tab), QCoreApplication.translate("MainWindow", u"Extraer Hojas", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
+        self.BlankPdf_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
         self.BlankPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.BlankPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
+        self.BlankPdf_Sheetslabel.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
         self.BlankPdf_Sheets.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1,4,7-10", None))
         self.BlankPdf_Inplace_Button.setText("")
-        self.label_26.setText(QCoreApplication.translate("MainWindow", u"Sobreescribir Archivo", None))
+        self.BlankPdf_Inplacelabel.setText(QCoreApplication.translate("MainWindow", u"Sobreescribir Archivo", None))
         self.BlankPdf_Button.setText(QCoreApplication.translate("MainWindow", u"Guardar", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.BlankPdf_tab), QCoreApplication.translate("MainWindow", u"Hoja en Blanco", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Selecciona Im\u00e1genes:", None))
+        self.ImgPdf_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Selecciona Im\u00e1genes:", None))
         self.ImgPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\image.png", None))
         self.ImgPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Selecciona Archivos", None))
         self.ImgPdf_Button.setText(QCoreApplication.translate("MainWindow", u"CONVERTIR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.ImgPdf_tab), QCoreApplication.translate("MainWindow", u"Im\u00e1gen a PDF", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Seleccione PDF's:", None))
+        self.PdfImg_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccione PDF's:", None))
         self.PdfImg_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.PdfImg_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivos", None))
         self.PdfImg_Button.setText(QCoreApplication.translate("MainWindow", u"CONVERTIR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.PdfImg_tab), QCoreApplication.translate("MainWindow", u"PDF a Im\u00e1gen", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Imagen:", None))
+        self.ImgExt_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Imagen:", None))
         self.ImgExt_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\image.jpeg", None))
         self.ImgExt_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Extensi\u00f3n:", None))
+        self.ImgExt_Extlabel.setText(QCoreApplication.translate("MainWindow", u"Extensi\u00f3n:", None))
         self.ImgExt_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u".png", None))
         self.ImgExt_comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u".jpeg", None))
         self.ImgExt_comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u".gif", None))
@@ -1941,39 +1941,39 @@ class Ui_MainWindow(object):
 
         self.ImgExt_Button.setText(QCoreApplication.translate("MainWindow", u"CONVERTIR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.ImgExt_tab), QCoreApplication.translate("MainWindow", u"Cambiar Extensi\u00f3n", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Imagen:", None))
+        self.ImgRsize_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Imagen:", None))
         self.ImgRsize_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\image.png", None))
         self.ImgRsize_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o Actual:", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"x", None))
+        self.ImgRsize_Actuallabel_2.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o Actual:", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"x", None))
         self.ImgRsize_Scale_Button.setText(QCoreApplication.translate("MainWindow", u"Escalar", None))
         self.ImgRsize_Inplace_Button.setText(QCoreApplication.translate("MainWindow", u"Sobreescribir Imagen", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Nueva Dimensi\u00f3n:", None))
+        self.ImgRsize_Newlabel.setText(QCoreApplication.translate("MainWindow", u"Nueva Dimensi\u00f3n:", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"x", None))
         self.ImgRsize_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.ImgRsize_tab), QCoreApplication.translate("MainWindow", u"Redimensionar Imagen", None))
-        self.label_1.setText(QCoreApplication.translate("MainWindow", u"Seleccione Archivos:", None))
+        self.FileRname_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccione Archivos:", None))
         self.FileRname_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivos", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Template:", None))
+        self.FileRname_Templatelabel.setText(QCoreApplication.translate("MainWindow", u"Template:", None))
         self.FileRname_Template.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Name_#XXX", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"N\u00famero Inicial:", None))
+        self.FileRname_Numlabel.setText(QCoreApplication.translate("MainWindow", u"N\u00famero Inicial:", None))
         self.FileRname_Button.setText(QCoreApplication.translate("MainWindow", u"RENOMBRAR", None))
         self.file_tabs.setTabText(self.file_tabs.indexOf(self.FileRname_tab), QCoreApplication.translate("MainWindow", u"Renombrar Archivos", None))
-        self.label_80.setText(QCoreApplication.translate("MainWindow", u"Seleccione Carpeta:", None))
+        self.VidTag_Inlabel.setText(QCoreApplication.translate("MainWindow", u"Seleccione Carpeta:", None))
         self.VidTag_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\music\\", None))
         self.VidTag_selFile.setText(QCoreApplication.translate("MainWindow", u"Selecciona Archivo", None))
         self.VidTag_Update.setText("")
         self.VidTag_Cover.setText(QCoreApplication.translate("MainWindow", u"cover", None))
-        self.label_90.setText(QCoreApplication.translate("MainWindow", u"T\u00edtulo:", None))
+        self.VidTag_Titlelabel.setText(QCoreApplication.translate("MainWindow", u"T\u00edtulo:", None))
         self.VidTag_Title.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Never Gonna Give You Up", None))
-        self.label_23.setText(QCoreApplication.translate("MainWindow", u"Int\u00e9rprete:", None))
+        self.VidTag_Intrlabel.setText(QCoreApplication.translate("MainWindow", u"Int\u00e9rprete:", None))
         self.VidTag_Intr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Rick Astley", None))
-        self.label_32.setText(QCoreApplication.translate("MainWindow", u"\u00c1lbum:", None))
+        self.VidTag_Alblabel.setText(QCoreApplication.translate("MainWindow", u"\u00c1lbum:", None))
         self.VidTag_Alb.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Whenever You Need Somebody", None))
-        self.label_30.setText(QCoreApplication.translate("MainWindow", u"G\u00e9nero:", None))
-        self.label_29.setText(QCoreApplication.translate("MainWindow", u"A\u00f1o:", None))
+        self.VidTag_Genrelabel.setText(QCoreApplication.translate("MainWindow", u"G\u00e9nero:", None))
+        self.VidTag_Yearlabel.setText(QCoreApplication.translate("MainWindow", u"A\u00f1o:", None))
         self.VidTag_Year.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1987/07/28", None))
-        self.label_31.setText(QCoreApplication.translate("MainWindow", u"N\u00famero de Pista:", None))
+        self.VidTag_Tracklabel.setText(QCoreApplication.translate("MainWindow", u"N\u00famero de Pista:", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"de", None))
         self.VidTag_IntrAlblabel.setText(QCoreApplication.translate("MainWindow", u"Int\u00e9rprete de Album:", None))
         self.VidTag_IntrAlb.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Rick Astley", None))
@@ -1989,9 +1989,9 @@ class Ui_MainWindow(object):
         self.MP3toMP4_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.MP3toMP4_Button.setText(QCoreApplication.translate("MainWindow", u"Guardar", None))
         self.vid_tabs.setTabText(self.vid_tabs.indexOf(self.MP3toMP4_tab), QCoreApplication.translate("MainWindow", u"MP4 a MP3", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"URL del Video:", None))
+        self.VidDown_Inlabel.setText(QCoreApplication.translate("MainWindow", u"URL del Video:", None))
         self.VidDown_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"https://www.youtube.com/watch?v=dQw4w9WgXcQ", None))
-        self.label_27.setText(QCoreApplication.translate("MainWindow", u"Solo Audio:", None))
+        self.VidDown_OnlyAudiolabel.setText(QCoreApplication.translate("MainWindow", u"Solo Audio:", None))
         self.VidDown_OnlyAudio.setText("")
         self.VidDown_resLabel.setText(QCoreApplication.translate("MainWindow", u"Resoluci\u00f3n:", None))
         self.VidDown_res.setItemText(0, QCoreApplication.translate("MainWindow", u"144", None))
@@ -2005,7 +2005,7 @@ class Ui_MainWindow(object):
         self.VidDown_res.setItemText(8, QCoreApplication.translate("MainWindow", u"Best Resolution", None))
 
         self.VidDown_Titlelabel.setText(QCoreApplication.translate("MainWindow", u"T\u00edtulo del Video:", None))
-        self.label_28.setText(QCoreApplication.translate("MainWindow", u"Descargar Todo:", None))
+        self.VidDown_alllabel.setText(QCoreApplication.translate("MainWindow", u"Descargar Todo:", None))
         self.VidDown_all_checkBox.setText("")
         self.VidDown_listLabel.setText(QCoreApplication.translate("MainWindow", u"Lista de Videos:", None))
         self.VidDown_Thumb.setText(QCoreApplication.translate("MainWindow", u"IMG", None))
@@ -2015,4 +2015,3 @@ class Ui_MainWindow(object):
         self.vid_tabs.setTabText(self.vid_tabs.indexOf(self.VidDown), QCoreApplication.translate("MainWindow", u"Descargar Internet", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Python + PySide6", None))
     # retranslateUi
-
