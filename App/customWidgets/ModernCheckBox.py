@@ -5,6 +5,7 @@ from PySide6.QtGui import QPainter, QColor, QColorConstants
 class ModernCheckBox(QCheckBox):
     def __init__(self, parent=None, *args , animation_curve = QEasingCurve.Type.OutQuint, **kwargs) :	#OutBounce
         super().__init__(parent, *args , **kwargs)
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
         self.setCursor(Qt.CursorShape.PointingHandCursor)
         
@@ -63,7 +64,7 @@ class ModernCheckBox(QCheckBox):
             offset_circle = height
             rect = QRect(0,0,width,height)	#rectangle
             # Configuramos el color y la fuente para el texto
-            p.setPen(QColorConstants.Black)  # O el color que prefieras
+            p.setPen(self.palette().color(self.foregroundRole())) 
             font = p.font()
             font.setPointSize(10)  # O el tamaño deseado
             p.setFont(font)
@@ -96,27 +97,27 @@ class ModernCheckBox(QCheckBox):
         self.update()
 
     def getInactiveColor(self):
-        return self._inactiveColor
+        return self._inactive_color
     def setInactiveColor(self, color):
         if isinstance(color, QColor):
-            self._inactiveColor = color
+            self._inactive_color = color
             self.update()
     inactiveColor = Property(QColor, getInactiveColor, setInactiveColor)
 
     def getActiveColor(self):
-        return self._activeColor
+        return self._active_color
 
     def setActiveColor(self, color):
         if isinstance(color, QColor):
-            self._activeColor = color
+            self._active_color = color
             self.update()
     activeColor = Property(QColor, getActiveColor, setActiveColor)
 
     def getCircleColor(self):
-        return self._circleColor
+        return self._circle_color
 
     def setCircleColor(self, color):
         if isinstance(color, QColor):
-            self._circleColor = color
+            self._circle_color = color
             self.update()
     circleColor = Property(QColor, getCircleColor, setCircleColor)

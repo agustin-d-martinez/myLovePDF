@@ -1,8 +1,17 @@
 <RCC>
   <qresource prefix="/">
-    <file>styles/widgets/lists.qss</file>
-    <file>styles/base/base.qss</file>
+    <file>Icons/delete.png</file>
+    <file>Icons/delete_w.png</file>
+    <file>Icons/add_file.png</file>
+    <file>Icons/add_file_w.png</file>
+    <file>Icons/app_icon.png</file>
+    <file>Icons/down_arrow.png</file>
+    <file>Icons/down_arrow_w.png</file>
+    <file>Icons/up_arrow.png</file>
     <file>styles/themes/dark.qss</file>
+    <file>styles/base/base.qss</file>
+    <file>Icons/up_arrow_w.png</file>
+    <file>styles/widgets/lists.qss</file>
     <file>styles/widgets/buttons.qss</file>
     <file>styles/widgets/custom.qss</file>
     <file>styles/widgets/inputs.qss</file>

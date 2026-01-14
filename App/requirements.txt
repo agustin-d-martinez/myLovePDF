@@ -4,3 +4,4 @@ pillow
 mutagen
 requests
 yt-dlp[default]>=2024.12.0
+pyinstaller

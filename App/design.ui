@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1157</width>
-    <height>666</height>
+    <width>1128</width>
+    <height>529</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,43 +42,7 @@
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">/* ===== BOTONES DE VENTANA ===== */ 
-#exit_frame {
-    background-color: #181818;
-}
-
-QPushButton#minimize_button, 
-QPushButton#maximize_button, 
-QPushButton#close_button { 
-background-color: transparent; 
-border: none; 
-min-width: 28px; 
-max-width: 28px; 
-min-height: 28px; 
-max-height: 28px; 
-border-radius: 14px; 
-} 
-
-/* Hover */ 
-QPushButton#minimize_button:hover { 
-background-color: #0d86f0; 
-} 
-QPushButton#maximize_button:hover { 
-background-color: #2f2f2f; 
-} 
-QPushButton#close_button:hover { 
-background-color: #b53030; } 
-
-/* Pressed */
- QPushButton#minimize_button:pressed, 
-QPushButton#maximize_button:pressed { 
-background-color: #3a3a3a; 
-} 
-QPushButton#close_button:pressed { 
-background-color: #8f2424; 
-}
-
-</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::StyledPanel</enum>
@@ -696,6 +660,9 @@ border-bottom-left-radius: 0px;
                          <property name="spacing">
                           <number>16</number>
                          </property>
+                         <property name="topMargin">
+                          <number>16</number>
+                         </property>
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_38">
                            <property name="spacing">
@@ -898,6 +865,9 @@ border-bottom-left-radius: 0px;
 border-bottom-right-radius: 0px;
 </string>
                            </property>
+                           <property name="placeholderText">
+                            <string>C:\user\deskopt\file.pdf</string>
+                           </property>
                           </widget>
                          </item>
                          <item>
@@ -980,6 +950,9 @@ border-bottom-left-radius: 0px;
                               <width>16777215</width>
                               <height>16777215</height>
                              </size>
+                            </property>
+                            <property name="placeholderText">
+                             <string>1,4,7-10</string>
                             </property>
                            </widget>
                           </item>
@@ -1099,6 +1072,9 @@ border-bottom-left-radius: 0px;
 border-bottom-right-radius: 0px;
 </string>
                            </property>
+                           <property name="placeholderText">
+                            <string>C:\user\deskopt\file.pdf</string>
+                           </property>
                           </widget>
                          </item>
                          <item>
@@ -1175,6 +1151,9 @@ border-bottom-left-radius: 0px;
                               <width>16777215</width>
                               <height>16777215</height>
                              </size>
+                            </property>
+                            <property name="placeholderText">
+                             <string>1,4,7-10</string>
                             </property>
                            </widget>
                           </item>
@@ -1300,6 +1279,9 @@ border-bottom-left-radius: 0px;
 border-bottom-right-radius: 0px;
 </string>
                            </property>
+                           <property name="placeholderText">
+                            <string>C:\user\deskopt\file.pdf</string>
+                           </property>
                           </widget>
                          </item>
                          <item>
@@ -1370,6 +1352,9 @@ border-bottom-left-radius: 0px;
                               <width>16777215</width>
                               <height>16777215</height>
                              </size>
+                            </property>
+                            <property name="placeholderText">
+                             <string>1,4,7-10</string>
                             </property>
                            </widget>
                           </item>
@@ -1484,6 +1469,9 @@ border-bottom-right-radius: 0px;
 
 </string>
                          </property>
+                         <property name="placeholderText">
+                          <string>C:\user\deskopt\image.png</string>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -1559,6 +1547,9 @@ border-bottom-left-radius: 0px;
                          <property name="styleSheet">
                           <string notr="true">border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>C:\user\deskopt\file.pdf</string>
                          </property>
                         </widget>
                        </item>
@@ -1642,6 +1633,9 @@ border-bottom-left-radius: 0px;
                              <property name="styleSheet">
                               <string notr="true">border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;</string>
+                             </property>
+                             <property name="placeholderText">
+                              <string>C:\user\deskopt\image.jpeg</string>
                              </property>
                             </widget>
                            </item>
@@ -1755,12 +1749,12 @@ border-bottom-left-radius: 0px;
                     <attribute name="title">
                      <string>Redimensionar Imagen</string>
                     </attribute>
-                    <layout class="QFormLayout" name="formLayout">
-                     <property name="fieldGrowthPolicy">
-                      <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
-                     </property>
+                    <layout class="QGridLayout" name="gridLayout">
                      <property name="horizontalSpacing">
-                      <number>50</number>
+                      <number>25</number>
+                     </property>
+                     <property name="verticalSpacing">
+                      <number>16</number>
                      </property>
                      <item row="0" column="0">
                       <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -1796,6 +1790,9 @@ border-bottom-left-radius: 0px;
                            <property name="styleSheet">
                             <string notr="true">border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;</string>
+                           </property>
+                           <property name="placeholderText">
+                            <string>C:\user\deskopt\image.png</string>
                            </property>
                           </widget>
                          </item>
@@ -1938,13 +1935,6 @@ border-bottom-left-radius: 0px;
                        </item>
                       </layout>
                      </item>
-                     <item row="3" column="0" colspan="2">
-                      <widget class="QPushButton" name="ImgRsize_Button">
-                       <property name="text">
-                        <string>GUARDAR</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="2" column="0">
                       <spacer name="verticalSpacer_13">
                        <property name="orientation">
@@ -1957,6 +1947,13 @@ border-bottom-left-radius: 0px;
                         </size>
                        </property>
                       </spacer>
+                     </item>
+                     <item row="3" column="0" colspan="2">
+                      <widget class="QPushButton" name="ImgRsize_Button">
+                       <property name="text">
+                        <string>GUARDAR</string>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -2034,6 +2031,9 @@ border-bottom-left-radius: 0px;</string>
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
+                         </property>
+                         <property name="placeholderText">
+                          <string>Name_#XXX</string>
                          </property>
                         </widget>
                        </item>
@@ -2141,6 +2141,9 @@ border-bottom-left-radius: 0px;</string>
 border-bottom-right-radius: 0px;
 </string>
                              </property>
+                             <property name="placeholderText">
+                              <string>C:\user\deskopt\music\</string>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -2181,19 +2184,19 @@ border-bottom-left-radius: 0px;
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_33">
                            <property name="spacing">
-                            <number>16</number>
+                            <number>0</number>
                            </property>
                            <item>
                             <widget class="DroppableImageLabel" name="VidTag_Cover">
                              <property name="sizePolicy">
-                              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                                <horstretch>0</horstretch>
                                <verstretch>0</verstretch>
                               </sizepolicy>
                              </property>
                              <property name="minimumSize">
                               <size>
-                               <width>158</width>
+                               <width>142</width>
                                <height>0</height>
                               </size>
                              </property>
@@ -2230,10 +2233,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_Title">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Never Gonna Give You Up</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2263,10 +2269,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_Intr">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Rick Astley</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2296,10 +2305,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_Alb">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Whenever You Need Somebody</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2326,6 +2338,12 @@ border-bottom-left-radius: 0px;
                                  </item>
                                  <item>
                                   <widget class="QComboBox" name="VidTag_Genre_comboBox">
+                                   <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                   </property>
                                    <property name="editable">
                                     <bool>true</bool>
                                    </property>
@@ -2351,10 +2369,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_Year">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>1987/07/28</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2416,10 +2437,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_IntrAlb">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Rick Astley</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2443,10 +2467,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_Comp">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Stock Aitken Waterman</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2470,10 +2497,13 @@ border-bottom-left-radius: 0px;
                                  <item>
                                   <widget class="QLineEdit" name="VidTag_Mood">
                                    <property name="sizePolicy">
-                                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
                                      <horstretch>0</horstretch>
                                      <verstretch>0</verstretch>
                                     </sizepolicy>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>Graciosa</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2557,6 +2587,9 @@ border-bottom-left-radius: 0px;
 border-bottom-right-radius: 0px;
 </string>
                          </property>
+                         <property name="placeholderText">
+                          <string>C:\user\deskopt\video.mp4</string>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -2628,6 +2661,9 @@ border-bottom-left-radius: 0px;
                                  <horstretch>0</horstretch>
                                  <verstretch>0</verstretch>
                                 </sizepolicy>
+                               </property>
+                               <property name="placeholderText">
+                                <string>https://www.youtube.com/watch?v=dQw4w9WgXcQ</string>
                                </property>
                               </widget>
                              </item>
@@ -2731,7 +2767,7 @@ border-bottom-left-radius: 0px;
                                </item>
                                <item>
                                 <property name="text">
-                                 <string>Best resolution</string>
+                                 <string>Best Resolution</string>
                                 </property>
                                </item>
                               </widget>

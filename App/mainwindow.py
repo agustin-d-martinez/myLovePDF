@@ -1,6 +1,6 @@
 # This Python file uses the following encoding: utf-8
 import sys
-import os
+import tempfile
 import requests
 from pathlib import Path
 import re
@@ -9,9 +9,11 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 
-from ui_design import Ui_MainWindow
-#import resources_rc
+import ctypes
 
+from ui_design import Ui_MainWindow
+
+from customWidgets.ButtonListWidget import ButtonListWidget 
 import libs.file as file
 import libs.pdf as pdf
 import libs.image as img
@@ -20,23 +22,27 @@ import libs.music as msc
 from download_thread import DownloadWorker 
 
 # Important:
-# You need to run the following command to generate the ui_form.py file
+# You need to run the following command to generate the ui_form.py file:
 #     pyside6-rcc .\Icons\resources.qrc -o .\Icons\resources.py
 # pyside6-designer
 # from Icons import resources
+# pyinstaller --onefile --windowed --ico=resources/Icons/app_icon.ico  mainwindow.py
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowTitle("ILovePDF")
 
         # Set Window Icon
+        self.setWindowTitle("ILovePDF")
+        self.setWindowIcon(QIcon(":/Icons/App_icon.ico"))
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('AgustinM.MyLovePDF.app')	# Permite que cambie el logo del taskbar
         # self.ui.main_frame.setAttribute(Qt.WA_StyledBackground, True)
 
         # Set Stylesheets
         self._set_styles()
+        self._set_icons()
 
         # Set GRIP
         self.grip = QSizeGrip(self)
@@ -50,10 +56,12 @@ class MainWindow(QMainWindow):
         self.dragRatioX = None
         self.ignoreRelease = False
         self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
-        self.ui.exit_frame.mousePressEvent = self._mousePressWindow
-        self.ui.exit_frame.mouseMoveEvent = self._mouseMoveWindow
-        self.ui.exit_frame.mouseReleaseEvent = self._mouseReleaseWindow
-        self.ui.exit_frame.mouseDoubleClickEvent = self._mouseDoubleClickMaximize
+        self.ui.exit_frame.mousePressEvent = self._titleBar_mousePressEvent
+        self.ui.exit_frame.mouseMoveEvent = self._titleBar_mouseMoveEvent
+        self.ui.exit_frame.mouseReleaseEvent = self._titleBar_mouseReleaseEvent
+        self.ui.exit_frame.mouseDoubleClickEvent = self._titleBar_mouseDoubleClickEvent
+
+        # TODO Add resize from up, down, left and right
 
         # -----------------------------------------------------------
         # Set Connect Functions
@@ -145,7 +153,7 @@ class MainWindow(QMainWindow):
             self.showNormal()
             self.grip.show()
     
-    def _mousePressWindow(self, event: QMouseEvent):
+    def _titleBar_mousePressEvent(self, event: QMouseEvent):
         if event.button() != Qt.MouseButton.LeftButton:
             return
 
@@ -159,7 +167,7 @@ class MainWindow(QMainWindow):
         self.dragPos = self.dragStartPos - self.frameGeometry().topLeft()
         event.accept()
     
-    def _mouseMoveWindow(self, event: QMouseEvent):
+    def _titleBar_mouseMoveEvent(self, event: QMouseEvent):
         if event.buttons() != Qt.MouseButton.LeftButton:
             return
         
@@ -188,7 +196,7 @@ class MainWindow(QMainWindow):
         self.move(event.globalPosition().toPoint() - self.dragPos)
         event.accept()
 
-    def _mouseReleaseWindow(self, event: QMouseEvent):
+    def _titleBar_mouseReleaseEvent(self, event: QMouseEvent):
         # Ignore mouse Release. Used in double click maximize.
         if self.ignoreRelease:
             self.ignoreRelease = False
@@ -211,7 +219,7 @@ class MainWindow(QMainWindow):
             self.update_window_size(False)
         event.accept()
 
-    def _mouseDoubleClickMaximize(self, event: QMouseEvent):
+    def _titleBar_mouseDoubleClickEvent(self, event: QMouseEvent):
         # Double click maximize/restore logic
         self.ignoreRelease = True
         is_not_maximized = not self.isMaximized()
@@ -290,31 +298,46 @@ class MainWindow(QMainWindow):
     def join_pdf_clicked(self):
         even_policy_dict = {0: pdf.EvenPolicy.PAD_START, 1: pdf.EvenPolicy.PAD_END}
 
-        input_path = self._get_listwidget_text(self.ui.JoinPdf_In.listWidget)
+        input_path = [Path(p) for p in self._get_listwidget_text(self.ui.JoinPdf_In.listWidget)]
         if len(input_path) == 0:
             self._error_message("No se ingresó ningún archivo.")
             return
         elif len(input_path) == 1:
             self._error_message("No se ingresaron suficientes archivos.")
             return
-        
+
         is_even = self.ui.JoinPdf_isEven_Button.isChecked()
         policy = even_policy_dict[self.ui.joinPdf_EvenPolicy_comboBox.currentIndex()]
-        apply_all = self.ui.JoinPdf_ApplyEven_Button.isChecked()                    # TODO falta esto
+        apply_all = self.ui.JoinPdf_ApplyEven_Button.isChecked()
 
         output_path = self._save_file("Archivo PDF (*.pdf)")
         if not output_path:
             return
-        
+
         try:
+            if is_even and apply_all:
+                tmp_ctx = tempfile.TemporaryDirectory()
+                tmpdir = Path(tmp_ctx.name)
+
+                new_input_path: list[Path] = []
+                for i, path in enumerate(input_path):
+                    tmp_pdf = tmpdir / f"even_{i}.pdf"
+                    pdf.evenize_pdf(path, output_path=tmp_pdf, policy=policy)
+                    new_input_path.append(tmp_pdf)
+                input_path = new_input_path
+            else:
+                tmp_ctx = None
+
             pdf.join_pdf(input_path, output_path)
+            if is_even and not apply_all:
+                pdf.evenize_pdf(output_path, policy=policy, inplace=True)
         except Exception as e:
             self._error_message(f"Fallo al unir los PDF:\n{e}")
             return
-
-        if is_even:
-            pdf.evenize_pdf(output_path, policy=policy, inplace=True)
-        QMessageBox().information(self,"PDF generado", "PDF's unidos con éxito.")
+        finally:
+            if tmp_ctx:
+                tmp_ctx.cleanup()
+        QMessageBox().information(self, "PDF generado", "PDFs unidos con éxito.")
 
     def extract_sheets_clicked(self):
         input_path = self.ui.ExtractPdf_In.text()
@@ -358,7 +381,7 @@ class MainWindow(QMainWindow):
         if resolution == "Best Resolution":
             resolution = None
             
-        self.ui.VidDown_Button.setEnabled(False)
+        self.ui.VidDown_Button.hide()
         self.ui.VidDown_progressBar.setValue(0)
         self.ui.VidDown_progressBar.show()
 
@@ -368,6 +391,17 @@ class MainWindow(QMainWindow):
         self.download_thread.error.connect(self._download_error)
 
         self.download_thread.start()
+
+    def _download_error(self, msg):
+        self.ui.VidDown_Button.show()
+        self.ui.VidDown_progressBar.hide()
+        self._error_message(f"Error durante la descarga:\n{msg}")
+
+    def _download_finish(self):
+        print("paso")
+        self.ui.VidDown_Button.show()
+        self.ui.VidDown_progressBar.hide()
+        QMessageBox().information(self, "Archivo descargado", f"Archivo Descargado con éxito.")
 
     def update_from_url(self):
         url = self.ui.VidDown_In.text().strip()
@@ -483,34 +517,38 @@ class MainWindow(QMainWindow):
         QMessageBox().information(self, "Archivo generado", f"Audio extraido con éxito.")
 
     def video_tag_clicked(self):   
-        music_file = self.ui.VidTag_List.listWidget.currentItem()
-        if not music_file:
+        item = self.ui.VidTag_List.listWidget.currentItem()
+        if not item:
             self._error_message("No se seleccionó ninguna canción")
-            return    
-        music_file = music_file.text()
-        input_path = os.path.join(self.ui.VidTag_In.text(), music_file)
-        if not input_path :
+            return
+
+        base_dir = Path(self.ui.VidTag_In.text())
+        input_path = base_dir / item.text()
+
+        if not input_path.exists():
             self._error_message("No se seleccionó ningún archivo.")
             return
-        
-        tags = {}
-        tags["title"] = self.ui.VidTag_Title.text()
-        tags["artist"]= self.ui.VidTag_Intr.text()
-        tags["album"]= self.ui.VidTag_Alb.text()
-        tags["composer"]= self.ui.VidTag_Comp.text()
-        tags["album_artist"]= self.ui.VidTag_IntrAlb.text()
-        tags["genre"]= self.ui.VidTag_Genre_comboBox.currentText()
-        tags["track"]= f"{self.ui.VidTag_Track.value()}/{self.ui.VidTag_TrackAll.value()}"
-        tags["lyrics"]= self.ui.VidTag_Lyrics.toPlainText()
-        tags["year"]= self.ui.VidTag_Year.text()
-        tags["mood"]= self.ui.VidTag_Mood.text()
 
-        buffer = QBuffer()
-        buffer.open(QIODevice.OpenModeFlag.WriteOnly)
-        
-        self.ui.VidTag_Cover.pixmap().save(buffer, "PNG")		# Puedes elegir el formato: "PNG" o "JPEG"
-        tags["cover"]= bytes(buffer.data())
-        buffer.close()
+        tags = {
+            "title": self.ui.VidTag_Title.text(),
+            "artist": self.ui.VidTag_Intr.text(),
+            "album": self.ui.VidTag_Alb.text(),
+            "composer": self.ui.VidTag_Comp.text(),
+            "album_artist": self.ui.VidTag_IntrAlb.text(),
+            "genre": self.ui.VidTag_Genre_comboBox.currentText(),
+            "track": f"{self.ui.VidTag_Track.value()}/{self.ui.VidTag_TrackAll.value()}",
+            "lyrics": self.ui.VidTag_Lyrics.toPlainText(),
+            "year": self.ui.VidTag_Year.text(),
+            "mood": self.ui.VidTag_Mood.text(),
+        }
+
+        pixmap = self.ui.VidTag_Cover.pixmap()
+        if pixmap:
+            buffer = QBuffer()
+            buffer.open(QIODevice.OpenModeFlag.WriteOnly)
+            pixmap.save(buffer, "PNG")
+            tags["cover"] = bytes(buffer.data())
+            buffer.close()
 
         try:
             msc.set_music_tags(input_path, tags)
@@ -528,53 +566,60 @@ class MainWindow(QMainWindow):
         self.ui.VidTag_List.listWidget.addItems(music_list)
 
     def _update_selected_music(self):
-        has_selection = bool(self.ui.VidTag_List.listWidget.selectedIndexes())
-        if not has_selection:
-            self.ui.VidTag_Title.clear()
-            self.ui.VidTag_Intr.clear()
-            self.ui.VidTag_Alb.clear()
-            self.ui.VidTag_Comp.clear()
-            self.ui.VidTag_IntrAlb.clear()
-            self.ui.VidTag_Lyrics.clear()
-            self.ui.VidTag_Year.clear()
-            self.ui.VidTag_Track.setValue(0)
-            self.ui.VidTag_TrackAll.setValue(0)
-            self.ui.VidTag_Genre_comboBox.setCurrentIndex(0)
-            self.ui.VidTag_Mood.clear()
-            self.ui.VidTag_Cover.setPixmap(self.ui.VidTag_Cover.default_pixmap)
+        items = self.ui.VidTag_List.listWidget.selectedItems()
+        if not items:
+            self._clear_music_fields()
             return
 
-        music_file = self.ui.VidTag_List.listWidget.selectedItems()[0].text()
-        tags = msc.get_music_tags(os.path.join(self.ui.VidTag_In.text(), music_file))
-        self.ui.VidTag_Title.setText(tags.get("title",""))
-        self.ui.VidTag_Intr.setText(tags.get("artist",""))
-        self.ui.VidTag_Alb.setText(tags.get("album",""))
-        self.ui.VidTag_Comp.setText(tags.get("composer",""))
-        self.ui.VidTag_IntrAlb.setText(tags.get("album_artist",""))
-        self.ui.VidTag_Lyrics.setPlainText(tags.get("lyrics",""))
-        self.ui.VidTag_Year.setText(tags.get("year",""))
+        base_dir = Path(self.ui.VidTag_In.text())
+        input_path = base_dir / items[0].text()
 
-        tracks = self._parse_track_tag(tags.get("track",""))
-        self.ui.VidTag_Track.setValue(tracks[0])
-        self.ui.VidTag_TrackAll.setValue(tracks[1])
-        self.ui.VidTag_Genre_comboBox.setCurrentText(tags.get("genre",""))
-        self.ui.VidTag_Mood.setText(tags.get("mood",""))
-        cover = tags.get("cover")
+        tags = msc.get_music_tags(input_path)
 
+        self.ui.VidTag_Title.setText(tags.get("title", ""))
+        self.ui.VidTag_Intr.setText(tags.get("artist", ""))
+        self.ui.VidTag_Alb.setText(tags.get("album", ""))
+        self.ui.VidTag_Comp.setText(tags.get("composer", ""))
+        self.ui.VidTag_IntrAlb.setText(tags.get("album_artist", ""))
+        self.ui.VidTag_Lyrics.setPlainText(tags.get("lyrics", ""))
+        self.ui.VidTag_Year.setText(tags.get("year", ""))
+
+        track, total = self._parse_track_tag(tags.get("track", ""))
+        self.ui.VidTag_Track.setValue(track)
+        self.ui.VidTag_TrackAll.setValue(total)
+
+        self.ui.VidTag_Genre_comboBox.setCurrentText(tags.get("genre", ""))
+        self.ui.VidTag_Mood.setText(tags.get("mood", ""))
+
+        self._update_cover(tags.get("cover"))
+
+    def _clear_music_fields(self):
+        self.ui.VidTag_Title.clear()
+        self.ui.VidTag_Intr.clear()
+        self.ui.VidTag_Alb.clear()
+        self.ui.VidTag_Comp.clear()
+        self.ui.VidTag_IntrAlb.clear()
+        self.ui.VidTag_Lyrics.clear()
+        self.ui.VidTag_Year.clear()
+        self.ui.VidTag_Track.setValue(0)
+        self.ui.VidTag_TrackAll.setValue(0)
+        self.ui.VidTag_Genre_comboBox.setCurrentIndex(0)
+        self.ui.VidTag_Mood.clear()
+        self.ui.VidTag_Cover.setPixmap(self.ui.VidTag_Cover.default_pixmap)
+
+    def _update_cover(self, cover):
         pixmap = self.ui.VidTag_Cover.default_pixmap
+
         if isinstance(cover, dict):
-            img_bytes = cover.get("data")
-            pm = QPixmap()
-            if pm.loadFromData(img_bytes):
-                pixmap = pm
+            data = cover.get("data")
+            if data:
+                pm = QPixmap()
+                if pm.loadFromData(data):
+                    pixmap = pm
 
-        pixmap = pixmap.scaled(
-            self.ui.VidTag_Cover.size(),
-            Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation
+        self.ui.VidTag_Cover.setPixmap(
+            pixmap.scaled(self.ui.VidTag_Cover.size(), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         )
-
-        self.ui.VidTag_Cover.setPixmap(pixmap)
 
     def _parse_track_tag(self, tag: str) -> Tuple[Optional[int], Optional[int]]:
         if not tag:
@@ -591,16 +636,6 @@ class MainWindow(QMainWindow):
             return int(match.group(1)), None
 
         return None, None
-
-    def _download_error(self, msg):
-        self.ui.VidDown_Button.setEnabled(True)
-        self.ui.VidDown_progressBar.hide()
-        self._error_message(f"Error durante la descarga:\n{msg}")
-
-    def _download_finish(self):
-        self.ui.VidDown_Button.setEnabled(True)
-        self.ui.VidDown_progressBar.hide()
-        QMessageBox().information(self, "Archivo descargado", f"Archivo Descargado con éxito.")
 
     # ----------------------------------------------
     # Files Functions
@@ -803,7 +838,7 @@ class MainWindow(QMainWindow):
                 lista.add(int(number))
         return sorted(lista)
 
-    def _set_styles(self, theme="dark"):
+    def _set_styles(self, theme:str ="dark"):
         qss = ""
 
         # Base (estructura)
@@ -827,6 +862,51 @@ class MainWindow(QMainWindow):
             return
         stream = QTextStream(file)
         return stream.readAll()
+
+    def _set_icons(self, theme: str = "dark"):
+        qss = ":/Icons/"
+
+        if theme == "dark":
+            icons = {
+                "add": QIcon(qss + "add_file_w.png"),
+                "delete": QIcon(qss + "delete_w.png"),
+                "up": QIcon(qss + "up_arrow_w.png"),
+                "down": QIcon(qss + "down_arrow_w.png"),
+                "reload": QIcon(qss + "reload_w.png"),
+                "no_img": QPixmap(qss + "no_image_w.png"),
+            }
+        else:
+            icons = {
+                "add": QIcon(qss + "add_file.png"),
+                "delete": QIcon(qss + "delete.png"),
+                "up": QIcon(qss + "up_arrow.png"),
+                "down": QIcon(qss + "down_arrow.png"),
+                "reload": QIcon(qss + "reload.png"),
+                "no_img": QPixmap(qss + "no_image.png"),
+            }
+
+        # Buttons
+        scaled_cover = icons["no_img"].scaled(self.ui.VidTag_Cover.size(), 
+                                              Qt.AspectRatioMode.KeepAspectRatio, 
+                                              Qt.TransformationMode.SmoothTransformation )
+        scaled_thumb = icons["no_img"].scaled(self.ui.VidTag_Cover.size(), 
+                                              Qt.AspectRatioMode.KeepAspectRatio, 
+                                              Qt.TransformationMode.SmoothTransformation )
+
+        self.ui.VidTag_Cover.setDefaultPixmap(scaled_cover) 
+        self.ui.VidTag_Cover.setPixmap(scaled_cover)
+        self.ui.VidDown_Thumb.setPixmap(scaled_thumb)
+        self.ui.VidTag_Update.setIcon(icons["reload"])
+
+        # All ButtonListWidget 
+        for blw in self.findChildren(ButtonListWidget):
+            blw.setIcons(
+                icons["add"],
+                icons["delete"],
+                icons["up"],
+                icons["down"],
+            )
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

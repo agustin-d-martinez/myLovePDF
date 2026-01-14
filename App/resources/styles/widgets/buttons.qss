@@ -1,7 +1,30 @@
-/*QPushButton:hover {}*/
+QPushButton#minimize_button, 
+QPushButton#maximize_button, 
+QPushButton#close_button { 
+    background-color: transparent; 
+    border: none; 
+    min-width: 28px; 
+    max-width: 28px; 
+    min-height: 28px; 
+    max-height: 28px; 
+    border-radius: 14px; 
+} 
+QPushButton#minimize_button:hover { 
+    background-color: #0d86f0; 
+} 
+QPushButton#maximize_button:hover { 
+    background-color: #2f2f2f; 
+} 
+QPushButton#close_button:hover { 
+    background-color: #b53030;
+} 
 
-QPushButton:disabled {
-    opacity: 0.6;
+QPushButton#minimize_button:pressed, 
+QPushButton#maximize_button:pressed { 
+    background-color: #3a3a3a; 
+} 
+QPushButton#close_button:pressed { 
+    background-color: #8f2424; 
 }
 
 #l_widget QPushButton {
@@ -18,4 +41,8 @@ QPushButton:disabled {
 }
 QToolButton{
     padding: 10px 10px;
+}
+
+QPushButton:disabled {
+    opacity: 0.6;
 }

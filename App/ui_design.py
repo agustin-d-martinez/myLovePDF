@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'design.ui'
+## Form generated from reading UI file 'designduTaSr.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.10.1
 ##
@@ -16,11 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFormLayout,
-    QFrame, QHBoxLayout, QLabel, QLayout,
-    QLineEdit, QListWidget, QListWidgetItem, QMainWindow,
-    QPlainTextEdit, QProgressBar, QPushButton, QSizePolicy,
-    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
-    QToolButton, QVBoxLayout, QWidget)
+    QFrame, QGridLayout, QHBoxLayout, QLabel,
+    QLayout, QLineEdit, QListWidget, QListWidgetItem,
+    QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
+    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
+    QTabWidget, QToolButton, QVBoxLayout, QWidget)
 
 from customWidgets.ButtonListWidget import ButtonListWidget
 from customWidgets.DroppableImageLabel import DroppableImageLabel
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1157, 666)
+        MainWindow.resize(1128, 529)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"")
@@ -46,43 +46,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.exit_frame.sizePolicy().hasHeightForWidth())
         self.exit_frame.setSizePolicy(sizePolicy)
-        self.exit_frame.setStyleSheet(u"/* ===== BOTONES DE VENTANA ===== */ \n"
-"#exit_frame {\n"
-"    background-color: #181818;\n"
-"}\n"
-"\n"
-"QPushButton#minimize_button, \n"
-"QPushButton#maximize_button, \n"
-"QPushButton#close_button { \n"
-"background-color: transparent; \n"
-"border: none; \n"
-"min-width: 28px; \n"
-"max-width: 28px; \n"
-"min-height: 28px; \n"
-"max-height: 28px; \n"
-"border-radius: 14px; \n"
-"} \n"
-"\n"
-"/* Hover */ \n"
-"QPushButton#minimize_button:hover { \n"
-"background-color: #0d86f0; \n"
-"} \n"
-"QPushButton#maximize_button:hover { \n"
-"background-color: #2f2f2f; \n"
-"} \n"
-"QPushButton#close_button:hover { \n"
-"background-color: #b53030; } \n"
-"\n"
-"/* Pressed */\n"
-" QPushButton#minimize_button:pressed, \n"
-"QPushButton#maximize_button:pressed { \n"
-"background-color: #3a3a3a; \n"
-"} \n"
-"QPushButton#close_button:pressed { \n"
-"background-color: #8f2424; \n"
-"}\n"
-"\n"
-"")
+        self.exit_frame.setStyleSheet(u"")
         self.exit_frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.exit_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.exit_frame)
@@ -361,6 +325,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_35 = QVBoxLayout()
         self.verticalLayout_35.setSpacing(16)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.verticalLayout_35.setContentsMargins(-1, 16, -1, -1)
         self.horizontalLayout_38 = QHBoxLayout()
         self.horizontalLayout_38.setSpacing(6)
         self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
@@ -952,10 +917,10 @@ class Ui_MainWindow(object):
         self.img_tabs.addTab(self.ImgExt_tab, "")
         self.ImgRsize_tab = QWidget()
         self.ImgRsize_tab.setObjectName(u"ImgRsize_tab")
-        self.formLayout = QFormLayout(self.ImgRsize_tab)
-        self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
-        self.formLayout.setHorizontalSpacing(50)
+        self.gridLayout = QGridLayout(self.ImgRsize_tab)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setHorizontalSpacing(25)
+        self.gridLayout.setVerticalSpacing(16)
         self.verticalLayout_28 = QVBoxLayout()
         self.verticalLayout_28.setSpacing(0)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
@@ -989,7 +954,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_28.addLayout(self.horizontalLayout_20)
 
 
-        self.formLayout.setLayout(0, QFormLayout.ItemRole.LabelRole, self.verticalLayout_28)
+        self.gridLayout.addLayout(self.verticalLayout_28, 0, 0, 1, 1)
 
         self.verticalLayout_26 = QVBoxLayout()
         self.verticalLayout_26.setSpacing(0)
@@ -1026,7 +991,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_26.addLayout(self.horizontalLayout_19)
 
 
-        self.formLayout.setLayout(0, QFormLayout.ItemRole.FieldRole, self.verticalLayout_26)
+        self.gridLayout.addLayout(self.verticalLayout_26, 0, 1, 1, 1)
 
         self.horizontalLayout_22 = QHBoxLayout()
         self.horizontalLayout_22.setSpacing(25)
@@ -1042,7 +1007,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.addWidget(self.ImgRsize_Inplace_Button)
 
 
-        self.formLayout.setLayout(1, QFormLayout.ItemRole.LabelRole, self.horizontalLayout_22)
+        self.gridLayout.addLayout(self.horizontalLayout_22, 1, 0, 1, 1)
 
         self.verticalLayout_27 = QVBoxLayout()
         self.verticalLayout_27.setSpacing(0)
@@ -1079,16 +1044,16 @@ class Ui_MainWindow(object):
         self.verticalLayout_27.addLayout(self.horizontalLayout_21)
 
 
-        self.formLayout.setLayout(1, QFormLayout.ItemRole.FieldRole, self.verticalLayout_27)
+        self.gridLayout.addLayout(self.verticalLayout_27, 1, 1, 1, 1)
+
+        self.verticalSpacer_13 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer_13, 2, 0, 1, 1)
 
         self.ImgRsize_Button = QPushButton(self.ImgRsize_tab)
         self.ImgRsize_Button.setObjectName(u"ImgRsize_Button")
 
-        self.formLayout.setWidget(3, QFormLayout.ItemRole.SpanningRole, self.ImgRsize_Button)
-
-        self.verticalSpacer_13 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.formLayout.setItem(2, QFormLayout.ItemRole.LabelRole, self.verticalSpacer_13)
+        self.gridLayout.addWidget(self.ImgRsize_Button, 3, 0, 1, 2)
 
         self.img_tabs.addTab(self.ImgRsize_tab, "")
 
@@ -1249,13 +1214,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_48 = QVBoxLayout()
         self.verticalLayout_48.setObjectName(u"verticalLayout_48")
         self.horizontalLayout_33 = QHBoxLayout()
-        self.horizontalLayout_33.setSpacing(16)
+        self.horizontalLayout_33.setSpacing(0)
         self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
         self.VidTag_Cover = DroppableImageLabel(self.VidTag_tab)
         self.VidTag_Cover.setObjectName(u"VidTag_Cover")
-        sizePolicy.setHeightForWidth(self.VidTag_Cover.sizePolicy().hasHeightForWidth())
-        self.VidTag_Cover.setSizePolicy(sizePolicy)
-        self.VidTag_Cover.setMinimumSize(QSize(158, 0))
+        sizePolicy6.setHeightForWidth(self.VidTag_Cover.sizePolicy().hasHeightForWidth())
+        self.VidTag_Cover.setSizePolicy(sizePolicy6)
+        self.VidTag_Cover.setMinimumSize(QSize(142, 0))
 
         self.horizontalLayout_33.addWidget(self.VidTag_Cover)
 
@@ -1276,8 +1241,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Title = QLineEdit(self.VidTag_tab)
         self.VidTag_Title.setObjectName(u"VidTag_Title")
-        sizePolicy8.setHeightForWidth(self.VidTag_Title.sizePolicy().hasHeightForWidth())
-        self.VidTag_Title.setSizePolicy(sizePolicy8)
+        sizePolicy13.setHeightForWidth(self.VidTag_Title.sizePolicy().hasHeightForWidth())
+        self.VidTag_Title.setSizePolicy(sizePolicy13)
 
         self.VidTag_TitleLayout.addWidget(self.VidTag_Title)
 
@@ -1297,8 +1262,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Intr = QLineEdit(self.VidTag_tab)
         self.VidTag_Intr.setObjectName(u"VidTag_Intr")
-        sizePolicy8.setHeightForWidth(self.VidTag_Intr.sizePolicy().hasHeightForWidth())
-        self.VidTag_Intr.setSizePolicy(sizePolicy8)
+        sizePolicy13.setHeightForWidth(self.VidTag_Intr.sizePolicy().hasHeightForWidth())
+        self.VidTag_Intr.setSizePolicy(sizePolicy13)
 
         self.VidTag_IntrLayout.addWidget(self.VidTag_Intr)
 
@@ -1318,8 +1283,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Alb = QLineEdit(self.VidTag_tab)
         self.VidTag_Alb.setObjectName(u"VidTag_Alb")
-        sizePolicy8.setHeightForWidth(self.VidTag_Alb.sizePolicy().hasHeightForWidth())
-        self.VidTag_Alb.setSizePolicy(sizePolicy8)
+        sizePolicy13.setHeightForWidth(self.VidTag_Alb.sizePolicy().hasHeightForWidth())
+        self.VidTag_Alb.setSizePolicy(sizePolicy13)
 
         self.VidTag_AlbLayout.addWidget(self.VidTag_Alb)
 
@@ -1342,6 +1307,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Genre_comboBox = QComboBox(self.VidTag_tab)
         self.VidTag_Genre_comboBox.setObjectName(u"VidTag_Genre_comboBox")
+        sizePolicy11.setHeightForWidth(self.VidTag_Genre_comboBox.sizePolicy().hasHeightForWidth())
+        self.VidTag_Genre_comboBox.setSizePolicy(sizePolicy11)
         self.VidTag_Genre_comboBox.setEditable(True)
 
         self.VidTag_GenreLayout.addWidget(self.VidTag_Genre_comboBox)
@@ -1360,8 +1327,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Year = QLineEdit(self.VidTag_tab)
         self.VidTag_Year.setObjectName(u"VidTag_Year")
-        sizePolicy8.setHeightForWidth(self.VidTag_Year.sizePolicy().hasHeightForWidth())
-        self.VidTag_Year.setSizePolicy(sizePolicy8)
+        sizePolicy3.setHeightForWidth(self.VidTag_Year.sizePolicy().hasHeightForWidth())
+        self.VidTag_Year.setSizePolicy(sizePolicy3)
 
         self.verticalLayout_11.addWidget(self.VidTag_Year)
 
@@ -1416,8 +1383,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_IntrAlb = QLineEdit(self.VidTag_tab)
         self.VidTag_IntrAlb.setObjectName(u"VidTag_IntrAlb")
-        sizePolicy8.setHeightForWidth(self.VidTag_IntrAlb.sizePolicy().hasHeightForWidth())
-        self.VidTag_IntrAlb.setSizePolicy(sizePolicy8)
+        sizePolicy13.setHeightForWidth(self.VidTag_IntrAlb.sizePolicy().hasHeightForWidth())
+        self.VidTag_IntrAlb.setSizePolicy(sizePolicy13)
 
         self.VidTag_IntrAlbLayout.addWidget(self.VidTag_IntrAlb)
 
@@ -1435,8 +1402,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Comp = QLineEdit(self.VidTag_tab)
         self.VidTag_Comp.setObjectName(u"VidTag_Comp")
-        sizePolicy8.setHeightForWidth(self.VidTag_Comp.sizePolicy().hasHeightForWidth())
-        self.VidTag_Comp.setSizePolicy(sizePolicy8)
+        sizePolicy13.setHeightForWidth(self.VidTag_Comp.sizePolicy().hasHeightForWidth())
+        self.VidTag_Comp.setSizePolicy(sizePolicy13)
 
         self.VidTag_CompLayout.addWidget(self.VidTag_Comp)
 
@@ -1454,8 +1421,8 @@ class Ui_MainWindow(object):
 
         self.VidTag_Mood = QLineEdit(self.VidTag_tab)
         self.VidTag_Mood.setObjectName(u"VidTag_Mood")
-        sizePolicy8.setHeightForWidth(self.VidTag_Mood.sizePolicy().hasHeightForWidth())
-        self.VidTag_Mood.setSizePolicy(sizePolicy8)
+        sizePolicy13.setHeightForWidth(self.VidTag_Mood.sizePolicy().hasHeightForWidth())
+        self.VidTag_Mood.setSizePolicy(sizePolicy13)
 
         self.VidTag_MoodLayout.addWidget(self.VidTag_Mood)
 
@@ -1924,35 +1891,44 @@ class Ui_MainWindow(object):
         self.JoinPdf_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.JoinPdf_tab), QCoreApplication.translate("MainWindow", u"Unir Pdf", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
+        self.SplitPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.SplitPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
+        self.SplitPdf_Sheets.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1,4,7-10", None))
         self.SplitPdf_SaveAll_Button.setText("")
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Guardar las Dem\u00e1s", None))
         self.SplitPdf_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.SplitPdf_tab), QCoreApplication.translate("MainWindow", u"Separar PDF", None))
         self.label_33.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
+        self.ExtractPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.ExtractPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.label_34.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
+        self.ExtractPdf_Sheets.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1,4,7-10", None))
         self.ExtractPdf_All_Button.setText("")
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Separar Todas", None))
         self.ExtractPdf_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.ExtractPDF_tab), QCoreApplication.translate("MainWindow", u"Extraer Hojas", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"Seleccionar PDF:", None))
+        self.BlankPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.BlankPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Hojas:", None))
+        self.BlankPdf_Sheets.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1,4,7-10", None))
         self.BlankPdf_Inplace_Button.setText("")
         self.label_26.setText(QCoreApplication.translate("MainWindow", u"Sobreescribir Archivo", None))
         self.BlankPdf_Button.setText(QCoreApplication.translate("MainWindow", u"Guardar", None))
         self.pdf_tabs.setTabText(self.pdf_tabs.indexOf(self.BlankPdf_tab), QCoreApplication.translate("MainWindow", u"Hoja en Blanco", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Selecciona Im\u00e1genes:", None))
+        self.ImgPdf_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\image.png", None))
         self.ImgPdf_selFile.setText(QCoreApplication.translate("MainWindow", u"Selecciona Archivos", None))
         self.ImgPdf_Button.setText(QCoreApplication.translate("MainWindow", u"CONVERTIR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.ImgPdf_tab), QCoreApplication.translate("MainWindow", u"Im\u00e1gen a PDF", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Seleccione PDF's:", None))
+        self.PdfImg_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\file.pdf", None))
         self.PdfImg_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivos", None))
         self.PdfImg_Button.setText(QCoreApplication.translate("MainWindow", u"CONVERTIR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.PdfImg_tab), QCoreApplication.translate("MainWindow", u"PDF a Im\u00e1gen", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Imagen:", None))
+        self.ImgExt_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\image.jpeg", None))
         self.ImgExt_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Extensi\u00f3n:", None))
         self.ImgExt_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u".png", None))
@@ -1966,6 +1942,7 @@ class Ui_MainWindow(object):
         self.ImgExt_Button.setText(QCoreApplication.translate("MainWindow", u"CONVERTIR", None))
         self.img_tabs.setTabText(self.img_tabs.indexOf(self.ImgExt_tab), QCoreApplication.translate("MainWindow", u"Cambiar Extensi\u00f3n", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Imagen:", None))
+        self.ImgRsize_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\image.png", None))
         self.ImgRsize_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o Actual:", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"x", None))
@@ -1978,31 +1955,42 @@ class Ui_MainWindow(object):
         self.label_1.setText(QCoreApplication.translate("MainWindow", u"Seleccione Archivos:", None))
         self.FileRname_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivos", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Template:", None))
+        self.FileRname_Template.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Name_#XXX", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"N\u00famero Inicial:", None))
         self.FileRname_Button.setText(QCoreApplication.translate("MainWindow", u"RENOMBRAR", None))
         self.file_tabs.setTabText(self.file_tabs.indexOf(self.FileRname_tab), QCoreApplication.translate("MainWindow", u"Renombrar Archivos", None))
         self.label_80.setText(QCoreApplication.translate("MainWindow", u"Seleccione Carpeta:", None))
+        self.VidTag_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\music\\", None))
         self.VidTag_selFile.setText(QCoreApplication.translate("MainWindow", u"Selecciona Archivo", None))
         self.VidTag_Update.setText("")
         self.VidTag_Cover.setText(QCoreApplication.translate("MainWindow", u"cover", None))
         self.label_90.setText(QCoreApplication.translate("MainWindow", u"T\u00edtulo:", None))
+        self.VidTag_Title.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Never Gonna Give You Up", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Int\u00e9rprete:", None))
+        self.VidTag_Intr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Rick Astley", None))
         self.label_32.setText(QCoreApplication.translate("MainWindow", u"\u00c1lbum:", None))
+        self.VidTag_Alb.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Whenever You Need Somebody", None))
         self.label_30.setText(QCoreApplication.translate("MainWindow", u"G\u00e9nero:", None))
         self.label_29.setText(QCoreApplication.translate("MainWindow", u"A\u00f1o:", None))
+        self.VidTag_Year.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1987/07/28", None))
         self.label_31.setText(QCoreApplication.translate("MainWindow", u"N\u00famero de Pista:", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"de", None))
         self.VidTag_IntrAlblabel.setText(QCoreApplication.translate("MainWindow", u"Int\u00e9rprete de Album:", None))
+        self.VidTag_IntrAlb.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Rick Astley", None))
         self.VidTag_Complabel.setText(QCoreApplication.translate("MainWindow", u"Compositor:", None))
+        self.VidTag_Comp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Stock Aitken Waterman", None))
         self.VidTag_Moodlabel.setText(QCoreApplication.translate("MainWindow", u"Mood:", None))
+        self.VidTag_Mood.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Graciosa", None))
         self.VidTag_Lyricslabel.setText(QCoreApplication.translate("MainWindow", u"Letra:", None))
         self.VidTag_Button.setText(QCoreApplication.translate("MainWindow", u"GUARDAR", None))
         self.vid_tabs.setTabText(self.vid_tabs.indexOf(self.VidTag_tab), QCoreApplication.translate("MainWindow", u"Tag M\u00fasica", None))
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"Video a Convertir:", None))
+        self.MP3toMP4_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C:\\user\\deskopt\\video.mp4", None))
         self.MP3toMP4_selFile.setText(QCoreApplication.translate("MainWindow", u"Seleccionar Archivo", None))
         self.MP3toMP4_Button.setText(QCoreApplication.translate("MainWindow", u"Guardar", None))
         self.vid_tabs.setTabText(self.vid_tabs.indexOf(self.MP3toMP4_tab), QCoreApplication.translate("MainWindow", u"MP4 a MP3", None))
         self.label_20.setText(QCoreApplication.translate("MainWindow", u"URL del Video:", None))
+        self.VidDown_In.setPlaceholderText(QCoreApplication.translate("MainWindow", u"https://www.youtube.com/watch?v=dQw4w9WgXcQ", None))
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"Solo Audio:", None))
         self.VidDown_OnlyAudio.setText("")
         self.VidDown_resLabel.setText(QCoreApplication.translate("MainWindow", u"Resoluci\u00f3n:", None))
@@ -2014,7 +2002,7 @@ class Ui_MainWindow(object):
         self.VidDown_res.setItemText(5, QCoreApplication.translate("MainWindow", u"1080", None))
         self.VidDown_res.setItemText(6, QCoreApplication.translate("MainWindow", u"1440", None))
         self.VidDown_res.setItemText(7, QCoreApplication.translate("MainWindow", u"2160", None))
-        self.VidDown_res.setItemText(8, QCoreApplication.translate("MainWindow", u"Best resolution", None))
+        self.VidDown_res.setItemText(8, QCoreApplication.translate("MainWindow", u"Best Resolution", None))
 
         self.VidDown_Titlelabel.setText(QCoreApplication.translate("MainWindow", u"T\u00edtulo del Video:", None))
         self.label_28.setText(QCoreApplication.translate("MainWindow", u"Descargar Todo:", None))
@@ -2027,3 +2015,4 @@ class Ui_MainWindow(object):
         self.vid_tabs.setTabText(self.vid_tabs.indexOf(self.VidDown), QCoreApplication.translate("MainWindow", u"Descargar Internet", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Python + PySide6", None))
     # retranslateUi
+
